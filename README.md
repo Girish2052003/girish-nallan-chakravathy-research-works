@@ -1,5 +1,15 @@
 # Girish Nallan Chakravathy — Research Works
 
+## Round 8 — public overlapping-constraint attack (10 October 2026)
+
+**Security verdict:** The original local MaxEnt NCSG trapdoor remains rejected by Round 7's public right-inversion theorem. Round 8 additionally gives a precise public **global** witness-recovery attack for explicit ternary NCSG constraint systems with low induced width; even overlapping public factors can be solved efficiently without the planted witness. This is a scoped negative result, **not** a direct break of every possible global scheme or a positive KEM security certificate. The old SGD-R1/R2/R3 geometry is tested, but those historical parameter sets have **no certified security levels** and are not a complete redesigned KEM.
+
+- [Round-8 global attack, exact proof, security/novelty ledger](research-2028/ROUND8_PUBLIC_GLOBAL_CSP_SECURITY_LEDGER.md)
+- [Reproducible public-only global witness adversary, R1/R2/R3 fixtures](research-2028/attacks/public_global_treewidth_witness_recovery.py)
+- [Content-updated active research manuscript (source)](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md), [PDF](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf), [Word](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx) (binaries built/pushed by successful GitHub Actions).
+
+**Formal-closure boundary:** The Round-8 attack theorem is proved under its stated model, and corresponding code receives finite tests. **KEM IND-CPA, IND-CCA, QROM and exponential security are not formally verified**; no active NCSG-only KeyGen/Encaps/Decaps security specification exists, and no amount of unit testing establishes an unbreakable cryptosystem. The EUROCRYPT 2027 submission deadline has already passed as of this update; the credited research draft is not an anonymous conference submission.
+
 ## SG-DIFRA: attack-driven post-quantum KEM research
 
 This repository hosts the **SG-DIFRA cryptanalysis and revision project**, based on the author-supplied 26-page `SG_DIFRA_PQC_KEM.pdf` manuscript with original PDF timestamp 11 September 2026.
