@@ -342,6 +342,99 @@ The event $\mathcal V(f)\ne V$ implies that at least one of the $3^k-3^{r+1}$ ex
 **Consequences and design rejection rule.** Public masking by $B$ is merely a reversible change of coordinates; it does not conceal the intrinsic affine-linearity subspace of a public MaxEnt map. Any new proposal that places essential secrecy *solely* in the direction subspace $V$ fails this test when its public representation enables full evaluation at comparable sizes. **Recovering $V$ does not reveal the entire secret change of basis $B$, a global NCSG assignment $s$, or the archived GF(1024) GRS row labels.** In particular, the original archived KEM's planted/noise labels remain independently sampled conditional on NCSG public data, so this theorem alone is not an IND-CPA or IND-CCA attack on that ciphertext channel. The earlier full-code archival attack (Theorem 9.2) is separately applicable under its explicit asymptotic assumptions. A viable **genuinely original NCSG-only KEM** must derive hardness from a new publicly encryptable and secretly invertible relation that survives these public affine-direction tests; merely raising $k$ without a sampled average-case hardness reduction is not a verified fix.
 
 
+
+## 4.4 Round-7 unconditional public local inversion: first differences eliminate the proposed local trapdoor
+
+**Outcome of the Round-6 repair check.** Round 6 established the public recoverability of a hidden $(r+1)$-dimensional second-difference direction subspace. Its theorem and regression tests remained valid, but **the underlying original MaxEnt predicate was not repaired**: that weakness is inherent in the publicly specified function form. Round 7 strengthens the result from probable detection of a hidden direction subspace to **unconditional exact public inversion of every local predicate target** in the explicit-table model. This rules out using *the original local predicate's preimage problem* as the secret inversion trapdoor of a new KEM. It does **not** solve an arbitrary *joint* NCSG constraint system, break the independent GF(1024) dense-label ciphertext directly, or supply a replacement KEM.
+
+Fix the original local publicly evaluable map
+
+$$
+f(x)=Au_L+\Delta_a Q_0(u_R),\qquad
+(u_L,u_R)=Bx\in\mathbb F_3^r\times\mathbb F_3^d.
+$$
+
+Here $A\in GL_r(\mathbb F_3)$, $B\in GL_k(\mathbb F_3)$, $a\ne0$, and $Q_0$ is **arbitrary**, not necessarily uniformly sampled. Define the publicly testable constant-derivative direction set
+
+$$
+C(f)=\{h\in\mathbb F_3^k:\ 
+f(x+h)-f(x)\text{ is independent of }x\}.
+$$
+
+For $h\in C(f)$ let $c_f(h)=f(h)-f(0)$. Unlike Theorem 4.5, this test uses **first differences**, and the result below does not need a distributional probability bound.
+
+**Theorem 4.6 (unconditional public local right inverse).** For every legitimate $A,B,a,Q_0$, the set $C(f)$ is a linear subspace of $\mathbb F_3^k$, and $c_f:C(f)\to\mathbb F_3^r$ is a **surjective linear map**. Consequently a deterministic public-only algorithm, given the complete publicly evaluable truth table of $f$ and any target $t\in\mathbb F_3^r$, outputs an assignment $x_t$ with
+
+$$
+f(x_t)=t
+$$
+
+**with success probability exactly one**. The algorithm uses at most $O(kr3^{2k}+kr^3)$ elementary field operations for preprocessing and $O(kr+r^3)$ per target with a recovered $r$-element independent increment basis. It never knows or recovers the secret sampled coordinate matrices.
+
+**Proof.** Translation identities show that any pair $h,h'\in C(f)$ satisfies
+
+$$
+f(x+h+h')-f(x)
+=c_f(h)+c_f(h'),
+$$
+
+and hence $h+h'\in C(f)$ and $c_f(h+h')=c_f(h)+c_f(h')$. Negatives and zero are also in $C(f)$, so $C(f)$ is a subspace and $c_f$ is linear. Now consider the private-but-mathematically well-defined left shift space
+
+$$
+W_0=B^{-1}(\mathbb F_3^r\times\{0\}).
+$$
+
+For every $h\in W_0$, writing $Bh=(v,0)$, one has
+
+$$
+f(x+h)-f(x)=Av
+$$
+
+**for every** $x$, regardless of $Q_0$ or $a$. Thus $W_0\subseteq C(f)$. The restriction $c_f|_{W_0}$ is a linear isomorphism onto $\mathbb F_3^r$ because $A$ and $B$ are invertible. Therefore the *publicly defined* map $c_f:C(f)\to\mathbb F_3^r$ is necessarily surjective.
+
+The public algorithm enumerates candidate $h$, checks $f(x+h)-f(x)$ over all public inputs $x$, retains only genuinely constant derivatives, and selects $r$ directions $h_1,\ldots,h_r$ whose **public output increments** $c_f(h_j)$ are linearly independent. Such directions exist because the image of $c_f$ is the entire output space. Solve the public linear system
+
+$$
+\sum_{j=1}^{r}\gamma_jc_f(h_j)=t-f(0)
+$$
+
+and return
+
+$$
+x_t=\sum_{j=1}^{r}\gamma_jh_j.
+$$
+
+By additivity $f(x_t)=f(0)+c_f(x_t)=t$. This holds for **every target and every potential table**, with no randomized oracle or hardness assumption. $\square$
+
+**Meaning of the computational bound.** Exhaustively verifying one direction requires $3^k$ function evaluations and there are at most $3^k$ directions. The loose upper bound $O(kr3^{2k})$ is therefore polynomial in the size of an **explicit** truth table, which is appropriate to the original locally enumerated construction: the frozen inputs have sizes $3^5=243$, $3^7=2187$, and $3^9=19683$. This does **not** imply polynomial inversion in the *succinct input dimension* $k$ for an arbitrary circuit representation when $k$ grows. Rather, the original small public local map cannot serve as a hidden trapdoor because valid inverse images can be synthesized openly and reused for all targets after one preprocessing pass. Nor does locally solving every predicate separately necessarily solve overlapping global constraints.
+
+**Theorem 4.7 (exact finite bound for identifying the original left shift space).** For a uniformly independently sampled potential table $Q_0:\mathbb F_3^d\to\mathbb F_3^r$, with $d\ge2$, the hidden $r$-dimensional $W_0$ is not only contained in $C(f)$; except with the following explicitly bounded probability, it **equals** $C(f)$:
+
+$$
+\Pr_{Q_0}[C(f)\ne W_0]\ \le\
+\frac{2\cdot3^r}{3^{r(3^{d-1}-1)}}+
+\frac{(3^d-3)\,3^r}{3^{r(4\cdot3^{d-2}-1)}}.
+$$
+
+**Proof.** For any $h$ with $Bh=(v,b)$, the first difference is constant in $x$ if and only if the right-block mixed operator
+
+$$
+(\mathsf T_b-I)(\mathsf T_a-I)Q_0
+$$
+
+is a constant vector-valued function. If $b\in\langle a\rangle$ but $b\ne0$, the scalar operator has exact rank $3^{d-1}$, because $(\mathsf T_a-I)^2$ has rank one on each affine three-point $a$-orbit. If $b$ is independent of $a$, the scalar mixed operator has rank $4\cdot3^{d-2}$, the product of two independent one-coordinate difference ranks $2\cdot2$ and the identity on the other coordinates. In **both** cases the global constant-one function lies in the image (in characteristic three, the constant vector on a three-point orbit is in the image of a first difference). For a uniform scalar input table, the probability that an operator of rank $R$ has a **constant** output is therefore exactly $3^{-(R-1)}$; with $r$ independent output coordinates it is $3^{-r(R-1)}$. There are $2\cdot3^r$ directions with $b\in\{a,-a\}$ and $(3^d-3)3^r$ with $b$ independent of $a$. Summing these exact individual probabilities by the union bound proves the display. No independence between candidate directions is assumed. $\square$
+
+| Original geometry | Public local target count | Unconditional local inversion | Bound on falsely enlarged $C(f)$ |
+|:--|--:|:--|--:|
+| SGD-R1 $(k,d,r)=(5,3,2)$ | 9 | Every target | $4.25034\cdot10^{-7}$ |
+| SGD-R2 $(7,4,3)$ | 27 | Every target | $3.28803\cdot10^{-36}$ |
+| SGD-R3 $(9,5,4)$ | 81 | Every target | $3.39402\cdot10^{-151}$ |
+
+**Important ordering of claims.** The middle column's **100% exact right-inversion success** needs no source randomness, does **not** depend on recovering precisely $W_0$, and still holds if the exceptional case $C(f)\supsetneq W_0$ occurs. The last column is only a probability bound on *identifying the original coordinate shift subspace uniquely*, not a KEM advantage or a hardness level. The code in research-2028/attacks/public_first_difference_local_inversion.py validates exact public inversion of all $9$, $27$, and $81$ target values at the source geometries, public additivity of constant directions, exact GF(3) operator ranks, and an exhaustive census of all $19{,}683$ potential tables in the smallest scalar case. No secret $A,B,a,Q_0$ is supplied to its attacker.
+
+**Repair decision, not a fictional security claim.** The original Round-6 coordinate-secret problem is **not fixed by more random masking**, since Theorem 4.6 constructs a public right inverse for every potential table. The intellectually honest corrective action is to **reject this local MaxEnt inversion as the security-bearing NCSG trapdoor**. It can remain a proved combinatorial/public-indexing ingredient, but a distinct publicly encryptable, secretly invertible **global coupling** and a sound average-case assumption would need to be designed and independently attacked before promoting a genuinely new NCSG-only KEM. The manuscript contains no such validated replacement today. In particular, the original dense GF(1024) label layer remains historically obsolete, with its separate asymptotic KEM break recorded in Theorem 9.2; it is not silently being reused as protection.
+
+
 # 5. Archived 2026 hidden-MDS label construction (not the new candidate)
 
 Select a profile $(n,k,d,r,m,M,u,N,\nu,\ell,\kappa_F,T_{\mathrm{rep}})$ with $M\le1024$, $u<M$ and $u\le N$. Independently sample $m$ NCSG supports, predicates and targets and enumerate $m$ fibers $S_i$, each of size $B_0=3^d$. Sample a master secret $s\in\mathbb F_3^n$ and a hidden set $\mathcal C\subseteq[m]$ of size $M$. For each $i$ sample invertible $R_i$ and a point $\sigma_i$ inside $S_i$ if $i\in\mathcal C$ and outside otherwise. Store $\delta_i=\sigma_i-R_is_{\mathcal N(i)}$ privately. The full NCSG public layer is generated independently of $s$.
