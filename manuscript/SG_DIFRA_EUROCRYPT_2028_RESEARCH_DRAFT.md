@@ -390,7 +390,7 @@ $$
 f(x+h)-f(x)=Av
 $$
 
-**for every** $x$, regardless of $Q_0$ or $a$. Thus $W_0\subseteq C(f)$. The restriction $c_f|_{W_0}$ is a linear isomorphism onto $\mathbb F_3^r$ because $A$ and $B$ are invertible. Therefore the *publicly defined* map $c_f:C(f)\to\mathbb F_3^r$ is necessarily surjective.
+**for every** $x$, regardless of $Q_0$ or $a$. Thus $W_0\subseteq C(f)$. On the subspace $W_0$, the map $h\mapsto c_f(h)$ is a linear isomorphism onto $\mathbb F_3^r$ because $A$ and $B$ are invertible. Therefore the *publicly defined* map $c_f:C(f)\to\mathbb F_3^r$ is necessarily surjective.
 
 The public algorithm enumerates candidate $h$, checks $f(x+h)-f(x)$ over all public inputs $x$, retains only genuinely constant derivatives, and selects $r$ directions $h_1,\ldots,h_r$ whose **public output increments** $c_f(h_j)$ are linearly independent. Such directions exist because the image of $c_f$ is the entire output space. Solve the public linear system
 
