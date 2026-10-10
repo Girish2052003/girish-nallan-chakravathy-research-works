@@ -10,7 +10,7 @@ The immutable author-supplied source file was \`SG_DIFRA_PQC_KEM.pdf\` (26 pages
 
 The existing \`archive/SG_DIFRA_PQC_KEM_ORIGINAL_EXTRACTED_TEXT.txt\` records the entire extracted text but is **not** the actual PDF, and is not typesetting-equivalent. The exact binary original is kept as a verified author-upload in the working session; do not claim that the GitHub text archive reproduces it byte-for-byte.
 
-The paper's original exact finite-difference/NCSG mathematics, its prior negative attacks, GRS framing and the original three research parameter sets are preserved in the text, and are **not** attributed to lattice KEM mathematics. ML-KEM is discussed only as an **optional, explicitly separate hedge**, not as the invention or hardness source of SG-DIFRA.
+The paper's original exact finite-difference/NCSG mathematics, its prior negative attacks, GRS framing and the original three research parameter sets are preserved in the text, and are **not** attributed to lattice KEM mathematics. Earlier drafts discussed an ML-KEM hedge only as a historical option. The author's **current strictly NCSG-only direction rejects every borrowed KEM and hybrid fallback**. No standardized KEM is an active component. The original GF(1024) hidden-GRS/noisy-linear KEM is also archived for cryptanalysis, not the new approved algorithm.
 
 ## Valid exact results
 
@@ -66,3 +66,16 @@ The new two-direction differential-cocycle theorem gives genuine algebraic NCSG 
 **Conference status (10 Oct 2026):** No official EUROCRYPT 2028 CFP/deadline was verified. Do not invent dates. The previous EUROCRYPT 2027 submission deadline was 17 September 2026.
 
 **Precise status**: Validated algebraic sublemmas, historical finite correctness, and newly reproduced NCSG-native distinguishing breaks. **No complete NCSG-only KEM or IND-CPA/IND-CCA proof exists; "100% secure" is not an attainable cryptographic certification.**
+
+
+## Round 7 — reject the original local trapdoor, distinguish exact mathematics from security (10 Oct 2026)
+
+**Round 6 was not a cryptographic fix.** The earlier theorem and tests showed a public second-difference subspace; they never replaced the original MaxEnt function with a cryptographically secure KEM. The same function is inherently publicly invertible.
+
+**Theorem 4.6, unconditional:** For the original $f(x)=Au_L+\Delta_aQ_0(u_R)$, $(u_L,u_R)=Bx$ with invertible $A,B$, the public constant-shift set $C(f)=\{h:f(x+h)-f(x)\text{ independent of }x\}$ is a vector space and $c_f(h)=f(h)-f(0)$ is a public linear map onto the *entire* $\mathbb F_3^r$. The hidden left-coordinate space $B^{-1}(\mathbb F_3^r\times\{0\})$ supplies a surjective restriction through $A$, but the attacker never needs to know that secret space. Publicly find $r$ shifts with independent output increments and solve an $r$-dimensional linear system for **every local target**. Success is **exactly one for every sampled potential table**, not merely overwhelming probability. **Corollary 4.6a** publicly translates the entire fiber of one local target onto that of every other target.
+
+**Theorem 4.7, additional source-sampling result:** Except with probability bounded by $(2\cdot3^r)3^{-r(3^{d-1}-1)}+(3^d-3)3^r3^{-r(4\cdot3^{d-2}-1)}$, the public constant-shift subspace equals the formerly hidden left-coordinate shift space. For archived R1/R2/R3, bounds are 4.25033449e-7, 3.28803091e-36 and 3.39401302e-151. This bound is **NOT necessary** for the unconditional local inversion theorem.
+
+**Reproduction:** research-2028/attacks/public_first_difference_local_inversion.py checks the 9+27+81 source local target preimages, full-fiber translation bijections, public direction additivity, finite-field mixed operator ranks, rational probability bounds, and the exhaustive 19,683-table scalar census. It is polynomial in the size of an *explicit public table* ($3^k$), not a uniform polynomial-time attack for an arbitrary succinct representation in compact $k$.
+
+**Scope and repair action:** Reject the original source local MaxEnt inversion and hidden affine-coordinate masks as a **standalone cryptographic trapdoor**, while preserving correct public-combinatorial mathematics. This does **not** solve globally overlapping NCSG constraints, find a global secret witness, or independently break the original dense GF(1024) ciphertext. Round 5 separately disproved asymptotic security of the archived fixed-field ciphertext KEM. A genuinely original NCSG-global PKE/KEM mechanism, strong average-case cryptanalysis and complete IND-CCA/QROM security proof remain UNCONSTRUCTED and UNVERIFIED. No source profile can be certified cryptographically secure by relabeling the proofs, applying larger entropy, or asserting worst-case NP-completeness.
