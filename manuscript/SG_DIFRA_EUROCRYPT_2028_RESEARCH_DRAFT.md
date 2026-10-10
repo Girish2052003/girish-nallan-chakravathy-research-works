@@ -126,6 +126,49 @@ $$
 
 All of these statements are unconditional finite-field mathematics; their proof gives no noisy-encryption pseudorandomness claim.
 
+
+## 4.1 New exact affine-line leakage in every ternary MaxEnt fiber
+
+The source's maximum-entropy theorem is correct as an entropy statement **over the image of a fixed finite-difference operator**. It does not imply that the sampled public fibers resemble random subsets. At the very profile parameters originally proposed, a deterministic geometric dependency remains.
+
+**Theorem 4.1 (canonical affine-line decomposition of each fiber).**
+Let $p=3$, $k>d\ge1$, $r=k-d$, $A\in GL_r(\mathbb F_3)$, $B\in GL_k(\mathbb F_3)$, $a\ne0$ in $\mathbb F_3^d$, and $Q_0:\mathbb F_3^d\to\mathbb F_3^r$ be an arbitrary table. For
+$
+f(x)=Au_L+\Delta_a Q_0(u_R),\qquad (u_L,u_R)=Bx,
+$
+and any target $b\in\mathbb F_3^r$, the fiber $f^{-1}(b)$ is the **disjoint union of $3^{d-1}$ affine lines**, each containing exactly three points in $\mathbb F_3^k$. Every such line $\{x_0,x_1,x_2\}$ satisfies
+$
+x_0+x_1+x_2=0\quad\text{in }\mathbb F_3^k.
+$
+In particular, every public fiber contains at least $3^{d-1}$ distinct three-point zero-sum subsets. The fibers cannot be treated as random affine-free subsets.
+
+**Proof.** Put $g=\Delta_aQ_0$. The $3^{d-1}$ cosets $z+\langle a\rangle$ partition the right-block space. The source's exact telescoping identity gives
+$
+g(z)+g(z+a)+g(z+2a)=0.
+$
+For any triple $g_0,g_1,g_2$ of elements of a vector space over $\mathbb F_3$, the identity $g_0+g_1+g_2=0$ is equivalent to $g_j=g_0+j(g_1-g_0)$ for $j=0,1,2$. Thus, as $u_R$ runs along one $a$-coset, $g$ is *affine-linear in the line parameter* $j$. Since the fiber equation uniquely specifies
+$
+u_L(j)=A^{-1}(b-g(z+ja))
+=A^{-1}(b-g(z))-jA^{-1}(g(z+a)-g(z)),
+$
+the paired points $(u_L(j),z+ja)$ form an affine line in $\mathbb F_3^k$. The invertible linear map $B^{-1}$ maps affine lines to affine lines. Distinct right cosets yield disjoint lines. There are $3^{d-1}$ of them, covering all $3^d$ points. Summing the three points of any affine line over characteristic three gives zero. $\square$
+
+**Corollary 4.1a (efficient public enumeration of dependencies).** Given the complete public fiber as an enumerated set $S$, every three-point zero-sum subset can be found without knowing $A,B,Q_0,a$ by iterating pairs $x,y\in S$, $x\ne y$, and checking if $-x-y\in S$. Hash-set implementation uses $O(|S|^2\,k)$ field operations. If $S$ is already published, this is polynomial in its *actual input size*, irrespective of how the internal table was sampled.
+
+**Corollary 4.1b (conditional break of any affine ternary row labeling).** Suppose a *new candidate* uses public ternary labels $h(x)=Lx+c$ and encrypts zero with ternary inner-product observations plus independent $\mathbb F_3$-symmetric errors of nonzero probability $\nu$, while encrypting one using independent uniform $\mathbb F_3$ symbols. For any public affine-line triple, the sum of zero ciphertext symbols equals the sum of just three errors, whereas the same sum for one is uniform. Write $\alpha=1-3\nu/2$. The public statistic $Z=[v(x_0)+v(x_1)+v(x_2)=0]$ satisfies
+$
+\Pr[Z=1\mid b=0]=\frac{1+2\alpha^3}{3},\quad
+\Pr[Z=1\mid b=1]=\frac13,
+$
+giving a one-event gap of $2|\alpha|^3/3$. At $\nu=3/16$ this gap is exactly $2(23/32)^3/3\approx0.24754$, already overwhelming for a basic distinguisher.
+
+**Proof.** Affinity implies $\sum_j h(x_j)=L\sum_jx_j+3c=0$ in $\mathbb F_3$. Thus the inner-product term cancels. The Fourier coefficient of each independent $\mathbb F_3$-symmetric error at either nontrivial character is $1-3\nu/2$. Three independent errors have nontrivial coefficient $\alpha^3$, yielding zero-sum probability $(1+2\alpha^3)/3$ by Fourier inversion. A sum including one uniform ternary symbol is uniform. $\square$
+
+**Scope.** This corollary is **not a break of the historical $K=\mathbb F_{2^{10}}$ version**: its dense field labels were sampled independently of assignment vectors, so the premise $h(x)=Lx+c$ over $\mathbb F_3$ fails. The theorem instead shows that replacing those labels with an apparently 'NCSG-native' *affine* assignment encoding would resurrect the old short-relation leakage, now as **three-point** rather than Boolean four-point constraints. Independent dense labels avoid this algebraic leak only by making NCSG geometry cryptographically removable, as proved in Section 6. Both design traps must be avoided *simultaneously* in any genuine NCSG-only successor.
+
+**Reproduction on the exact original local parameters.** The script \`research-2028/attacks/ternary_affine_line_leakage.py\` samples random valid $A,B,Q_0$ and checks all three recorded $(k,d)$ choices $(5,3),(7,4),(9,5)$ under three independent seeds each. It confirms disjoint partitions into $9,27,81$ affine three-point lines for fibers of size $27,81,243$, respectively, and enumerates public triples using only $S$. These are fully specified local finite tests and an exact symbolic proof, not global KEM security experiments.
+
+
 # 5. Archived 2026 hidden-MDS label construction (not the new candidate)
 
 Select a profile $(n,k,d,r,m,M,u,N,\nu,\ell,\kappa_F,T_{\mathrm{rep}})$ with $M\le1024$, $u<M$ and $u\le N$. Independently sample $m$ NCSG supports, predicates and targets and enumerate $m$ fibers $S_i$, each of size $B_0=3^d$. Sample a master secret $s\in\mathbb F_3^n$ and a hidden set $\mathcal C\subseteq[m]$ of size $M$. For each $i$ sample invertible $R_i$ and a point $\sigma_i$ inside $S_i$ if $i\in\mathcal C$ and outside otherwise. Store $\delta_i=\sigma_i-R_is_{\mathcal N(i)}$ privately. The full NCSG public layer is generated independently of $s$.
@@ -278,7 +321,7 @@ The union bound does not address high-weight relations or non-linear distinguish
 
 **Table interpretation.** The rows labeled nominal $\lambda$ are identifiers, not certified bit-security. The clean-basis row reports exactly one method. The message-failure row is derived from idealized independent noise and bounded-distance decoding, not an execution-tested failure estimate. These profiles also have very large public keys and ciphertexts by contemporary KEM standards.
 
-# 12. Further cryptanalysis and conditional deployment strategy for EUROCRYPT 2028
+# 12. Further structural cryptanalysis toward NCSG-only security
 
 ## 12.1 Serious bandwidth and storage problem in all three profiles
 
@@ -397,7 +440,7 @@ The new NCSG-only tests and research status are documented in:
 
 # 13. Verification, limitations and responsible next steps
 
-The accompanying Python scripts verify the field modulus, exhaustive Boolean truth table, regular fibers in a tiny ternary fixture, small GRS row independence, functional equivalence after replacing $s$, a toy clean-basis adversary on $1024$-ary noisy samples, and analytical profile bounds. Such checks are finite evidence for corresponding algebraic properties; they do **not** establish IND-CPA or IND-CCA security against arbitrary efficient adversaries.
+The accompanying Python scripts verify the field modulus, exhaustive Boolean truth table, exact ternary affine-line partitions for all three source profile geometries, symbolic ternary triple leakage, small GRS row independence, functional equivalence after replacing $s$, a toy clean-basis adversary on $1024$-ary noisy samples, and analytical profile bounds. Such checks are finite evidence for corresponding algebraic properties; they do **not** establish IND-CPA or IND-CCA security against arbitrary efficient adversaries.
 
 A publication-ready new cryptographic claim would require at least: an executable, byte-exact KEM implementation; independent cryptanalysis of the full public-label distribution and noisy sample problem; reproducible estimators including quantum work, depth and memory; a sound asymptotic parameter family; a complete QROM reduction with explicit concrete losses; a venue-compliant anonymous submission; and explicit treatment of computational/memory cost, malformed ciphertexts, fault and side-channel behavior.
 
