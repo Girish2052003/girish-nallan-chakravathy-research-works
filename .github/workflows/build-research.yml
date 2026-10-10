@@ -44,9 +44,21 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add manuscript/SG_DIFRA_REVISED.docx manuscript/SG_DIFRA_REVISED.pdf
-          if ! git diff --cached --quiet; then
+          # Generated binaries are authoritative from THIS build. Rebase the
+          # index (not an already-created binary commit) onto fresh main so
+          # concurrent documentation writes never cause binary merge conflicts.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --mixed origin/main
+            git add manuscript/SG_DIFRA_REVISED.docx manuscript/SG_DIFRA_REVISED.pdf
+            if git diff --cached --quiet; then
+              echo "Published binaries already match main"
+              exit 0
+            fi
             git commit -m "Build SG-DIFRA revised audit manuscript PDF and DOCX [skip ci]"
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Concurrent writer detected, refreshing main" >&2
+          done
+          exit 1
