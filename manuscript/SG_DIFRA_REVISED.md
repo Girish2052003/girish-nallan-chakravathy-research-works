@@ -114,7 +114,7 @@ $$
 Then $\Delta_eP=f$ by direct substitution. For any fixed direction $a$, a legitimate derivative $g=\Delta_aQ_0$ has sum zero on every line $\{w+ja:j\in\mathbb F_3\}$. Conversely every line-zero-sum function integrates to a table. Therefore the image dimension is
 
 $$
-\dim_{\mathbb F_3}\operatorname{Im}(\Delta_a)
+\dim_{\mathbb F_3}\mathrm{Im}(\Delta_a)
 =r(3-1)3^{d-1},
 $$
 
@@ -128,7 +128,7 @@ All of these statements are unconditional finite-field mathematics; their proof 
 
 # 5. Current hidden-MDS label construction
 
-Select a profile $(n,k,d,r,m,M,u,N,\nu,\ell,\kappa_F,T_{\rm rep})$ with $M\le1024$, $u<M$ and $u\le N$. Independently sample $m$ NCSG supports, predicates and targets and enumerate $m$ fibers $S_i$, each of size $B_0=3^d$. Sample a master secret $s\in\mathbb F_3^n$ and a hidden set $\mathcal C\subseteq[m]$ of size $M$. For each $i$ sample invertible $R_i$ and a point $\sigma_i$ inside $S_i$ if $i\in\mathcal C$ and outside otherwise. Store $\delta_i=\sigma_i-R_is_{\mathcal N(i)}$ privately. The full NCSG public layer is generated independently of $s$.
+Select a profile $(n,k,d,r,m,M,u,N,\nu,\ell,\kappa_F,T_{\mathrm{rep}})$ with $M\le1024$, $u<M$ and $u\le N$. Independently sample $m$ NCSG supports, predicates and targets and enumerate $m$ fibers $S_i$, each of size $B_0=3^d$. Sample a master secret $s\in\mathbb F_3^n$ and a hidden set $\mathcal C\subseteq[m]$ of size $M$. For each $i$ sample invertible $R_i$ and a point $\sigma_i$ inside $S_i$ if $i\in\mathcal C$ and outside otherwise. Store $\delta_i=\sigma_i-R_is_{\mathcal N(i)}$ privately. The full NCSG public layer is generated independently of $s$.
 
 For public distinct evaluation points $\alpha_1,\ldots,\alpha_M\in K$ and multipliers $v_i\ne0$, define the GRS generator matrix
 
@@ -157,29 +157,29 @@ $$
 For bit one sample $v\leftarrow K^q$ uniformly. To decode, the secret key identifies the $M$ good bucket coordinates, reorders them via $\pi$, and applies a bounded-distance GRS decoder with
 
 $$
-t_{\rm dec}=\left\lfloor\frac{M-u}{2}\right\rfloor.
+t_{\mathrm{dec}}=\left\lfloor\frac{M-u}{2}\right\rfloor.
 $$
 
-Return zero if and only if a codeword at distance at most $t_{\rm dec}$ is found. Every other word decodes to one. For a bit-zero ciphertext,
+Return zero if and only if a codeword at distance at most $t_{\mathrm{dec}}$ is found. Every other word decodes to one. For a bit-zero ciphertext,
 
 $$
-p_0\le\Pr[\operatorname{Bin}(M,3/16)>t_{\rm dec}].
+p_0\le\mathrm{Pr}[\mathrm{Bin}(M,3/16)>t_{\mathrm{dec}}].
 $$
 
 For a uniform bit-one ciphertext, the Hamming-ball union bound is
 
 $$
-p_1\le 1024^{u-M}\sum_{j=0}^{t_{\rm dec}}{M\choose j}1023^j.
+p_1\le 1024^{u-M}\sum_{j=0}^{t_{\mathrm{dec}}}{M\choose j}1023^j.
 $$
 
 Strict majority across seven fresh encryptions per message bit yields the standard binomial majority tail. The full-message error is bounded by $\ell$ times that tail.
 
 # 6. New theorem: removal of NCSG geometry without cryptographic effect
 
-**Theorem (distributional projection).** Assume all public fibers have the fixed size $B_0$ and their chosen positions within good buckets are uniform. Let $F$ be all public NCSG data and $H_{\rm flat}$ the ordered matrix of labels after canonical bucket enumeration. Then
+**Theorem (distributional projection).** Assume all public fibers have the fixed size $B_0$ and their chosen positions within good buckets are uniform. Let $F$ be all public NCSG data and $H_{\mathrm{flat}}$ the ordered matrix of labels after canonical bucket enumeration. Then
 
 $$
-\mathcal L(H_{\rm flat}\mid F=f)=\mathcal L(H_{\rm flat})
+\mathcal L(H_{\mathrm{flat}}\mid F=f)=\mathcal L(H_{\mathrm{flat}})
 \quad\text{for each legal }f.
 $$
 
@@ -211,13 +211,13 @@ for independent uniform $H\leftarrow K^{q\times N}$, $t\leftarrow K^N$, $e\lefta
 A straightforward triangle hybrid, provided all exact games are specified, gives an upper bound of the form
 
 $$
-\operatorname{Adv}_{\rm bit-CPA}(\mathcal A)
-\le \operatorname{Adv}_{\rm HBCE}(\mathcal B)
-+\operatorname{Adv}_{\rm qLPN}(\mathcal D)
+\mathrm{Adv}_{\mathrm{bit}-CPA}(\mathcal A)
+\le \mathrm{Adv}_{\mathrm{HBCE}}(\mathcal B)
++\mathrm{Adv}_{\mathrm{qLPN}}(\mathcal D)
 +\frac{q}{1024^N}.
 $$
 
-This is a conditional reduction, not independent evidence that either advantage is small. A message ciphertext consists of $\ell T_{\rm rep}$ fresh copies under one fixed public key; a standard telescoping hybrid incurs at most that many one-bit terms, with resource overhead that must be recorded in any concrete certificate.
+This is a conditional reduction, not independent evidence that either advantage is small. A message ciphertext consists of $\ell T_{\mathrm{rep}}$ fresh copies under one fixed public key; a standard telescoping hybrid incurs at most that many one-bit terms, with resource overhead that must be recorded in any concrete certificate.
 
 # 8. FO-style KEM interface and unresolved QROM proof
 
@@ -246,7 +246,7 @@ The planted-code dependency minimum is exactly $u+1$. This removes the old low-w
 A mixed-relation union bound can be derived by exposing at least one independent nonzero decoy row last. For a fixed support size $j\le u$ and a fixed projective coefficient vector, that row has at most one satisfying value among $1024^N-1$ possible nonzero labels. Summing over supports and projective vectors yields the source bound
 
 $$
-\Pr[\exists\text{ a relation of weight }\le\tau]
+\mathrm{Pr}[\exists\text{ a relation of weight }\le\tau]
 \le
 \frac{1}{1024^N-1}
 \sum_{j=1}^{\tau}{q\choose j}\frac{1024^j-1}{1023},
