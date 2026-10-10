@@ -23,6 +23,10 @@ The previously added optional ML-KEM KEM-combiner path has been **withdrawn from
 | Full NCSG-only KEM | Not yet specified or proved | **No IND-CPA/CCA proof and no secure profiles** |
 | Original SGD-R1/2/3 labels | Historical finite parameters | **Not** certified 128/192/256-bit levels |
 
+## Additional exact NCSG-only mathematics: directional-entropy versus potential leakage
+
+For $t$ independent directions $a_1,\ldots,a_t$ in $\mathbb{F}_p^d$, the public joint gradient operator $D_AQ=(\Delta_{a_1}Q,\ldots,\Delta_{a_t}Q)$ has kernel dimension $rp^{d-t}$ and image dimension $r(p^d-p^{d-t})$ for $r$-output tables. Uniform tables map to the uniform joint derivative image; entropy equals $r(p^d-p^{d-t})\log_2p$. Constructive path integration recovers $Q$ up to independent coset constants. **Publishing more independent complete derivatives exposes *more* of $Q$**, even though it adds more algebraic relations. The F3 rank tests cover $(d,t)=(2,1),(2,2),(3,1),(3,2),(3,3)$. This is a rigorous leakage constraint, not a new KEM.
+
 ## Negative theorems and reproducible scripts
 
 1. **Cocycle integration (necessary and sufficient).** On a two-dimensional \(\mathbb F_3\)-torus, every legitimate pair of directional derivatives satisfies \(\Delta_b g_a=\Delta_a g_b\) and has zero sum on each direction's periodic orbit. Conversely those constraints permit path-independent integration, unique up to a constant. See \`math/multidirection_cocycle.py\`. A published table of all directions is *easy to integrate*; no one-wayness follows.
