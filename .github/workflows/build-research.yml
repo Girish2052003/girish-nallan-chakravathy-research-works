@@ -23,7 +23,7 @@ jobs:
       - name: Install publishing tools
         run: |
           sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends pandoc libreoffice-writer fonts-dejavu-core
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends pandoc libreoffice-writer libreoffice-math fonts-dejavu-core
       - name: Build editable Word and PDF
         run: |
           pandoc --standalone --from=markdown+tex_math_dollars+yaml_metadata_block manuscript/SG_DIFRA_REVISED.md --output manuscript/SG_DIFRA_REVISED.docx
