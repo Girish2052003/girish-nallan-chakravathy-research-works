@@ -20,6 +20,8 @@ SG-DIFRA is an attack-driven experimental key-encapsulation proposal constructed
 
 **Round-5 security finding.** In the archived fixed-GF(1024) design, recovering one public rank-$u$ planted frame can be extended into recovery of all hidden label positions and exact public emulation of the secret bounded-distance decoder. Under explicitly polynomial public-key size and growing ambient dimension, this becomes a uniform polynomial-time honest-session-key recovery attack when the original KEM is correct. This is stronger than a public-key distinguisher, but it remains astronomically expensive at the three frozen finite profiles; it does not provide a secure NCSG-only replacement.
 
+**Round-6 structural result.** A hidden $(r+1)$-dimensional affine-linearity subspace of each original publicly evaluable ternary NCSG predicate can be recovered by exhaustive public second-difference tests, with explicit tiny sampling-failure bounds for R1/R2/R3. This further rules out relying solely on a concealed local coordinate direction as a future cryptographic trapdoor; it does not change the independent dense-label ciphertext security game.
+
 This revision supplies a further exact result: after canonical flattening, the NCSG predicates and targets are statistically independent of the public label matrix, and the master secret can be eliminated from the decryption key without changing any decapsulation outcome. Consequently the proved NCSG worst-case facts do not imply the encryption security of this construction. A second issue is that the fixed field forces $M\le1024$, so three finite parameter records do not instantiate a growing asymptotic security family. The archived iteration's one-bit security is only a conditional game-hybrid statement assuming **MDS-HBCE** and **$1024$-ary LPN**, neither of which has been justified by a concrete security estimator or reduction to an established problem. The resulting contribution is a transparent cryptanalytic case study and falsifiable construction proposal, **not a proven post-quantum KEM**.
 
 **Keywords:** nonlinear constraints; finite differences; key encapsulation; Reed–Solomon; noisy linear equations; cryptanalysis; correctness bounds; quantum random oracle model.
@@ -303,14 +305,7 @@ $$
 =(\mathsf T_b-I)^2(\mathsf T_a-I)Q_0(u_R).
 $$
 
-If $b=0$, this is zero. If $b=a$ or $b=-a$, then
-
-$$
-(\mathsf T_b-I)^2(\mathsf T_a-I)
-=(\mathsf T_a-I)^3=\mathsf T_a^3-I=0
-$$
-
-up to a nonzero scalar, because the translation $\mathsf T_a$ has order three in characteristic three. This proves $V\subseteq\mathcal V(f)$ deterministically, including all of its $3^{r+1}$ elements.
+If $b=0$, this is zero. If $b=a$, the operator equals $(\mathsf T_a-I)^3=\mathsf T_a^3-I=0$. If $b=-a$, then $\mathsf T_b-I=(\mathsf T_a-I)(\mathsf T_a+I)$, so the operator contains the same zero factor $(\mathsf T_a-I)^3$. Both identities use $\mathsf T_a^3=I$ and characteristic three. This proves $V\subseteq\mathcal V(f)$ deterministically, including all of its $3^{r+1}$ elements.
 
 Now fix any $h\notin V$. Its right component $b$ is linearly independent of $a$. An invertible change of right coordinates maps $a,b$ to distinct coordinate basis vectors. On the vector space of scalar tables on $\mathbb F_3^d$, the commuting operator
 
