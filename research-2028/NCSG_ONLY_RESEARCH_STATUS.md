@@ -160,3 +160,29 @@ The numbers estimate THIS naive exhaustive algorithm's enormous finite workload,
 **Reproduction:** research-2028/attacks/public_decapsulation_recovery.py reuses the actual GF(1024) Round-3 sampler. It verifies 12/12 toy planted-row reconstructions, 96/96 exact private/public bit-decision agreements, ten deterministic-re-encryption checks, and real shared-key extraction in every successful honest toy decapsulation. It does not claim full R1/R2/R3 feasibility or QROM formal verification.
 
 **No complete fix or secure replacement yet.** Public NCSG geometry remains cryptographically removable from the archived design; stronger local NP-completeness, maximum entropy, noise levels, secret incidence or row permutation do not repair the published code's public-decodability. A genuinely NCSG-essential new trapdoor, a scalable security assumption, independent classical/quantum cryptanalysis and a correct IND-CPA-to-IND-CCA argument remain open. No existing standardized KEM or hybrid was introduced.
+
+
+## Round 6 — hidden NCSG affine-coordinate subspace is publicly recoverable (10 October 2026)
+
+**Source and threat-model boundary.** The *original*, locally public ternary MaxEnt function $f:\mathbb F_3^k\to\mathbb F_3^r$ is sampled as $f(x)=Au_L+\Delta_aQ_0(u_R)$, $(u_L,u_R)=Bx$, where $Q_0$ is an independent uniform potential table and $A,B$ invertible. The original 26-page paper's key generation publishes the local functions $f_i$ and enumerates their fibers. This attack needs only the publicly evaluable complete local map $f$, **not the hidden values of $A,B,a,Q_0$**. It is not a ciphertext attack against the historical GF(1024) label channel.
+
+**New exact Theorem 4.5.** Define the public second-difference predicate $S_hf(x)=f(x)+f(x+h)+f(x+2h)$. Scan the public local input table to recover $\mathcal V(f)=\{h:S_hf(x)=0\text{ for every }x\}$. In the source distribution, the hidden coordinate direction space $V=B^{-1}(\mathbb F_3^r\times\langle a\rangle)$ of dimension $r+1$ **always** lies inside $\mathcal V(f)$. For any exterior $h$, the directional second difference of the derivative equals $(T_b-I)^2(T_a-I)Q_0$, with linearly independent $a,b$ in the right block. This scalar operator has **exact rank $2\,3^{d-2}$**: first difference in one ternary coordinate has rank 2; squared difference in another has rank 1; identity on the remaining $d-2$ coordinates has rank $3^{d-2}$. Since there are $r$ independent uniform table components, its all-zero probability is exactly $3^{-2r3^{d-2}}$. A union bound over the $3^k-3^{r+1}$ exterior vectors gives
+
+$$
+\Pr[\mathcal V(f)\ne V]\le
+(3^k-3^{r+1})3^{-2r3^{d-2}}.
+$$
+
+**Exact original finite bounds** (these are confidence bounds about recovering a *coordinate subspace*, NOT cryptographic bit-security levels):
+
+| Original source geometry | Exact recovery-failure upper bound | Decimal |
+|:--|:--|--:|
+| R1 $(k,d,r)=(5,3,2)$ | $8/19683$ | $0.0004064421074$ |
+| R2 $(7,4,3)$ | $26/717897987691852588770249$ | $3.62168448\times10^{-23}$ |
+| R3 $(9,5,4)$ | $80/47052721287394587764057094854672253553918218437190874778408030747195017485692977810906266281547645147$ | $1.70022047\times10^{-99}$ |
+
+**Executable attack and independent finite verification:** research-2028/attacks/public_second_difference_subspace_recovery.py. Tests construct the actual source-distributed maps with independently hidden invertible $A,B,a$, but provide only the full map $f$ to the attack. On R1/R2/R3 it recovers the *entire* hidden space $V$; it also computes the exact GF(3) operator rank independently for $d=2,3,4,5$ as $2,6,18,54$ and exhaustively confirms the $3^{-2}$ probability for the $d=2,r=1$ local example by enumerating all $19683$ scalar tables (exactly $2187$ pass). Screening with a small fixed probe set merely accelerates execution; the algorithm performs a **full input-space validation** for each surviving direction. Its worst-case work $O(kr3^{2k})$ is polynomial in the complete truth-table size but **not** polynomial in a succinct representation's $k$ input-coordinate size.
+
+**Consequence for novel-KEM designs.** Secretly permuting coordinates or hiding the original input direction $a$ is **not** a source of trapdoor secrecy once the public finite-difference map is evaluable in this small domain. This rejects *coordinate-hiding as the sole NCSG security mechanism*. The theorem does not recover the entire matrix $B$ or a global NCSG witness $s$. It also does not distinguish the historical MDS-HBCE Plant/Null games because both publish NCSG predicates from the same distribution; the independently random GF(1024) labels remain unlinked to these ternary differential identities. Round 5 independently refutes the historical KEM's asymptotic security under a distinct fixed-field attack. There is **still no complete new NCSG-only trapdoor KEM, no IND-CPA/CCA/QROM security proof, no proven classical/quantum exponential lower bound, and no validated 128/192/256-bit parameter sets**.
+
+**Research gate:** A genuine future NCSG-based construction must demonstrate a cryptographically essential *secret inversion advantage* that persists even when all public low-degree directional derivatives are used as attack features, and must derive its security from a precisely defined independently cryptanalyzed average-case distribution. Merely choosing a larger local $k$ or public entropy does not satisfy this gate.
