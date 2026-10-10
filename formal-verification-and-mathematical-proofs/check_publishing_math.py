@@ -17,4 +17,8 @@ text=subprocess.run(["pdftotext","-layout",pdf,"-"],capture_output=True,text=Tru
 assert len(text)>10000, "Unexpectedly short PDF or failed extraction"
 assert "ν=3/16" in text or "ν =3/16" in text or "ν = 3/16" in text, "Noise rate mathematical symbol vanished from rendered PDF"
 assert "M ≤ 1024" in text or "M ≤1024" in text, "Core finite field inequality absent from rendered PDF"
+if "EUROCRYPT_2028" in docx:
+    normalized=" ".join(text.lower().split())
+    assert "theorem 4.1" in normalized, "New ternary structural theorem absent from PDF"
+    assert "corollary 4.1b" in normalized, "New ternary affine-label attack absent from PDF"
 print(f"Publication QA PASSED: {n_math} OfficeMath nodes, zero raw TeX-dollar formulas; correct noisy-field and MDS formulas in PDF")
