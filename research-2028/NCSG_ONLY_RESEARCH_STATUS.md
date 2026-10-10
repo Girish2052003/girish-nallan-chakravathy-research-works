@@ -130,3 +130,33 @@ $$
 **What this fails to establish:** In the *archived* MDS-HBCE Plant-vs-Null key games, the public NCSG fibers are sampled identically in both games; this test has **zero cryptographic distinguishing advantage from the public-fiber marginal alone**. The published GF(1024) labels do not inherit any asserted ternary-linear row relation. This is a firm negative result against pretending those source fibers are pseudorandom subsets and a strong design gate for future NCSG-*coupled* encodings, **not** an active standalone cryptographic KEM or verified 128/192/256-bit security theorem. Full KEM implementation, correctness, quantum/classical attack assessment, IND-CPA, IND-CCA and QROM proof remain open.
 
 **Terminology:** these finite-geometry counts may follow from elementary standard finite-field facts. They are proved here for this exact sampler; absolute literature novelty has **not** been demonstrated. The source manuscript's NP-completeness result concerns worst-case satisfiability, not average-case indistinguishability.
+
+## Round 5 — archived SG-DIFRA-MDS KEM confidentiality breach, not merely an MDS-HBCE distinguisher
+
+**Version scope (10 October 2026):** This is a mathematical attack on the original 2026 **fixed-field GF(1024) hidden-GRS/noisy-linear KEM** under the explicitly stated polynomial-size asymptotic family. It is NOT a break of a complete new NCSG-only KEM, which does not yet exist.
+
+**Theorem 9.2, documented in the active research manuscript, has three constructive stages.** First, enumerate all $(u+1)$-row public label subsets to locate a dependent set of planted rows; any $u+1$ planted GRS rows have rank $u$ and any $u$ are independent. Conditioned on no mixed false positive, its rank-$u$ span $W$ identifies **all** planted row positions via public membership tests. Second, those public planted rows already generate the coordinate-permuted secret GRS code. Enumerate every $u$-position information set and solve its public linear system, accepting bit zero iff the received $M$-symbol word is within the secret decoder's original radius. Since $M-t_{\mathrm{dec}}\ge u$ and the MDS distance exceeds twice this radius, this procedure returns **exactly the secret decoder's bit on every ciphertext**, even malformed ones. Third, reconstruct all repetitions and the majority-decoded FO message, perform the public deterministic re-encryption check, and derive the actual honest encapsulated session key whenever real secret-key Decap is correct.
+
+For the original field $Q=1024$, mixed-subset dependence and random decoy inclusion are jointly upper-bounded by
+
+$$
+\varepsilon_{\mathrm{row}}\le
+\left[(u+1)\binom{q}{u+1}+q-M\right]
+\frac{Q^u-1}{Q^N-1}.
+$$
+
+With $q=\operatorname{poly}(\lambda)$, $N=\Omega(\lambda)$ and $1\le u<M\le1024$, this is negligible. If the KEM has key-agreement failure $\delta(\lambda)$ and returns $\kappa$-bit keys, real-versus-uniform key distinguishing advantage is at least $1-\varepsilon_{\mathrm{row}}-\delta(\lambda)-2^{-\kappa}$.
+
+**The three frozen finite profiles are not thereby practically broken.**
+
+| Archived | log2 public planted-row subset work | log2 public decoder information sets |
+|:--|--:|--:|
+| SGD-R1 | 656.94 | 203.57 |
+| SGD-R2 | 1136.78 | 307.12 |
+| SGD-R3 | 1718.10 | 410.76 |
+
+The numbers estimate THIS naive exhaustive algorithm's enormous finite workload, not a minimum security level and not proof of finite IND-CCA hardness. The constant bounded field cardinality makes it **uniform classical polynomial-time** only under the explicitly specified asymptotic scaling. Potentially better finite classical and quantum attacks remain unbounded by these values.
+
+**Reproduction:** research-2028/attacks/public_decapsulation_recovery.py reuses the actual GF(1024) Round-3 sampler. It verifies 12/12 toy planted-row reconstructions, 96/96 exact private/public bit-decision agreements, ten deterministic-re-encryption checks, and real shared-key extraction in every successful honest toy decapsulation. It does not claim full R1/R2/R3 feasibility or QROM formal verification.
+
+**No complete fix or secure replacement yet.** Public NCSG geometry remains cryptographically removable from the archived design; stronger local NP-completeness, maximum entropy, noise levels, secret incidence or row permutation do not repair the published code's public-decodability. A genuinely NCSG-essential new trapdoor, a scalable security assumption, independent classical/quantum cryptanalysis and a correct IND-CPA-to-IND-CCA argument remain open. No existing standardized KEM or hybrid was introduced.
