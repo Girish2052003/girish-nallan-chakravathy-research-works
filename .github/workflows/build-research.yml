@@ -30,6 +30,7 @@ jobs:
           python research-2028/math/multidirection_cocycle.py
           python research-2028/attacks/public_ideal_membership_break.py
           python research-2028/attacks/ternary_affine_line_leakage.py
+          python research-2028/attacks/fixed_field_mds_hbce_ppt_break.py
       - name: Install publishing tools
         run: |
           sudo apt-get update -qq
