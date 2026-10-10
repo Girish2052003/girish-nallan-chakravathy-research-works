@@ -35,6 +35,13 @@ if "EUROCRYPT_2028" in docx:
     assert "theorem 4.7" in normalized, "Round-7 constant-derivative subspace bound not in PDF"
     assert "corollary 4.6a" in normalized, "Round-7 public fiber translation corollary missing"
     assert "3.39402" in normalized, "Round-7 finite R3 bound absent from rendered PDF"
+    assert "theorem 12.9" in normalized, "Round-8 public global CSP theorem missing from rendered PDF"
+    assert "public global witness" in normalized, "Round-8 adversary claim missing from rendered PDF"
+    assert "overlap alone" in normalized, "Round-8 negative security boundary missing from rendered PDF"
     assert "3.62169" in normalized, "Round-6 R2 exact probability bound absent from published PDF"
     assert "shared-key recovery" in normalized, "Round-5 end-to-end KEM attack missing in rendered PDF"
+if "SG_DIFRA_REVISED" in docx:
+    normalized=" ".join(text.lower().split())
+    assert "appendix c." in normalized, "Short revised PDF missing Round-8 appendix"
+    assert "round-8" in normalized, "Round-8 scientific status absent from revised PDF"
 print(f"Publication QA PASSED: {n_math} OfficeMath nodes, zero raw TeX-dollar formulas; correct noisy-field and MDS formulas in PDF")
