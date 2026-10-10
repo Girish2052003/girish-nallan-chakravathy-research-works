@@ -79,3 +79,23 @@ For a uniformly sampled original MaxEnt ternary predicate $f$ and any target $b$
 **Proof:** For a right-block affine line parallel to $a$, the source's derivative telescoping forces a matching line in the fiber. For any nonparallel right line, the two summands of the translated $Q_0$ table use six pairwise distinct uniformly sampled points, so the sum derivative is uniform in $\mathbb F_3^r$ and vanishes with probability $3^{-r}$. Sum over all $s_0(s_0-1)/6$ right lines. For the null sample, use the hypergeometric probability a given ambient line is fully selected. Full proof in active manuscript Theorem 4.2.
 
 The reproducible threshold-statistic test samples 30 source and 30 uniform public fibers for each original profile and calculates its observed accuracy; it **does not** claim a finite universal advantage for an arbitrary non-sampled instance. Even a strong public NCSG-vs-uniform fiber distinguisher is **not** an IND-CPA attack on the archived independently random dense labels. It rules out unjustified pseudorandom-fiber assumptions for NCSG-dependent future designs.
+
+## Round 3 — unconditional asymptotic failure of the archived fixed-field MDS-HBCE assumption (10 Oct 2026)
+
+The original SG-DIFRA-MDS source samples a public hidden GRS frame over the permanently fixed field $K=\mathbb F_{2^{10}}$ of size $Q=1024$, with distinct evaluation points. This forces **$M\le1024$ and $u+1\le1024$ at every security parameter**.
+
+**Theorem / constructive attack:** Enumerate all $(u+1)$-subsets of public-label rows and run Gaussian elimination. A planted public key always contains a rank-$u$ set, so the distinguisher accepts with probability one. In the null distribution of $q$ independently uniform *nonzero* vectors of $K^N$, the probability of *any* dependent $(u+1)$-subset is bounded by
+
+$$
+{q\choose u+1}\left(1-\prod_{i=1}^{u}\frac{Q^N-Q^i}{Q^N-1}\right).
+$$
+
+The inner factor is the exact rank-dependency probability for a fixed subset (conditioning row by row), and the outer union bound covers all subsets. If the public key has polynomial size $q=\operatorname{poly}(\lambda)$ and $N=\Omega(\lambda)$, this is negligible. Because $u+1\le1024$ is an absolute constant, at most $q^{1024}\operatorname{poly}(N)$ operations suffice: **a uniform PPT distinguisher**, despite the gigantic degree, refutes an asymptotic MDS-HBCE indistinguishability assumption against all PPT/QPT adversaries.
+
+**Critical evidential boundary:** This is an **asymptotic break of the fixed-field planted-key assumption**, NOT a practical break at the frozen SGD-R1/R2/R3 parameters and not direct message/shared-key recovery. Direct subset enumeration requires $\log_2{q\choose u+1}\approx656.94,1136.78,1718.10$ subsets for the three finite parameter sets, before field elimination. These are astronomical upper bounds on naive attack work, not lower bounds on optimized attacks. The original source's candidate-only relation heuristic is a different cost model and does not constitute a matching bound.
+
+**Repair obligation:** A changing security parameter cannot coexist with a universally PPT-hard MDS-HBCE assumption using the **same fixed GF(1024) distinct-point GRS family**, polynomial-size keys and growing $N$. A field growing with $\lambda$ or an independently conceived algebraic encoding must be specified and cryptanalysed afresh; such a change is not a secure-KEM proof. The active objective remains original NCSG-native encryption, not adapting any other published KEM.
+
+**Automated checks:** [fixed-field asymptotic distinguisher](attacks/fixed_field_mds_hbce_ppt_break.py) uses exact GF(1024) row arithmetic and planted/null simulation, independently exhausts all ordered nonzero triples in GF(3)^3 to verify the exact null dependency formula, and prints the finite-profile enumeration budgets. The active manuscript contains the full proof at Section 9.1.
+
+**Evidence status:** A rigorous asymptotic counterexample to the source's claimed assumption family; it is a conditional theorem for explicitly quantified growth. It does not prove the currently unconstructed NCSG-only target IND-CPA/CCA secure.
