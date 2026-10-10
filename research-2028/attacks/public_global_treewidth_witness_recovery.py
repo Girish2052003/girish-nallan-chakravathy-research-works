@@ -37,6 +37,10 @@ def public_witness(n,factors):
     """Exact bucket elimination and backwards reconstruction, no secret input."""
     original=[(tuple(s),set(a)) for s,a in factors]
     order,width=primal_order(n,original)
+    # A false zero-arity or ordinary empty relation is an immediate
+    # contradiction; leaving it in a variable-free bucket would be unsound.
+    if any(not allowed for _,allowed in original):
+        return None,width
     work=list(original);back=[]
     for v in order:
         bucket=[(s,a) for s,a in work if v in s]
@@ -109,6 +113,12 @@ class Round8Tests(unittest.TestCase):
         w,width=public_witness(1,[((0,),{(0,)}),((0,),{(1,)})])
         self.assertIsNone(w)
         self.assertEqual(width,0)
+
+    def test_zero_arity_contradictions_and_empty_instances(self):
+        self.assertEqual(public_witness(0,[]),((),0))
+        self.assertEqual(public_witness(0,[((),{()})]),((),0))
+        self.assertEqual(public_witness(0,[((),set())]),(None,0))
+        self.assertEqual(public_witness(2,[((),set()),((0,),{(0,)})])[0],None)
 
     def test_random_csp_exact_against_exhaustive(self):
         rng=random.Random(20261010)
