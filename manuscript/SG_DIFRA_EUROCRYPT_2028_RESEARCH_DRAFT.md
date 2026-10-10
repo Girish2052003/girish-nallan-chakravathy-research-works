@@ -12,13 +12,13 @@ colorlinks: true
 numbersections: true
 ---
 
-> **Security notice.** This document is a revised research draft based on the author's 26-page SG-DIFRA-MDS manuscript. It is **not** a security certificate, a proof that MDS-HBCE or q-ary LPN is hard, or a valid claim of 128-, 192-, or 256-bit IND-CCA security. A complete reference implementation and independently reviewed concrete estimates are absent. The source paper is preserved conceptually in the sections below, with newly identified caveats and theorems made explicit.
+> **Security notice.** This NCSG-only mathematical research draft is a revision based on the author's 26-page SG-DIFRA-MDS manuscript. The GRS/LPN iteration is historical and is not a new approved active KEM. It is **not** a security certificate, a proof that MDS-HBCE or q-ary LPN is hard, or a valid claim of 128-, 192-, or 256-bit IND-CCA security. A complete reference implementation and independently reviewed concrete estimates are absent. The source paper is preserved conceptually in the sections below, with newly identified caveats and theorems made explicit.
 
 # Abstract
 
-SG-DIFRA is an attack-driven experimental key-encapsulation proposal constructed by separating public nonlinear constraint-system geometry (NCSG), secret incidence, and a hidden generalized Reed–Solomon (GRS) label system. Its earlier Boolean-fiber design leaked period-pair linear relations; dense labeling removed those relations but did not protect a shared planted secret; secret incidence repaired public-fiber correlation but an initial low-noise binary ciphertext was broken by nearly clean information sets and low-weight hidden-code dependencies. The current large-field version employs symbols from $K=\mathbb F_{2^{10}}$, a hidden length-$M$, dimension-$u$ GRS code, and independently sampled $K$-symmetric symbol error of probability $\nu=3/16$. Algebraic identities establish exact fiber regularity, derivative entropy, planted-row independence through weight $u$, and finite correctness bounds.
+SG-DIFRA is an attack-driven experimental key-encapsulation proposal constructed by separating public nonlinear constraint-system geometry (NCSG), secret incidence, and a hidden generalized Reed–Solomon (GRS) label system. Its earlier Boolean-fiber design leaked period-pair linear relations; dense labeling removed those relations but did not protect a shared planted secret; secret incidence repaired public-fiber correlation but an initial low-noise binary ciphertext was broken by nearly clean information sets and low-weight hidden-code dependencies. The archived 2026 large-field iteration employed symbols from $K=\mathbb F_{2^{10}}$, a hidden length-$M$, dimension-$u$ GRS code, and independently sampled $K$-symmetric symbol error of probability $\nu=3/16$. Algebraic identities establish exact fiber regularity, derivative entropy, planted-row independence through weight $u$, and finite correctness bounds.
 
-This revision supplies a further exact result: after canonical flattening, the NCSG predicates and targets are statistically independent of the public label matrix, and the master secret can be eliminated from the decryption key without changing any decapsulation outcome. Consequently the proved NCSG worst-case facts do not imply the encryption security of this construction. A second issue is that the fixed field forces $M\le1024$, so three finite parameter records do not instantiate a growing asymptotic security family. The remaining one-bit security is only a conditional hybrid statement assuming **MDS-HBCE** and **$1024$-ary LPN**, neither of which has been justified by a concrete security estimator or reduction to an established problem. The resulting contribution is a transparent cryptanalytic case study and falsifiable construction proposal, **not a proven post-quantum KEM**.
+This revision supplies a further exact result: after canonical flattening, the NCSG predicates and targets are statistically independent of the public label matrix, and the master secret can be eliminated from the decryption key without changing any decapsulation outcome. Consequently the proved NCSG worst-case facts do not imply the encryption security of this construction. A second issue is that the fixed field forces $M\le1024$, so three finite parameter records do not instantiate a growing asymptotic security family. The archived iteration's one-bit security is only a conditional game-hybrid statement assuming **MDS-HBCE** and **$1024$-ary LPN**, neither of which has been justified by a concrete security estimator or reduction to an established problem. The resulting contribution is a transparent cryptanalytic case study and falsifiable construction proposal, **not a proven post-quantum KEM**.
 
 **Keywords:** nonlinear constraints; finite differences; key encapsulation; Reed–Solomon; noisy linear equations; cryptanalysis; correctness bounds; quantum random oracle model.
 
@@ -126,7 +126,7 @@ $$
 
 All of these statements are unconditional finite-field mathematics; their proof gives no noisy-encryption pseudorandomness claim.
 
-# 5. Current hidden-MDS label construction
+# 5. Archived 2026 hidden-MDS label construction (not the new candidate)
 
 Select a profile $(n,k,d,r,m,M,u,N,\nu,\ell,\kappa_F,T_{\mathrm{rep}})$ with $M\le1024$, $u<M$ and $u\le N$. Independently sample $m$ NCSG supports, predicates and targets and enumerate $m$ fibers $S_i$, each of size $B_0=3^d$. Sample a master secret $s\in\mathbb F_3^n$ and a hidden set $\mathcal C\subseteq[m]$ of size $M$. For each $i$ sample invertible $R_i$ and a point $\sigma_i$ inside $S_i$ if $i\in\mathcal C$ and outside otherwise. Store $\delta_i=\sigma_i-R_is_{\mathcal N(i)}$ privately. The full NCSG public layer is generated independently of $s$.
 
@@ -255,7 +255,7 @@ $$
 
 The union bound does not address high-weight relations or non-linear distinguishers. Exact finite arithmetic and toy regressions are stored in \`formal-verification-and-mathematical-proofs/\`.
 
-# 11. Three research profiles
+# 11. Three archived research profiles (not verified for a new NCSG design)
 
 | Parameter | SGD-R1 | SGD-R2 | SGD-R3 |
 |:--|--:|--:|--:|
@@ -348,13 +348,13 @@ and encode one as an independently uniform coefficient vector for degree at most
 $$
 W_D=\mathrm{span}\big\{X^\alpha r_i(X):1\le i\le m,\ |\alpha|\le D\big\}\subseteq V_t.
 $$
-Assume $W_D\neq V_t$. An attacker knowing only the public polynomials $r_i$ distinguishes $C_0$ from a uniform coefficient vector with success probability at least
+In fact, **$W_D\neq V_t$ necessarily holds** whenever the intended secret witness $s$ exists: each generator $X^\alpha r_i$ vanishes at $s$, while the constant polynomial one does not. An attacker knowing only the public polynomials $r_i$ distinguishes $C_0$ from a uniform coefficient vector with success probability at least
 $$
 1-\frac12 3^{\dim W_D-\dim V_t}
 $$
-under equiprobable bits. The attack is polynomial in $\dim V_t$ and $m\binom{n+D}{D}$ and is therefore polynomial in the security parameter whenever $t$ is constant.
+under equiprobable bits, and at least $5/6$ because $\dim V_t-\dim W_D\ge1$. The attack is polynomial in $\dim V_t$ and $m\binom{n+D}{D}$ and is therefore polynomial in the security parameter whenever $t$ is constant.
 
-**Proof.** Publish all coefficient vectors of monomial multiples $X^\alpha r_i$ as rows of a matrix. By construction every $C_0$ lies in its row span $W_D$; Gaussian elimination tests span membership without knowing $s$. A uniform coefficient vector lies in $W_D$ with probability exactly $3^{\dim W_D-\dim V_t}$. Classify membership as zero, nonmembership as one. Correct-classification probability is $\tfrac12(1+1-3^{\dim W_D-\dim V_t})$. The coefficient space has dimension $\binom{n+t}{t}$; for fixed $t$ all matrix dimensions are polynomial in $n$. $\square$
+**Proof.** Publish all coefficient vectors of monomial multiples $X^\alpha r_i$ as rows of a matrix. By construction every $C_0$ lies in its row span $W_D$; Gaussian elimination tests span membership without knowing $s$. Since evaluation at $s$ is a nonzero linear functional on $V_t$, every generator lies in its kernel and the rank is strictly smaller than $\dim V_t$. A uniform coefficient vector lies in $W_D$ with probability exactly $3^{\dim W_D-\dim V_t}$. Classify membership as zero, nonmembership as one. Correct-classification probability is $\tfrac12(1+1-3^{\dim W_D-\dim V_t})$. The coefficient space has dimension $\binom{n+t}{t}$; for fixed $t$ all matrix dimensions are polynomial in $n$. $\square$
 
 The companion *GF(3) attack script* implements exactly this theorem on three-variable planted relations, with 150 samples of each class. It verifies that all zero ciphertexts are recognized by public row-space membership, including when the hidden witness correctly evaluates the polynomial to zero. This is an end-to-end **distinguishing break of the proposed experiment**, not a proof that all possible NCSG KEMs are impossible.
 
