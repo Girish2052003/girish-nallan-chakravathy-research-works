@@ -73,4 +73,32 @@ class CocycleTests(unittest.TestCase):
                 if k==len(A):break
             return k
         self.assertEqual(rank3(rows),len(GRID)-1)
+    def test_joint_derivative_image_rank_generalized(self):
+        for d,t in ((2,1),(2,2),(3,1),(3,2),(3,3)):
+            with self.subTest(d=d,t=t):
+                coords=list(itertools.product(range(3),repeat=d))
+                rows=[]
+                for x in coords:
+                    basis={y:0 for y in coords}
+                    basis[x]=1
+                    out=[]
+                    for a in range(t):
+                        for y in coords:
+                            shifted=list(y);shifted[a]=(shifted[a]+1)%3
+                            out.append((basis[tuple(shifted)]-basis[y])%3)
+                    rows.append(out)
+                k=0; mat=[row[:] for row in rows]
+                for col in range(len(mat[0])):
+                    pivot=next((j for j in range(k,len(mat)) if mat[j][col]),None)
+                    if pivot is None:continue
+                    mat[k],mat[pivot]=mat[pivot],mat[k]
+                    mult=pow(mat[k][col],-1,3)
+                    mat[k]=[(v*mult)%3 for v in mat[k]]
+                    for i in range(len(mat)):
+                        if i!=k and mat[i][col]:
+                            a=mat[i][col]
+                            mat[i]=[(v-a*w)%3 for v,w in zip(mat[i],mat[k])]
+                    k+=1
+                    if k==len(mat):break
+                self.assertEqual(k,3**d-3**(d-t))
 if __name__=="__main__": unittest.main(verbosity=2)
