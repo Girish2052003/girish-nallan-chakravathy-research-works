@@ -1,0 +1,50 @@
+name: Build SG-DIFRA revised PDF and Word
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'manuscript/SG_DIFRA_REVISED.md'
+      - 'formal-verification-and-mathematical-proofs/**'
+      - '.github/workflows/build-research.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Run finite mathematical regressions
+        run: |
+          python formal-verification-and-mathematical-proofs/test_sg_difra.py
+          python formal-verification-and-mathematical-proofs/profile_bounds.py
+      - name: Install publishing tools
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends pandoc libreoffice-writer fonts-dejavu-core
+      - name: Build editable Word and PDF
+        run: |
+          pandoc --standalone --from=markdown+tex_math_dollars+yaml_metadata_block manuscript/SG_DIFRA_REVISED.md --output manuscript/SG_DIFRA_REVISED.docx
+          mkdir -p /tmp/sg-difra-lo
+          libreoffice -env:UserInstallation=file:///tmp/sg-difra-lo --headless --convert-to pdf --outdir manuscript manuscript/SG_DIFRA_REVISED.docx
+          test -s manuscript/SG_DIFRA_REVISED.docx
+          test -s manuscript/SG_DIFRA_REVISED.pdf
+          file manuscript/SG_DIFRA_REVISED.docx manuscript/SG_DIFRA_REVISED.pdf
+      - name: Upload finished research artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: SG-DIFRA-revised-research-draft-PDF-and-DOCX
+          path: |
+            manuscript/SG_DIFRA_REVISED.docx
+            manuscript/SG_DIFRA_REVISED.pdf
+      - name: Commit PDF and Word directly to research repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manuscript/SG_DIFRA_REVISED.docx manuscript/SG_DIFRA_REVISED.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Build SG-DIFRA revised audit manuscript PDF and DOCX [skip ci]"
+            git push
+          fi
