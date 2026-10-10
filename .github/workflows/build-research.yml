@@ -1,4 +1,4 @@
-name: Build SG-DIFRA and EUROCRYPT 2028 PDFs and Word
+name: NCSG-only SG-DIFRA mathematical audit and research manuscript
 on:
   push:
     branches: [main]
@@ -24,7 +24,8 @@ jobs:
           python formal-verification-and-mathematical-proofs/profile_bounds.py
           python research-2028/profile_cost_audit.py
           python research-2028/toy_hidden_mds_attack.py
-          python research-2028/hybrid_wireformat_and_kdf_harness.py
+          python research-2028/math/multidirection_cocycle.py
+          python research-2028/attacks/public_ideal_membership_break.py
       - name: Install publishing tools
         run: |
           sudo apt-get update -qq
@@ -46,7 +47,7 @@ jobs:
       - name: Upload finished research artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: SG-DIFRA-and-2028-research-drafts-PDF-and-DOCX
+          name: SG-DIFRA-NCSG-only-research-draft-PDF-and-DOCX
           path: |
             manuscript/SG_DIFRA_REVISED.docx
             manuscript/SG_DIFRA_REVISED.pdf
