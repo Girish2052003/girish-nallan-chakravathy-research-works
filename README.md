@@ -52,3 +52,7 @@ The new research track preserves the original theorems and attack-driven history
 **EUROCRYPT 2028 schedule:** no official 2028 paper CFP/deadline has been verified as of 10 October 2026. Do not invent the date or assert submission readiness.
 
 **Important research distinction:** algebraic identities, finite exhaustions, regression-test passes, and the statement of a conditional reduction **cannot prove** that all practical or future cryptanalytic attacks are impossible.
+
+### Research milestones and independent validation gates
+
+Unresolved cryptographic obligations are tracked openly as [new hardness-assumption analysis](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/issues/1), [complete byte-level KEM and QROM audit](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/issues/2), [ciphertext expansion redesign](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/issues/3), [byte-exact original PDF archival](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/issues/4), and [2028 CFP / anonymization readiness](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/issues/5). [Original binary provenance](archive/SOURCE_ORIGINAL_BINARY_MANIFEST.md) records its exact SHA-256 and verifies that the extracted-text copy is not mislabeled as the original PDF.
