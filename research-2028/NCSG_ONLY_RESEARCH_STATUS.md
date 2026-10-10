@@ -67,3 +67,15 @@ The implications differ crucially by version:
 **Reproduction**: [\`attacks/ternary_affine_line_leakage.py\`](attacks/ternary_affine_line_leakage.py), Python stdlib, tests nine random-field constructions spanning exact R1/R2/R3 local geometries. The script uses independent random full-rank change-of-basis matrices and enumerates triple dependencies **from the public fiber set alone**. Formal theorem statement/proof in the active 2028 manuscript Section 4.1.
 
 **Publication category:** a falsifiable structural theorem and a conditional three-term statistical distinguisher, *not* a proof that an original post-quantum KEM is secure, nor established novelty relative to all finite-field literature.
+
+### Exact public-fiber first-moment distinguisher (supplement to theorem F)
+
+For a uniformly sampled original MaxEnt ternary predicate $f$ and any target $b$, let $L(f^{-1}(b))$ count the publicly visible three-point affine lines. Put $s_0=3^d$, $r=k-d$, and $N_0=3^k$.
+
+- NCSG source **exact expectation**: $3^{d-1}+[s_0(s_0-1)/6-3^{d-1}]3^{-r}$.
+- Uniform arbitrary subset of size $s_0$ from $\mathbb F_3^k$ **exact expectation**: $s_0(s_0-1)(s_0-2)/[6(N_0-2)]$.
+- The three original profile local geometries give $(21,12.13693)$, $(66,39.04805)$, $(201,120.01631)$ for (NCSG, uniform) first moments, respectively. The expected public line count is roughly 1.67–1.73 times larger under the source's sampler.
+
+**Proof:** For a right-block affine line parallel to $a$, the source's derivative telescoping forces a matching line in the fiber. For any nonparallel right line, the two summands of the translated $Q_0$ table use six pairwise distinct uniformly sampled points, so the sum derivative is uniform in $\mathbb F_3^r$ and vanishes with probability $3^{-r}$. Sum over all $s_0(s_0-1)/6$ right lines. For the null sample, use the hypergeometric probability a given ambient line is fully selected. Full proof in active manuscript Theorem 4.2.
+
+The reproducible threshold-statistic test samples 30 source and 30 uniform public fibers for each original profile and calculates its observed accuracy; it **does not** claim a finite universal advantage for an arbitrary non-sampled instance. Even a strong public NCSG-vs-uniform fiber distinguisher is **not** an IND-CPA attack on the archived independently random dense labels. It rules out unjustified pseudorandom-fiber assumptions for NCSG-dependent future designs.
