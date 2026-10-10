@@ -32,6 +32,7 @@ if "EUROCRYPT_2028" in docx:
     assert "theorem 4.5" in normalized, "Round-6 second-difference subspace theorem absent from published PDF"
     assert "theorem 4.6" in normalized, "Round-7 public local right-inversion theorem not in PDF"
     assert "theorem 4.7" in normalized, "Round-7 constant-derivative subspace bound not in PDF"
+    assert "corollary 4.6a" in normalized, "Round-7 public fiber translation corollary missing"
     assert "3.39402" in normalized, "Round-7 finite R3 bound absent from rendered PDF"
     assert "3.62169" in normalized, "Round-6 R2 exact probability bound absent from published PDF"
     assert "shared-key recovery" in normalized, "Round-5 end-to-end KEM attack missing in rendered PDF"
