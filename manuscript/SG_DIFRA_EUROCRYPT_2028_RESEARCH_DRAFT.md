@@ -294,6 +294,37 @@ Public deterministic re-encryption makes the message a candidate for exhaustive 
 
 Thus an asymptotic assertion quantified over all security parameters cannot be inferred from the original three fixed profiles. One **possible research direction**, not a validated repair, is to define $K_\lambda=\mathbb F_{2^{h(\lambda)}}$ with $h(\lambda)\ge\lceil\log_2M(\lambda)\rceil$, provide deterministic irreducible-polynomial generation and exact sampling, and then restate and reassess **both** hardness assumptions as uniform ensembles. A growing field may change attack costs and distributional properties; security does not follow merely from lifting the capacity limit.
 
+
+## 9.1 Round-3 negative theorem: fixed-field MDS-HBCE is asymptotically distinguishable
+
+The original manuscript instantiates the planted public-label distribution over the **fixed** field $K=\mathbb F_{2^{10}}$ using a publicly known length-$M$ GRS frame with distinct evaluation points. Hence $M\le1024$. This implies a stronger result than the existing capacity obstruction.
+
+**Theorem 9.1 (fixed-field rank-enumeration public-key distinguisher).** Fix $Q=1024$. In the original planted distribution let $q(\lambda)$ nonzero rows of $K^{N(\lambda)}$ be published, with $M(\lambda)$ hidden GRS rows of rank $u(\lambda)<M(\lambda)\le Q$. The null distribution replaces all planted rows with independent uniformly sampled nonzero rows. Assume $q(\lambda)$ is polynomially bounded, $N(\lambda)\ge u(\lambda)+1$, and $N(\lambda)=\Omega(\lambda)$. A uniform deterministic polynomial-time algorithm $D$ satisfies
+
+$
+\Pr[D(\mathrm{Plant}_{\lambda})=1]=1,
+$
+
+and
+
+$
+\Pr[D(\mathrm{Null}_{\lambda})=1]\le
+{q\choose u+1}\left(1-\prod_{i=1}^{u}
+\frac{Q^N-Q^i}{Q^N-1}\right)=\operatorname{negl}(\lambda).
+$
+
+Thus **the original fixed-field MDS-HBCE asymptotic indistinguishability assumption against all PPT or QPT adversaries is false** for such polynomial-size public-key families. This is a break of its proposed *asymptotic public-key assumption*, not a demonstrated IND-CPA/IND-CCA attack on the three finite ciphertext profiles.
+
+**Distinguisher.** Enumerate all sets of $u+1$ rows in the published label matrix. Return planted upon finding a set of rank at most $u$ using ordinary Gaussian elimination over $K$. This does not require knowledge of the hidden bucket locations, GRS permutation, embedding matrix, or NCSG secret.
+
+**Proof.** Every $u+1$ planted GRS rows have rank $u$ because the Vandermonde generator has row rank $u$ and multiplication by the sampled full-row-rank secret matrix preserves row dependencies. Since $M\ge u+1$, at least one enumerated set is dependent. Under the null, conditioned on $i$ earlier linearly independent uniform nonzero rows, the probability the next row belongs to their span is exactly $(Q^i-1)/(Q^N-1)$. The probability that $u+1$ fixed null rows are dependent is therefore exactly the product complement displayed above. A union bound over all subsets proves the inequality. Since the field is fixed, $u+1\le M\le1024$ for **every** security parameter, so exhaustive enumeration uses at most $O(q^{1024}\operatorname{poly}(N))$ field operations. The exponent 1024 is a fixed constant, making the attack a **uniform polynomial-time algorithm**, however infeasible at concrete sizes. Finally, the parenthetical null probability is $O(Q^{u-N})$ for bounded $u$; with $q$ polynomial and $N=\Omega(\lambda)$, the union bound is negligible. $\square$
+
+**Finite-profile interpretation.** The exact numbers of subsets in this simple enumeration, expressed as $\log_2{q\choose u+1}$, are about $656.94$ (SGD-R1), $1136.78$ (SGD-R2), and $1718.10$ (SGD-R3), before Gaussian elimination. These huge exponents show why an asymptotic PPT attack **must not be mislabeled a practical finite-parameter attack**. More sophisticated classical or quantum attacks may be far cheaper; neither this enumerator nor the earlier source heuristics supplies a secure work-factor lower bound.
+
+**Repair boundary.** Increasing noise or simply choosing a larger fixed $N$ cannot fix this asymptotic problem. Changing the field to grow with the security parameter or replacing the algebraic embedding might remove the particular constant-degree argument, but would require a new complete sampled assumption, cryptanalysis, decoder, efficient implementation, and quantum-aware reduction. No such unproved change may be advertised as formally secure. The author's active target remains **an original NCSG-dependent construction without any external KEM ingredient**; this theorem is an archived-GRS no-go result and a mandatory negative design gate.
+
+**Reproduction.** The pure-Python GF(1024) attack implementation and exact GF(3) independent-probability enumeration reside in research-2028/attacks/fixed_field_mds_hbce_ppt_break.py. Finite tests check this algebra; the general asymptotic conclusion follows from the mathematical argument, not from testing.
+
 # 10. Re-evaluation of concrete attacks
 
 The original random-clean-basis method chooses $N$ linearly independent public equations and solves the noiseless candidate. Its clean probability is $(13/16)^N$ and expected number of independent trials is $(13/16)^{-N}$ *if the method tests fresh random bases and neglects its own computational cost*. This is **not** an information-theoretic minimum complexity, nor a general ISD/BKW bound. Better attacks might use partial errors, structured elimination, hybrid decoding, or quantum algorithms.
