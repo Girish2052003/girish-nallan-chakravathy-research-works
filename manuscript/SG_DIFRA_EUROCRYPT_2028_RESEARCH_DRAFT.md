@@ -393,6 +393,64 @@ Thus **the original fixed-field MDS-HBCE asymptotic indistinguishability assumpt
 
 **Reproduction.** The pure-Python GF(1024) attack implementation and exact GF(3) independent-probability enumeration reside in research-2028/attacks/fixed_field_mds_hbce_ppt_break.py. Finite tests check this algebra; the general asymptotic conclusion follows from the mathematical argument, not from testing.
 
+
+## 9.2 Round-5 theorem: asymptotic public KEM decryption from hidden-frame recovery
+
+Round 3 proved that the original fixed-field SG-DIFRA-MDS hidden GRS labels are distinguishable from random in uniform polynomial time in a sufficiently growing asymptotic family. A stricter red-team question is whether a successful attacker can **recover the encapsulated key**, not merely distinguish a public matrix. For this archived KEM the answer is yes, under precisely stated scaling and correctness conditions. This is a much stronger negative finding for the **original GF(1024) KEM**, not a break of a new NCSG-only design.
+
+**Theorem 9.2 (public-decapsulation and honest shared-key recovery).** Retain the exact archived key-generation structure over fixed $K=\mathbb F_{2^{10}}$ with $Q=1024$: the published matrix $H\in K^{q\times N}$ contains $M$ hidden generalized Reed--Solomon rows $G_{\pi(i)}T$ in distinct public buckets, $T$ is uniformly full-row-rank of size $u\times N$, $1\le u<M\le Q$, and every decoy label is an independent uniform nonzero vector. Assume $q(\lambda)$ and the bit-message ciphertext length are polynomial in $\lambda$, $N(\lambda)\ge u+1$ and $N(\lambda)=\Omega(\lambda)$. There is a uniform **classical polynomial-time** algorithm which, using only $(pk,C)$, evaluates the genuine secret-key PKE decoding result for **every** ciphertext $C$ except with a key-generation failure probability at most
+
+$$
+\varepsilon_{\mathrm{row}}
+\le
+\left[(u+1)\binom{q}{u+1}+q-M\right]
+\frac{Q^u-1}{Q^N-1}.
+$$
+
+If the original KEM has honest key-agreement failure at most $\delta(\lambda)$ and returns $\kappa$-bit keys, the same algorithm derives the honest encapsulated shared key whenever honest decapsulation is correct, giving a real-versus-random key distinguishing advantage at least
+
+$$
+1-\varepsilon_{\mathrm{row}}-\delta(\lambda)-2^{-\kappa}.
+$$
+
+In particular, **this archived fixed-field KEM fails its intended asymptotic confidentiality goal** whenever its intended correctness is high; this result is stronger than a planted-key distinguisher alone.
+
+**Proof, stage I (recover all hidden row positions).** Enumerate every public $(u+1)$-subset and locate one with rank $u$ using Gaussian elimination. An all-planted subset always exists, since any $u$ genuine GRS rows are independent and any $u+1$ are dependent. Consider a mixed subset with $j\le u$ planted rows, hence $j$ initially independent rows; sequentially reveal its independent nonzero decoys. Before the first dependent row appears, the next decoy lies in the span of at most $u$ preceding rows with probability at most $(Q^u-1)/(Q^N-1)$. A union bound over at most $u+1$ exposures and $\binom{q}{u+1}$ mixed subsets bounds the probability that any mixed subset is dependent by the first summand of $\varepsilon_{\mathrm{row}}$.
+
+On the complementary event the located dependency consists of planted rows only; it spans precisely the secret $u$-dimensional row space $W=\operatorname{rowspan}(T)$. A public membership test $h_i\in W$ then locates **every** planted row. Any nonzero decoy independently lands in $W$ with exact probability $(Q^u-1)/(Q^N-1)$. A final union bound over $q-M$ decoys yields the second summand. Thus the adversary obtains the entire hidden coordinate set without recovering the NCSG master secret, the affine incidence masks, the GRS permutation or the ephemeral embedding matrix itself.
+
+**Proof, stage II (emulate the secret decoder without the GRS permutation).** Extract all $M$ recovered planted rows into a canonically ordered public matrix $H_P\in K^{M\times N}$. Its column-space code is a coordinate permutation of the secret GRS code, of dimension $u$ and minimum distance $M-u+1$; the hidden full-row-rank $T$ does not change the code image. Public linear algebra supplies a generator $\widetilde G\in K^{M\times u}$ for that code. Every $u$ rows of $\widetilde G$ are independent. For an arbitrary received vector $y\in K^M$, enumerate each $u$-subset $J$ of row positions, solve the public square system
+
+$$
+\widetilde G_Jx=y_J,
+$$
+
+and return bit zero iff any solution has
+
+$$
+d_H(\widetilde Gx,y)\le t_{\mathrm{dec}},
+\qquad t_{\mathrm{dec}}=\operatorname{floor}((M-u)/2).
+$$
+
+If secret bounded-distance GRS decoding accepts, some codeword agrees with $y$ in at least $M-t_{\mathrm{dec}}\ge u$ positions. One enumerated $u$-set consists entirely of agreeing positions, and its unique solution recreates that codeword. Conversely, a public solution within radius is a valid codeword that the secret GRS decoder must accept. Uniqueness holds because the code minimum distance exceeds $2t_{\mathrm{dec}}$. **The publicly reconstructed DecBit is identical to the original secret DecBit on every received word**, even malformed ciphertexts, once the planted positions are found.
+
+**Proof, stage III (honest encapsulated-key recovery).** Run the public decoder on the source's independent ciphertext repetitions and reconstruct the same majority-decoded message $\mu'$ as secret PKE.Dec. Derive deterministic coins from public $(pk,\mu')$, re-encrypt and compare with the received $C$. On a match compute the same public-domain-separated session-key hash as the original decapsulation. On an honest encapsulation for which secret decapsulation returns the encapsulated key, this computes that key without $sk$. A KEM real-versus-random challenger key matches the adversary's publicly recovered key with probability at least $1-\varepsilon_{\mathrm{row}}-\delta$ when real and at most $2^{-\kappa}$ when uniformly random. This proves the claimed advantage. $\square$
+
+**Cost and honest limits.** Public row discovery costs at most $\binom{q}{u+1}$ finite-field rank tests. Public bit decoding uses at most $\binom{M}{u}$ square linear solves per component, with only polynomial processing per test. Since the **fixed field forces $u<M\le1024$**, both combinatorial exponents are fixed absolute constants, even though the resulting algorithms are completely infeasible for the original finite profiles:
+
+| Original frozen profile | log2 row-subset tests | log2 public decode information sets |
+|:--|--:|--:|
+| SGD-R1 | 656.94 | 203.57 |
+| SGD-R2 | 1136.78 | 307.12 |
+| SGD-R3 | 1718.10 | 410.76 |
+
+These are *enormous work estimates for this particular exhaustive classical algorithm*, NOT security lower bounds and NOT practical secret-key compromises of the published frozen sizes. Other classical or quantum methods may be less expensive. The theorem states a bona fide **asymptotic confidentiality break** of the original fixed-field KEM under explicit efficient scaling and adequate correctness; it does **not** establish a numerical finite-profile IND-CCA advantage for a feasible attacker.
+
+**Why the old repairs do not fix this.** Public-geometry balancing, a stronger NP-completeness proof for NCSG-DS, arbitrary hidden affine incidence masks, obscuring $\pi$, and increasing symbol noise cannot remove the already published hidden-code row-space. An asymptotically growing field may avoid this **particular** constant-degree enumeration argument but requires a newly specified, independently attacked distribution and hardness assumption; it does not establish security. Most importantly, the user-directed new cryptographic goal is a genuinely NCSG-essential scheme with a novel trapdoor. **No such complete secure KEM is currently established by this manuscript**, and the three frozen profiles cannot be certified safe by changing words or parameter labels.
+
+**Reproduction.** The pure-Python test research-2028/attacks/public_decapsulation_recovery.py uses the original fixed-GF(1024) planted-frame sampler from Round 3. It recovers the entire planted row set for twelve reduced keys, verifies 96 secret/public DecBit matches on both ciphertext classes, and tests deterministic re-encryption and publicly recovered genuine shared keys in a small three-repetition KEM fixture. This is toy *verification of the attack algorithm*, not an execution of the astronomical R1/R2/R3 search or a QROM security proof.
+
+
 # 10. Re-evaluation of concrete attacks
 
 The original random-clean-basis method chooses $N$ linearly independent public equations and solves the noiseless candidate. Its clean probability is $(13/16)^N$ and expected number of independent trials is $(13/16)^{-N}$ *if the method tests fresh random bases and neglects its own computational cost*. This is **not** an information-theoretic minimum complexity, nor a general ISD/BKW bound. Better attacks might use partial errors, structured elimination, hybrid decoding, or quantum algorithms.
