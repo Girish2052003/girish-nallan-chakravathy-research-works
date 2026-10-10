@@ -236,11 +236,13 @@ For the uniform-subset null, there are exactly $(n-1)/2$ one-dimensional directi
 
 **Exact source-parameter consequences.** These bounds concern exactly the three original ternary local profiles, without parameter interpolation or untested asymptotics:
 
-| Original local geometry | Forced lines $L$ | Possible forced directions $m_0$ | Source $\Pr[D=1]$ lower bound | Uniform-subset $\Pr[D=1]$ upper bound | Certified advantage lower bound |
+| Profile $(k,d,r)$ | $L$ | $m_0$ | Source $P_1\ge$ | Null $P_0\le$ | Advantage $\ge$ |
 |:--|--:|--:|--:|--:|--:|
-| SGD-R1: $(k,d,r)=(5,3,2)$ | 9 | 9 | 0.5547368172 | 0.0069043849 | 0.5478324323 |
-| SGD-R2: $(7,4,3)$ | 27 | 27 | 0.9470512035 | 0.0059101459 | 0.9411410576 |
-| SGD-R3: $(9,5,4)$ | 81 | 81 | 0.9999123630 | 0.0026602674 | 0.9972520957 |
+| R1 $(5,3,2)$ | 9 | 9 | 0.554737 | 0.006904 | 0.547832 |
+| R2 $(7,4,3)$ | 27 | 27 | 0.947051 | 0.005910 | 0.941141 |
+| R3 $(9,5,4)$ | 81 | 81 | 0.999912 | 0.002660 | 0.997252 |
+
+All displayed decimal values are rounded to six places; exact rational bounds and their full-precision evaluation are certified by the accompanying script.
 
 For these choices $d-1=r$, so the number of independently assigned forced lines equals the number of available direction types. Thus the occupancy phenomenon strengthens rapidly across the profiles. The largest original R3 public fiber is distinguishable from a uniformly sampled same-size subset by this **purely geometric single-fiber test** with provable event-probability gap greater than $0.9972$. No secret-incidence data or plaintext ciphertext is required.
 
