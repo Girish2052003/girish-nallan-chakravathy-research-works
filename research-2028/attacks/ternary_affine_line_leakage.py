@@ -109,6 +109,27 @@ class AffineFiberTests(unittest.TestCase):
                           "certified disjoint triples",len(partition),
                           "public triples",hits)
 
+    def test_exhaustive_scalar_d2_tables(self):
+        # All 3^9 ternary scalar Q tables on F3^2, with a=(1,0), A=B=I.
+        # Complete finite check, NOT formal verification of KEM security.
+        right=list(product(range(3),repeat=2))
+        for encoding in range(3**9):
+            z=encoding
+            Q={}
+            for pos in right:
+                Q[pos]=z%3
+                z//=3
+            for tail in range(3):
+                line=[]
+                for j in range(3):
+                    u=(j,tail)
+                    nxt=((j+1)%3,tail)
+                    g=(Q[nxt]-Q[u])%3
+                    line.append(((-g)%3,j,tail))
+                self.assertEqual(tuple(sum(row[k] for row in line)%3
+                                       for k in range(3)),(0,0,0))
+        print("Exhaustive table certificate: 3^9 =",3**9,"scalar Q tables passed")
+
     def test_conditional_ternary_affine_label_distinguisher(self):
         nu=Fraction(3,16)
         alpha=1-Fraction(3,2)*nu
