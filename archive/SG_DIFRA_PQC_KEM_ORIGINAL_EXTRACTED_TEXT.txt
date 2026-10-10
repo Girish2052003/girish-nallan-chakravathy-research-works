@@ -1,0 +1,1341 @@
+SG-DIFRA original manuscript: automatically extracted text archive from user-uploaded 26-page PDF, 2026-10-10.
+This is NOT a facsimile or mathematically faithful LaTeX source; complex equations may be degraded in extraction. Treat the original PDF as authoritative.
+
+<PARSED TEXT FOR PAGE: 1 / 26>
+SG-DIFRA: An Attack-Driven NCSG KEM with Secret
+           Incidence and MDS Coding
+
+               Girish Nallan Chakravathy1 and Sreedevi Kannan2
+              1 Tampere University, Tampere, Finland
+              2 Birla Institute of Technology & Science, Hyderabad, India
+
+
+
+
+   Abstract. SG-DIFRA is developed as an attack-driven research KEM built around
+   nonlinear constraint-system geometry (NCSG) finite differences. The paper keeps
+   four construction generations visible. The original Boolean complete-fiber design
+   is broken by a characteristic-two period, public one-hot relations, repeated period-
+   pair leakage, and end-to-end FO-message recovery routes. Candidate subsampling
+   removes complete-fiber publication but creates a small-list consistency surface.
+   Dense randomized labels remove the old parity identities but still leak a shared
+   planted secret through public-fiber coordinate bias. Secret incidence then makes
+   the public NCSG layer information-theoretically independent of the master secret,
+   but its first binary reference profiles are themselves broken: at noise 10−3 a clean
+   public information set occurs with constant probability, and the short hidden code
+   creates searchable relations of weight roughly 5–11.
+   The final construction, SG-DIFRA-MDS, retains the proved NCSG results and the
+   secret-incidence separation but replaces the vulnerable binary ciphertext layer by
+   a large-field hidden MDS layer. Labels and ciphertext symbols lie in K = F210 .
+   The hidden selected labels form a generalized Reed–Solomon code under a secret
+   full-rank linear embedding. Consequently the planted-label matroid has exact
+   girth 𝑢 + 1, and every set of at most 𝑢 planted labels is linearly independent.
+   Encryption adds exact K-symmetric symbol noise of rate 𝜈 = 3/16; bounded-
+   distance Reed–Solomon decoding tolerates this noise in polynomial time. The
+   previously successful clean-information-set strategy now requires expected random-
+   basis work (1 − 𝜈) − 𝑁 , which is above 2191 , 2287 , and 2383 for the three reference
+   profiles. The first possible all-planted linear relation has weights 65, 97, and 129,
+   eliminating the previously identified low-weight relation attack by theorem rather
+   than by sampling.
+   We specify complete key generation, one-bit encryption/decoding, randomized
+   message PKE, encapsulation, and implicit-rejection decapsulation. One-bit con-
+   fidentiality reduces to two explicit average-case premises: MDS-HBCE, which
+   hides the high-corruption planted MDS subset among NCSG buckets, and 𝑞-ary
+   LPN over F210 with the stated symbol noise. The QROM KEM theorem then
+   follows conditionally from the randomized-PKE bound, message-level correctness,
+   finite-message search accounting, and the cited FO/MRE transform hypotheses.
+   The Nallan Chakravathy–Sreedevi–Girish Differential Solvability problem
+   (NCSG-DS) remains the NP-complete worst-case differential-solvability
+   foundation; it is not misrepresented as a worst-case-to-average-case proof of the
+   KEM assumptions. Three reproducible research profiles are provided together
+   with attack-derived margins for the two newly identified attacks. They are
+   experimental profiles, not standardized security levels.
+
+   Keywords: post-quantum cryptography · key encapsulation · NCSG · Reed–
+   Solomon codes · noisy linear equations · QROM · cryptanalysis
+<PARSED TEXT FOR PAGE: 2 / 26>
+1   Introduction
+
+A proposal becomes more credible when an attack is allowed to change the construction
+rather than merely the wording of its proof. SG-DIFRA reached its present form through
+that process four times.
+    The first construction combined exactly regular finite-difference fibers, complete
+one-hot publication, and a noisy binary parity ciphertext. Its intended reduction was
+modular, but the sampled ciphertext distribution was not hard: characteristic two forces a
+period in every directional derivative, and the public representation converts period pairs
+into low-weight parity checks. Aggregating the full fiber produces a repetition channel
+strong enough to recover the FO message or the complete noiseless image in concrete
+synthetic regions. The public fibers also expose low-degree and MinRank structure.
+    The first two repairs removed those exact mechanisms. Odd-characteristic maximum-
+entropy derivatives remove the forced two-cycle. Dense randomized labels sever the
+implication from algebra on assignment vectors to algebra on public ciphertext rows.
+A second offensive pass nevertheless found coordinate bias because the public target
+of every good constraint still depended on one shared ternary secret. Secret incidence
+therefore reverses the generation order: the public NCSG predicate, target, and fiber are
+generated first, and a private affine map later addresses an independently sampled point
+of the already-public fiber. This yields an exact theorem: the entire public NCSG layer
+contains zero information about the master secret.
+    That theorem survived the next red-team pass, but the first SI reference profiles did not.
+Their binary noise rate was 10−3 . A random invertible 𝑁-row public information set was
+therefore error-free with probability (1 − 10−3 ) 𝑁 , equal to approximately 0.726, 0.639,
+and 0.527 in the three profiles. Gaussian elimination recovered the ephemeral vector in
+every executed bit-zero trial and separated bit zero from uniform bit one. Reuse of the
+same public matrix across repetitions amplified the attack into complete FO-message
+and shared-key recovery. Independently, the hidden binary code had dual distance only
+slightly above four, giving practical meet-in-the-middle targets in the 226.5 –262.5 range.
+    The final redesign addresses both failures together. The public-fiber independence
+theorem is left unchanged. The binary short-code layer is replaced by a large-field
+MDS layer over K = F210 . A generalized Reed–Solomon code supplies polynomial-
+time bounded-distance decoding, exact minimum distance 𝑀 − 𝑢 + 1, and exact dual
+distance 𝑢 + 1. This permits a substantial exact symbol-noise rate while making the first
+all-planted linear dependency deliberately high weight. The final reference profiles use
+𝜈 = 3/16, so the clean-basis attack becomes an exponential decoding strategy rather than
+a constant-work distinguisher.
+
+Contributions and proof status. The paper makes five kinds of claims. First, the strength-
+ened NCSG-DS theorem proves NP-completeness with one vector-valued potential, one
+global direction, zero target, and degree at most four. Second, the maximum-entropy
+odd-characteristic derivative theorem and the secret-incidence independence theorem are
+
+
+
+
+                                           2
+<PARSED TEXT FOR PAGE: 3 / 26>
+unconditional. Third, the MDS layer proves exact local linear-independence statements
+through weight 𝑢 and gives polynomial-time decoding within half the MDS distance.
+Fourth, the attacks that broke the previous finite profiles are re-evaluated at the final
+parameters with explicit work factors and correctness tails. Fifth, end-to-end IND-CPA
+and QROM IND-CCA security remain conditional reductions to the explicitly stated
+MDS-HBCE and 𝑞-ary-LPN assumptions plus transform hypotheses. No claim equates
+worst-case NP-completeness with average-case KEM security.
+    The paper is deliberately a research construction. It does not claim standardization,
+TLS suitability, universal superiority, or proof against every future classical or quantum
+algorithm. Its stronger and falsifiable claim is that each confirmed structural attack that
+caused a redesign has either lost a necessary algebraic premise, been closed by an exact
+theorem, or been moved into a named computational assumption with a finite attack
+budget.
+
+
+2 Design evolution: from the broken KEM to the final construction
+
+Table 1 records the construction history. The final design is not a parameter patch to the
+original KEM; each row changes the representation that enabled the preceding attack.
+
+
+                        Table 1. Attack-driven evolution of SG-DIFRA.
+
+Stage            Representation                   Closure achieved                  Reason for redesign
+SG-DIFRA-v0      Boolean complete fibers and      Exact fibers and a simple         Characteristic-two period,
+                 one-hot labels                   decoding interface                weight-four/full-cluster leakage,
+                                                                                    and complete-fiber counting.
+SG-DIFRA-R       Odd characteristic and two       Removes complete-fiber            Small-list consistency gives a
+                 public candidates                publication                       new public search surface.
+SG-DIFRA-RLE     MaxEnt fibers and dense          Removes one-hot, pair-XOR,        Public targets still share one
+                 randomized binary labels         support-collapse, and             planted secret; coordinate bias
+                                                  repeated-period equations         survives.
+SG-DIFRA-SI      Public fibers independent of the Proves master-secret              Binary noise 10 −3 gives clean
+                 master secret; private incidence independence and preserves        information sets; short hidden
+                                                  prior closures                    code gives low-weight relations.
+SG-DIFRA-MDS     Secret incidence plus F210 MDS Raises the first planted relation Remaining hardness is isolated
+                 hidden labels and 𝜈 = 3/16       to weight 𝑢 + 1 and makes the as MDS-HBCE plus 𝑞 -ary LPN;
+                 symbol noise                     clean-basis attack exponential at these are explicit assumptions.
+                                                  the reference dimensions
+
+
+
+
+The role of NCSG-DS. NCSG-DS is the mathematical substrate of the public local layer:
+it supplies the differential-solvability language, the strengthened NP-complete worst-case
+core, the universal table embedding, exact regular fibers, and the maximum-entropy finite-
+difference ensemble. The final KEM theorem does not assert that NP-completeness alone
+yields public-key security. The required average-case bridge is the NCSG-bucketed MDS-
+HBCE distribution together with 𝑞-ary LPN. Thus the valid implication is conditional:
+hardness of those sampled problems, correctness, and the QROM transform hypotheses
+imply KEM security. A future worst-case-to-average-case reduction from NCSG-DS
+would strengthen this chain but is not assumed.
+
+
+
+
+                                                  3
+<PARSED TEXT FOR PAGE: 4 / 26>
+3     Related work and design boundary
+Hair and Sahai construct public-key encryption from two high-corruption CSP as-
+sumptions and give restricted-model evidence for their sampled random-predicate
+distribution [6]. Their work is the closest conceptual predecessor for the high-corruption
+and label-extension viewpoint, but its hardness evidence does not transfer to the structured
+SG-DIFRA distributions.
+     Noisy parity remains a primary comparison point. Schmidhuber, O’Donnell, Kothari,
+and Babbush obtain a nearly quartic quantum speedup for a planted noisy-inference
+regime [12]; practical BKW techniques provide additional concrete baselines [14].
+Błasiok, Lou, Rosen, and Sudan show that excellent expansion alone does not imply
+noisy-𝑘-XOR hardness [13]. Accordingly, expansion and distance below are used only
+for the exact statements they prove.
+     The deployment hedge uses generic KEM-combiner theory. Giacon, Heuer, and
+Poettering show that a parallel combiner with a split-key PRF core is IND-CCA secure if
+at least one independent ingredient KEM is IND-CCA secure [16]. Millerjord, Stebila, and
+Steckel extend the analysis to settings that expose post-processed ingredient interfaces [17].
+The second ingredient in our optional hedge is ML-KEM-1024, standardized in NIST
+FIPS 203 [18]. The hedge is not used as evidence for the experimental SG-DIFRA
+assumption; it is a separate system-level protection against assumption failure.
+     Reed–Solomon codes are used below for their exact MDS distances and efficient
+bounded-distance decoding [1,2], not because exposed GRS structure is assumed
+cryptographically hidden. Classical and recent work shows that public GRS-derived
+codes can be structurally distinguishable and recoverable [3,4]. In SG-DIFRA the GRS
+rows are hidden among independently random bucket labels and passed through an
+arbitrary full-rank linear embedding; any algorithm exploiting that remaining hidden-
+subspace structure is, by definition, an attack on MDS-HBCE.
+     Finally, lower bounds in low-degree, SQ, SoS, or polynomial-calculus models remain
+model-specific evidence. Recent counterexamples to broad low-degree conjectures
+make it especially important not to convert such evidence into a statement about all
+polynomial-time or all quantum algorithms [15].
+
+4     NCSG differential solvability
+For a finite field F, map 𝑃 : F 𝑁 → F𝑡 , and direction 𝑎 ∈ F 𝑁 , write
+                              Δ𝑎 𝑃(𝑤) = 𝑃(𝑤 + 𝑎) − 𝑃(𝑤).
+We call this decision problem the Nallan Chakravathy–Sreedevi–Girish Differential
+Solvability problem (NCSG-DS), associated with the nonlinear constraint-system
+geometry (NCSG) framework.
+An NCSG-DS instance asks whether there exists 𝑤 satisfying a family of equalities
+Δ𝑎 𝑗 𝑃 𝑗 (𝑤) = 𝑏 𝑗 .
+
+4.1   One potential and one global direction
+For Boolean 𝑎, 𝑏, 𝑐, 𝑦, define
+                     𝑔(𝑎, 𝑏, 𝑐, 𝑦) = 𝑎 + 𝑏 + 𝑐 + 𝑎𝑏 + 𝑎𝑐 + 𝑏𝑐 + 𝑎𝑏𝑐
+                                     + 𝑦(𝑎 + 𝑏 + 𝑐 + 𝑎𝑏 + 𝑎𝑐 + 𝑏𝑐).                       (1)
+
+
+
+
+                                           4
+<PARSED TEXT FOR PAGE: 5 / 26>
+The relation 𝑔 = 1 is exactly balanced: eight of its sixteen inputs are accepted, and
+∃𝑦 : 𝑔(𝑎, 𝑏, 𝑐, 𝑦) = 1 exactly when the three literal truth values satisfy their clause.
+Theorem 1 (Single-potential NCSG). NCSG-DS over F2 remains NP-complete under
+the following simultaneous restrictions. There is one vector-valued potential and one
+global unit direction; the target is zero; each component has degree at most four; and
+every clause relation is balanced 8-of-16.
+                                                        Ó
+Proof. Membership in NP is immediate. Let Φ = 𝑚           𝑗=1 𝐶 𝑗 be a 3-CNF over 𝑥 1 , . . . , 𝑥 𝑛 .
+Introduce one balancing bit 𝑦 𝑗 per clause and one global bit 𝑧. Substitute each literal
+truth value into (1) and call the resulting polynomial 𝑔 𝑗 (𝑥, 𝑦 𝑗 ). Define
+                                                             
+                  𝑃(𝑥, 𝑦, 𝑧) = 𝑧(1 + 𝑔1 ), . . . , 𝑧(1 + 𝑔𝑚 ) ,      𝑎 = 𝑒𝑧 .
+Then
+                                 Δ𝑒𝑧 𝑃 = (1 + 𝑔1 , . . . , 1 + 𝑔𝑚 ).
+Thus Δ𝑒𝑧 𝑃 = 0 iff every clause is satisfiable with its balancing bit, iff Φ is satisfiable.
+The reduction uses 𝑁 = 𝑛 + 𝑚 + 1 variables and polynomial description size.
+Corollary 1 (BQP boundary). For this restricted language, membership in BQP is
+equivalent to NP ⊆ BQP. This is an equivalence shared by NP-complete languages, not
+a separation theorem.
+Theorem 2 (Conditional fine-grained transfer). On sparse 3-SAT with 𝑚 = 𝑂 (𝑛), the
+reduction has 𝑁 = Θ(𝑛). ETH rules out classical 2𝑜( 𝑁 ) algorithms for this restricted
+NCSG family; the corresponding quantum ETH assumption rules out quantum 2𝑜( 𝑁 )
+algorithms.
+Corollary 2 (Balanced scalar-local form). NCSG-DS over F2 is also NP-complete
+under the distinct restriction used in the original candidate: every constraint has a scalar
+potential of degree at most four, target zero, and a unit direction in its own fresh auxiliary
+coordinate, while every clause relation is balanced 8-of-16.
+Proof. For each clause 𝐶 𝑗 , use the balanced polynomial 𝑔 𝑗 (𝑥, 𝑦 𝑗 ) from (1), introduce a
+fresh direction bit 𝑧 𝑗 , and set
+                              𝑃 𝑗 (𝑥, 𝑦 𝑗 , 𝑧 𝑗 ) = 𝑧 𝑗 (1 + 𝑔 𝑗 (𝑥, 𝑦 𝑗 )).
+Then Δ𝑧 𝑗 𝑃 𝑗 = 1 + 𝑔 𝑗 , so the zero-target equation is satisfiable in 𝑦 𝑗 exactly when 𝐶 𝑗 is
+satisfied. The construction adds the two fresh bits 𝑦 𝑗 , 𝑧 𝑗 per clause and has polynomial
+size. This preserves the scalar/fresh-direction restriction of the earlier theorem while
+the single-potential theorem above gives the complementary one-potential/one-direction
+strengthening.
+
+4.2    Affine covariance
+If 𝜙(𝑧) = 𝑇 𝑧 + 𝑐 with 𝑇 invertible, define 𝑃′ (𝑧) = 𝑃(𝑇 𝑧 + 𝑐) and 𝑎 ′ = 𝑇 −1 𝑎. Direct
+substitution gives
+                               Δ𝑎′ 𝑃′ (𝑧) = Δ𝑎 𝑃(𝜙(𝑧)).
+Hence affine coordinate changes transport NCSG solution sets bijectively. This symmetry
+is not, by itself, a worst-case-to-average-case reduction.
+
+
+
+
+                                                5
+<PARSED TEXT FOR PAGE: 6 / 26>
+4.3   Universal table representation
+The finite-difference language is not limited to low-degree formulae. For a function
+ℎ : F 𝑘𝑝 → F𝑟𝑝 , let b
+                     ℎ denote its unique reduced polynomial representative, with individual
+degree at most 𝑝 − 1 in every variable.
+Theorem 3 (Universal table-to-NCSG embedding). Introduce one fresh scalar 𝑧 ∈ F 𝑝
+and define
+                         Pℎ (𝑥, 𝑧) = 𝑧 b
+                                       ℎ(𝑥), 𝑎 = 𝑒𝑧 .
+Then Δ𝑒𝑧 Pℎ (𝑥, 𝑧) = ℎ(𝑥) for every (𝑥, 𝑧). If 𝑝 𝑘 is polynomial in the security parameter,
+the reduced table and this NCSG representation have polynomial description size.
+
+Proof. Translation by 𝑒 𝑧 changes 𝑧 to 𝑧 + 1 while fixing 𝑥, so Δ𝑒𝑧 Pℎ = (𝑧 + 1)b
+                                                                                ℎ − 𝑧b
+                                                                                     ℎ=
+ℎ = ℎ as a function on F 𝑝 . Reduced multivariate interpolation uses exactly the table of
+b                        𝑘
+
+𝑝 𝑘 values.
+
+The theorem is an expressiveness statement, not a hardness theorem. In particular, it
+permits the maximum-entropy table sampler below to remain NCSG-native without
+claiming that arbitrary table distributions are cryptographically hard.
+
+
+5     Maximum-entropy balanced differential predicates
+Fix the odd prime 𝑝 = 3 and integers 𝑘 > 𝑑 ≥ 1, 𝑟 = 𝑘 − 𝑑. Split 𝑢 = (𝑢 𝐿 , 𝑢 𝑅 ) ∈ F𝑟𝑝 × F𝑑𝑝 .
+Sample 𝐴 ∈ GL𝑟 (F 𝑝 ), 𝐵 ∈ GL 𝑘 (F 𝑝 ), 𝑎 ∈ F𝑑𝑝 \ {0}, and a table function 𝑄 : F𝑑𝑝 → F𝑟𝑝
+uniformly from all functions. Define
+
+                      𝑓 (𝑥) = 𝐴𝑢 𝐿 + Δ𝑎 𝑄(𝑢 𝑅 ),       (𝑢 𝐿 , 𝑢 𝑅 ) = 𝐵𝑥.                  (2)
+
+A table has a unique reduced polynomial representative with individual variable degree
+at most 𝑝 − 1, so the map remains a finite-field NCSG object without a low total-degree
+promise.
+
+Theorem 4 (Exact regular fibers). For every target 𝑦 ∈ F𝑟𝑝 , | 𝑓 −1 (𝑦)| = 𝑝 𝑑 . Uniform
+sampling from the fiber requires one uniform 𝑢 𝑅 , two table lookups, and linear algebra.
+
+Proof. For each 𝑢 𝑅 , the unique left block is 𝑢 𝐿 = 𝐴 −1 (𝑦 − Δ𝑎 𝑄(𝑢 𝑅 )). Invertibility of 𝐵
+gives one 𝑥 for each 𝑢 𝑅 .
+
+Theorem 5 (Auxiliary-free intrinsic embedding). Choose a linear functional ℓ : F𝑑𝑝 →
+F 𝑝 with ℓ(𝑎) = 1. Let 𝜋 𝐿 , 𝜋 𝑅 be the block projections and set
+
+               P (𝑥) = ℓ(𝜋 𝑅 𝐵𝑥) 𝐴𝜋 𝐿 𝐵𝑥 + 𝑄(𝜋 𝑅 𝐵𝑥),         𝑒 = 𝐵 −1 (0, 𝑎).
+
+Then Δ𝑒 P (𝑥) = 𝑓 (𝑥) for all 𝑥.
+
+Proof. Translation by 𝑒 fixes 𝑢 𝐿 and sends 𝑢 𝑅 to 𝑢 𝑅 + 𝑎. The coefficient of 𝐴𝑢 𝐿 changes
+by ℓ(𝑎) = 1, while the second term changes by Δ𝑎 𝑄(𝑢 𝑅 ).
+
+
+
+
+                                           6
+<PARSED TEXT FOR PAGE: 7 / 26>
+5.1   Differential image and entropy
+The 𝑎-orbits partition F𝑑𝑝 into 𝑝 𝑑−1 lines of length 𝑝.
+Theorem 6 (Maximum-entropy fixed-direction derivative).
+                    
+                                    𝑝−1
+                                     ∑︁                                
+                                                                       
+                    
+                                                                      
+                                                                       
+             Im Δ𝑎 = 𝑔 : F𝑑𝑝 → F𝑟𝑝 :     𝑔(𝑥 + 𝑗 𝑎) = 0 on every 𝑎-line .
+                                                                      
+                    
+                                    𝑗=0                               
+                                                                       
+The image has F 𝑝 -dimension 𝑟 ( 𝑝 − 1) 𝑝 𝑑−1 . For uniform 𝑄, Δ𝑎 𝑄 is uniform on this
+image and therefore
+                          𝐻 (Δ𝑎 𝑄) = 𝑟 ( 𝑝 − 1) 𝑝 𝑑−1 log2 𝑝,
+the largest possible Shannon entropy of any random legitimate fixed-direction derivative.
+Proof. Telescoping gives the line-zero-sum condition. Conversely, fixing one value of 𝑄
+on each line and integrating the prescribed derivative reconstructs 𝑄 exactly when the
+line sum is zero. The kernel consists of functions constant on each line and has dimension
+𝑟 𝑝 𝑑−1 ; rank-nullity gives the image dimension. A uniform input under a linear map is
+uniform on its image.
+   For uniform 𝑄, any 𝑝 − 1 derivative values on a fixed line are jointly independent
+and uniform, with the final value determined by the zero-sum identity. In particular,
+𝑝 = 3 has two free values per line. By contrast, for 𝑝 = 2 every derivative satisfies
+Δ𝑎 𝑄(𝑥 + 𝑎) = Δ𝑎 𝑄(𝑥) identically.
+
+6     Cryptanalysis of the original Boolean construction
+This section states the negative result in the same form in which it constrains the redesign.
+
+6.1   Characteristic-two period and four-row dependency
+In SG-DIFRA-v0, the local map was
+                      𝑓 (𝑥) = 𝐴𝑢 𝐿 + Δ𝑎 𝑄(𝑢 𝑅 ),       (𝑢 𝐿 , 𝑢 𝑅 ) = 𝐵𝑥
+over F2 . Let 𝑒 = 𝐵 −1 (0, 𝑎) ≠ 0. Since 2𝑎 = 0,
+                                     𝑓 (𝑥 + 𝑒) = 𝑓 (𝑥).
+Every fiber is therefore a disjoint union of pairs {𝑥, 𝑥 + 𝑒}. The old one-hot incidence
+row ℎ(𝑥) is affine in 𝑥, hence for any two distinct period pairs
+                         ℎ(𝑥) + ℎ(𝑥 + 𝑒) + ℎ(𝑦) + ℎ(𝑦 + 𝑒) = 0.                          (3)
+If 𝑣 = 𝐻𝑡 + 𝐸 and coordinate replacement occurs independently with probability 𝛽, then
+𝐸 𝑗 ∼ Ber(𝛽/2). Writing 𝛾 = 1 − 𝛽, the parity test on (3) has
+                                       1 + 𝛾4                         1
+                     Pr[0 | Plant] =          ,      Pr[0 | Null] =     ,
+                                         2                            2
+so its distinguishing advantage is exactly 𝛾 4 /2.
+
+
+
+
+                                           7
+<PARSED TEXT FOR PAGE: 8 / 26>
+   Table 2. Exact one-fiber total variation of the period-pair cluster in the former geometries.
+
+                 𝛽       𝑑 = 8 (𝑅 = 128) 𝑑 = 13 (𝑅 = 4096) 𝑑 = 18 (𝑅 = 131072)
+               0.75          0.1114              0.9366                 ≈1
+              0.875         0.00753              0.2068               0.9934
+             0.9375        4.73×10−4            0.01497               0.3593
+             0.96875       2.96×10−5           9.44×10−4             0.02963
+               0.99        3.10×10−7           9.91×10−6            3.17×10−4
+
+
+
+6.2   The complete period-pair channel
+The four-row statistic discards most of the signal. A fiber of size 2𝑑 contains
+                                            𝑅 = 2𝑑−1
+disjoint period pairs. For every pair, the one-hot row difference is the same public vector
+Δ. With pair parity 𝑧 𝑗 = 𝑣 𝑎 𝑗 ⊕ 𝑣 𝑏 𝑗 and hidden bit 𝑔 = ⟨Δ, 𝑡⟩, bit-zero encryption gives 𝑅
+conditionally independent noisy copies of 𝑔 with bias 𝛾 2 ; bit-one encryption gives 𝑅
+independent unbiased bits. The exact chi-square divergence of this cluster from uniform
+is
+                                     (1 + 𝛾 4 ) 𝑅 + (1 − 𝛾 4 ) 𝑅
+                              𝜒2 =                               − 1.                       (4)
+                                                  2
+The complete likelihood calculation gives the one-fiber total-variation values in Table 2.
+These are controlled cryptanalytic test points because the original profile table did not
+freeze 𝛽.
+
+6.3   Classical FO-message and shared-key recovery criterion
+Let 𝑃0 be the complete period-pair distribution for a bit-zero fiber and 𝑃1 uniform. Define
+their Bhattacharyya affinity
+                                      ∑︁ √︁
+                                𝐴=          𝑃0 (𝑥)𝑃1 (𝑥).
+                                           𝑥
+
+If one message bit is encrypted under 𝑇 independent component keys and each key
+contains 𝑚 genuine fibers, the adversary has 𝑇 𝑚 independent groups. The equal-prior
+bit-classification error is bounded by
+                                                   1 𝑇𝑚
+                                          𝑃𝑒 ≤       𝐴 ,
+                                                   2
+and a union bound over an ℓ-bit FO message gives
+
+                                        b ≠ 𝑀] ≤      ℓ 𝑇𝑚
+                                    Pr[ 𝑀               𝐴 .                                        (5)
+                                                      2
+Thus a sufficient condition for complete classical message recovery with failure at most
+𝜀 is
+                                           ln(2𝜀/ℓ)
+                                   𝑇𝑚 ≥             .                                (6)
+                                             ln 𝐴
+
+
+
+
+                                               8
+<PARSED TEXT FOR PAGE: 9 / 26>
+Table 3. Independent fiber groups 𝑇 𝑚 sufficient for total FO-message failure at most 2−32 in the
+former geometries.
+
+                       𝛽            SG-DIFRA-20    SG-DIFRA-27 SG-DIFRA-003
+                      0.75                2,453              17             1
+                     0.875              459,845             771             8
+                    0.9375          114,495,724         119,168           263
+                    0.96875      29,258,251,533      28,890,122        31,698
+                      0.99  266,399,645,468,750 261,745,746,645   258,557,552
+
+
+
+After recovering 𝑀, the adversary verifies Enc ( 𝑝𝑘, 𝑀; 𝐻 (𝑀)) = 𝑐 and computes the
+encapsulated key from the public FO key derivation. The original manuscript did not
+fix 𝑚, 𝛽, 𝑇, so (6) is an end-to-end attack criterion rather than a claim that every former
+named profile crossed it. Table 3 gives the complete computed 2−32 threshold grid for
+the five common noise points.
+
+6.4   Repeated-LPN recovery of encryption randomness
+For binary label columns define 𝑦 𝑗 = 𝑡 𝑗,0 ⊕ 𝑡 𝑗,1 . Each recovered period gives one sparse
+parity of 𝑦, repeated 𝑅 = 2𝑑−1 times through the pair channel. The effective pair-noise
+probability is
+                                                1 − 𝛾2
+                                       𝑝 pair =         ,
+                                                  2
+and majority compression has error at most exp(−𝑅𝛾 4 /2). If the resulting public period
+matrix has full rank, 𝑦 is recoverable by linear algebra; after removing its contribution, all
+rows in a fiber become repeated noisy observations of one further parity of 𝑡 0 . A full-rank
+recovered support matrix then yields the complete encryption randomness. This route is
+conditional on concrete rank and noise conditions, but it identifies why the period-pair
+channel is more serious than a standalone distinguisher.
+
+6.5   The complete-fiber counting barrier
+The derivative is not the only defect. In the old one-hot encoding of 𝑠 assignments to 𝑘
+variables over alphabet 𝑝, the rows lie in an affine space of dimension at most 𝑘 ( 𝑝 − 1). If
+                                        
+                                        𝑠
+                                           > 2 𝑘 ( 𝑝−1) ,
+                                        𝑡
+two 𝑡-subsets have the same sum and their symmetric difference gives a nonzero public
+dependency of weight at most 2𝑡. For the former Boolean geometry 𝑠 = 2𝑑 , 𝑘 = 4𝑑,
+𝑡 = 5 works for every 𝑑 ≥ 8. Hence replacing 𝑄, its degree, or the binary period alone
+cannot repair complete one-hot publication.
+    Even replacing the old structured fiber by a uniformly random subset does not rescue
+that representation. If 𝑆 is a uniformly random size-𝑠 subset of F2𝑘 , the expected number
+of four-element subsets satisfying 𝑥1 + 𝑥2 + 𝑥3 + 𝑥 4 = 0 is
+                                   𝑠(𝑠 − 1) (𝑠 − 2) (𝑠 − 3)
+                                                            .
+                                         24(2 𝑘 − 3)
+
+
+
+
+                                             9
+<PARSED TEXT FOR PAGE: 10 / 26>
+At 𝑠 = 2𝑑 and 𝑘 = 4𝑑 this tends to 1/24 per fiber. Thus a random local predicate still
+leaves a constant-probability weight-four event when assignments themselves determine
+the public linear rows, and repetition across many components amplifies the weak-key
+tail. The final construction avoids this mechanism at the representation layer: assignment
+vectors do not determine the large-field public labels.
+
+
+6.6   Generic quantum FO-message search
+
+Independently of all preceding structure, an FO ciphertext with an ℓ-bit recoverable
+message admits quantum search of
+
+                             𝑉 (𝜇) = [Enc ( 𝑝𝑘, 𝜇; 𝐻 (𝜇)) = 𝑐]
+
+in 𝑂 (2ℓ/2 ) verification queries, up to the reversible encryption cost. The former values ℓ =
+256, 384, 512 therefore gave generic query exponents 128, 192, 256, not the advertised
+160, 224, 320. The repaired specification treats the FO message length and session-key
+length as separate parameters and explicitly budgets this attack.
+
+
+6.7   Second red-team round: image recovery and public algebra
+The follow-on attack campaign did not stop at distinguishing. Using random sparse
+factor supports with the former (𝑑, 𝑘, 𝑛) geometries and 𝑚 = 1.5𝑛, the recovered period-
+equation matrix 𝐷 had full rank in the reported sweeps, while the old binary factor
+matrix 𝐺 necessarily lost at least one rank because 𝑘 = 4𝑑 was even and hence 𝐺1 = 0.
+Majority compression of period pairs followed by exact Gaussian elimination recovered
+the complete noiseless image 𝐻𝑡 in 12/12 synthetic trials for the former 𝑑 = 13, 𝛽 = 0.75
+and 𝑑 = 18, 𝛽 = 0.875 settings; the smaller 𝑑 = 8, 𝛽 = 0.5 setting succeeded in 4/12
+trials with the deliberately minimal solver. These experiments are not attacks on a
+previously unspecified concrete profile, but they show that the period channel is strong
+enough to reconstruct more than a plaintext statistic.
+    The public-key layer also carried recoverable algebra. For valid cubic Boolean
+fixtures, degree-≤ 2 evaluation nullspaces had dimensions 401, 533, 292 in the former
+𝑑 = 8, 13, 18 geometries, compared with 273, 0, 0 for random same-size subsets. In the
+𝑑 = 13 and 𝑑 = 18 fixtures the common radical of the public vanishing quadratics was
+one-dimensional and contained the true hidden period. This makes “hide 𝐴, 𝐵, 𝑄, 𝑎”
+an ineffective defense: the published level set itself exposes invariants of the hidden
+representation.
+
+
+6.8   Why the first dense-label repair was still insufficient
+Dense labels remove algebraic relations between labels, but they do not erase information
+already present in a planted public fiber. Let 𝑆 ⊆ F 𝑘𝑝 be a public fiber, fix a local
+coordinate 𝑗, and define its centered marginal
+                                                            1
+                              𝜇 𝑆, 𝑗 (𝑎) = Pr [𝑋 𝑗 = 𝑎] −     .
+                                          𝑋←𝑆               𝑝
+
+
+
+
+                                           10
+<PARSED TEXT FOR PAGE: 11 / 26>
+If a good public fiber was generated by conditioning on a shared secret local coordinate
+𝑍 and, conditional on 𝑆, 𝑍 is distributed according to the empirical marginal of 𝑆, then
+                                ∑︁  1                           ∑︁
+            E[𝜇 𝑆, 𝑗 (𝑍) | 𝑆] =         + 𝜇 𝑆, 𝑗 (𝑎) 𝜇 𝑆, 𝑗 (𝑎) =     𝜇 𝑆, 𝑗 (𝑎) 2 .  (7)
+                                𝑎∈F
+                                     𝑝                            𝑎∈F
+                                   𝑝                               𝑝
+
+
+The right-hand side is nonnegative and is positive whenever that coordinate of the fiber
+is not perfectly balanced. Over many overlapping constraints, such centered marginal
+vectors therefore provide a coordinate-bias or local-to-global statistic. The tested cubic
+Boolean fixtures exhibited nonzero local squared bias. The identity itself is sufficient to
+show why a label-only repair does not remove this planted correlation.
+    Equation (7) is the decisive reason that the first RLE manuscript is not the final
+construction. The repair below does not attempt to “flatten” every possible fiber. Instead
+it makes the complete public fiber collection independent of the global secret before any
+private incidence is created.
+
+
+6.9   Third red-team round: clean information sets and hidden-code relations
+The first secret-incidence manuscript fixed the public-fiber planting but retained a binary
+ciphertext layer with 𝜈 = 10−3 . This created a new attack unrelated to the old NCSG
+algebra. Let 𝐵 be any invertible 𝑁-row public submatrix of 𝐻. For a bit-zero ciphertext
+𝑣 = 𝐻𝑡 + 𝑒, solving
+                                       b𝑡 = 𝐻 𝐵−1 𝑣 𝐵
+recovers 𝑡 exactly whenever the selected 𝑁 noise bits are all zero. A random basis is
+clean with probability
+                                 𝑝 clean = (1 − 𝜈) 𝑁 .                            (8)
+At the former SI-R1/R2/R3 values this is approximately 0.7260, 0.6388, and 0.5271.
+Executable tests using five public bases classified 8/8 bit-zero and 8/8 bit-one samples
+in each profile and recovered the exact ephemeral 𝑡 in every bit-zero trial. Reusing one
+public basis across fresh repetitions then yields complete FO-message recovery with
+overwhelming probability, after which deterministic re-encryption verifies the message
+and the shared key is public.
+    A second attack targeted the hidden binary code itself. Every dual-code vector creates
+an exact linear relation among the planted labels. The former sampler certified only
+𝑑 ⊥ > 4; sampled accepted codes had minimum dual weights concentrated between 5 and
+11. Straightforward meet-in-the-middle estimates placed more than half of the sampled
+keys near 226.5 , 242.9 , and 262.5 work in the three profiles. These findings show that “no
+relation through weight four” is not a meaningful finite security rule.
+    The two failures are linked by the code/noise tradeoff. Raising binary noise enough
+to make (8) expensive exceeds the reliable regime of the former rate-3/4 hidden code.
+The final redesign therefore changes the alphabet and the code family simultaneously
+instead of inflating one binary parameter.
+
+
+
+
+                                         11
+<PARSED TEXT FOR PAGE: 12 / 26>
+7     Final construction: secret incidence with hidden MDS labels
+The final scheme keeps the public NCSG and private-incidence layers of SG-DIFRA-SI
+but replaces the binary label/ciphertext layer. Two finite fields are used for distinct roles:
+
+      F3   for NCSG predicates,           K = F210        for labels, coding, and ciphertexts.
+
+Write 𝑄 = |K| = 1024. The reference implementation may represent K as F2 [𝑋]/(𝑋 10 +
+𝑋 3 + 1); the polynomial is irreducible, and the accompanying verifier checks this choice.
+
+7.1   Parameters and exact MDS code
+A profile contains
+
+                      Π = ( 𝑝, 𝑛, 𝑘, 𝑑, 𝑟, 𝑚, 𝑀, 𝑢, 𝑁, 𝜈, ℓ, 𝜅, 𝜅 𝐹 , 𝑇rep ).
+
+The public NCSG bucket size is 𝐵 = 𝑝 𝑑 and the number of public labels is 𝑞 = 𝑚𝐵. The
+profile fixes distinct 𝛼1 , . . . , 𝛼 𝑀 ∈ K and nonzero multipliers 𝑣 𝑖 ; these values and the
+resulting matrix 𝐺 are public profile data. Define the 𝑀 × 𝑢 matrix
+
+                                𝐺 𝑖 = 𝑣 𝑖 (1, 𝛼𝑖 , 𝛼𝑖2 , . . . , 𝛼𝑖𝑢−1 ).                         (9)
+
+Then C𝐺 = {𝐺𝑥 : 𝑥 ∈ K𝑢 } is a generalized Reed–Solomon code of parameters
+[𝑀, 𝑢, 𝑀 − 𝑢 + 1] 𝑄 , and its dual has minimum distance
+
+                                        𝑑 ⊥ (C𝐺 ) = 𝑢 + 1.                                       (10)
+
+Any 𝑢 rows of 𝐺 are independent by the Vandermonde determinant. Bounded-distance
+decoding up to                                 
+                                           𝑀 −𝑢
+                                 𝑡 dec =
+                                             2
+is polynomial time [1,2].
+
+7.2   Public NCSG layer and private incidence
+For every group 𝑖 ∈ [𝑚], sample a support N (𝑖) ⊆ [𝑛], an independent maximum-
+entropy predicate 𝑓𝑖 : F3𝑘 → F𝑟3 from Section 4, and an independent target 𝑏 𝑖 ← F𝑟3 .
+Enumerate
+                           𝑆𝑖 = 𝑓𝑖−1 (𝑏 𝑖 ), |𝑆𝑖 | = 𝐵 = 3𝑑 .
+Only after the complete public local layer is fixed, sample 𝑠 ← F3𝑛 and a hidden good
+set 𝐶 ⊆ [𝑚] of size 𝑀. For each 𝑖, sample 𝑅𝑖 ← GL 𝑘 (F3 ). For 𝑖 ∈ 𝐶, choose 𝜎𝑖 ← 𝑆𝑖
+uniformly; otherwise choose 𝜎𝑖 ← F3𝑘 \ 𝑆𝑖 . Set
+
+                                       𝛿𝑖 = 𝜎𝑖 − 𝑅𝑖 𝑠 N (𝑖) .                                    (11)
+
+The values (𝑠, 𝑅𝑖 , 𝛿𝑖 , 𝐶) are secret. The public predicates, targets, and fibers remain
+statistically independent of 𝑠 exactly as in the SI independence theorem.
+
+
+
+
+                                               12
+<PARSED TEXT FOR PAGE: 13 / 26>
+7.3   Hidden MDS label embedding
+Sample a full-row-rank matrix 𝑇 ← K𝑢× 𝑁 and a secret bijection 𝜋 : 𝐶 → [𝑀]. Every
+public bucket position initially receives an independent label
+                                    ℎ𝑖, 𝜎 ← K 𝑁 \ {0}.
+For every good group 𝑖 ∈ 𝐶, overwrite exactly one label:
+                                     ℎ𝑖, 𝜎𝑖 = 𝐺 𝜋 (𝑖) 𝑇 .                              (12)
+The public matrix 𝐻 ∈ K𝑞× 𝑁 is obtained by flattening all buckets. The secret key stores
+the incidence data and 𝜋; the profile-public matrix 𝐺 is derivable from Π. The temporary
+embedding 𝑇 is erased after key generation.
+
+7.4   Exact symbol-noise channel
+The final profiles use
+                                               3
+                                           𝜈=    .
+                                              16
+A symbol error 𝐸 ∈ K is sampled exactly by drawing a four-bit flag: three of the sixteen
+flag values select an error and the remaining thirteen select zero. Conditional on an error,
+draw a uniform nonzero field element by rejection from ten-bit field encodings. Thus
+                                    13                         𝜈
+             Pr[𝐸 = 0] = 1 − 𝜈 =       ,        Pr[𝐸 = 𝑎] =          (𝑎 ≠ 0).          (13)
+                                    16                        𝑄−1
+This removes the former Bernoulli-1/1000 sampling ambiguity.
+
+7.5   Bit encryption and decoding
+For bit zero, sample 𝑡 ← K 𝑁 , sample 𝑒 ← E 𝜈𝑞 independently according to (13), and
+output
+                                 𝑣 = 𝐻𝑡 + 𝑒 ∈ K𝑞 .                              (14)
+For bit one, output 𝑣 ← K𝑞 uniformly. Decapsulation recomputes 𝜎𝑖 = 𝑅𝑖 𝑠 N (𝑖) + 𝛿𝑖 ,
+keeps exactly the 𝑀 good coordinates, reorders them by 𝜋, and obtains
+                            𝑦 = 𝐺𝑥 + 𝑒𝐶 ,         𝑥 = 𝑇𝑡 ∈ K𝑢 .
+Run the standard GRS bounded-distance decoder. Output zero iff decoding returns a
+codeword at distance at most 𝑡 dec ; otherwise output one.
+   For bit zero,
+                              𝑝 0 ≤ Pr[Bin(𝑀, 𝜈) > 𝑡dec ].                   (15)
+For a uniform bit-one word, union bound over all 𝑄 𝑢 codewords gives
+                                         𝑡dec  
+                                         ∑︁    𝑀
+                            𝑝 1 ≤ 𝑄 𝑢− 𝑀          (𝑄 − 1) 𝑗 .                          (16)
+                                         𝑗=0
+                                               𝑗
+
+These are finite-profile correctness and false-accept bounds, not hardness assumptions.
+
+
+
+
+                                           13
+<PARSED TEXT FOR PAGE: 14 / 26>
+8    Complete PKE and KEM algorithms
+
+Algorithm 1 PKE.Gen (1𝜆 , Π): final SG-DIFRA base-key generation
+Require: profile Π and fixed representation of K = F210
+ 1: for 𝑖 = 1, . . . , 𝑚 do
+ 2:     sample N (𝑖), MaxEnt 𝑓𝑖 : F3𝑘 → F𝑟3 , and 𝑏 𝑖 ← F𝑟3 independently
+ 3:     enumerate 𝑆𝑖 = 𝑓𝑖−1 (𝑏 𝑖 )
+ 4: end for
+ 5: sample 𝑠 ← F3𝑛 and 𝐶 ⊆ [𝑚] uniformly with |𝐶 | = 𝑀
+ 6: for 𝑖 = 1, . . . , 𝑚 do
+ 7:     sample 𝑅𝑖 ← GL 𝑘 (F3 )
+ 8:     if 𝑖 ∈ 𝐶 then
+ 9:          𝜎𝑖 ← 𝑆𝑖 uniformly
+10:     else
+11:          𝜎𝑖 ← F3𝑘 \ 𝑆𝑖 uniformly
+12:     end if
+13:     𝛿𝑖 ← 𝜎𝑖 − 𝑅𝑖 𝑠 N (𝑖)
+14: end for
+15: construct the profile-public GRS matrix 𝐺 as in (9); sample full-row-rank 𝑇 ← K𝑢× 𝑁
+16: sample secret bijection 𝜋 : 𝐶 → [𝑀]
+17: for each (𝑖, 𝜎) with 𝜎 ∈ 𝑆𝑖 do
+18:     ℎ𝑖, 𝜎 ← K 𝑁 \ {0} uniformly
+19: end for
+20: for each 𝑖 ∈ 𝐶 do
+21:     overwrite ℎ𝑖, 𝜎𝑖 ← 𝐺 𝜋 (𝑖) 𝑇
+22: end for
+23: 𝑝𝑘 ← (Π, {N (𝑖), 𝑓𝑖 , 𝑏 𝑖 , 𝑆𝑖 , {ℎ𝑖, 𝜎 }}𝑖=1
+                                              𝑚 )
+
+24: 𝑠𝑘 ← ( 𝑝𝑘, 𝑠, 𝐶, {𝑅𝑖 , 𝛿𝑖 }𝑖=1
+                                𝑚 , 𝜋); erase 𝑇
+
+25: return ( 𝑝𝑘, 𝑠𝑘)
+
+
+Algorithm 2 EncBit ( 𝑝𝑘, 𝑏; 𝜌) and DecBit (𝑠𝑘, 𝑣)
+ 1: procedure EncBit(𝑝𝑘, 𝑏; 𝜌)
+ 2:    if 𝑏 = 0 then
+ 3:        expand 𝜌 into 𝑡 ← K 𝑁 and exact independent 𝑒 𝑗 ← E 𝜈
+ 4:        return 𝑣 = 𝐻𝑡 + 𝑒
+ 5:    else
+ 6:        expand 𝜌 into uniform 𝑣 ← K𝑞 ; return 𝑣
+ 7:    end if
+ 8: end procedure
+
+ 9: procedure DecBit(𝑠𝑘, 𝑣)
+10:    for 𝑖 = 1, . . . , 𝑚 do
+11:        𝜎𝑖 ← 𝑅𝑖 𝑠 N (𝑖) + 𝛿𝑖
+12:    end for
+13:    keep positions (𝑖, 𝜎𝑖 ) for 𝑖 ∈ 𝐶 and reorder by 𝜋 to obtain 𝑦 ∈ K 𝑀
+14:    (ok, b
+            𝑐) ← GRS.Decode (𝐺, 𝑦, 𝑡 dec )
+15:    if ok and Ham(𝑦, b    𝑐) ≤ 𝑡 dec then
+16:        return 0
+17:    else
+18:        return 1
+19:    end if
+20: end procedure
+
+
+
+
+                                            14
+<PARSED TEXT FOR PAGE: 15 / 26>
+8.1     Randomized message PKE
+For 𝜇 ∈ Fℓ2 , one accepted base key is reused and every bit/repetition receives independent
+fresh coins.
+
+
+Algorithm 3 PKE.Enc ( 𝑝𝑘, 𝜇; 𝑟) and PKE.Dec (𝑠𝑘, 𝐶)
+ 1: procedure PKE.Enc(𝑝𝑘, 𝜇; 𝑟)
+ 2:    expand 𝑟 with a domain-separated XOF into independent substreams 𝜌 𝑗,𝑎 for 𝑗 ∈ [ℓ],
+    𝑎 ∈ [𝑇rep ]
+ 3:    for 𝑗 = 1, . . . , ℓ do
+ 4:         for 𝑎 = 1, . . . , 𝑇rep do
+ 5:             𝑉 𝑗,𝑎 ← EncBit ( 𝑝𝑘, 𝜇 𝑗 ; 𝜌 𝑗,𝑎 )
+ 6:         end for
+ 7:    end for
+ 8:    return 𝐶 = (𝑉 𝑗,𝑎 ) 𝑗,𝑎
+ 9: end procedure
+
+10: procedure PKE.Dec(𝑠𝑘, 𝐶)
+11:    for 𝑗 = 1, . . . , ℓ do
+12:        𝑏 𝑗,𝑎 ← DecBit (𝑠𝑘, 𝑉 𝑗,𝑎 ) for every 𝑎 ∈ [𝑇rep ]
+13:        b𝑗 ← the strict majority of 𝑏 𝑗,1 , . . . , 𝑏 𝑗,𝑇rep
+           𝜇
+14:    end for
+15:    return 𝜇 b = (b              bℓ )
+                       𝜇1 , . . . , 𝜇
+16: end procedure
+
+
+      If 𝑝 base = max( 𝑝 0 , 𝑝 1 ) < 1/2, the exact binomial majority tail is
+                                       𝑇rep            
+                                       ∑︁           𝑇rep 𝑗
+                         𝑝 maj =                          𝑝 base (1 − 𝑝 base ) 𝑇rep − 𝑗 ,   (17)
+                                                      𝑗
+                                   𝑗=(𝑇rep +1)/2
+
+and the whole-message failure is at most ℓ 𝑝 maj .
+
+
+
+
+                                                    15
+<PARSED TEXT FOR PAGE: 16 / 26>
+Algorithm 4 Complete SG-DIFRA KEM
+ 1: procedure KEM.Gen(1𝜆 , Π)
+ 2:    ( 𝑝𝑘 𝑃 , 𝑠𝑘 𝑃 ) ← PKE.Gen (1𝜆 , Π); 𝑧 ← F2𝜅𝐹
+ 3:    return 𝑝𝑘 = 𝑝𝑘 𝑃 , 𝑠𝑘 = (𝑠𝑘 𝑃 , 𝑧, 𝑝𝑘 𝑃 )
+ 4: end procedure
+
+ 5: procedure Encap(𝑝𝑘)
+ 6:    𝜇 ← Fℓ2 ; 𝑟 ← Hcoin (SGDIFRA-COIN∥ 𝑝𝑘 ∥𝜇)
+ 7:    𝐶 ← PKE.Enc ( 𝑝𝑘, 𝜇; 𝑟) using Algorithm 3
+ 8:    𝐾 ← H𝐾 (SGDIFRA-KEY∥𝜇∥𝐶); return (𝐶, 𝐾)
+ 9: end procedure
+
+10: procedure Decap(𝑠𝑘, 𝐶)
+11:    parse (𝑠𝑘 𝑃 , 𝑧, 𝑝𝑘); on parse failure return H𝐾 (SGDIFRA-REJ∥𝑧∥𝐶)
+12:    𝜇′ ← PKE.Dec (𝑠𝑘 𝑃 , 𝐶)
+13:    𝑟 ′ ← Hcoin (SGDIFRA-COIN∥ 𝑝𝑘 ∥𝜇′ )
+14:    deterministically re-encrypt to 𝐶 ′
+15:    if constant-time 𝐶 ′ = 𝐶 then
+16:        return H𝐾 (SGDIFRA-KEY∥𝜇′ ∥𝐶)
+17:    else
+18:        return H𝐾 (SGDIFRA-REJ∥𝑧∥𝐶)
+19:    end if
+20: end procedure
+
+
+
+9     What is proved about the final public key
+9.1   Global public-key independence survives unchanged
+
+Theorem 7 (Global public-key independence). For every fixed master secret value
+𝑠 ∈ F3𝑛 , the distribution of the complete public key 𝑝𝑘 generated by Algorithm 1 is
+identical. In particular,
+                                     𝐼 (𝑠; 𝑝𝑘) = 0.
+Conditioned on the already generated public fibers, the selected good points {𝜎𝑖 : 𝑖 ∈ 𝐶}
+are mutually independent and uniform in their respective fibers, and the bad selected
+points are mutually independent and uniform in the respective complements. Even
+revealing all selected indices {𝜎𝑖 } gives no equation in 𝑠 without the private affine masks
+(𝑅𝑖 , 𝛿𝑖 ).
+
+
+
+
+                                            16
+<PARSED TEXT FOR PAGE: 17 / 26>
+Proof. The supports, predicates, targets, and fibers are sampled before and independently
+of 𝑠. The good set 𝐶, selected points 𝜎𝑖 , profile-public MDS matrix 𝐺, embedding 𝑇,
+bijection 𝜋, and all decoy labels are also sampled independently of 𝑠. Public labels are
+deterministic functions of those variables and never of 𝑠. Only after 𝑠 is chosen do the
+private equations 𝛿𝑖 = 𝜎𝑖 − 𝑅𝑖 𝑠 N (𝑖) bind the secret to the selected points, and neither 𝑅𝑖
+nor 𝛿𝑖 is public. Therefore every public random variable has the same joint distribution
+for every fixed 𝑠.
+Consequently all coordinate-bias, common-radical, MinRank, Gröbner/XL, lifted-
+regression, and local-to-global attacks that operate on public fibers may reveal properties
+of those fibers, but they cannot reveal a shared global master secret that is absent from
+the entire public-key distribution.
+
+9.2   MDS frame hiding and exact relation threshold
+Right multiplication by GL 𝑁 (K) acts transitively on full-row-rank matrices 𝑇 ∈ K𝑢× 𝑁 .
+Lemma 1 (Planted frame orbit). Let 𝑔1 , . . . , 𝑔 𝑗 ∈ K𝑢 be linearly independent with
+𝑗 ≤ 𝑢, and let 𝑇 be uniform among full-row-rank 𝑢 × 𝑁 matrices. Then (𝑔1𝑇, . . . , 𝑔 𝑗 𝑇)
+is uniform over ordered linearly independent 𝑗-frames in K 𝑁 .
+Proof. Extend (𝑔1 , . . . , 𝑔 𝑗 ) to a basis of K𝑢 . Left multiplication changes this basis to the
+standard basis without changing the uniform full-rank distribution of 𝑇. The first 𝑗 rows
+of a uniform full-row-rank matrix are therefore a uniform independent 𝑗-frame. Undo
+the basis change.
+Theorem 8 (No all-planted dependency through weight 𝑢). For the final planted
+labels (12), every nonzero linear relation supported only on planted labels has Hamming
+support at least 𝑢 + 1. Relations of support 𝑢 + 1 exist.
+Proof. The map 𝑔 ↦→ 𝑔𝑇 is injective because 𝑇 has row rank 𝑢. Equation (10) therefore
+preserves the minimum support of every linear relation among rows of 𝐺.
+Theorem 9 (Mixed low-weight relation bound). Fix 𝜏 ≤ 𝑢. Let 𝑞 be the total number
+of public labels. Then
+                                                              𝜏   𝑗
+                                                         1   ∑︁  𝑞 𝑄 −1
+  Pr[∃ nonzero public linear relation of support ≤ 𝜏] ≤ 𝑁                   . (18)
+                                                       𝑄 − 1 𝑗=1 𝑗 𝑄 − 1
+
+Proof. An all-planted relation is impossible by Theorem 8. Otherwise expose one decoy
+label with a nonzero coefficient last. Conditioned on all other rows and coefficients, at
+most one nonzero label value satisfies the relation, giving probability at most (𝑄 𝑁 − 1) −1 .
+There are (𝑄 𝑗 − 1)/(𝑄 − 1) projective nonzero coefficient vectors on a fixed 𝑗-set. Union
+bound gives (18).
+    The previous HBCE attack exploited relations at weights 5–11. In the final profiles
+𝑢 + 1 = 65, 97, 129; those relations are impossible. Equation (18) additionally makes
+accidental mixed relations through weight 𝑢 negligible by thousands of bits in the
+reference arithmetic.
+
+
+
+
+                                            17
+<PARSED TEXT FOR PAGE: 18 / 26>
+9.3    Remaining average-case public-key problem
+Define PlantMDS-HBCE as the final public bucket distribution with the hidden MDS
+labels (12), after all secrets are erased; the adversary is given the complete profile,
+including the profile-public GRS matrix 𝐺. Define NullMDS-HBCE by replacing every
+planted label with an independent uniform nonzero label while leaving 𝐺, the NCSG
+buckets, and bucket boundaries unchanged.
+
+Assumption 1 (MDS hidden-bucket code embedding (MDS-HBCE)). For every QPT
+adversary A in the declared resource class,
+
+          |Pr[A ( PlantMDS-HBCE ) = 1] − Pr[A ( NullMDS-HBCE ) = 1] | ≤ negl(𝜆).
+
+The assumption explicitly includes high-weight dependency search, robust subspace
+recovery, generalized birthday methods, code-equivalence ideas, quantum walks, and
+any structural use of the hidden MDS point set. The use of a Reed–Solomon code is
+not itself a hiding argument; exposed GRS codes are structurally distinguishable [3,4].
+The security question here is whether the MDS subset can be located when exactly one
+candidate is hidden inside each of a small unknown fraction of large independent buckets
+after a random full-rank linear embedding.
+
+
+10 Ciphertext security and closure of the clean-information-set
+   attack
+In the NullMDS-HBCE hybrid, every row of 𝐻 is independent uniform nonzero in K 𝑁 .
+Allowing the zero row changes the distribution by at most 𝑞/𝑄 𝑁 . Bit-zero encryption
+is therefore the standard noisy linear-sample problem over K with 𝑞 samples and
+K-symmetric error (13).
+
+Assumption 2 (𝑞-ary LPN over K). For the profile distribution (𝑁, 𝑞, 𝜈), the ensembles
+(𝐻, 𝐻𝑡 + 𝑒) and (𝐻, 𝑈) are computationally indistinguishable to the declared QPT
+adversary, where 𝐻 ← K𝑞× 𝑁 , 𝑡 ← K 𝑁 , 𝑒 ← E 𝜈𝑞 , and 𝑈 ← K𝑞 .
+
+Theorem 10 (One-bit conditional IND-CPA). For any one-bit adversary A there exist
+reductions B, C with polynomial overhead such that
+              -CPA                                                                𝑞
+       AdvIND
+          SG-DIFRA-MDS,1 (A) ≤ AdvMDS-HBCE (B) + Adv𝑞LPN(𝑄, 𝑁 ,𝑞,𝜈) (C) +           .
+                                                                                 𝑄𝑁
+
+10.1    Exact regression of the clean-basis attack
+The previous attack chooses an invertible 𝑁-row basis and succeeds immediately if every
+selected error is zero. Under independent symbol noise its clean-event probability is
+exactly
+                      𝑝 clean = (1 − 𝜈) 𝑁 ,    rand
+                                              𝑊clean = (1 − 𝜈) − 𝑁 .               (19)
+This is an exact cost for the random-basis strategy used in the attack artifact, not a lower
+bound against every decoding algorithm. General information-set, BKW-style, statistical,
+
+
+
+
+                                          18
+<PARSED TEXT FOR PAGE: 19 / 26>
+algebraic, and quantum decoding attacks are covered by Assumption 2 and must be
+included in any future concrete estimator.
+    For 𝜈 = 3/16 the clean-basis exponents of the final profiles are 191.72, 287.58, and
+383.44 bits. The constant-probability failure of the previous profiles is therefore absent.
+More importantly, the receiver can tolerate this larger noise because the hidden code is
+MDS rather than the former high-rate binary membership code.
+
+
+11    Message amplification and QROM KEM theorem
+Conditioned on one accepted base key, fresh invocations use independent 𝑡 and indepen-
+dent symbol noise. With 𝑝 base = max( 𝑝 0 , 𝑝 1 ), Eq. (17) gives a per-message-bit majority
+error; union bound gives
+                                     𝛿∗ ≤ ℓ 𝑝 maj .                                    (20)
+The profiles choose odd 𝑇rep = 7. Finite FO-message search remains generic: deterministic
+re-encryption allows Grover search over the ℓ-bit message in 𝑂 (2ℓ/2 ) verification
+queries [10,11]. If 𝜅 is a target quantum work exponent before reversible-verification and
+reduction costs, a sufficient design rule is
+
+                                    ℓ ≥ 2𝜅 + 𝜔(log 𝜆).                                 (21)
+
+The rejection prefix is independently sized. For an independent 𝜅 𝐹 -bit secret prefix to an
+independent QRO, the Bindel–Hamburg–Hövelmanns–Hülsing–Persichetti replacement
+term is                               √︁
+                                    2 𝑑RO 𝑞 RO 2−𝜅𝐹 ,                                   (22)
+under the hypotheses of the cited result [8]. Thus 𝜅 𝐹 is chosen from an explicit advantage
+budget rather than identified with ℓ by convention.
+
+Theorem 11 (Conditional end-to-end QROM security). Fix a final profile Π. Assume:
+(i) MDS-HBCE is QPT-hard for Π; (ii) the 𝑞-ary-LPN problem of Assumption 2 is QPT-
+hard for the declared resource bound; (iii) the finite decoding/correctness bound (20)
+holds; and (iv) the deterministic re-encryption, independent random-oracle, rejection-
+prefix, and Measure–Rewind–Extract hypotheses of the cited QROM transform hold [7].
+Then the KEM of Algorithm 4 is IND-CCA secure against QPT adversaries in the QROM,
+with advantage bounded by the polynomial message-hybrid loss times Theorem 10, plus
+the transform correctness, finite-message, and keyed-rejection terms.
+
+NCSG statement. The theorem does not claim “NCSG-DS is NP-complete, therefore the
+KEM is quantum secure.” The proved worst-case NCSG theorem justifies the problem
+family and the finite-difference construction. The average-case security engine is the
+NCSG-bucketed MDS-HBCE distribution plus 𝑞-ary LPN. Thus a successful end-to-end
+KEM adversary yields an attack on at least one explicitly named sampled problem or on
+a transform hypothesis; this is the strongest implication currently proved.
+
+
+
+
+                                          19
+<PARSED TEXT FOR PAGE: 20 / 26>
+                                     Table 4. Status of the final security chain.
+
+Statement                        Status                Meaning
+Restricted NCSG-DS               Proved                Worst-case differential-solvability foundation; not an average-case reduc-
+NP-completeness                                        tion.
+MaxEnt derivative and exact      Proved                Exact local NCSG distribution and regularity.
+fibers
+Complete public-key              Proved                Public-fiber algebra carries zero information about the master secret.
+independence from 𝑠
+MDS relation threshold / mixed   Proved/statistical No all-planted relation below 𝑢 + 1; accidental mixed relations through
+low-weight bound                                    𝑢 satisfy Theorem 9.
+MDS-HBCE and 𝑞 -ary LPN          Assumptions        Explicit average-case computational premises.
+QROM transform                   Conditional        Requires the stated PKE, correctness, random-oracle, finite-message, and
+                                 theorem            rejection-prefix hypotheses.
+
+
+
+
+12      Final three research profiles
+All three profiles use 𝑄 = 1024, 𝜈 = 3/16, GRS rate 𝑢/𝑀 = 1/4, high-corruption ratio
+𝑀/𝑚 = 1/4, and 𝑇rep = 7. They are research profiles, not standardized security levels.
+
+
+                        Table 5. Structural parameters of the final MDS profiles.
+
+                Profile          𝜆      (𝑛, 𝑘, 𝑑, 𝑟)       𝑚 𝑀          𝑢      𝑁 𝐵 = 3𝑑 𝑞 = 𝑚𝐵 𝑑 ⊥
+                SGD-R1 128 (64, 5, 3, 2) 1024 256 64 640                                27 27,648 65
+                SGD-R2 192 (96, 7, 4, 3) 1536 384 96 960                                81 124,416 97
+                SGD-R3 256 (128, 9, 5, 4) 2048 512 128 1280                            243 497,664 129
+
+
+
+
+Table 6. Correctness and attack-regression arithmetic. 𝑊clean is the specified random clean-
+information-set attack; 𝑊rel is the conservative candidate-only first-relation meet-in-the-middle
+estimate. These are attack costs, not global security certificates.
+
+                        Profile           ℓ 𝜅 𝐹 𝑡dec log2 𝑊clean log2 𝑊rel log2 (ℓ 𝑝 maj )
+                        SGD-R1 320 384 96                       191.72      156.91        −148.32
+                        SGD-R2 448 576 144                      287.58      310.65        −219.82
+                        SGD-R3 640 768 192                      383.44      515.11        −290.98
+
+
+
+    The conservative first-relation column ignores the additional search over nonzero
+field coefficients and uses only bucket choices, 𝐵 ⌈ (𝑢+1)/2⌉ . It therefore overstates the
+attacker’s advantage. The mixed accidental-dependency bound (18) is below 2−5111 ,
+2−7513 , and 2−9813 respectively for all supports through weight 𝑢.
+    The dense-label portions of the public keys are approximately 22.1 MB, 149.3 MB,
+and 796.3 MB. A single base bit ciphertext is approximately 34.6 KB, 155.5 KB, and
+622.1 KB. The deliberately unoptimized ℓ𝑇rep message ciphertexts are approximately
+
+
+
+
+                                                           20
+<PARSED TEXT FOR PAGE: 21 / 26>
+77.4 MB, 487.7 MB, and 2.79 GB. These figures make the intended status explicit:
+SG-DIFRA is a theoretical toy/research construction, not a bandwidth-competitive
+deployment proposal.
+
+
+13     Regression ledger: old and newly discovered attacks
+
+
+                Table 7. Disposition of confirmed attack families after the MDS redesign.
+
+Attack family                 Final status            Reason
+Characteristic-two period; Eliminated                 Public NCSG field remains 𝑝 = 3 and assignment relations do not
+four-row; period cluster;                             determine label relations.
+𝐷 𝑦 → 𝐻𝑡
+Complete-fiber one-hot        Eliminated              Dense labels replace one-hot incidence; padding is not used as a hiding
+counting; random-fiber                                mechanism.
+four-tuples; padding/support
+leakage
+Public-fiber coordinate bias; Eliminated as           Public predicates/targets/fibers are generated independently of 𝑠 , so their
+common radical; MinRank; master-secret                complete algebra carries zero information about 𝑠 .
+lifted regression             recovery
+Multi-key weak-tail           Eliminated              One accepted base key is reused with fresh encryption coins.
+amplification
+Former                        Closed for final        Noise is raised from 10 −3 to 3/16 and MDS decoding preserves correctness.
+clean-information-set attack profiles / generic       The exact random-basis work becomes 2191.72 , 2287.58 , 2383.44 .
+                              decoding remains
+Former HBCE weights 5–11 Eliminated exactly           MDS dual distance is 𝑢 + 1 = 65, 97, 129; no all-planted relation exists
+                                                      below those weights.
+Mixed public dependencies     Statistically           Theorem 9; profile bounds are below 2 −5111 .
+through weight 𝑢              bounded
+High-weight relation /        Assumption target       Explicitly included in MDS-HBCE; MDS is not treated as hidden merely
+hidden-subspace /                                     because it is algebraic.
+structural-code search
+General 𝑞 -ary noisy-linear   Assumption target       Explicitly included in 𝑞 -ary LPN. The clean-basis regression is only one
+decoding, BKW, ISD,                                   finite attack point.
+statistical, and quantum
+attacks
+Generic FO quantum            Accounted               ℓ is independent of the session key and gives message-space ceilings
+message search                                        2160 , 2224 , 2320 verification queries.
+Exact noise sampling          Closed in               𝜈 = 3/16 is sampled exactly by a four-bit flag plus rejection for a nonzero
+                              specification           field symbol.
+Parser, timing, cache, power, Implementation          Canonical parsing and constant-time comparison are specified, but imple-
+fault attacks                 boundary                mentation leakage cannot be proved without code and measurements.
+
+
+
+
+14     Executable verification and attack-derived arithmetic
+
+The final verifier performs three roles. It checks that 𝑋 10 + 𝑋 3 + 1 is irreducible over F2 ;
+it exhaustively verifies the MDS row-independence property on a reduced [10, 4] 1024
+fixture; and it recomputes every profile quantity in Tables 5–6. The deterministic output
+is:
+                  Profile     clean exp.     first rel.   rel.-search exp.   mixed-dep. log2     msg.-fail log2
+                  SGD-R1         191.72            65             156.91         < −5111.7            −148.32
+                  SGD-R2         287.58            97             310.65         < −7513.5            −219.82
+                  SGD-R3         383.44           129             515.11         < −9813.8            −290.98
+
+
+
+
+                                                            21
+<PARSED TEXT FOR PAGE: 22 / 26>
+These calculations directly regress the newly identified clean-basis and low-weight-HBCE
+findings. They do not substitute for cryptanalysis of MDS-HBCE or 𝑞-ary LPN.
+
+
+15    Concrete promotion discipline
+
+The finite profiles above are deliberately called research profiles. A numerical attack cost
+becomes a security claim only after the complete sampled distributions, implementation-
+independent interfaces, and adversarial resource budget have been frozen and indepen-
+dently reviewed. This discipline is retained from the earliest SG-DIFRA work, but the
+certificate below is stated for the final MDS-HBCE/𝑞-ary-LPN proof chain rather than
+for the refuted HC-NCSG ciphertext game.
+
+Definition 1 (Finite-resource profile certificate). Fix a final profile Π and a resource
+budget
+                   R = (𝑊, 𝐷, 𝑀mem , 𝑞 coin , 𝑞 𝐾 , 𝑞 𝑅 , 𝑑coin , 𝑑 𝐾 , 𝑑 𝑅 ),
+recording total work, sequential depth, memory, and the relevant random-oracle
+query/depth limits. A certificate CΠ (R; 𝜏𝐻 , 𝜏𝐿 , 𝛿) asserts, for the exact serialized profile
+distribution, that every QPT adversary within R has MDS-HBCE advantage at most 𝜏𝐻
+and 𝑞-ary-LPN advantage at most 𝜏𝐿 , while the complete-message correctness failure
+is at most 𝛿. The certificate also records the best known classical and quantum attacks,
+their memory and success probabilities, and the exact QROM query budgets used by the
+transform.
+
+Proposition 1 (Finite-resource lifting). Let 𝐿 = ℓ𝑇rep . If CΠ (R; 𝜏𝐻 , 𝜏𝐿 , 𝛿) holds for
+every adversary induced by the reductions, then the one-bit IND-CPA term is at most
+                                                   𝑞
+                                      𝜏𝐻 + 𝜏𝐿 +      ,
+                                                  𝑄𝑁
+
+and the standard message hybrid contributes at most 𝐿 (𝜏𝐻 + 𝜏𝐿 + 𝑞/𝑄 𝑁 ). Substituting
+this term, the certified 𝛿, the finite-message search budget, and the keyed-QRO term (22)
+into Theorem 11 yields the corresponding finite-resource KEM advantage bound.
+
+Proof. The first inequality is Theorem 10; hybrid over the 𝐿 fresh base encryptions gives
+the message term. The final statement is direct substitution into the QROM transform
+statement of Theorem 11.
+
+
+
+
+                                           22
+<PARSED TEXT FOR PAGE: 23 / 26>
+Table 8. Attack obligations before a research profile can be promoted to a concrete security claim.
+
+Surface             Required attack families                            Promotion evidence
+MDS-HBCE            Generalized birthday and high-weight relation       Best classical/quantum work, memory, depth,
+                    search; hidden-subspace recovery;                   samples, and success probability on the exact
+                    GRS/code-equivalence structure; robust              bucket distribution
+                    subspace/list methods; quantum walks
+𝑞 -ary LPN          Clean information sets; ISD/decoding; BKW and Best work, memory, and success bounds for
+                    statistical elimination; algebraic/Fourier methods; (𝑄, 𝑁 , 𝑞, 𝜈) , including reuse of the fixed pub-
+                    quantum decoding/search                             lic matrix across targets
+Public NCSG layer   Coordinate-bias, Gröbner/XL, MinRank/radical, Confirmation that such structure remains in-
+                    spectral/tensor and local-to-global tests           dependent of the master secret as required by
+                                                                        Theorem 7, plus checks for any new coupling
+                                                                        introduced by an implementation
+KEM/QROM layer      Generic message search; multi-user/multi-target Instantiated Theorem 11 using a certificate of
+                    loss; malformed ciphertexts; deterministic          Definition 1
+                    re-encryption edge cases; QRO query budgets
+Implementation      Parser ambiguity; timing/cache/power/fault          Canonical serialization, constant-time code, neg-
+                    leakage; randomness failures                        ative tests, and laboratory/implementation evi-
+                                                                        dence
+
+
+
+
+Promotion rule. No SGD-R profile should be advertised as a standardized 𝑏-bit security
+level merely because one named attack costs about 2𝑏 . Promotion requires an indepen-
+dently reviewed certificate CΠ covering the complete attack table and the reduction losses.
+A statement such as a qubit count is likewise not a security level without depth, total
+work, memory, success probability, and parallelization assumptions. This rule preserves
+the useful finite-resource discipline of the earlier manuscript while removing its obsolete
+HC-NCSG premises.
+
+
+16        Assumption-diverse hedged KEM
+The standalone construction is experimental. For assumption diversity, generate an
+independent SG-DIFRA-MDSkey and an independent ML-KEM-1024key. Encapsulate
+under both and combine the two shared secrets with the split-key-PRF parallel combiner
+of Giacon, Heuer, and Poettering [16], using unambiguous length-prefixing of both
+public keys and ciphertexts.
+Theorem 12 (Hedged IND-CCA security). Assume the two ingredient keypairs are
+generated independently and dedicated to the combined KEM, and the combiner
+core satisfies the split-key-PRF condition in the common adversary model. If either
+SG-DIFRA-MDSor ML-KEM-1024is IND-CCA secure in that model, then the combined
+KEM is IND-CCA secure up to the combiner’s stated reduction loss. For a QPT conclusion,
+both the surviving ingredient claim and the split-key-PRF claim must hold against QPT
+adversaries.
+
+Proof. This is the generic parallel split-key-PRF KEM-combiner theorem [16]; the cited
+extended-hybrid analysis covers stronger post-processed interfaces [17].
+
+This hedge is a system-level fallback; it is not evidence for MDS-HBCE or 𝑞-ary LPN.
+
+
+
+
+                                                   23
+<PARSED TEXT FOR PAGE: 24 / 26>
+17    Limitations, falsifiability, and implementation boundary
+The final redesign closes the two attacks that broke the previous finite profiles, but it does
+not prove universal hardness. MDS-HBCE is new and must withstand robust subspace
+recovery, generalized birthday search, code-equivalence ideas, algebraic statistics, and
+quantum walks. 𝑞-ary LPN must withstand the best classical and quantum noisy-linear-
+system attacks. Reed–Solomon’s MDS theorem proves the relation threshold and decoder
+capability; it does not prove that a hidden MDS subset is pseudorandom. Recent attacks
+on exposed GRS-derived cryptosystems reinforce this distinction [4].
+    Likewise, NCSG-DS NP-completeness is not a cryptographic average-case reduction.
+The final paper therefore uses the phrase NCSG-native KEM rather than claiming that
+NP-completeness alone is the confidentiality engine. The open theoretical objective is a
+reduction connecting an average-case NCSG distribution to MDS-HBCE or to a simpler
+established assumption.
+    A byte-level implementation must fix canonical encodings of F3 , F210 , supports, table
+entries, labels, and ciphertext symbols; reject malformed or noncanonical representations
+before decapsulation; domain-separate every random-oracle use; bind the complete
+public-key encoding into deterministic coins; and compare re-encryptions in constant
+time. Side-channel, fault, and randomness-failure resistance remain implementation
+properties.
+
+
+18    Conclusion
+
+SG-DIFRA reached its final form by repeatedly discarding mechanisms that failed direct
+attack. The Boolean construction failed because differential periodicity was published
+through one-hot linear rows. Candidate subsampling removed complete-fiber exposure
+but introduced a small-list surface. Randomized labels removed the old parity channel
+but public targets still shared a planted secret. Secret incidence removed that correlation
+exactly. The first SI profiles then failed for a different reason: low binary noise made
+clean public information sets common, while the short hidden code created low-weight
+public relations.
+     The final SG-DIFRA-MDSconstruction retains every earlier closure and changes
+the vulnerable layer rather than weakening those proofs. Public NCSG fibers remain
+independent of the master secret. Hidden labels now use a large-field MDS code
+whose first planted relation has exact weight 𝑢 + 1. Exact 3/16 symbol noise makes
+the executed clean-basis strategy exponential at the reference dimensions while GRS
+decoding preserves polynomial-time correctness. Complete PKE, encapsulation, and
+decapsulation algorithms are specified, and the QROM theorem reduces a successful
+KEM adversary to MDS-HBCE, 𝑞-ary LPN, correctness failure, finite-message search,
+or the named transform terms.
+     The resulting object is a research KEM, not a claim of unconditional quantum security.
+Its strongest defensible contribution is a transparent construction-and-cryptanalysis chain
+in which every confirmed break changes the mathematics of the next version and every
+remaining computational premise is left exposed for the next cryptanalytic pass. The
+finite-resource certificate of Definition 1 states what additional independent evidence
+
+
+
+
+                                          24
+<PARSED TEXT FOR PAGE: 25 / 26>
+would be required before any research profile could be promoted to a concrete security
+claim.
+
+
+A    Profile arithmetic
+For the clean-basis strategy,
+                                      rand
+                                log2 𝑊clean = −𝑁 log2 (13/16).
+
+For the candidate-only first-relation estimate, let 𝐵 = 3𝑑 and 𝑤 = 𝑢 + 1; the displayed
+conservative work is                             l𝑤m
+                                     log2 𝑊rel =     log2 𝐵.
+                                                  2
+The estimate ignores field-coefficient search and is therefore intentionally attacker-
+favourable. For accidental relations through 𝜏 = 𝑢, Eq. (18) is evaluated exactly in log
+space.
+    For correctness, 𝑝 0 is the binomial tail (15) and 𝑝 1 is the 𝑄-ary Hamming-ball
+bound (16). With 𝑇rep = 7, Eq. (17) yields whole-message bounds of approximately
+2−148.32 , 2−219.82 , and 2−290.98 .
+
+
+B    Canonical serialization requirements
+Every serialized object begins with a version identifier and a profile identifier. Field
+elements of F210 use a fixed ten-bit canonical polynomial-basis encoding packed into
+fixed-width byte strings; the two unused high bits of the storage word must be zero on
+input. The noise sampler consumes a domain-separated XOF stream and uses the exact
+flag/rejection procedure of (13). Support lists are strictly increasing and duplicate-free.
+Bucket order, field representation, GRS evaluation-point order, and every length are
+bound into the public-key hash used by deterministic re-encryption. Decapsulation rejects
+before secret-dependent work when any length, version, field encoding, or canonical-order
+check fails.
+
+
+References
+ 1. I. S. Reed and G. Solomon, “Polynomial Codes over Certain Finite Fields,” J. Soc. Indust.
+    Appl. Math. 8(2), 300–304 (1960). https://doi.org/10.1137/0108018.
+ 2. S. Gao, “A New Algorithm for Decoding Reed–Solomon Codes,” in Communications,
+    Information and Network Security, Kluwer (2003), 55–68.
+ 3. A. Couvreur, P. Gaborit, V. Gauthier-Umana, A. Otmani, and J.-P. Tillich, “Distinguisher-Based
+    Attacks on Public-Key Cryptosystems Using Reed–Solomon Codes,” Des. Codes Cryptogr.
+    73, 641–666 (2014). https://arxiv.org/abs/1307.6458.
+ 4. J. Lieb, A. Mazumder, and M. Schaller, “An Attack on High Rate McEliece Cryptosystems
+    Using Generalized Reed Solomon Codes with Weight 2 Mask,” arXiv:2607.25027 (2026).
+    https://arxiv.org/abs/2607.25027.
+ 5. S. Goldwasser and S. Micali, “Probabilistic Encryption,” J. Comput. Syst. Sci. 28(2), 270–299
+    (1984). https://doi.org/10.1016/0022-0000(84)90070-9.
+
+
+
+
+                                            25
+<PARSED TEXT FOR PAGE: 26 / 26>
+ 6. I. M. Hair and A. Sahai, “Public Key Encryption from High-Corruption Constraint Satisfaction
+    Problems,” arXiv:2604.10479 (2026). https://arxiv.org/abs/2604.10479.
+ 7. J. Ge, H. Liao, and R. Xue, “Measure-Rewind-Extract: Tighter Proofs of One-Way to Hiding
+    and CCA Security in the Quantum Random Oracle Model,” ASIACRYPT 2024, Part IV, 3–34.
+    IACR ePrint 2024/777. https://eprint.iacr.org/2024/777.
+ 8. N. Bindel, M. Hamburg, K. Hövelmanns, A. Hülsing, and E. Persichetti, “Tighter Proofs of
+    CCA Security in the Quantum Random Oracle Model,” TCC 2019, Part II, LNCS 11892,
+    61–90. https://doi.org/10.1007/978-3-030-36033-7_3.
+ 9. R. Impagliazzo, R. Paturi, and F. Zane, “Which Problems Have Strongly Exponential
+    Complexity?” J. Comput. Syst. Sci. 63(4), 512–530 (2001). https://doi.org/10.1006/
+    jcss.2001.1774.
+10. L. K. Grover, “A Fast Quantum Mechanical Algorithm for Database Search,” STOC 1996,
+    212–219. https://doi.org/10.1145/237814.237866.
+11. C. Zalka, “Grover’s Quantum Searching Algorithm is Optimal,” Phys. Rev. A 60(4), 2746–2751
+    (1999). https://doi.org/10.1103/PhysRevA.60.2746.
+12. A. Schmidhuber, R. O’Donnell, R. Kothari, and R. Babbush, “Quartic Quantum Speedups for
+    Planted Inference,” Phys. Rev. X 15, 021077 (2025). https://doi.org/10.1103/PhysRe
+    vX.15.021077.
+13. J. Błasiok, P. Lou, A. Rosen, and M. Sudan, “Expanders Meet Reed–Muller: Easy Instances
+    of Noisy 𝑘-XOR,” arXiv:2604.04188 (2026). https://arxiv.org/abs/2604.04188.
+14. W. Wiggers and S. Samardjiska, “Practically Solving LPN,” IACR ePrint 2021/962 (2021).
+    https://eprint.iacr.org/2021/962.
+15. C. Mao, “The Polynomial-Time Low-Degree Conjecture is False,” arXiv:2607.20318 (2026).
+    https://arxiv.org/abs/2607.20318.
+16. F. Giacon, F. Heuer, and B. Poettering, “KEM Combiners,” in PKC 2018, LNCS 10769,
+    190–218 (2018). https://doi.org/10.1007/978-3-319-76578-5_7.
+17. L. Millerjord, D. Stebila, and C. Steckel, “Split-key PRFs and Extended Hybrid Security for
+    KEM Combiners,” IACR Communications in Cryptology 2(4) (2026). https://doi.org/
+    10.62056/ah890lmol.
+18. National Institute of Standards and Technology, “Module-Lattice-Based Key-Encapsulation
+    Mechanism Standard,” FIPS 203, 13 August 2024. https://doi.org/10.6028/NIST.FIP
+    S.203.
+
+
+
+
+                                           26
