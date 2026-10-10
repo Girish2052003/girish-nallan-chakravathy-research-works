@@ -106,3 +106,20 @@ See [Round-5 complete mathematical proof, Section 9.2](manuscript/SG_DIFRA_EUROC
 The **strict finite-security distinction** remains: naive planted-row search costs roughly 2^656.94, 2^1136.78 and 2^1718.10 subset checks on R1/R2/R3, and public decoding adds roughly 2^203.57, 2^307.12, 2^410.76 information-set checks. These astronomically infeasible *upper-work counts for one attack* are **not certified 128/192/256-bit security lower bounds**, do not exclude better quantum or classical attacks and do not demonstrate practical compromise of any frozen profile. The theorem is classical uniform-PPT only because the original fixed field makes its maximum combinatorial exponents absolute constants independent of the asymptotic security parameter.
 
 **Unresolved:** This historical GRS/noisy-linear architecture does not supply the author's demanded original NCSG-essential trapdoor and no separate, correct IND-CCA-secure standalone NCSG-only KEM has been mathematically established. Merely increasing noise, input size, or adding secrecy rhetoric cannot fix a public code reconstruction. No borrowed standardized KEM was added. The EUROCRYPT 2027 deadline has already passed and the current named version is a research draft, not a conference-ready verified KEM.
+
+
+### Round 6: recover supposedly hidden NCSG affine directions from PUBLIC finite differences
+
+An exact new negative theorem and fully reproducible Python attack now show the 2026 original **ternary MaxEnt NCSG public predicate reveals its hidden affine-linearity direction subspace**, even when its coordinate matrices $A,B$, derivative direction $a$, and uniform potential table $Q_0$ are not provided to the attacker. The test uses only the *public* local truth table of $f$. Scan all directions $h$ to find those satisfying $f(x)+f(x+h)+f(x+2h)=0$ at **every public input $x$**. This recovers the $(k-d+1)$-dimensional subspace $V=B^{-1}(\mathbb F_3^{k-d}\times\langle a\rangle)$, except with exact upper-bounded source-sampling failure probability $(3^k-3^{k-d+1})3^{-2(k-d)3^{d-2}}$.
+
+| Original geometry | Guaranteed hidden subspace dimension | Exact failure probability upper bound |
+|:--|--:|--:|
+| SGD-R1 $(k,d)=(5,3)$ | 3 | $8/19683\approx4.06442\cdot10^{-4}$ |
+| SGD-R2 $(7,4)$ | 4 | $3.62169\cdot10^{-23}$ |
+| SGD-R3 $(9,5)$ | 5 | $1.70023\cdot10^{-99}$ |
+
+Proof: [research manuscript, Theorem 4.5](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md), [public-only attack and four test suites](research-2028/attacks/public_second_difference_subspace_recovery.py), [rigorous claims/proof ledger](research-2028/NCSG_ONLY_RESEARCH_STATUS.md). The CI checks actual recovery for all three local geometries, independent finite-field ranks 2/6/18/54, exact rational source-failure bounds, and 19,683 fully enumerated toy potential tables.
+
+**Critical boundary:** The runtime is polynomial in the *explicit public truth-table length* $3^k$ and exponential in succinct $k$. This **does not directly decrypt** the original independently labeled GF(1024) ciphertexts, recover the whole secret basis $B$ or global incidence witness, or establish generic IND-CCA insecurity of a new scheme. It does prove that a redesign relying solely on the original locally concealed coordinate space cannot treat that space as a cryptographic trapdoor when full public evaluation is feasible. Historical Round-5 hidden-GRS KEM confidentiality fails separately under its own asymptotic scaling.
+
+**Security and submission:** The code and math were upgraded, **not** the unproved cryptographic hardness assumption. A complete original NCSG-essential KEM with independently established IND-CCA/QROM security and vetted post-quantum cost bounds does not yet exist in this repository. The historical R1/R2/R3 parameter identifiers cannot be certified secure from local entropy, NP-completeness or these negative results. No existing standardized KEM has been substituted. EUROCRYPT 2027's September 17, 2026 AoE paper deadline has passed; the current credited document remains a prospective research draft, not a formally secure conference submission.
