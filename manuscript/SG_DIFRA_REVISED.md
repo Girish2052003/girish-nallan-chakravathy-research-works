@@ -306,3 +306,12 @@ Run \`python formal-verification-and-mathematical-proofs/test_sg_difra.py\` and 
 # Appendix B. Submission caution
 
 EUROCRYPT 2027's publicly listed full-paper deadline was 17 September 2026; it has elapsed as of 10 October 2026. The original paper and this credited research version are *not anonymous*. For a future double-blind venue, apply the current published formatting, author-identification, repository and AI-use rules; do not upload the named version as an anonymous submission. Verify all bibliographic records directly from publishers before submission.
+
+
+# Appendix C. October 2026 Round-8 follow-up: public low-width global witness recovery
+
+**Archival status of this manuscript:** This shorter revision records the earlier SG-DIFRA iterations; it should not be described as an actively secure NCSG-only KEM. The authoritative active research treatment is [SG-DIFRA NCSG-only draft](SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md), Section 12.9, and the [Round-8 exact attack ledger](../research-2028/ROUND8_PUBLIC_GLOBAL_CSP_SECURITY_LEDGER.md).
+
+In Round 7 the original ternary local source predicate was shown publicly invertible under its full-table evaluation model, so it is **not** a cryptographic trapdoor. Round 8 establishes a further structural attack boundary for *global overlapping* public ternary constraints. With known public scopes and explicit public relation tables, bucket elimination recovers a global solution or exactly detects inconsistency in time polynomial in input length times $3^{w+1}$, where $w$ is the induced width of the public primal graph. A public CSP distribution with logarithmic width therefore cannot rest its one-wayness on overlap alone. This classical CSP theorem is not presented as original new mathematics, an attack on every possible high-width construction, a measured bound on the historical full protocol's incidence topology, or a KEM IND-CCA break.
+
+[Executable deterministic public-only tests](../research-2028/attacks/public_global_treewidth_witness_recovery.py) cover independently brute-forced CSPs and genuinely overlapping R1/R2/R3 source-local geometries. They cannot validate cryptographic bit-security or quantum hardness. No complete NCSG-only secure redesign or three certified parameter sets currently exists; Round 8 has **no formal KEM security closure**, and the 2027 conference deadline had already elapsed by this update.
