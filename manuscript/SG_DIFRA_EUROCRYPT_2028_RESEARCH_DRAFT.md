@@ -192,41 +192,41 @@ Let $S=f^{-1}(b)\subseteq\mathbb F_3^k$ with $f$, $A$, $B$, $a$ and uniform pote
 
 **Lemma 4.3 (independent uniform hidden directions).** In the exact MaxEnt sampler, each of the $L=3^{d-1}$ guaranteed lines from Theorem 4.1 has direction
 
-$
+$$
 v_z=B^{-1}\bigl(-A^{-1}T_z,\ a\bigr),\qquad
 T_z=Q_0(z)+Q_0(z+a)+Q_0(z+2a),
-$
+$$
 
 where $z$ ranges over the distinct cosets of $\langle a\rangle$ in $\mathbb F_3^d$. The $T_z$ are **independent uniform** vectors of $\mathbb F_3^r$. Conditional on the sampled $A,B,a$, the associated projective directions are independent uniform among exactly $m_0=3^r$ distinct directions, all represented in the affine coset
 
-$
+$$
 B^{-1}(\mathbb F_3^r\times\{a\})\subseteq\mathbb F_3^k.
-$
+$$
 
 **Proof.** Put $g=\Delta_aQ_0$. The increment from the first point of an $a$-line to the second has left-block value $-A^{-1}[g(z+a)-g(z)]$. In characteristic three,
 
-$
+$$
 g(z+a)-g(z)=Q_0(z+2a)-2Q_0(z+a)+Q_0(z)
 =Q_0(z)+Q_0(z+a)+Q_0(z+2a).
-$
+$$
 
 Distinct $a$-orbits involve disjoint entries of the uniformly sampled potential table, so their independent sums are uniform in $\mathbb F_3^r$. Applying an invertible linear map preserves uniformity and independence. Different vectors in the displayed affine coset cannot represent the *same* projective direction: a proportionality scalar over $\mathbb F_3$ must preserve the fixed, nonzero right coordinate $a$, hence equals one. Thus precisely $3^r$ direction possibilities exist. $\square$
 
 **Theorem 4.4 (exact finite-statistical distinguishing bounds).** Let $P_1=\Pr[D(S)=1]$ for an NCSG MaxEnt fiber and $P_0=\Pr[D(U)=1]$ for $U\leftarrow\mathsf{Uniform}_{k,d}$. Set $L=3^{d-1}$, $m_0=3^r$, $n=3^k$, $s=3^d$, and for each integer $j$ put $a_j=L-2j$ and $c_j=m_0-a_j-j$. Then
 
-$
+$$
 P_1\ \ge\ 1-\frac{1}{m_0^L}
 \sum_{\substack{0\le j\le\lfloor L/2\rfloor\\c_j\ge0}}
 \frac{m_0!\,L!}{a_j!\,j!\,c_j!\,2^j},
-$
+$$
 
 and independently
 
-$
+$$
 P_0\ \le\ \frac{n-1}{2}{n/3\choose3}
 \frac{(s)_9}{(n)_9},\qquad
 (x)_t=x(x-1)\cdots(x-t+1).
-$
+$$
 
 Consequently $D$ is a classical, efficiently computed **single-fiber statistical distinguisher** with advantage $|P_1-P_0|$ at least the difference of the two displayed bounds whenever positive. The test runs in $O(ks^2)$ field operations using point hashing and normalized projective directions.
 
