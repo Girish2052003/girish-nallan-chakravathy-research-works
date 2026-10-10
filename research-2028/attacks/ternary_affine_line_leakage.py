@@ -9,6 +9,7 @@ No external libraries or crypto primitives.
 from itertools import product
 from fractions import Fraction
 import random
+import math
 import unittest
 
 P=3
@@ -138,6 +139,21 @@ class AffineFiberTests(unittest.TestCase):
         self.assertGreater(p0-p1,Fraction(1,5))
         self.assertEqual(p0-p1,Fraction(2,3)*alpha**3)
         print("Affine ternary label triple parity advantage/event-gap",float(p0-p1))
+
+    def test_profile_wide_affine_label_aggregator(self):
+        # HYPOTHETICAL ternary-affine row encryption only, not archived GF(1024).
+        nu=Fraction(3,16)
+        delta=Fraction(2,3)*(1-Fraction(3,2)*nu)**3
+        for name,m,d in (("SGD-R1",1024,3),
+                         ("SGD-R2",1536,4),
+                         ("SGD-R3",2048,5)):
+            independent_disjoint_triples=m*3**(d-1)
+            log2_hoeffding=-float(independent_disjoint_triples*delta**2/2)/math.log(2)
+            self.assertLess(log2_hoeffding,-400)
+            print(name,"hypothetical affine-row failure:",
+                  independent_disjoint_triples,
+                  "disjoint public triples; log2 conditional bit-classification-error bound",
+                  round(log2_hoeffding,2))
 
 if __name__=="__main__":
     unittest.main(verbosity=2)
