@@ -45,28 +45,11 @@ These are exact lower bounds from the *current design*. Neither stronger assumpt
 
 No legitimate scientific statement can prove absence of every future classical or quantum cryptanalytic algorithm.
 
-## Recommended protection — optional ML-KEM-1024 parallel hybrid
+## NCSG-only direction; former optional fallback withdrawn
 
-**Hybrid construction specification (not original SG-DIFRA):**
+By explicit author instruction, no external standardized KEM or KEM combiner is a component of SG-DIFRA. The previous optional fallback is **withdrawn** rather than silently relabelled as original mathematical work. The 2026 GRS/noisy-linear construction is retained only as a historical case study and is **not** promoted as a novel secure NCSG design. All new statements and reproductions are in [NCSG_ONLY_RESEARCH_STATUS.md](NCSG_ONLY_RESEARCH_STATUS.md).
 
-1. \`Hybrid.Gen\`: independently generate \`(ek_S,dk_S)\` for SG-DIFRA and \`(ek_M,dk_M)\` for ML-KEM-1024. Serialize with fixed version and explicit checked lengths.
-2. \`Hybrid.Encap\`: obtain \`(ct_S,ss_S) <- SG.Enca(ek_S)\` and \`(ct_M,ss_M) <- MLKEM.Enca(ek_M)\` with **independent fresh randomness**; form \`ct = encode(ct_S,ct_M)\`.
-3. Compute \`K = W(ss_M,ss_S; encode(ek_M,ek_S,ct_M,ct_S,version,context))\`, where \`W\` is a **specified and verified split-key-PRF combiner core** in the security model.
-4. \`Hybrid.Decap\`: canonically parse both ciphertexts, execute both component decaps according to their defined failure semantics, and derive \`K\` using the identical \`W\` input order and context.
-
-**Conditional theorem H.** Under the published Giacon–Heuer–Poettering hypotheses (independent ingredient key generation, correctly implemented component KEM semantics and an appropriate split-key PRF core), a parallel combiner remains IND-CCA secure if at least one ingredient is IND-CCA secure in the same model, subject to reduction loss. If ML-KEM-1024 remains IND-CCA secure against the considered QPT adversaries and the core meets the **quantum** split-key condition, the *hybrid* can be protected despite failure of standalone SG-DIFRA. Proof: application of an existing generic combiner theorem, **not** a new result about SG-DIFRA's hardness.
-
-NIST SP 800-227 (September 2025) provides KEM combiner guidance and treats additional public-key/ciphertext binding. The July 2026 CFRG hybrid-KEM Internet-Draft discusses \`UniversalCombiner\` with both secrets, public keys and ciphertexts. For the final protocol, adopt a *specific* fully encoded standardized/peer-reviewed instantiation, and test reduction assumptions before claiming anything formal. A simple test use of SHA3-256 does **not** by itself prove quantum split-key PRF security.
-
-**Protection is not standalone SG-DIFRA security.** It also cannot make an infinitely secure mechanism, and it does not repair ciphertext expansion.
-
-Sources:
-- https://csrc.nist.gov/pubs/fips/203/final
-- https://csrc.nist.gov/pubs/sp/800/227/final
-- https://csrc.nist.gov/presentations/2025/split-key-prfs
-- https://datatracker.ietf.org/doc/draft-irtf-cfrg-hybrid-kems/
-- https://www.douglas.stebila.ca/research/papers/CIC-MilSteSte26/
-- https://arxiv.org/abs/1307.6458
+The new two-direction differential-cocycle theorem gives genuine algebraic NCSG structure, but its complete derivative tables admit efficient integration. A second NCSG-coupled idea—encrypting with low-degree combinations of public polynomials vanishing at the private witness—is **insecure** under a proved public rank/membership distinguisher. Both are recorded as red-team results and do not instantiate a final KEM.
 
 ## EUROCRYPT 2028 gates (scientific, not marketing)
 
@@ -76,10 +59,10 @@ Sources:
 4. Cryptographic theorem relating the **actual sampled public distribution** to a recognized decisional hardness assumption or a separate new, independently motivated hardness assumption with serious evidence. NP-completeness and MDS distance alone do not count.
 5. A uniform polynomial-time asymptotic ensemble. See \`ASYMPTOTIC_SYNTAX_AND_CORRECTNESS.md\` for a correctness-only proposal.
 6. Actual FO/QROM proof with complete games, oracle bounds, multi-user and decapsulation failure losses.
-7. Independent, separate security track for the ML-KEM-backed hybrid using the current combiner theorem.
+7. Standalone NCSG-native trapdoor and key/ciphertext games, without external KEM components.
 8. Honest communication of public-key/ciphertext lower bounds and feasible research-only demonstrations.
 9. Peer review, academic novelty survey, and blinded manuscript/author policy verification after the official EUROCRYPT 2028 call appears.
 
 **Conference status (10 Oct 2026):** No official EUROCRYPT 2028 CFP/deadline was verified. Do not invent dates. The previous EUROCRYPT 2027 submission deadline was 17 September 2026.
 
-**Precise status**: Validated algebraic sublemmas + finite correctness arithmetic + critical attack/efficiency findings + a conditional standard-KEM hybrid protection path. **Standalone IND-CPA/IND-CCA not proved; "100% secure" is not an attainable cryptographic certification.**
+**Precise status**: Validated algebraic sublemmas, historical finite correctness, and newly reproduced NCSG-native distinguishing breaks. **No complete NCSG-only KEM or IND-CPA/IND-CCA proof exists; "100% secure" is not an attainable cryptographic certification.**
