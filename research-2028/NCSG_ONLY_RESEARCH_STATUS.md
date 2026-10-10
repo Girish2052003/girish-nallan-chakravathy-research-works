@@ -99,3 +99,34 @@ The inner factor is the exact rank-dependency probability for a fixed subset (co
 **Automated checks:** [fixed-field asymptotic distinguisher](attacks/fixed_field_mds_hbce_ppt_break.py) uses exact GF(1024) row arithmetic and planted/null simulation, independently exhausts all ordered nonzero triples in GF(3)^3 to verify the exact null dependency formula, and prints the finite-profile enumeration budgets. The active manuscript contains the full proof at Section 9.1.
 
 **Evidence status:** A rigorous asymptotic counterexample to the source's claimed assumption family; it is a conditional theorem for explicitly quantified growth. It does not prove the currently unconstructed NCSG-only target IND-CPA/CCA secure.
+
+## Round 4 — certified finite-profile single-fiber geometric distinguisher (10 Oct 2026)
+
+**Source:** the original 26-page SG-DIFRA manuscript, sections 5 and 5.1: ternary MaxEnt differential predicate $f(x)=Au_L+\Delta_aQ(u_R)$ with $(u_L,u_R)=Bx$, where $Q$ is sampled uniformly over tables. This entry adds a genuinely *finite-parameter* statistical guarantee to earlier round-2/3 geometric expectation findings. It **does not claim IND-CPA/CCA break of the archived GF(1024) dense-label KEM**.
+
+**Deterministic public-only attack:** Given one enumerated ternary NCSG fiber $S\subseteq\mathbb F_3^k$ of size $s=3^d$, enumerate all 3-point affine lines via public pair lookup $z=-x-y$. Normalize direction vectors to projective representatives. Output "MaxEnt" if at least **three distinct contained affine lines have the same direction**. Complexity $O(ks^2)$ operations (including hash lookups).
+
+**Exact uniform direction lemma:** for each of the $L=3^{d-1}$ forced $a$-coset lines, the direction in external coordinates is $v_z=B^{-1}(-A^{-1}T_z,a)$ where $T_z=Q(z)+Q(z+a)+Q(z+2a)$. Across the disjoint $a$-cosets, the $T_z$ are independent uniform $\mathbb F_3^r$ vectors. Since all images have the same nonzero right coordinate $a$, their projective directions are independent uniform among exactly $m_0=3^r$ possibilities, even conditioned on secret coordinate changes $A,B,a$. This is a *stronger* restriction than the earlier guaranteed-line theorem.
+
+**Exact planted acceptance lower bound (occupancy):** let $L=3^{d-1}$, $m_0=3^r$. Sum over nonnegative integer $j$ such that $a_j=L-2j\ge0$, $c_j=m_0-a_j-j\ge0$. The no-triple occupancy probability is
+$$
+m_0^{-L}\sum_j m_0!L!/[a_j!j!c_j!2^j].
+$$
+Its complement lower-bounds the detector acceptance under the original MaxEnt fiber distribution.
+
+**Exact uniform-subset false-positive upper bound:** for $n=3^k$, $s=3^d$, ambient projective directions number $(n-1)/2$. Every direction has $n/3$ pairwise disjoint affine lines; triple parallel-line choices number $(n-1)/2\,\binom{n/3}{3}$. Any specified nine distinct points appear in a uniform size-$s$ subset with probability $(s)_9/(n)_9$. Thus Markov bounds the false-positive probability by
+$$
+\frac{n-1}{2}\binom{n/3}{3}\frac{(s)_9}{(n)_9}.
+$$
+
+| 2026 source local profile | Exact source event lower bound | Exact uniform-null event upper bound | **Certified advantage lower bound** |
+|:--|--:|--:|--:|
+| $(k,d,r)=(5,3,2)$ R1 | 0.5547368172 | 0.0069043849 | 0.5478324323 |
+| $(7,4,3)$ R2 | 0.9470512035 | 0.0059101459 | 0.9411410576 |
+| $(9,5,4)$ R3 | 0.9999123630 | 0.0026602674 | 0.9972520957 |
+
+**Reproduction:** [public-only line-collision attack](attacks/ternary_parallel_line_collision.py) checks all exact symbolic rational bounds, exhaustively checks 19,683 GF(3) scalar potential tables for the reduced $(d,r)=(2,1)$ ensemble (2,187 tables have three forced parallel lines, exactly 1/9), and samples 24 NCSG + 24 random same-size fibers per source geometry using independent invertible hidden bases. The finite trials check implementation consistency, not the derivation of the bound.
+
+**What this fails to establish:** In the *archived* MDS-HBCE Plant-vs-Null key games, the public NCSG fibers are sampled identically in both games; this test has **zero cryptographic distinguishing advantage from the public-fiber marginal alone**. The published GF(1024) labels do not inherit any asserted ternary-linear row relation. This is a firm negative result against pretending those source fibers are pseudorandom subsets and a strong design gate for future NCSG-*coupled* encodings, **not** an active standalone cryptographic KEM or verified 128/192/256-bit security theorem. Full KEM implementation, correctness, quantum/classical attack assessment, IND-CPA, IND-CCA and QROM proof remain open.
+
+**Terminology:** these finite-geometry counts may follow from elementary standard finite-field facts. They are proved here for this exact sampler; absolute literature novelty has **not** been demonstrated. The source manuscript's NP-completeness result concerns worst-case satisfiability, not average-case indistinguishability.
