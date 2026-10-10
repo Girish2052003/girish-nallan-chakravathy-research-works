@@ -1,6 +1,6 @@
 ---
-title: "SG-DIFRA: Differential Fibers, Hidden-MDS Labels, and the Limits of Provable KEM Security"
-subtitle: "EUROCRYPT 2028 research-target revision — cryptanalytic draft, 10 October 2026"
+title: "SG-DIFRA: From Broken Hidden-MDS KEM to an NCSG-Only Mathematical Research Program"
+subtitle: "NCSG-only authorship constraint — cryptanalysis, exact obstructions, and research direction, 10 October 2026"
 author:
   - "Girish Nallan Chakravathy"
   - "Sreedevi Kannan"
@@ -196,7 +196,7 @@ for each index. Both decapsulation procedures select identical rows and run the 
 
 **Security interpretation.** The theorem does not break MDS-HBCE or q-ary LPN; instead it proves the purported NCSG hardness is not exercised by the cryptographic channel. An actual NCSG-hard KEM would require a new coupling between the finite-difference distribution and hidden labels, plus new average-case and chosen-ciphertext analyses. Merely asserting NCSG-DS NP-completeness cannot supply that coupling. The public NCSG material can therefore be described as a mathematically exact, cryptographically redundant indexing layer.
 
-# 7. Assumption boundary and conditional hybrid
+# 7. Assumption boundary and conditional game argument
 
 Define *PlantMDS-HBCE* as the ordered public label distribution in Section 5 and *NullMDS-HBCE* as the same distribution with each planted label independently replaced by uniform nonzero $K^N$ row. The **MDS-HBCE assumption** is that no efficient, appropriately resource-bounded adversary distinguishes these games. This assumption has no proof here.
 
@@ -290,7 +290,7 @@ The matrix $H$ is dense, has $q=m3^d$ rows and $N$ coordinates in $K=\mathbb{F}_
 | SGD-R2 | 124,416 | 149,299,200 | 487,710,720 |
 | SGD-R3 | 497,664 | 796,262,400 | 2,786,918,400 |
 
-The original profiles consequently require roughly 73.83 MiB, 465.12 MiB and 2,657.81 MiB of ciphertext **before** framing or extra metadata. These sizes are exact *lower bounds* from the original algorithms, not implementation measurements or a weak-attack estimate. A new compression claim would need to show correctness and security after the changed ciphertext distribution. A hybrid combiner does not eliminate this bandwidth defect.
+The original profiles consequently require roughly 73.83 MiB, 465.12 MiB and 2,657.81 MiB of ciphertext **before** framing or extra metadata. These sizes are exact *lower bounds* from the original algorithms, not implementation measurements or a weak-attack estimate. A new compression claim would need to show correctness and security after the changed ciphertext distribution. An external KEM or combiner would not repair this construction's bandwidth defect.
 
 ## 12.2 Independent reduced-parameter planted-subspace recovery experiment
 
@@ -309,36 +309,73 @@ In the accompanying `toy_hidden_mds_attack.py`, with $m=6$ buckets of size $B_0=
 | Are the source finite correctness tails small? | Yes, under ideal independent error and decoder assumptions | End-to-end implementation validation |
 | Is standalone SG-DIFRA IND-CPA? | Only a reduction conditional on unproved MDS-HBCE and $\mathbb F_{1024}$-LPN | Proof of those premises or independent finite estimator |
 | Is standalone SG-DIFRA QROM IND-CCA? | Not established | An explicit transform reduction with losses and failure handling |
-| Is the optional hybrid quantum IND-CCA? | Follows **conditionally** from matching KEM-combiner hypotheses if one ingredient and the core are quantum secure | Instantiated independent ML-KEM library, split-key core, quantum model and full software validation |
+| Is a standalone NCSG-only KEM proven quantum IND-CCA? | No | A complete new trapdoor/CPA proof and quantum CCA transform |
 
-## 12.4 Optional robust parallel hybrid — a *different* KEM
+## 12.4 Rejection of all borrowed KEM components for the active research direction
 
-To provide a defensible additional *system-level* security basis while preserving the new NCSG/MDS research direction, define two independent ingredients: $\mathrm{SGD}$ for standalone SG-DIFRA and $\mathrm{MLKEM}$ for NIST FIPS-203 ML-KEM-1024. Both key pairs are generated independently and used *only* within the composite KEM, with distinct seed domains. Both encapsulations use independent coins and their ciphertexts are length-framed and canonically parsed.
+The author's design constraint is now explicit: **the next SG-DIFRA candidate must use its own NCSG-based algebraic trapdoor and encryption channel**. The GRS-coded noisy-linear layer documented in Sections 5–11 remains an **archived research iteration** for mathematical provenance and attack comparisons, not the newly approved active construction. It imports well-known GRS and noisy-linear ideas and fails the intended design-independence criterion. No standardized KEM, parallel fallback, or externally proposed KEM design is an ingredient of the active research direction.
 
-Let $(c_M,k_M)$ and $(c_S,k_S)$ denote encapsulations under ML-KEM and SG-DIFRA. The combined ciphertext is $c={\mathrm{LP}}(c_M)\Vert{\mathrm{LP}}(c_S)$, and the shared secret is
-\[
-k=W\!\big(k_M,k_S;{\mathrm{LP}}(ek_M)\Vert{\mathrm{LP}}(ek_S)\Vert
-{\mathrm{LP}}(c_M)\Vert{\mathrm{LP}}(c_S)\Vert{\mathrm{LP}}(\text{context})\big)
-\]
-for a **fully specified** split-key-PRF core $W$ in the intended classical/quantum security model. Here $\mathrm{LP}$ means an unambiguous length-prefixed byte encoding and all strings include a fixed protocol version. The repository contains canonical encoding and binding tests as **nonproduction demonstration code**. A generic SHAKE-256 computation in a test fixture must *not* be called a proven QROM split-key-PRF instantiation.
+The archived algorithms remain fully described because deleting demonstrated mistakes would conceal essential falsification evidence. **No replacement algorithm is yet certified**. The following two mathematically testable experiments are new NCSG-native directions; we must reject any candidate failing either adversarial test before treating it as a KEM.
 
-**Conditional theorem (parallel KEM-combiner transfer).** Under the independence, interface and split-key-PRF hypotheses of Giacon–Heuer–Poettering, the parallel KEM is IND-CCA secure (up to the theorem's reductions) if at least one ingredient KEM is IND-CCA secure under the same model. For a quantum conclusion, the surviving ingredient and combiner core must satisfy the matching quantum assumptions.
+## 12.5 NCSG-native two-direction differential compatibility theorem
 
-**Proof.** This is an application of the published split-key-PRF parallel-combiner theorem, not a new reduction from NCSG-DS. A 2025 NIST workshop presentation summarizes these hypotheses; NIST SP 800-227 addresses KEM combiners; a 2026 IETF CFRG Internet-Draft discusses `UniversalCombiner` using public keys and ciphertexts. No unconditional cryptographic security statement follows.
+Let the additive field be $\mathbb{F}_3$, let $a,b\in\mathbb{F}_3^d$ be independent, and define $g_a=\Delta_aQ$ and $g_b=\Delta_bQ$ for a hidden table $Q:\mathbb{F}_3^d\to\mathbb{F}_3^r$. Since translations commute, every realizable pair satisfies the **discrete zero-curl identity**
+$$
+\Delta_b g_a(x)=\Delta_a g_b(x)
+$$
+as well as the cyclic period conditions
+$$
+\sum_{j=0}^{2}g_a(x+ja)=\sum_{j=0}^{2}g_b(x+jb)=0.
+$$
 
-**Consequences.** The hybrid can retain security against compromise of the unproved MDS-HBCE hypothesis **if** the independently implemented ML-KEM-1024 and the split-key-PRF core remain secure. This is **not** evidence that standalone SG-DIFRA resists cryptanalysis, and it retains the unacceptable ciphertext expansion of the SG-DIFRA component.
+**Proposition 12.1 (two-direction integrability).** On every affine coset of the plane generated by $a,b$, the two cyclic line-sum conditions and the zero-curl identity are **necessary and sufficient** for some table $Q$ with $\Delta_aQ=g_a$ and $\Delta_bQ=g_b$. The potential $Q$ is determined up to one additive constant on each coset. In particular, when $d=2$, one scalar-output table has exactly $3^2-1=8$ degrees of freedom in its joint pair of derivatives, and a vector with $r$ outputs has $8r$.
 
-## 12.5 Complete bytes, repeated-key attacks and side channels remain open
+**Proof.** Necessity follows by telescoping along each length-three line and the commutativity of additive translation. For sufficiency, fix one vertex and potential value zero. Define the value at every other vertex by summing the prescribed edge derivatives along any grid path using steps $a,b$. All elementary squares have zero circulation by zero-curl; all winding cycles have zero circulation by the two cyclic line-sum conditions. Every two paths are generated by these elementary cycles and winding cycles. Hence the integral is independent of path. The only freedom is an additive constant on each connected plane coset. For $d=2$, the kernel of the joint derivative map is the one-dimensional space of constant tables, yielding rank $9-1=8$ by rank-nullity. $\square$
 
-A valid chosen-ciphertext proof must address failed parsing without accessing uninitialized rejection secrets; malformed symbols, duplicate support encodings and overlong inputs; complete ciphertext and public-key binding; deterministic re-encryption; secret-dependent GRS decoder timing/cache behavior; and multi-target use of the same large public $H$. The original pseudocode's malformed secret-key branch refers to a fallback value that may not exist on parse failure. A production implementation must reject corrupted secret keys explicitly rather than fabricate implicit-rejection output from an unavailable secret.
+**Caution.** Public checks of zero-curl and line-sums are *efficient*. They are algebraic consistency conditions, not a hardness reduction. A secret potential cannot be made difficult merely by publishing its two directional derivative tables: the constructive proof gives a polynomial-time recovery method up to additive constants. The accompanying exact finite fixture integrates one hundred random ternary tables and rejects deliberately inconsistent derivatives.
 
-Tests of toy finite algebra and canonical wire formatting establish **neither** side-channel resistance **nor** CCA security. No full production-quality constant-time KEM implementation is certified in this repository.
+## 12.6 New rejected NCSG-witness ciphertext: an exact public linear-algebra attack
 
-## 12.6 EUROCRYPT 2028 submission gates
+Consider directly coupling the secret $s\in\mathbb{F}_3^n$ to public NCSG local relations $r_i(X)=f_i(X_{\mathcal{N}(i)})-b_i$ where $b_i=f_i(s_{\mathcal{N}(i)})$. This repairs the earlier defect that public geometry is completely independent of the hidden witness, but it reintroduces the shared-secret public-target bias described in Section 2. **Coupling is necessary but not sufficient for security.**
 
-The paper should be submitted as a new cryptographic security result only after: (i) a fully frozen and portable standalone distribution; (ii) an actual average-case hardness proof or independently defensible cryptanalysis of MDS-HBCE and field-LPN; (iii) explicit classical and quantum concrete attack estimators; (iv) a complete asymptotic security family and reduction with exact resource losses; (v) a byte-level, fuzzed reference implementation; and (vi) independent peer review. The present research provides exact local theorems, attack-derived corrections, and an optional combiner theorem application, but **does not yet cross those gates**. No EUROCRYPT 2028 official paper deadline was verified on 10 October 2026; do not invent one. Prepare an anonymous artifact only after the official 2028 call and policy appear.
+A natural original-design experiment is to encode zero as a polynomial identity vanishing at $s$,
+$$
+C_0(X)=\sum_{i=1}^m h_i(X)r_i(X),\quad \deg h_i\le D,
+$$
+and encode one as an independently uniform coefficient vector for degree at most $D+\max_i\deg r_i$. The private key can evaluate $C_b(s)$ and test for zero. However, **this mechanism is insecure** even if recovering the witness $s$ is difficult.
 
-Further reproducibility and claims are in `research-2028/SECURITY_REDESIGN_AND_PROOF_LEDGER.md`, `research-2028/profile_cost_audit.py`, `research-2028/toy_hidden_mds_attack.py`, and `research-2028/hybrid_wireformat_and_kdf_harness.py`.
+**Theorem 12.2 (public ideal-span distinguisher).** Let $t=D+\max_i\deg r_i$ and $V_t$ be the coefficient-vector space of degree-at-most-$t$ polynomials in $n$ variables over $\mathbb{F}_3$. Let
+$$
+W_D=\mathrm{span}\big\{X^\alpha r_i(X):1\le i\le m,\ |\alpha|\le D\big\}\subseteq V_t.
+$$
+Assume $W_D\neq V_t$. An attacker knowing only the public polynomials $r_i$ distinguishes $C_0$ from a uniform coefficient vector with success probability at least
+$$
+1-\frac12 3^{\dim W_D-\dim V_t}
+$$
+under equiprobable bits. The attack is polynomial in $\dim V_t$ and $m\binom{n+D}{D}$ and is therefore polynomial in the security parameter whenever $t$ is constant.
+
+**Proof.** Publish all coefficient vectors of monomial multiples $X^\alpha r_i$ as rows of a matrix. By construction every $C_0$ lies in its row span $W_D$; Gaussian elimination tests span membership without knowing $s$. A uniform coefficient vector lies in $W_D$ with probability exactly $3^{\dim W_D-\dim V_t}$. Classify membership as zero, nonmembership as one. Correct-classification probability is $\tfrac12(1+1-3^{\dim W_D-\dim V_t})$. The coefficient space has dimension $\binom{n+t}{t}$; for fixed $t$ all matrix dimensions are polynomial in $n$. $\square$
+
+The companion *GF(3) attack script* implements exactly this theorem on three-variable planted relations, with 150 samples of each class. It verifies that all zero ciphertexts are recognized by public row-space membership, including when the hidden witness correctly evaluates the polynomial to zero. This is an end-to-end **distinguishing break of the proposed experiment**, not a proof that all possible NCSG KEMs are impossible.
+
+**Why naive fixes fail.** Sampling different low-degree multipliers only changes the distribution *inside* $W_D$, not the public membership test. Using more local constraints increases the public matrix and may even make its span full, at which point the zero and one distributions and private decoding must be reanalysed. Supplying an unexpanded arithmetic circuit exposing the $h_i$ directly reveals its factorization. Increasing $D$ until the coefficient space is exponential makes naive dense ciphertext emission infeasible. Neither additive one-time masks that decouple $s$ from the public key nor introducing an unaudited hard-decomposition assumption proves security. Every such redesign needs a new exact security game.
+
+## 12.7 NCSG-only development gates, not an unproved 'secure KEM'
+
+A scientifically admissible replacement for Sections 5–11 must exhibit all of the following *simultaneously*: (1) a genuine joint dependence of public-key distribution and decryption on an NCSG witness (the projection theorem of Section 6 must no longer apply); (2) a public polynomial-time encryption algorithm that does not require the witness; (3) a secret polynomial-time decapsulation algorithm; (4) a public ciphertext distribution resisting simple degree, support, module-membership, rank, derivative-curl, spectral, tensor and candidate-witness tests; (5) a proven IND-CPA reduction to a *precisely stated and independently evaluated* original average-case problem; (6) a complete transform proof under explicit quantum-oracle assumptions for the target IND-CCA security; (7) an efficient, fully instantiated asymptotic sampler and nontrivial fixed parameters.
+
+**No candidate in the current repository meets these seven gates**. It would be mathematically false to declare new SGD-R1/R2/R3 security levels or a complete KEM merely by changing the underlying distribution's name. Three future profiles should be derived **after** an eligible construction and costed against all available classical and quantum attack algorithms. The three historical profiles in Section 11 remain attack baselines, not validated instantiations of the new direction.
+
+## 12.8 Novelty boundary and venue target
+
+The preceding integrability lemma follows from finite difference calculus; the row-span distinguisher is elementary algebra. Their statements are rigorously demonstrable **but their originality as publishable research results is not established**. The high-corruption CSP encryption literature, including Hair–Sahai (2026), is a relevant conceptual predecessor for secret-witness problems. This project must not represent planted constraints as an entirely unprecedented idea. The structural GRS/Schur-square attack literature provides a negative boundary on the *archived* iteration, not borrowed protection for the new one. A separate novelty review and external cryptanalyst assessment are required.
+
+**Conference calendar:** EUROCRYPT 2027's published paper submission deadline was 17 September 2026, which has already passed by this draft's date. EUROCRYPT 2028 is the forward research target from the preceding project discussion; no verified 2028 CFP/deadline has been recorded. Submission and acceptance cannot be promised.
+
+The new NCSG-only tests and research status are documented in:
+\`research-2028/math/multidirection_cocycle.py\`,
+\`research-2028/attacks/public_ideal_membership_break.py\`, and
+\`research-2028/NCSG_ONLY_RESEARCH_STATUS.md\`.
 
 # 13. Verification, limitations and responsible next steps
 
@@ -348,28 +385,26 @@ A publication-ready new cryptographic claim would require at least: an executabl
 
 # 14. Conclusion
 
-The successive SG-DIFRA repairs address specific demonstrated weaknesses, and the surviving finite-field mathematics remains valuable. Nevertheless the proposed ciphertext-security engine is a hidden-MDS-label problem combined with noisy linear samples; the NCSG geometry is statistically and functionally redundant for security under the actual generator. The strong statement supported by this draft is therefore *attack-driven cryptographic analysis with conditional reductions*, not a formally verified post-quantum KEM. Any security promotion needs new mathematics and independent cryptanalysis, not a change of adjectives.
+The successive SG-DIFRA repairs address specific demonstrated weaknesses, and the surviving finite-field mathematics remains valuable. Nevertheless the proposed ciphertext-security engine is a hidden-MDS-label problem combined with noisy linear samples; the NCSG geometry is statistically and functionally redundant for security under the actual generator. The strong statement supported by this draft is therefore *attack-driven cryptographic analysis plus new mathematically checked NCSG-only obstructions*, not a formally verified post-quantum KEM. The MDS construction is retained for negative and historical study rather than promoted as the user's novel active design. Any security promotion needs new mathematics and independent cryptanalysis, not a change of adjectives.
 
 # References
 
-9. NIST, *Recommendations for Key-Encapsulation Mechanisms*, SP 800-227, September 2025. https://csrc.nist.gov/pubs/sp/800/227/final
-10. Giacon, Heuer, Poettering, *KEM Combiners*, PKC 2018; see NIST presentation https://csrc.nist.gov/presentations/2025/split-key-prfs
-11. Connolly et al., *Hybrid PQ/T Key Encapsulation Mechanisms*, IETF CFRG Internet-Draft, July 2026. https://datatracker.ietf.org/doc/draft-irtf-cfrg-hybrid-kems/
-12. Couvreur et al., *Distinguisher-Based Attacks on Public-Key Cryptosystems Using Reed-Solomon Codes*, arXiv:1307.6458.
+9. Hair and Sahai, *Public Key Encryption from High-Corruption Constraint Satisfaction Problems*, arXiv:2604.10479 (conceptual prior-art comparison, **not** an ingredient).
+10. Couvreur et al., *On the Structure of the Schur Squares of Twisted Generalized Reed-Solomon Codes and Application to Cryptanalysis*, PQCrypto 2025 (archived iteration attack context).
+
 
 1. I. S. Reed and G. Solomon, "Polynomial Codes over Certain Finite Fields," *J. Soc. Indust. Appl. Math.*, 8(2), 300–304, 1960. https://doi.org/10.1137/0108018
 2. S. Gao, "A New Algorithm for Decoding Reed–Solomon Codes," in *Communications, Information and Network Security*, 2003.
 3. A. Couvreur et al., "Distinguisher-Based Attacks on Public-Key Cryptosystems Using Reed–Solomon Codes," *Designs, Codes and Cryptography*, 73, 641–666, 2014. https://arxiv.org/abs/1307.6458
 4. J. Ge, H. Liao, and R. Xue, "Measure-Rewind-Extract: Tighter Proofs of One-Way to Hiding and CCA Security in the Quantum Random Oracle Model," *ASIACRYPT 2024*, 2024.
 5. N. Bindel et al., "Tighter Proofs of CCA Security in the Quantum Random Oracle Model," *TCC 2019*, 2019.
-6. F. Giacon, F. Heuer, and B. Poettering, "KEM Combiners," *PKC 2018*, 2018.
-7. NIST FIPS 203, "Module-Lattice-Based Key-Encapsulation Mechanism Standard," 2024. https://doi.org/10.6028/NIST.FIPS.203
+
 8. Source manuscript: Girish Nallan Chakravathy and Sreedevi Kannan, *SG-DIFRA: An Attack-Driven NCSG KEM with Secret Incidence and MDS Coding*, author-provided 26-page PDF, October 2026.
 
 # Appendix A. Reproduction and claim labels
 
-Run \`python formal-verification-and-mathematical-proofs/test_sg_difra.py\` and \`python formal-verification-and-mathematical-proofs/profile_bounds.py\`. A passing run is evidence only for the printed fixtures and calculations. The project status is **RESEARCH DRAFT — CRYPTOGRAPHIC SECURITY NOT ESTABLISHED**.
+Run \`python formal-verification-and-mathematical-proofs/test_sg_difra.py\` and \`python formal-verification-and-mathematical-proofs/profile_bounds.py\`. A passing run is evidence only for the printed fixtures and calculations. The active construction status is **NCSG-ONLY RESEARCH DIRECTION — NO VALIDATED KEM OR SECURITY LEVELS**.
 
 # Appendix B. Submission caution
 
-EUROCRYPT 2028 is the research target. An official 2028 CFP and deadline have not been verified as of 10 October 2026. The previous EUROCRYPT 2027 deadline was 17 September 2026. The original paper and this credited research version are *not anonymous*. For a future double-blind venue, apply the current published formatting, author-identification, repository and AI-use rules; do not upload the named version as an anonymous submission. Verify all bibliographic records directly from publishers before submission.
+EUROCRYPT 2028 is the research target. An official 2028 CFP and deadline have not been verified as of 10 October 2026. The previous EUROCRYPT 2027 deadline was 17 September 2026. The original paper and this credited research version are *not anonymous*. This revision is not a 2027 submission. For a future double-blind venue, apply the current published formatting, author-identification, repository and AI-use rules; do not upload the named version as an anonymous submission. Verify all bibliographic records directly from publishers before submission.
