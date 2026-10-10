@@ -142,7 +142,9 @@ class PublicInversionTests(unittest.TestCase):
             preimage0={x for x,y in F.items() if y==baseline}
             self.assertEqual(len(preimage0),3**d)
             for target in alltargets:
-                h=public_invert(F,target,basis)
+                # Translate *increments*, not absolute function values:
+                # c_f(h)=f(h)-f(0)=target-baseline.
+                h=public_invert(F,add(target,F[(0,)*k]),basis)
                 translated={add(x,h) for x in preimage0}
                 expected={x for x,y in F.items() if y==target}
                 self.assertEqual(translated,expected)
