@@ -2,7 +2,7 @@
 
 ## SG-DIFRA: attack-driven post-quantum KEM research
 
-This repository hosts the **SG-DIFRA cryptanalysis and revision project**, based on the author-supplied 26-page `SG_DIFRA_PQC_KEM.pdf` manuscript dated October 2026.
+This repository hosts the **SG-DIFRA cryptanalysis and revision project**, based on the author-supplied 26-page `SG_DIFRA_PQC_KEM.pdf` manuscript with original PDF timestamp 11 September 2026.
 
 **Security status: experimental, not independently validated.** The original manuscript proves several algebraic facts and correctness estimates. Its end-to-end IND-CPA/IND-CCA security relies on unproved distributional assumptions (MDS-HBCE and 1024-ary LPN), and its three profile estimates are not full attack-cost analyses. No finite collection of scripts establishes the absence of all cryptanalytic attacks.
 
@@ -64,3 +64,11 @@ Unresolved cryptographic obligations are tracked openly as [new hardness-assumpt
 **STOP gate:** There is **no** standalone NCSG-based IND-CPA/IND-CCA proved KEM here, and no justified current or replacement 128/192/256-bit security claims. The no-holes request is not mathematically certifiable. Never label the active draft 'formally verified secure' or 'conference-ready' without completing the assumptions, reduction, full reference code, independent attacks, and venue formatting. EUROCRYPT 2027's listed submission deadline was 17 September 2026; EUROCRYPT 2028 is the next research target.
 
 The binding NCSG-only, no-reuse-of-existing-KEM design constraint and all remaining cryptographic theorem gates are tracked in [issue #6](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/issues/6). A complete security proof is still **open**, irrespective of passing algebraic tests.
+
+### Independent October 10 finite-difference adversarial pass
+
+The [active manuscript](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md), Section 4.1, now contains a theorem absent from the original 26-page SG-DIFRA paper: **each public ternary maximum-entropy fiber splits into $3^{d-1}$ affine three-point lines**. The exact source profile geometries therefore have publicly discoverable zero-sum triples, R1 **9** per 27-point fiber, R2 **27** per 81-point fiber, R3 **81** per 243-point fiber. [Executable reproducer](research-2028/attacks/ternary_affine_line_leakage.py) checks three independently randomized bases per original profile and exhaustively checks **all 19,683** ternary scalar tables for $(d,r)=(2,1)$ under a fixed coordinate direction. This is a proved property of the author's NCSG sampler and a future design filter, **not a break of the archived GF(1024) independent dense-label ciphertext layer**.
+
+A hypothetical ternary *affine* assignment-to-label encryption would inherit a public weight-three relation, giving a three-symbol noisy-ciphertext zero-sum event gap $2(23/32)^3/3\approx0.247538$ at error rate $3/16$. Hence simply replacing the archived independent labels by affine NCSG-dependent labels is a *provably insecure repair*. NCSG-dependence **and** absence of public linear parity relations are both necessary constraints on future proposals, not sufficient conditions for IND-CPA security.
+
+**Current disposition:** no secure replacement algorithm has been proved, three new profile security levels cannot be claimed, and full IND-CCA/QROM verification is open. Cryptographic security and a novel trapdoor cannot be established by repetition of the audit alone. EUROCRYPT 2027's 17 September 2026 submission deadline has passed; **EUROCRYPT 2028** remains the prospective target, subject to the actual call for papers.
