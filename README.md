@@ -32,19 +32,19 @@ See `formal-verification-and-mathematical-proofs/` for claims and scripts, `manu
 - [Field, MDS and toy attack regression](formal-verification-and-mathematical-proofs/test_sg_difra.py)
 - [Three profile correctness and specific attack arithmetic](formal-verification-and-mathematical-proofs/profile_bounds.py)
 
+**Active direction:** NCSG-only; no ML-KEM, parallel KEM fallback, or pre-existing KEM as an ingredient. The archived MDS and noisy-linear constructs are prior iterations and must not be claimed as an original secure design.
+
 **Scientific gate:** This is a reproducible *research draft*, not a submission-ready, formally proved or independently accredited KEM. Missing hard-distribution proofs cannot be asserted into existence.
 
 ## EUROCRYPT 2028 research target — October 2026 revision
 
 **Research status (not a security certificate):** The *standalone* SG-DIFRA-MDS proposal has **not** been shown IND-CPA or QROM IND-CCA secure. Two central hardness assumptions (MDS-HBCE and q-ary LPN) remain unproved and without a complete classical/quantum concrete attack-cost analysis. The public NCSG fiber geometry is cryptographically redundant in the specified current label distribution; its valid NP-completeness theorems are kept and distinguished from cryptographic security.
 
-The new research track preserves the original theorems and attack-driven history while adding:
+The NCSG-only research track preserves the original theorems and attack-driven history while adding:
 - [EUROCRYPT 2028 complete research-target draft](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md) — [PDF](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf) / [Word](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx). Both binaries are generated and equation-gated in CI. This is **not** a submitted or accepted conference paper.
 - [Security redesign and theorem ledger](research-2028/SECURITY_REDESIGN_AND_PROOF_LEDGER.md).
 - [Exact key/ciphertext cost script](research-2028/profile_cost_audit.py); current SGD-R1/R2/R3 single ciphertexts need at least **77,414,400 / 487,710,720 / 2,786,918,400 bytes**, before framing.
 - [Toy hidden-MDS subspace attack](research-2028/toy_hidden_mds_attack.py). Recovers planted positions in exhaustive small exact GF(1024) examples, **not** a real-size break.
-- [Hybrid KDF and canonical encoding test harness](research-2028/hybrid_wireformat_and_kdf_harness.py); **not** an audited KEM implementation.
-- An **optional** independently generated ML-KEM-1024 parallel ingredient under a published split-key-PRF-combiner theorem; if the standard component and combiner are secure in the same security model, it can protect the *hybrid* even if standalone SG-DIFRA is broken. It does **not** prove the new SG-DIFRA assumption or solve ciphertext expansion.
 - Automated mathematical integrity check of both Word/PDF manuscripts after build.
 
 **Original manuscript provenance:** the author-uploaded 26-page original PDF has SHA-256 \`24461af422a6a7d1fbadcc29fe4fe372761805a846226d6d343e7180c5382f4d\`. The repository's [original extracted-text archive](archive/SG_DIFRA_PQC_KEM_ORIGINAL_EXTRACTED_TEXT.txt) preserves textual content, **not the exact binary PDF**. Do not cite it as a bit-identical source. Contributors are listed as **Girish Nallan Chakravathy and Sreedevi Kannan**, matching the uploaded original.
@@ -56,3 +56,9 @@ The new research track preserves the original theorems and attack-driven history
 ### Research milestones and independent validation gates
 
 Unresolved cryptographic obligations are tracked openly as [new hardness-assumption analysis](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/issues/1), [complete byte-level KEM and QROM audit](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/issues/2), [ciphertext expansion redesign](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/issues/3), [byte-exact original PDF archival](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/issues/4), and [2028 CFP / anonymization readiness](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/issues/5). [Original binary provenance](archive/SOURCE_ORIGINAL_BINARY_MANIFEST.md) records its exact SHA-256 and verifies that the extracted-text copy is not mislabeled as the original PDF.
+
+### Author-directed NCSG-only reset (2026-10-10)
+
+**Superseding instruction:** No external KEM, ML-KEM ingredient, hybrid security fallback, or borrowed code/noisy-linear construction forms the active SG-DIFRA research direction. Earlier GRS/noisy-linear work and its attacks are maintained only as historical, independently falsifiable research. The 2028 manuscript is [the active NCSG-only research draft](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md), with [PDF](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf) and [Word](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx) generated only after scientific checks. Its unconditional results include a multi-direction ternary discrete-curl integrability theorem, a constructive recovery proof, and a public bounded-degree ideal-membership attack. Code: [integrability regression](research-2028/math/multidirection_cocycle.py) and [rank distinguisher](research-2028/attacks/public_ideal_membership_break.py). See [current security and originality status](research-2028/NCSG_ONLY_RESEARCH_STATUS.md).
+
+**STOP gate:** There is **no** standalone NCSG-based IND-CPA/IND-CCA proved KEM here, and no justified current or replacement 128/192/256-bit security claims. The no-holes request is not mathematically certifiable. Never label the active draft 'formally verified secure' or 'conference-ready' without completing the assumptions, reduction, full reference code, independent attacks, and venue formatting. EUROCRYPT 2027's listed submission deadline was 17 September 2026; EUROCRYPT 2028 is the next research target.
