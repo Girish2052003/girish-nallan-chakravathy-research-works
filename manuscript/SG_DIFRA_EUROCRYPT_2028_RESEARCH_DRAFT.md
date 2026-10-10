@@ -406,6 +406,14 @@ $$
 
 By additivity $f(x_t)=f(0)+c_f(x_t)=t$. This holds for **every target and every potential table**, with no randomized oracle or hardness assumption. $\square$
 
+**Corollary 4.6a (public translation equivalence of all local target fibers).** For *any* two public local targets $b,b'\in\mathbb F_3^r$, a public-only algorithm computes $h$ such that
+
+$$
+f^{-1}(b')=f^{-1}(b)+h.
+$$
+
+**Proof.** Theorem 4.6 supplies a public $h\in C(f)$ with $c_f(h)=b'-b$. By the definition of $C(f)$, $f(x+h)=f(x)+b'-b$ for **every** $x$. Translation by $h$ is invertible, so it bijectively carries all of $f^{-1}(b)$ onto all of $f^{-1}(b')$. $\square$ This equivalence is stronger than finding a single preimage and needs neither an original secret witness nor a probabilistic generic hardness assumption. It remains **local**: overlapping global constraints cannot generally be translated independently.
+
 **Meaning of the computational bound.** Exhaustively verifying one direction requires $3^k$ function evaluations and there are at most $3^k$ directions. The loose upper bound $O(kr3^{2k})$ is therefore polynomial in the size of an **explicit** truth table, which is appropriate to the original locally enumerated construction: the frozen inputs have sizes $3^5=243$, $3^7=2187$, and $3^9=19683$. This does **not** imply polynomial inversion in the *succinct input dimension* $k$ for an arbitrary circuit representation when $k$ grows. Rather, the original small public local map cannot serve as a hidden trapdoor because valid inverse images can be synthesized openly and reused for all targets after one preprocessing pass. Nor does locally solving every predicate separately necessarily solve overlapping global constraints.
 
 **Theorem 4.7 (exact finite bound for identifying the original left shift space).** For a uniformly independently sampled potential table $Q_0:\mathbb F_3^d\to\mathbb F_3^r$, with $d\ge2$, the hidden $r$-dimensional $W_0$ is not only contained in $C(f)$; except with the following explicitly bounded probability, it **equals** $C(f)$:
