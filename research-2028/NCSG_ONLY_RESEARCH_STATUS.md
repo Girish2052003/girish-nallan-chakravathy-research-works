@@ -186,3 +186,34 @@ $$
 **Consequence for novel-KEM designs.** Secretly permuting coordinates or hiding the original input direction $a$ is **not** a source of trapdoor secrecy once the public finite-difference map is evaluable in this small domain. This rejects *coordinate-hiding as the sole NCSG security mechanism*. The theorem does not recover the entire matrix $B$ or a global NCSG witness $s$. It also does not distinguish the historical MDS-HBCE Plant/Null games because both publish NCSG predicates from the same distribution; the independently random GF(1024) labels remain unlinked to these ternary differential identities. Round 5 independently refutes the historical KEM's asymptotic security under a distinct fixed-field attack. There is **still no complete new NCSG-only trapdoor KEM, no IND-CPA/CCA/QROM security proof, no proven classical/quantum exponential lower bound, and no validated 128/192/256-bit parameter sets**.
 
 **Research gate:** A genuine future NCSG-based construction must demonstrate a cryptographically essential *secret inversion advantage* that persists even when all public low-degree directional derivatives are used as attack features, and must derive its security from a precisely defined independently cryptanalyzed average-case distribution. Merely choosing a larger local $k$ or public entropy does not satisfy this gate.
+
+
+## Round 7 — direct answer to Round 6: its original primitive was NOT fixed; unconditional public local inversion proves it cannot act as a secret trapdoor (10 Oct 2026)
+
+**Checked source state:** Round 6 proved a successful public second-difference attack on the original ternary MaxEnt NCSG local maps. Its manuscript and tests identified a vulnerability and a rejection criterion, **but no secure substitute for those vulnerable local functions was implemented**. We are explicitly not relabeling that as a fixed KEM. The old local MaxEnt function stays in this research repo as a **mathematical specimen and historically rejected secret inversion candidate**, not an active cryptographic decryption trapdoor.
+
+**New unconditional Theorem 4.6:** For the original $f(x)=Au_L+(\mathsf T_a-I)Q_0(u_R)$, $(u_L,u_R)=Bx$, define publicly
+$C(f)=\{h:f(x+h)-f(x)\text{ does not depend on }x\}$. This is a vector subspace and $c_f(h)=f(h)-f(0)$ is a linear map from $C(f)$ **onto all of $\mathbb F_3^r$**. Proof: $W_0=B^{-1}(\mathbb F_3^r\times\{0\})$ is contained in $C(f)$ and its increment map $c_f|_{W_0}$ is an isomorphism through invertible $A$. No distributional assumption is necessary; this is valid for EVERY table $Q_0$, every nonzero $a$ and every invertible $A,B$.
+
+**Public preimage algorithm, with success 100% over all legitimate source keys:** Enumerate and fully validate all candidate constant-derivative directions in a public complete function table; choose $r$ candidate directions $h_j$ whose *public* increments $c_f(h_j)$ form a basis. For any target $t$, solve $\sum\gamma_jc_f(h_j)=t-f(0)$ and return $x_t=\sum\gamma_jh_j$. Then $f(x_t)=t$ **exactly**. A related public vector $h$ with $c_f(h)=t'-t$ maps the full local fiber $f^{-1}(t)$ bijectively onto $f^{-1}(t')$. Preprocessing uses at most $O(kr3^{2k})$ operations, polynomial in the **explicit** public truth table but exponential in a succinct $k$-coordinate circuit representation. This is a **local inversion theorem**, not a solution to the globally overlapped NCSG-DS system or a direct break of historical independent GF(1024) ciphertext labels.
+
+**New exact Theorem 4.7:** The public constant-derivative subspace itself equals the formerly hidden $r$-dimensional left shift space $W_0$ except with probability at most
+
+$$
+\frac{2\cdot3^r}{3^{r(3^{d-1}-1)}}+
+\frac{(3^d-3)3^r}{3^{r(4\cdot3^{d-2}-1)}}.
+$$
+
+Derivation: for nonzero $b\in\langle a\rangle$, the operator $(T_b-I)(T_a-I)$ has rank $3^{d-1}$; for $b$ independent of $a$ it has rank $4\cdot3^{d-2}$. In either case the scalar constant function belongs to the operator image, so uniform scalar table maps to *some constant* with probability $3^{-(R-1)}$; each of $r$ independent outputs multiplies the exponent. A union bound over $2\cdot3^r$ and $(3^d-3)3^r$ exterior shifts gives the result. **The probabilistic uniqueness of $W_0$ is NOT needed for unconditional public inversion.**
+
+| Historical geometry | All local targets invertible (exact) | Chance of falsely enlarged public shift-space (upper bound) |
+|:--|:--|--:|
+| SGD-R1 $(k,d,r)=(5,3,2)$ | 9 out of 9 | $4.25033449\cdot 10^{-7}$ |
+| SGD-R2 $(7,4,3)$ | 27 out of 27 | $3.28803091\cdot 10^{-36}$ |
+| SGD-R3 $(9,5,4)$ | 81 out of 81 | $3.39401302\cdot 10^{-151}$ |
+
+**Attacker script:** [public first-difference local inversion](attacks/public_first_difference_local_inversion.py) checks all local output targets in source R1/R2/R3, recovers the public constant-shift subspace on R1/R2, tests 100 random additive identities per geometry, independently computes the mixed operator ranks for $d=2,3,4$, checks the rational profile bounds, and exhaustively enumerates all 19,683 $d=2,r=1$ potential tables: exactly 2,187 parallel and 729 independent-direction false-linear-shift tables. This is finite reproducibility evidence for an unconditional mathematical proof, not a proof of end-to-end KEM safety.
+
+**What is actually "fixed" at the research level:** The protocol design gate is now **explicitly changed**: neither hidden public MaxEnt coordinate geometry nor publicly invertible local predicates may be assumed secret one-way ingredients. The original source functions remain available for historical mathematical comparison; this is **not a working secure KEM replacement**. A new original global secret inversion advantage plus independently cryptanalysed average-case hardness and quantum IND-CCA correctness/reduction is still required. The three old parameter labels **cannot be certified as cryptographic security strengths**. The 2026 GF(1024) hidden-GRS/noisy-linear layer likewise stays historically rejected by Round 5's separate asymptotic KEM attack, rather than being reintroduced.
+
+**Review status:** Rigorous claims about the exact local map, probability bounds and tested source geometries. A cryptographer must not read these as "no polynomial time attack on the KEM", "unbreakable", "all attacks exhausted", or "publication ready".
