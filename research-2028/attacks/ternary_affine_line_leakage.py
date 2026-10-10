@@ -131,6 +131,37 @@ class AffineFiberTests(unittest.TestCase):
                                        for k in range(3)),(0,0,0))
         print("Exhaustive table certificate: 3^9 =",3**9,"scalar Q tables passed")
 
+    def test_first_moment_public_fiber_distinguisher(self):
+        # Differentiate the public NCSG fiber distribution from an arbitrary
+        # random same-cardinality subset. This is *not* a KEM ciphertext break.
+        from statistics import mean
+        rng=random.Random(101)
+        for k,d in ((5,3),(7,4),(9,5)):
+            n=3**k; size=3**d; rr=k-d
+            right_lines=size*(size-1)//6
+            guaranteed=3**(d-1)
+            source_mean=Fraction(guaranteed,1)+Fraction(right_lines-guaranteed,3**rr)
+            null_mean=Fraction(size*(size-1)*(size-2),6*(n-2))
+            self.assertGreater(source_mean,null_mean)
+            threshold=float((source_mean+null_mean)/2)
+            universe=list(product(range(3),repeat=k))
+            source_counts=[]; null_counts=[]
+            for trial in range(30):
+                fiber,_=fixture(k,d,trial*71+2028)
+                source_counts.append(pub_zero_sum_triple_count(fiber))
+                random_subset=set(rng.sample(universe,size))
+                null_counts.append(pub_zero_sum_triple_count(random_subset))
+            accuracy=(sum(x>threshold for x in source_counts)+
+                      sum(x<=threshold for x in null_counts))/60
+            self.assertGreater(accuracy,0.8)
+            print("Public-fiber first-moment distinguisher (not KEM break):",
+                  "k,d",k,d,
+                  "exact NCSG mean",float(source_mean),
+                  "exact null mean",float(null_mean),
+                  "empirical source mean",round(mean(source_counts),2),
+                  "empirical null mean",round(mean(null_counts),2),
+                  "30+30 accuracy",round(accuracy,4))
+
     def test_conditional_ternary_affine_label_distinguisher(self):
         nu=Fraction(3,16)
         alpha=1-Fraction(3,2)*nu
