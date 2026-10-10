@@ -129,6 +129,26 @@ class PublicInversionTests(unittest.TestCase):
             print("R7 ALL public local targets inverted",k,d,
                   "targets",3**(k-d),"basis size",len(basis[0]))
 
+
+    def test_public_translations_biject_every_local_fiber(self):
+        # One public shift maps the ENTIRE preimage of target t to that of
+        # another target tprime. This test never accesses A,B,a or Q.
+        for k,d in ((5,3),(7,4),(9,5)):
+            F,_=original_source_fixture(k,d,2100+k)
+            basis=public_shift_basis(F)
+            r=k-d
+            alltargets=list(product(range(3),repeat=r))
+            baseline=alltargets[0]
+            preimage0={x for x,y in F.items() if y==baseline}
+            self.assertEqual(len(preimage0),3**d)
+            for target in alltargets:
+                h=public_invert(F,target,basis)
+                translated={add(x,h) for x in preimage0}
+                expected={x for x,y in F.items() if y==target}
+                self.assertEqual(translated,expected)
+            print("R7 ALL local fibers publicly translation equivalent",
+                  k,d,"targets",len(alltargets),"per fiber",len(preimage0))
+
     def test_constant_direction_subspace_and_linearity(self):
         # Independently reconstruct the FULL constant-derivative space on
         # R1/R2. Every locally linear mask is public and its increment
