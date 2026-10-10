@@ -1,9 +1,11 @@
-name: Build SG-DIFRA revised PDF and Word
+name: Build SG-DIFRA and EUROCRYPT 2028 PDFs and Word
 on:
   push:
     branches: [main]
     paths:
       - 'manuscript/SG_DIFRA_REVISED.md'
+      - 'manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md'
+      - 'research-2028/**'
       - 'formal-verification-and-mathematical-proofs/**'
       - '.github/workflows/build-research.yml'
   workflow_dispatch:
@@ -20,6 +22,9 @@ jobs:
         run: |
           python formal-verification-and-mathematical-proofs/test_sg_difra.py
           python formal-verification-and-mathematical-proofs/profile_bounds.py
+          python research-2028/profile_cost_audit.py
+          python research-2028/toy_hidden_mds_attack.py
+          python research-2028/hybrid_wireformat_and_kdf_harness.py
       - name: Install publishing tools
         run: |
           sudo apt-get update -qq
@@ -29,17 +34,24 @@ jobs:
           pandoc --standalone --from=markdown+tex_math_dollars+yaml_metadata_block manuscript/SG_DIFRA_REVISED.md --output manuscript/SG_DIFRA_REVISED.docx
           mkdir -p /tmp/sg-difra-lo
           libreoffice -env:UserInstallation=file:///tmp/sg-difra-lo --headless --convert-to pdf --outdir manuscript manuscript/SG_DIFRA_REVISED.docx
+          pandoc --standalone --from=markdown+tex_math_dollars+yaml_metadata_block manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md --output manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx
+          libreoffice -env:UserInstallation=file:///tmp/sg-difra-lo --headless --convert-to pdf --outdir manuscript manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx
+          test -s manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx
+          test -s manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf
+          python formal-verification-and-mathematical-proofs/check_publishing_math.py manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf
           test -s manuscript/SG_DIFRA_REVISED.docx
           test -s manuscript/SG_DIFRA_REVISED.pdf
           python formal-verification-and-mathematical-proofs/check_publishing_math.py manuscript/SG_DIFRA_REVISED.docx manuscript/SG_DIFRA_REVISED.pdf
-          file manuscript/SG_DIFRA_REVISED.docx manuscript/SG_DIFRA_REVISED.pdf
+          file manuscript/SG_DIFRA_REVISED.docx manuscript/SG_DIFRA_REVISED.pdf manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf
       - name: Upload finished research artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: SG-DIFRA-revised-research-draft-PDF-and-DOCX
+          name: SG-DIFRA-and-2028-research-drafts-PDF-and-DOCX
           path: |
             manuscript/SG_DIFRA_REVISED.docx
             manuscript/SG_DIFRA_REVISED.pdf
+            manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx
+            manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf
       - name: Commit PDF and Word directly to research repository
         run: |
           git config user.name "github-actions[bot]"
@@ -50,7 +62,7 @@ jobs:
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --mixed origin/main
-            git add manuscript/SG_DIFRA_REVISED.docx manuscript/SG_DIFRA_REVISED.pdf
+            git add manuscript/SG_DIFRA_REVISED.docx manuscript/SG_DIFRA_REVISED.pdf manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf
             if git diff --cached --quiet; then
               echo "Published binaries already match main"
               exit 0
