@@ -183,6 +183,72 @@ giving a one-event gap of $2|\alpha|^3/3$. At $\nu=3/16$ this gap is exactly $2(
 **Reproduction on the exact original local parameters.** The script \`research-2028/attacks/ternary_affine_line_leakage.py\` samples random valid $A,B,Q_0$ and checks all three recorded $(k,d)$ choices $(5,3),(7,4),(9,5)$ under three independent seeds each. It confirms disjoint partitions into $9,27,81$ affine three-point lines for fibers of size $27,81,243$, respectively, and enumerates public triples using only $S$. These are fully specified local finite tests and an exact symbolic proof, not global KEM security experiments.
 
 
+
+## 4.2 Round-4 theorem: exact finite public-fiber distinguisher from three parallel lines
+
+The original 2026 manuscript proves exact balanced fibers and maximal entropy for the finite differences of a fixed direction. Neither property implies pseudorandom public fibers, and the preceding affine-line theorem left a stronger question unresolved: do independently sampled NCSG fibers satisfy a **public test with a large *provable finite-parameter* distinguishing gap**, rather than just different expectations? The answer is yes. This statement is an attack on a **hypothetical pseudorandom-fiber claim**; it is *not* an attack on the ciphertext of the archived dense-label KEM.
+
+Let $S=f^{-1}(b)\subseteq\mathbb F_3^k$ with $f$, $A$, $B$, $a$ and uniform potential table $Q_0$ as in Section 4, and let $r=k-d$. Let $\mathsf{Uniform}_{k,d}$ denote a uniformly chosen subset of $\mathbb F_3^k$ of exactly $s=3^d$ distinct elements. Define the deterministic, public-only test $D(S)$ to return one if and only if **three distinct affine three-point lines in $S$ are parallel** (have the same one-dimensional direction subspace). The test uses only the enumerated points $S$, with no knowledge of $A,B,a,Q_0,b$ or any secret incidence.
+
+**Lemma 4.3 (independent uniform hidden directions).** In the exact MaxEnt sampler, each of the $L=3^{d-1}$ guaranteed lines from Theorem 4.1 has direction
+
+$
+v_z=B^{-1}\bigl(-A^{-1}T_z,\ a\bigr),\qquad
+T_z=Q_0(z)+Q_0(z+a)+Q_0(z+2a),
+$
+
+where $z$ ranges over the distinct cosets of $\langle a\rangle$ in $\mathbb F_3^d$. The $T_z$ are **independent uniform** vectors of $\mathbb F_3^r$. Conditional on the sampled $A,B,a$, the associated projective directions are independent uniform among exactly $m_0=3^r$ distinct directions, all represented in the affine coset
+
+$
+B^{-1}(\mathbb F_3^r\times\{a\})\subseteq\mathbb F_3^k.
+$
+
+**Proof.** Put $g=\Delta_aQ_0$. The increment from the first point of an $a$-line to the second has left-block value $-A^{-1}[g(z+a)-g(z)]$. In characteristic three,
+
+$
+g(z+a)-g(z)=Q_0(z+2a)-2Q_0(z+a)+Q_0(z)
+=Q_0(z)+Q_0(z+a)+Q_0(z+2a).
+$
+
+Distinct $a$-orbits involve disjoint entries of the uniformly sampled potential table, so their independent sums are uniform in $\mathbb F_3^r$. Applying an invertible linear map preserves uniformity and independence. Different vectors in the displayed affine coset cannot represent the *same* projective direction: a proportionality scalar over $\mathbb F_3$ must preserve the fixed, nonzero right coordinate $a$, hence equals one. Thus precisely $3^r$ direction possibilities exist. $\square$
+
+**Theorem 4.4 (exact finite-statistical distinguishing bounds).** Let $P_1=\Pr[D(S)=1]$ for an NCSG MaxEnt fiber and $P_0=\Pr[D(U)=1]$ for $U\leftarrow\mathsf{Uniform}_{k,d}$. Set $L=3^{d-1}$, $m_0=3^r$, $n=3^k$, $s=3^d$, and for each integer $j$ put $a_j=L-2j$ and $c_j=m_0-a_j-j$. Then
+
+$
+P_1\ \ge\ 1-\frac{1}{m_0^L}
+\sum_{\substack{0\le j\le\lfloor L/2\rfloor\\c_j\ge0}}
+\frac{m_0!\,L!}{a_j!\,j!\,c_j!\,2^j},
+$
+
+and independently
+
+$
+P_0\ \le\ \frac{n-1}{2}{n/3\choose3}
+\frac{(s)_9}{(n)_9},\qquad
+(x)_t=x(x-1)\cdots(x-t+1).
+$
+
+Consequently $D$ is a classical, efficiently computed **single-fiber statistical distinguisher** with advantage $|P_1-P_0|$ at least the difference of the two displayed bounds whenever positive. The test runs in $O(ks^2)$ field operations using point hashing and normalized projective directions.
+
+**Proof.** By Lemma 4.3, assign each of the $L$ forced affine lines an independent uniform direction among $m_0$ possibilities. If any direction is chosen at least three times, three distinct forced lines inside $S$ are parallel, so $D(S)=1$. The exact probability that no direction is used more than twice follows by counting $j$ double-occupied direction bins, $a_j=L-2j$ singly occupied bins and $c_j=m_0-a_j-j$ empty bins. For each permitted $j$, the number of assignments of the $L$ *labeled* affine lines is $m_0!/(a_j!\,j!\,c_j!)\cdot L!/2^j$. Divide by $m_0^L$ and take the complement; any accidental extra lines in $S$ can only increase the detection probability.
+
+For the uniform-subset null, there are exactly $(n-1)/2$ one-dimensional direction subspaces in $\mathbb F_3^k$. For any direction, the ambient space partitions into $n/3$ parallel three-point affine lines; selecting three distinct lines produces nine distinct points. Hence there are $(n-1)/2\cdot{n/3\choose3}$ triples of pairwise parallel ambient lines. The probability that nine specified distinct points occur in a uniformly sampled size-$s$ subset is exactly $(s)_9/(n)_9$. The expected number of fully contained triples is therefore the second displayed expression, and Markov's inequality bounds the chance of at least one such triple. The algorithm enumerates each public affine line using pairs of points and the characteristic-three identity $x+y+z=0$, normalizes a nonzero direction by setting its first nonzero coordinate to one, and groups lines by direction. $\square$
+
+**Exact source-parameter consequences.** These bounds concern exactly the three original ternary local profiles, without parameter interpolation or untested asymptotics:
+
+| Original local geometry | Forced lines $L$ | Possible forced directions $m_0$ | Source $\Pr[D=1]$ lower bound | Uniform-subset $\Pr[D=1]$ upper bound | Certified advantage lower bound |
+|:--|--:|--:|--:|--:|--:|
+| SGD-R1: $(k,d,r)=(5,3,2)$ | 9 | 9 | 0.5547368172 | 0.0069043849 | 0.5478324323 |
+| SGD-R2: $(7,4,3)$ | 27 | 27 | 0.9470512035 | 0.0059101459 | 0.9411410576 |
+| SGD-R3: $(9,5,4)$ | 81 | 81 | 0.9999123630 | 0.0026602674 | 0.9972520957 |
+
+For these choices $d-1=r$, so the number of independently assigned forced lines equals the number of available direction types. Thus the occupancy phenomenon strengthens rapidly across the profiles. The largest original R3 public fiber is distinguishable from a uniformly sampled same-size subset by this **purely geometric single-fiber test** with provable event-probability gap greater than $0.9972$. No secret-incidence data or plaintext ciphertext is required.
+
+**Executable verification and attack boundary.** The reproducible standard-library script \`research-2028/attacks/ternary_parallel_line_collision.py\` computes the two bounds as *exact rational numbers*, verifies the full $3^9=19{,}683$ scalar table ensemble for $(d,r)=(2,1)$ (where precisely $2{,}187$ tables force three parallel lines), and performs an independent public-only $24+24$-fiber Monte Carlo comparison on each original geometry. The exhaustive toy identity checks $2{,}187/19{,}683=1/9$; it cannot replace the general proof. Numerical Monte Carlo detections are diagnostics, not the source of the certified inequalities.
+
+**Cryptographic applicability is explicitly limited.** The archived SG-DIFRA-MDS **Plant and Null label distributions both use the same public NCSG fiber sampler**, and the encrypted labels were independent random $K=\mathbb F_{2^{10}}$ rows except for the hidden MDS replacement. Therefore $D(S)$ has the *same* marginal distribution in both cryptographic games, and this theorem does **not** refute MDS-HBCE or recover an encapsulated key. Indeed, exploiting this public leakage requires a *new* construction that attempts to hide NCSG geometry or assumes NCSG fibers pseudorandom. The original independent dense labeling avoids an assignment-space parity attack only at the price of the previously proved NCSG-removability defect. Neither property establishes a secure, novel NCSG-only KEM, and no claim of novel field-theoretic mathematics relative to prior literature is made here.
+
+
 # 5. Archived 2026 hidden-MDS label construction (not the new candidate)
 
 Select a profile $(n,k,d,r,m,M,u,N,\nu,\ell,\kappa_F,T_{\mathrm{rep}})$ with $M\le1024$, $u<M$ and $u\le N$. Independently sample $m$ NCSG supports, predicates and targets and enumerate $m$ fibers $S_i$, each of size $B_0=3^d$. Sample a master secret $s\in\mathbb F_3^n$ and a hidden set $\mathcal C\subseteq[m]$ of size $M$. For each $i$ sample invertible $R_i$ and a point $\sigma_i$ inside $S_i$ if $i\in\mathcal C$ and outside otherwise. Store $\delta_i=\sigma_i-R_is_{\mathcal N(i)}$ privately. The full NCSG public layer is generated independently of $s$.
