@@ -46,5 +46,6 @@ jobs:
           git add manuscript/SG_DIFRA_REVISED.docx manuscript/SG_DIFRA_REVISED.pdf
           if ! git diff --cached --quiet; then
             git commit -m "Build SG-DIFRA revised audit manuscript PDF and DOCX [skip ci]"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
