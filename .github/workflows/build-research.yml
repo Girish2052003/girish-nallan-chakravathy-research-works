@@ -9,6 +9,9 @@ on:
       - 'formal-verification-and-mathematical-proofs/**'
       - '.github/workflows/build-research.yml'
   workflow_dispatch:
+concurrency:
+  group: ncsgaudit-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
@@ -62,6 +65,10 @@ jobs:
           # concurrent documentation writes never cause binary merge conflicts.
           for attempt in 1 2 3; do
             git fetch origin main
+            if ! git diff --quiet origin/main HEAD -- manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md; then
+              echo "Manuscript source changed during CI; skip obsolete binaries" >&2
+              exit 0
+            fi
             git reset --mixed origin/main
             git add manuscript/SG_DIFRA_REVISED.docx manuscript/SG_DIFRA_REVISED.pdf manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf
             if git diff --cached --quiet; then
