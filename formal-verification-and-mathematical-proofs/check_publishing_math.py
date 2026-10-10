@@ -20,7 +20,8 @@ assert "M ≤ 1024" in text or "M ≤1024" in text, "Core finite field inequalit
 if "EUROCRYPT_2028" in docx:
     # Mathematics glyph fallback: LibreOffice formerly substituted red
     # inverted question marks in the archived nonzero-vector expression.
-    assert "¿" not in text and "¡" not in text, "Mathematics glyph fallback in rendered PDF"
+    badpos=next((i for i,ch in enumerate(text) if ch in "¿¡"),None)
+    assert badpos is None, f"Mathematics glyph fallback in rendered PDF near: {text[max(0,badpos-160):badpos+160]!r}"
 
     normalized=" ".join(text.lower().split())
     assert "theorem 4.1" in normalized, "New ternary structural theorem absent from PDF"
