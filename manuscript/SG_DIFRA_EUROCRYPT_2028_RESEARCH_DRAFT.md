@@ -282,7 +282,7 @@ The union bound does not address high-weight relations or non-linear distinguish
 
 ## 12.1 Serious bandwidth and storage problem in all three profiles
 
-The matrix $H$ is dense, has $q=m3^d$ rows and $N$ coordinates in $K=\mathbb{F}_{2^{10}}$. Any faithful 10-bit-per-coordinate representation requires at least $10qN$ bits. The message ciphertext has $\ell T_{\rm rep}$ full vectors of $q$ field symbols, so even perfect cross-symbol packing requires at least $10q\ell T_{\rm rep}$ bits. For $T_{\rm rep}=7$ the arithmetic is:
+The matrix $H$ is dense, has $q=m3^d$ rows and $N$ coordinates in $K=\mathbb{F}_{2^{10}}$. Any faithful 10-bit-per-coordinate representation requires at least $10qN$ bits. The message ciphertext has $\ell T_{\mathrm{rep}}$ full vectors of $q$ field symbols, so even perfect cross-symbol packing requires at least $10q\ell T_{\mathrm{rep}}$ bits. For $T_{\mathrm{rep}}=7$ the arithmetic is:
 
 | Source profile | Labels | Public label matrix (bytes) | One KEM ciphertext (bytes) |
 |:--|--:|--:|--:|
@@ -296,7 +296,7 @@ The original profiles consequently require roughly 73.83 MiB, 465.12 MiB and 2,6
 
 The GRS proof says no relation involving $\le u$ planted rows exists. It also implies that $u+1$ planted rows are dependent. This is not automatically a security guarantee: an adversary can enumerate one candidate per group, test the rank, identify a planted $u+1$-tuple, and then recover additional planted rows by checking membership in the discovered dimension-$u$ subspace. The search is not efficient for the proposed full parameters, but **the mechanism exists** and is tested on small, exact $\mathbb F_{2^{10}}$ instances.
 
-In the accompanying \texttt{toy\_hidden\_mds\_attack.py}, with $m=6$ buckets of size $B_0=3$, $M=5$, $u=3$, and ambient $N=6$, the attack enumerates group sets and candidate positions until finding a rank-three set of four labels; extending the recovered span identifies all five planted labels. This is a regression against too-strong security narratives; toy performance must not be extrapolated into a finite security-level claim. The attack cost increases combinatorially for the larger parameters and is not a measured full-profile break.
+In the accompanying `toy_hidden_mds_attack.py`, with $m=6$ buckets of size $B_0=3$, $M=5$, $u=3$, and ambient $N=6$, the attack enumerates group sets and candidate positions until finding a rank-three set of four labels; extending the recovered span identifies all five planted labels. This is a regression against too-strong security narratives; toy performance must not be extrapolated into a finite security-level claim. The attack cost increases combinatorially for the larger parameters and is not a measured full-profile break.
 
 ## 12.3 Profile-specific attack and proof matrix
 
@@ -315,16 +315,16 @@ In the accompanying \texttt{toy\_hidden\_mds\_attack.py}, with $m=6$ buckets of 
 
 To provide a defensible additional *system-level* security basis while preserving the new NCSG/MDS research direction, define two independent ingredients: $\mathrm{SGD}$ for standalone SG-DIFRA and $\mathrm{MLKEM}$ for NIST FIPS-203 ML-KEM-1024. Both key pairs are generated independently and used *only* within the composite KEM, with distinct seed domains. Both encapsulations use independent coins and their ciphertexts are length-framed and canonically parsed.
 
-Let $(c_M,k_M)$ and $(c_S,k_S)$ denote encapsulations under ML-KEM and SG-DIFRA. The combined ciphertext is $c={\rm LP}(c_M)\Vert{\rm LP}(c_S)$, and the shared secret is
+Let $(c_M,k_M)$ and $(c_S,k_S)$ denote encapsulations under ML-KEM and SG-DIFRA. The combined ciphertext is $c={\mathrm{LP}}(c_M)\Vert{\mathrm{LP}}(c_S)$, and the shared secret is
 \[
-k=W\!\big(k_M,k_S;{\rm LP}(ek_M)\Vert{\rm LP}(ek_S)\Vert
-{\rm LP}(c_M)\Vert{\rm LP}(c_S)\Vert{\rm LP}(\text{context})\big)
+k=W\!\big(k_M,k_S;{\mathrm{LP}}(ek_M)\Vert{\mathrm{LP}}(ek_S)\Vert
+{\mathrm{LP}}(c_M)\Vert{\mathrm{LP}}(c_S)\Vert{\mathrm{LP}}(\text{context})\big)
 \]
 for a **fully specified** split-key-PRF core $W$ in the intended classical/quantum security model. Here $\mathrm{LP}$ means an unambiguous length-prefixed byte encoding and all strings include a fixed protocol version. The repository contains canonical encoding and binding tests as **nonproduction demonstration code**. A generic SHAKE-256 computation in a test fixture must *not* be called a proven QROM split-key-PRF instantiation.
 
 **Conditional theorem (parallel KEM-combiner transfer).** Under the independence, interface and split-key-PRF hypotheses of Giacon–Heuer–Poettering, the parallel KEM is IND-CCA secure (up to the theorem's reductions) if at least one ingredient KEM is IND-CCA secure under the same model. For a quantum conclusion, the surviving ingredient and combiner core must satisfy the matching quantum assumptions.
 
-**Proof.** This is an application of the published split-key-PRF parallel-combiner theorem, not a new reduction from NCSG-DS. A 2025 NIST workshop presentation summarizes these hypotheses; NIST SP 800-227 addresses KEM combiners; a 2026 IETF CFRG Internet-Draft discusses \texttt{UniversalCombiner} using public keys and ciphertexts. No unconditional cryptographic security statement follows.
+**Proof.** This is an application of the published split-key-PRF parallel-combiner theorem, not a new reduction from NCSG-DS. A 2025 NIST workshop presentation summarizes these hypotheses; NIST SP 800-227 addresses KEM combiners; a 2026 IETF CFRG Internet-Draft discusses `UniversalCombiner` using public keys and ciphertexts. No unconditional cryptographic security statement follows.
 
 **Consequences.** The hybrid can retain security against compromise of the unproved MDS-HBCE hypothesis **if** the independently implemented ML-KEM-1024 and the split-key-PRF core remain secure. This is **not** evidence that standalone SG-DIFRA resists cryptanalysis, and it retains the unacceptable ciphertext expansion of the SG-DIFRA component.
 
@@ -338,7 +338,7 @@ Tests of toy finite algebra and canonical wire formatting establish **neither** 
 
 The paper should be submitted as a new cryptographic security result only after: (i) a fully frozen and portable standalone distribution; (ii) an actual average-case hardness proof or independently defensible cryptanalysis of MDS-HBCE and field-LPN; (iii) explicit classical and quantum concrete attack estimators; (iv) a complete asymptotic security family and reduction with exact resource losses; (v) a byte-level, fuzzed reference implementation; and (vi) independent peer review. The present research provides exact local theorems, attack-derived corrections, and an optional combiner theorem application, but **does not yet cross those gates**. No EUROCRYPT 2028 official paper deadline was verified on 10 October 2026; do not invent one. Prepare an anonymous artifact only after the official 2028 call and policy appear.
 
-Further reproducibility and claims are in \texttt{research-2028/SECURITY\_REDESIGN\_AND\_PROOF\_LEDGER.md}, \texttt{research-2028/profile\_cost\_audit.py}, \texttt{research-2028/toy\_hidden\_mds\_attack.py}, and \texttt{research-2028/hybrid\_wireformat\_and\_kdf\_harness.py}.
+Further reproducibility and claims are in `research-2028/SECURITY_REDESIGN_AND_PROOF_LEDGER.md`, `research-2028/profile_cost_audit.py`, `research-2028/toy_hidden_mds_attack.py`, and `research-2028/hybrid_wireformat_and_kdf_harness.py`.
 
 # 13. Verification, limitations and responsible next steps
 
