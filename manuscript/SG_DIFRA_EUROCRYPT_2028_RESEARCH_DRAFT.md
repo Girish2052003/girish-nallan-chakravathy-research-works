@@ -301,17 +301,17 @@ The original manuscript instantiates the planted public-label distribution over 
 
 **Theorem 9.1 (fixed-field rank-enumeration public-key distinguisher).** Fix $Q=1024$. In the original planted distribution let $q(\lambda)$ nonzero rows of $K^{N(\lambda)}$ be published, with $M(\lambda)$ hidden GRS rows of rank $u(\lambda)<M(\lambda)\le Q$. The null distribution replaces all planted rows with independent uniformly sampled nonzero rows. Assume $q(\lambda)$ is polynomially bounded, $N(\lambda)\ge u(\lambda)+1$, and $N(\lambda)=\Omega(\lambda)$. A uniform deterministic polynomial-time algorithm $D$ satisfies
 
-$
+$$
 \Pr[D(\mathrm{Plant}_{\lambda})=1]=1,
-$
+$$
 
 and
 
-$
+$$
 \Pr[D(\mathrm{Null}_{\lambda})=1]\le
 {q\choose u+1}\left(1-\prod_{i=1}^{u}
 \frac{Q^N-Q^i}{Q^N-1}\right)=\operatorname{negl}(\lambda).
-$
+$$
 
 Thus **the original fixed-field MDS-HBCE asymptotic indistinguishability assumption against all PPT or QPT adversaries is false** for such polynomial-size public-key families. This is a break of its proposed *asymptotic public-key assumption*, not a demonstrated IND-CPA/IND-CCA attack on the three finite ciphertext profiles.
 
