@@ -261,7 +261,7 @@ $$
 G_i=v_i(1,\alpha_i,\alpha_i^2,\ldots,\alpha_i^{u-1})\in K^u.
 $$
 
-Choose full-row-rank $T\in K^{u\times N}$ and a secret bijection $\pi:\mathcal C\rightarrow[M]$. All public row labels initially are sampled independently and uniformly from $K^N\setminus\{0\}$. In each good bucket replace exactly one label with
+Choose full-row-rank $T\in K^{u\times N}$ and a secret bijection $\pi:\mathcal C\rightarrow[M]$. All public row labels initially are sampled independently and uniformly from the nonzero vectors of $K^N$. In each good bucket replace exactly one label with
 
 $$
 h_{i,\sigma_i}=G_{\pi(i)}T.
@@ -282,7 +282,7 @@ $$
 For bit one sample $v\leftarrow K^q$ uniformly. To decode, the secret key identifies the $M$ good bucket coordinates, reorders them via $\pi$, and applies a bounded-distance GRS decoder with
 
 $$
-t_{\mathrm{dec}}=\left\lfloor\frac{M-u}{2}\right\rfloor.
+t_{\mathrm{dec}}=\operatorname{floor}((M-u)/2).
 $$
 
 Return zero if and only if a codeword at distance at most $t_{\mathrm{dec}}$ is found. Every other word decodes to one. For a bit-zero ciphertext,
