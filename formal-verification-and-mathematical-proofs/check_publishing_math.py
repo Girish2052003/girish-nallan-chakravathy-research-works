@@ -21,4 +21,6 @@ if "EUROCRYPT_2028" in docx:
     normalized=" ".join(text.lower().split())
     assert "theorem 4.1" in normalized, "New ternary structural theorem absent from PDF"
     assert "corollary 4.1b" in normalized, "New ternary affine-label attack absent from PDF"
+    assert "round-4 theorem" in normalized, "Round-4 direction-collision theorem absent from PDF"
+    assert "certified advantage lower bound" in normalized, "Round-4 finite source/null bound table absent from PDF"
 print(f"Publication QA PASSED: {n_math} OfficeMath nodes, zero raw TeX-dollar formulas; correct noisy-field and MDS formulas in PDF")
