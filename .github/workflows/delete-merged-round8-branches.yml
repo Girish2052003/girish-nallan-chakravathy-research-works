@@ -1,0 +1,100 @@
+name: Delete merged Round-8 working branches (main remains official)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/delete-merged-round8-branches.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: round8-merged-branch-cleanup
+  cancel-in-progress: false
+
+jobs:
+  delete-merged-branches:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Checkout authoritative main
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Verify both PRs merged and all Round-8 evidence on main before deleting anything
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${GITHUB_REF}" = "refs/heads/main"
+
+          test -s README.md
+          test -s manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md
+          test -s manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf
+          test -s manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx
+          test -s manuscript/SG_DIFRA_REVISED.md
+          test -s manuscript/SG_DIFRA_REVISED.pdf
+          test -s manuscript/SG_DIFRA_REVISED.docx
+          test -s research-2028/ROUND8_PUBLIC_GLOBAL_CSP_SECURITY_LEDGER.md
+          test -s research-2028/NCSG_ONLY_RESEARCH_STATUS.md
+          test -s research-2028/SECURITY_REDESIGN_AND_PROOF_LEDGER.md
+          test -s research-2028/attacks/public_global_treewidth_witness_recovery.py
+
+          grep -Fq 'Theorem 12.9' manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md
+          grep -Fq 'Dechter' manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md
+          grep -Fq 'Round 8' README.md
+          grep -Fq 'only official development branch' README.md
+          grep -Fq 'Theorem R8.1' research-2028/ROUND8_PUBLIC_GLOBAL_CSP_SECURITY_LEDGER.md
+
+          check_pr () {
+            local number="$1" expected_branch="$2" expected_head="$3"
+            local pr
+            pr="$(gh api "repos/${GH_REPO}/pulls/${number}" --jq '[.merged, .head.ref, .head.sha] | @tsv')"
+            local merged ref sha
+            IFS=$'\t' read -r merged ref sha <<< "$pr"
+            echo "PR #${number}: merged=${merged}, branch=${ref}, head=${sha}"
+            test "${merged}" = "true"
+            test "${ref}" = "${expected_branch}"
+            test "${sha}" = "${expected_head}"
+          }
+
+          check_pr 7 round8-global-csp-cryptanalysis-20261010 9c4df75c67b08589c47bcc6ae9d329665ffd0663
+          check_pr 8 round8-prior-art-attribution 963569ccfcc26f8dbd9bb0264b0a215cb8af21e8
+
+          refs="$(gh api "repos/${GH_REPO}/git/refs/heads" --jq '[.[].ref] | sort | join(" ")')"
+          echo "Initial refs: ${refs}"
+          test "${refs}" = "refs/heads/main refs/heads/round8-global-csp-cryptanalysis-20261010 refs/heads/round8-prior-art-attribution"
+
+          test "$(gh api "repos/${GH_REPO}/git/ref/heads/round8-global-csp-cryptanalysis-20261010" --jq '.object.sha')" = '9c4df75c67b08589c47bcc6ae9d329665ffd0663'
+          test "$(gh api "repos/${GH_REPO}/git/ref/heads/round8-prior-art-attribution" --jq '.object.sha')" = '963569ccfcc26f8dbd9bb0264b0a215cb8af21e8'
+          echo 'SAFE TO DELETE: all Round-8 evidence on main, PRs merged, exact refs match.'
+
+      - name: Delete only the two exact merged working branches
+        shell: bash
+        run: |
+          set -euo pipefail
+          for entry in \
+            'round8-global-csp-cryptanalysis-20261010:9c4df75c67b08589c47bcc6ae9d329665ffd0663' \
+            'round8-prior-art-attribution:963569ccfcc26f8dbd9bb0264b0a215cb8af21e8'; do
+            branch="${entry%%:*}"
+            expected="${entry#*:}"
+            actual="$(gh api "repos/${GH_REPO}/git/ref/heads/${branch}" --jq '.object.sha')"
+            test "${actual}" = "${expected}"
+            gh api --method DELETE "repos/${GH_REPO}/git/refs/heads/${branch}"
+            echo "DELETED merged branch: ${branch}"
+          done
+
+      - name: Verify main is the only branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          remaining="$(gh api "repos/${GH_REPO}/git/refs/heads" --jq '[.[].ref] | sort | join(" ")')"
+          echo "Remaining refs: ${remaining}"
+          test "${remaining}" = 'refs/heads/main'
+          echo 'VERIFIED: main is the only remaining branch; research history is retained in merged PRs and commits.'
