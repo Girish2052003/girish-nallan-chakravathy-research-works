@@ -28,4 +28,6 @@ if "EUROCRYPT_2028" in docx:
     assert "round-4 theorem" in normalized, "Round-4 direction-collision theorem absent from PDF"
     assert "theorem 4.4" in normalized, "Round-4 source/null theorem number absent from PDF"
     assert "0.9972" in normalized, "Round-4 R3 concrete certified gap absent from rendered PDF"
+    assert "theorem 9.2" in normalized, "Round-5 public-decapsulation theorem missing in rendered PDF"
+    assert "shared-key recovery" in normalized, "Round-5 end-to-end KEM attack missing in rendered PDF"
 print(f"Publication QA PASSED: {n_math} OfficeMath nodes, zero raw TeX-dollar formulas; correct noisy-field and MDS formulas in PDF")
