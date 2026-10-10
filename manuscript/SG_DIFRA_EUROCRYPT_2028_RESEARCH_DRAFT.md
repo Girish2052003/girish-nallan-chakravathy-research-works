@@ -253,6 +253,100 @@ For these choices $d-1=r$, so the number of independently assigned forced lines 
 **Cryptographic applicability is explicitly limited.** The archived SG-DIFRA-MDS **Plant and Null label distributions both use the same public NCSG fiber sampler**, and the encrypted labels were independent random $K=\mathbb F_{2^{10}}$ rows except for the hidden MDS replacement. Therefore $D(S)$ has the *same* marginal distribution in both cryptographic games, and this theorem does **not** refute MDS-HBCE or recover an encapsulated key. Indeed, exploiting this public leakage requires a *new* construction that attempts to hide NCSG geometry or assumes NCSG fibers pseudorandom. The original independent dense labeling avoids an assignment-space parity attack only at the price of the previously proved NCSG-removability defect. Neither property establishes a secure, novel NCSG-only KEM, and no claim of novel field-theoretic mathematics relative to prior literature is made here.
 
 
+
+## 4.3 Round-6 public recovery of the hidden affine-linearity subspace
+
+The preceding results count public affine lines in **one fiber**. Round 6 studies the stronger original-public-function access model: the original archived key-generation algorithm publishes the local MaxEnt function $f_i$ and publicly enumerates its fiber, so an adversary can evaluate the full local map $f:\mathbb F_3^k\to\mathbb F_3^r$. In the source's actual geometries $k\in\{5,7,9\}$, the entire input space contains only $243$, $2187$, or $19683$ points. Even hiding the matrices $A,B$ and the direction $a$ would not hide a structural subspace of those maps.
+
+Define the full second finite difference along $h\in\mathbb F_3^k$ by
+
+$$
+\mathcal S_h f(x)
+:=f(x)+f(x+h)+f(x+2h).
+$$
+
+Since $-2=1$ in $\mathbb F_3$, this equals $(\mathsf T_h-I)^2f(x)$, where $\mathsf T_hf(x)=f(x+h)$. For any *publicly evaluable* $f$, define its affine-linearity direction set
+
+$$
+\mathcal V(f)=
+\{h\in\mathbb F_3^k:
+\mathcal S_hf(x)=0\ \text{for every }x\in\mathbb F_3^k\}.
+$$
+
+**Theorem 4.5 (public recovery with an exact finite sampling-failure bound).** Sample $A\in GL_r(\mathbb F_3)$, $B\in GL_k(\mathbb F_3)$, a nonzero $a\in\mathbb F_3^d$, and an independent uniform potential table $Q_0:\mathbb F_3^d\to\mathbb F_3^r$. Set
+
+$$
+f(x)=Au_L+(\mathsf T_a-I)Q_0(u_R),
+\qquad (u_L,u_R)=Bx,
+\qquad r=k-d,
+$$
+
+with $d\ge2$. The hidden $(r+1)$-dimensional linear subspace
+
+$$
+V=B^{-1}\bigl(\mathbb F_3^r\times\langle a\rangle\bigr)
+$$
+
+is always contained in the publicly computable $\mathcal V(f)$. Moreover
+
+$$
+\Pr_{Q_0}[\mathcal V(f)\ne V\mid A,B,a]
+\le (3^k-3^{r+1})\,3^{-2r3^{d-2}}.
+$$
+
+Thus scanning **all public directions and all public evaluation inputs** recovers $V$ exactly except with the displayed finite probability. This success statement holds uniformly for *every* invertible $A,B$ and every nonzero $a$, and the algorithm does not need any of those sampled coordinates as input.
+
+**Proof.** Write $Bh=(v,b)$ where $v\in\mathbb F_3^r$ and $b\in\mathbb F_3^d$. Since the source term $Au_L$ is affine linear, its second difference vanishes along every $h$, and commuting finite differences gives
+
+$$
+\mathcal S_hf(x)
+=(\mathsf T_b-I)^2(\mathsf T_a-I)Q_0(u_R).
+$$
+
+If $b=0$, this is zero. If $b=a$ or $b=-a$, then
+
+$$
+(\mathsf T_b-I)^2(\mathsf T_a-I)
+=(\mathsf T_a-I)^3=\mathsf T_a^3-I=0
+$$
+
+up to a nonzero scalar, because the translation $\mathsf T_a$ has order three in characteristic three. This proves $V\subseteq\mathcal V(f)$ deterministically, including all of its $3^{r+1}$ elements.
+
+Now fix any $h\notin V$. Its right component $b$ is linearly independent of $a$. An invertible change of right coordinates maps $a,b$ to distinct coordinate basis vectors. On the vector space of scalar tables on $\mathbb F_3^d$, the commuting operator
+
+$$
+L_{a,b}=(\mathsf T_b-I)^2(\mathsf T_a-I)
+$$
+
+is the tensor product of a one-dimensional first-difference operator of rank two, a one-dimensional squared-difference operator of rank one, and the identity on the remaining $d-2$ dimensions. Consequently its **exact** scalar rank is
+
+$$
+\operatorname{rank}_{\mathbb F_3}(L_{a,b})
+=2\cdot3^{d-2}.
+$$
+
+Each coordinate of the uniformly sampled $Q_0$ is a uniform independent scalar table, so the probability that *all* $r$ output coordinates satisfy $L_{a,b}Q_0=0$ is exactly
+
+$$
+\Pr[\mathcal S_h f\equiv0]
+=3^{-2r3^{d-2}}.
+$$
+
+The event $\mathcal V(f)\ne V$ implies that at least one of the $3^k-3^{r+1}$ exterior directions passes the public all-input zero test. The displayed union bound follows without assuming independence among these candidate directions. $\square$
+
+**Practical enumeration versus asymptotic meaning.** A verifier first evaluates the published function on every element of $\mathbb F_3^k$, then checks $\mathcal S_hf(x)=0$ over every $h,x$. Its worst-case arithmetic cost is $O(kr3^{2k})$, **polynomial in the length of a complete public truth table** but exponential in the length of a succinct $k$-coordinate circuit. A short list of public evaluations can cheaply eliminate most false candidate directions; the implementation uses 32 seeded probe inputs only as a screening optimization and then **checks every input** for every surviving direction. This is not an asserted PPT attack if the function is supplied only as a succinct program with arbitrary growing $k$. For the frozen source geometries it is fully executable.
+
+| Original local profile | $k,d,r$ | Hidden subspace $\dim V$ | Exact finite upper bound on recovery failure |
+|:--|:--|--:|--:|
+| SGD-R1 | $5,3,2$ | $3$ | $8/19683\approx4.06442\times10^{-4}$ |
+| SGD-R2 | $7,4,3$ | $4$ | $3.62169\times10^{-23}$ |
+| SGD-R3 | $9,5,4$ | $5$ | $1.70023\times10^{-99}$ |
+
+**Code and independent finite certificates.** The script at research-2028/attacks/public_second_difference_subspace_recovery.py independently constructs source-distributed full public maps with hidden random invertible basis changes, recovers precisely the intended $V$ from *only* their public tables at all three source geometries, and tests the exact subspace dimensions $3,4,5$. Its independent GF(3) elimination computes scalar operator ranks $2,6,18,54$ for $d=2,3,4,5$. Finally it exhaustively enumerates all $3^9=19683$ scalar potentials on the smallest $d=2$ table and finds exactly $2187$ cases where a fixed independent exterior direction spuriously passes the second-difference test, confirming the theorem's $3^{-2}=1/9$ local probability. These numerical checks are reproducibility evidence for an algebraic proof, **not formal end-to-end KEM verification**.
+
+**Consequences and design rejection rule.** Public masking by $B$ is merely a reversible change of coordinates; it does not conceal the intrinsic affine-linearity subspace of a public MaxEnt map. Any new proposal that places essential secrecy *solely* in the direction subspace $V$ fails this test when its public representation enables full evaluation at comparable sizes. **Recovering $V$ does not reveal the entire secret change of basis $B$, a global NCSG assignment $s$, or the archived GF(1024) GRS row labels.** In particular, the original archived KEM's planted/noise labels remain independently sampled conditional on NCSG public data, so this theorem alone is not an IND-CPA or IND-CCA attack on that ciphertext channel. The earlier full-code archival attack (Theorem 9.2) is separately applicable under its explicit asymptotic assumptions. A viable **genuinely original NCSG-only KEM** must derive hardness from a new publicly encryptable and secretly invertible relation that survives these public affine-direction tests; merely raising $k$ without a sampled average-case hardness reduction is not a verified fix.
+
+
 # 5. Archived 2026 hidden-MDS label construction (not the new candidate)
 
 Select a profile $(n,k,d,r,m,M,u,N,\nu,\ell,\kappa_F,T_{\mathrm{rep}})$ with $M\le1024$, $u<M$ and $u\le N$. Independently sample $m$ NCSG supports, predicates and targets and enumerate $m$ fibers $S_i$, each of size $B_0=3^d$. Sample a master secret $s\in\mathbb F_3^n$ and a hidden set $\mathcal C\subseteq[m]$ of size $M$. For each $i$ sample invertible $R_i$ and a point $\sigma_i$ inside $S_i$ if $i\in\mathcal C$ and outside otherwise. Store $\delta_i=\sigma_i-R_is_{\mathcal N(i)}$ privately. The full NCSG public layer is generated independently of $s$.
