@@ -34,6 +34,7 @@ jobs:
           python research-2028/attacks/ternary_parallel_line_collision.py
           python research-2028/attacks/public_decapsulation_recovery.py
           python research-2028/attacks/public_second_difference_subspace_recovery.py
+          python research-2028/attacks/public_first_difference_local_inversion.py
       - name: Install publishing tools
         run: |
           sudo apt-get update -qq
