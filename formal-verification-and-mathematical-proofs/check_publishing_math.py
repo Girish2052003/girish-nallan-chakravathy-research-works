@@ -18,6 +18,10 @@ assert len(text)>10000, "Unexpectedly short PDF or failed extraction"
 assert "ν=3/16" in text or "ν =3/16" in text or "ν = 3/16" in text, "Noise rate mathematical symbol vanished from rendered PDF"
 assert "M ≤ 1024" in text or "M ≤1024" in text, "Core finite field inequality absent from rendered PDF"
 if "EUROCRYPT_2028" in docx:
+    # Mathematics glyph fallback: LibreOffice formerly substituted red
+    # inverted question marks in the archived nonzero-vector expression.
+    assert "¿" not in text and "¡" not in text, "Mathematics glyph fallback in rendered PDF"
+
     normalized=" ".join(text.lower().split())
     assert "theorem 4.1" in normalized, "New ternary structural theorem absent from PDF"
     assert "corollary 4.1b" in normalized, "New ternary affine-label attack absent from PDF"
