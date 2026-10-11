@@ -10,7 +10,7 @@
     "formal-verification-and-mathematical-proofs/check_publishing_math.py": "fc8cac3bfb08d0bc5908f0e25e9304bc819bdea082593ab8a687356358232ba2",
     "formal-verification-and-mathematical-proofs/profile_bounds.py": "b518923e4a70eb91bd8d4de41f70692a10b9fbb36c0c285051fc9fca9dfd8ac0",
     "formal-verification-and-mathematical-proofs/test_sg_difra.py": "b21e0ecd6886f66af68a6e1cb305f6d44de19d0afc8fd4b8dbee4b29140b72cb",
-    "manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md": "94331f86bcab8625be674f3b23d459051795126553b76c9b6527a404d0dc33d5",
+    "manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md": "0b91668b9cc5e8b83bea09111131f8e1187525d16515ed5f33fbd4a4f271e4b1",
     "manuscript/SG_DIFRA_REVISED.md": "94d42ff9fd09f187e6c4375fdfc60d49705ba434bedb48d510ca43ecb72da30a",
     "research-2028/attacks/fixed_field_mds_hbce_ppt_break.py": "7979350a661a70a3760b96b977693cfb338a78ad386be9921799b221b9c7358c",
     "research-2028/attacks/public_decapsulation_recovery.py": "baae92e006e6fe2984c2ff7d2f7f25a38459789a64439fc9612e1541055003e1",
@@ -179,5 +179,16 @@
       "log": "15-test_public_global_shift_witness_recovery.log",
       "log_sha256": "1cf6cd796c5ff21fdf2e9c4ff032b6ecc9594e2c5d814a9f54d9a11dd8d076e4"
     }
-  ]
+  ],
+  "publication_followup": {
+    "recorded_utc": "2026-10-11T11:26:43.267386+00:00",
+    "base_commit": "40703b21e1e4f7f47dea56e8f6b8a2252951c8e1",
+    "failed_remote_run": 38135135169,
+    "reason": "LibreOffice 24.2.7 restriction-bar fallback in Theorem 12.10; all 15 mathematical programs passed remotely",
+    "change": "Equivalent coordinate-subscript notation with an explicit restriction definition; no theorem or mathematical program changed",
+    "manuscript_path": "manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md",
+    "previous_manuscript_sha256": "94331f86bcab8625be674f3b23d459051795126553b76c9b6527a404d0dc33d5",
+    "revised_manuscript_sha256": "0b91668b9cc5e8b83bea09111131f8e1187525d16515ed5f33fbd4a4f271e4b1",
+    "local_publication_gate": "passed; 40 pages and 994 OfficeMath nodes"
+  }
 }

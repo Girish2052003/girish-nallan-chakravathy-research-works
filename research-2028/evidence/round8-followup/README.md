@@ -27,7 +27,9 @@ Every raw log is retained in this directory. Outputs are finite evidence for the
 
 ## Document verification
 
-Both existing manuscripts were rebuilt from Markdown to editable Word with Pandoc, then rendered to PDF. The active paper has 40 pages and 992 OfficeMath nodes; the short archive has 11 pages and 186 OfficeMath nodes. The publication logs record checks for converted formulas, critical theorem text, preserved field/noise formulas, and broken-glyph fallback. Rendered pages were also inspected visually; crowded tables, a clipped numerical exponent, and malformed delimiters were repaired before publication.
+Both existing manuscripts were rebuilt from Markdown to editable Word with Pandoc, then rendered to PDF. The active paper has 40 pages and 994 OfficeMath nodes; the short archive has 11 pages and 186 OfficeMath nodes. The publication logs record checks for converted formulas, critical theorem text, preserved field/noise formulas, and broken-glyph fallback. Rendered pages were also inspected visually; crowded tables, a clipped numerical exponent, and malformed delimiters were repaired before publication.
+
+The first remote build of commit `40703b21e1e4f7f47dea56e8f6b8a2252951c8e1` passed all 15 mathematical programs but its LibreOffice 24.2.7 renderer produced a fallback glyph for coordinate-restriction bars in Theorem 12.10. The publication gate rejected those generated files before upload or commit. The follow-up uses equivalent coordinate-subscript notation with an explicit definition; the theorem and mathematical code are unchanged. The manifest records the original and revised manuscript hashes separately. The local rebuild passes the unchanged glyph gate, and the associated GitHub Actions run records the remote renderer outcome.
 
 The workflow rebuilds both documents and repeats the publication gates. Its generated files may have different binary hashes because the CI toolchain and timestamps differ. Scientific inputs must remain identical to the audited source hashes; a binary rebuild is not an additional cryptographic result.
 

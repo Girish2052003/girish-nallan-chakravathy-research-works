@@ -905,12 +905,12 @@ These are deliberately **two-factor fixtures**, *not measured primal widths of t
 
 Increasing primal width avoids only the particular low-width bound of Section 12.9. It need not remove the algebraic structure of the source factors.
 
-**Theorem 12.10 (public global constant-shift criterion).** Let $F(x)=(f_i(x|_{S_i}))_{i=1}^m$, with complete public local ternary function tables and public scopes. Write $C_i=C(f_i)$ and $c_i(h)=f_i(h)-f_i(0)$ for its constant-shift subspace and increment map. Define
+**Theorem 12.10 (public global constant-shift criterion).** Let $F(x)=(f_i(x_{S_i}))_{i=1}^m$, where $x_{S_i}$ denotes restriction to the public coordinate scope $S_i$, and assume complete public local ternary function tables. Write $C_i=C(f_i)$ and $c_i(h)=f_i(h)-f_i(0)$ for its constant-shift subspace and increment map. Define
 $$
-D=\{h\in\mathbb F_3^n:h|_{S_i}\in C_i\text{ for every }i\},
+D=\{h\in\mathbb F_3^n:h_{S_i}\in C_i\text{ for every }i\},
 $$
 $$
-\Gamma(h)=(c_i(h|_{S_i}))_{i=1}^m.
+\Gamma(h)=(c_i(h_{S_i}))_{i=1}^m.
 $$
 Both $D$ and $\Gamma$ are computable by public finite-field linear algebra after enumerating the local constant shifts. For every target $t$ with $t-F(0)\in\operatorname{im}\Gamma$, the attacker recovers a complete global witness. If $\Gamma$ is onto the full joint output space, every joint target is publicly invertible. The cost is polynomial in the total explicit local table encoding length and global dimensions, independently of primal width.
 
