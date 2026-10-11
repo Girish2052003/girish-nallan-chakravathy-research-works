@@ -46,7 +46,9 @@ if "EUROCRYPT_2028" in docx:
     assert "corollary 4.8b" in normalized, "Scoped local KEM correctness-to-recovery result missing from PDF"
     assert "theorem 12.10" in normalized, "Global constant-shift criterion missing from rendered PDF"
     assert "11,678" in normalized, "Public oracle reproduction count missing from rendered PDF"
-    assert "no machine-checked" in normalized, "Follow-up verification limitation missing from rendered PDF"
+    # A renderer may wrap between "machine-" and "checked". Strip only
+    # whitespace here, retaining every letter and the literal hyphen.
+    assert "nomachine-checked" in compact.lower(), "Follow-up verification limitation missing from rendered PDF"
     assert "3.62169" in normalized, "Round-6 R2 exact probability bound absent from published PDF"
     assert "shared-key recovery" in normalized, "Round-5 end-to-end KEM attack missing in rendered PDF"
 if "SG_DIFRA_REVISED" in docx:

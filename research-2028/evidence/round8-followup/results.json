@@ -7,7 +7,7 @@
   "security_scope": "Finite mathematical and implementation regressions only; no KEM security certification or proof-assistant verification",
   "source_sha256": {
     ".github/workflows/build-research.yml": "b888346c27b1f4ec166bae7c8c2d7679b3fbc3b11175c33067fe2887dbb88963",
-    "formal-verification-and-mathematical-proofs/check_publishing_math.py": "fc8cac3bfb08d0bc5908f0e25e9304bc819bdea082593ab8a687356358232ba2",
+    "formal-verification-and-mathematical-proofs/check_publishing_math.py": "4167a3b92f251e04160c74bfa47fb94902f40a45d4f0a8ce63d8d8152360a6cb",
     "formal-verification-and-mathematical-proofs/profile_bounds.py": "b518923e4a70eb91bd8d4de41f70692a10b9fbb36c0c285051fc9fca9dfd8ac0",
     "formal-verification-and-mathematical-proofs/test_sg_difra.py": "b21e0ecd6886f66af68a6e1cb305f6d44de19d0afc8fd4b8dbee4b29140b72cb",
     "manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md": "0b91668b9cc5e8b83bea09111131f8e1187525d16515ed5f33fbd4a4f271e4b1",
@@ -189,6 +189,15 @@
     "manuscript_path": "manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md",
     "previous_manuscript_sha256": "94331f86bcab8625be674f3b23d459051795126553b76c9b6527a404d0dc33d5",
     "revised_manuscript_sha256": "0b91668b9cc5e8b83bea09111131f8e1187525d16515ed5f33fbd4a4f271e4b1",
-    "local_publication_gate": "passed; 40 pages and 994 OfficeMath nodes"
+    "local_publication_gate": "passed; 40 pages and 994 OfficeMath nodes",
+    "extraction_check": {
+      "recorded_utc": "2026-10-11T11:30:36.776932+00:00",
+      "base_commit": "5740647e8b9e73f9c7b1c78c856a486078adf171",
+      "failed_remote_run": 38135639717,
+      "reason": "Glyph gate passed; security-status text check failed. Permit whitespace-only wrapping after the literal hyphen.",
+      "previous_checker_sha256": "fc8cac3bfb08d0bc5908f0e25e9304bc819bdea082593ab8a687356358232ba2",
+      "revised_checker_sha256": "4167a3b92f251e04160c74bfa47fb94902f40a45d4f0a8ce63d8d8152360a6cb",
+      "local_controls": "Both document gates pass; simulated line wrap accepted, replacement of No with A rejected."
+    }
   }
 }

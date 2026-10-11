@@ -31,6 +31,8 @@ Both existing manuscripts were rebuilt from Markdown to editable Word with Pando
 
 The first remote build of commit `40703b21e1e4f7f47dea56e8f6b8a2252951c8e1` passed all 15 mathematical programs but its LibreOffice 24.2.7 renderer produced a fallback glyph for coordinate-restriction bars in Theorem 12.10. The publication gate rejected those generated files before upload or commit. The follow-up uses equivalent coordinate-subscript notation with an explicit definition; the theorem and mathematical code are unchanged. The manifest records the original and revised manuscript hashes separately. The local rebuild passes the unchanged glyph gate, and the associated GitHub Actions run records the remote renderer outcome.
 
+The next remote build passed the glyph gate and reached the security-status text check. That check now ignores whitespace in the phrase `no machine-checked`, so a PDF line break after the hyphen is tolerated while the literal letters and hyphen remain mandatory. A local extraction control accepts the wrapped phrase and rejects replacing `No` with `A`. This is a publishing-check change, not a new mathematical test or a changed security claim.
+
 The workflow rebuilds both documents and repeats the publication gates. Its generated files may have different binary hashes because the CI toolchain and timestamps differ. Scientific inputs must remain identical to the audited source hashes; a binary rebuild is not an additional cryptographic result.
 
 ## Review scope
