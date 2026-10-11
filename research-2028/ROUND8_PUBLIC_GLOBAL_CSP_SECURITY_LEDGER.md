@@ -1,5 +1,7 @@
 # Round 8 — Public global witness recovery and security gate
 
+**11 October follow-up:** [new public-evaluation inversion, uniform fiber sampling, scoped key-recovery obstruction, and high-width global shift attack](ROUND8_FOLLOWUP_RESULTS.md). The active manuscript now includes Theorem 4.8, Corollaries 4.8a–b and Theorem 12.10. Research-code and proof-wording defects are repaired. **The secure replacement KEM and profile security levels remain unestablished.** The previous dated results below remain historical evidence within their stated models.
+
 **Date:** 10 October 2026  
 **Status:** Complete *scoped* adversarial proof and tested regression. **No KEM security proof, secure parameter set, or submission closure.**  
 **Prior rounds:** [Round 7 first-difference local inversion](../research-2028/attacks/public_first_difference_local_inversion.py) remains valid. Nothing in Round 8 conceals, deletes, or repairs its unconditional attack. The original local MaxEnt construction is **not** an acceptable standalone cryptographic trapdoor.
@@ -16,7 +18,7 @@ A real KEM would require a specific **key generation, public key, secret key, ci
 
 Construct the **primal graph** $G$ on the global variables, with edges between all variables appearing together in one public constraint scope. For a specified variable elimination order, write $w$ for the induced width, i.e. the largest number of still-uneliminated neighbors of any eliminated variable.
 
-**Theorem R8.1 (unconditional, standard variable-elimination consequence).** For any publicly given *explicit* ternary factor tables and an elimination order of width $w$, a deterministic public-only algorithm outputs a satisfying assignment or an exact unsatisfiability certificate by table elimination in time $\operatorname{poly}(n,m,L)3^{w+1}$, with factor tables of at most $3^w$ entries, where $L$ is the public explicit-input length. Accordingly, public NCSG witness search is polynomial in the explicit input size whenever $w=O(\log(n+L))$.
+**Theorem R8.1 (unconditional, standard variable-elimination consequence).** For any publicly given *explicit* ternary factor tables and a supplied elimination order of width $w$, a deterministic public-only algorithm outputs a satisfying assignment or correctly reports unsatisfiability by table elimination in time $\operatorname{poly}(n,m,L)3^{w+1}$. Each newly generated residual factor has at most $3^w$ entries; input factors are charged to the public explicit-input length $L$ and need not satisfy that residual bound. Public NCSG witness search is polynomial when such an order with $w=O(\log(n+L))$ is supplied or found efficiently. The script uses a min-fill heuristic; it does not promise an optimal order or a separately checkable unsatisfiability certificate.
 
 **Proof.** Eliminate variable $v$. Let the bucket contain all constraints mentioning $v$. Their union of scopes has at most $w+1$ variables. For every assignment to the remaining bucket variables, test all three choices of $v$; keep the residual assignment exactly when some value satisfies every bucket constraint, remembering one successful value. Replace the bucket by the resulting existential projection. The original system is satisfiable exactly when the projected system is, because existential projection preserves and reflects solution existence. Apply this equivalence inductively. If a projection is empty, the system is unsatisfiable. Otherwise reconstruct the complete witness by reversing the eliminations and consulting the recorded choices. Each bucket processes at most $3^{w+1}$ assignments and polynomial-factor table lookups, proving the bound. QED.
 
@@ -46,9 +48,9 @@ Those runs are a **deliberately restricted global-instance experiment**, not evi
 
 Run:
 
-\`\`\`sh
+```sh
 python research-2028/attacks/public_global_treewidth_witness_recovery.py
-\`\`\`
+```
 
 **Important scientific boundaries:** (i) Passing randomized tests does not prove no defect in the code; (ii) the proof of Theorem R8.1 addresses the mathematically defined public-factor model, not program verification of Python semantics; (iii) the archived GF(1024) dense-label cryptanalysis remains a *separate* proven asymptotic attack from Round 5; (iv) no exhaustive classical or quantum attack portfolio exists.
 

@@ -74,7 +74,9 @@ def public_recover_direction_subspace(F,k):
     D=list(F); rng=random.Random(2029)
     probes=rng.sample(D,min(32,len(D)))
     valid=[]
-    for h in D[1:]:
+    # A complete public table need not put the origin first. Projective
+    # normalization already rejects zero; skipping a key loses directions.
+    for h in D:
         if projective(h)!=h:continue
         if all(zero_second_difference(F,h,x) for x in probes):
             if all(zero_second_difference(F,h,x) for x in D):
@@ -104,6 +106,14 @@ def failure_upper_bound(k,d):
     return Fraction(3**k-3**(r+1),3**(2*r*3**(d-2)))
 
 class PublicStructuralAttackTests(unittest.TestCase):
+    def test_reordered_public_table_preserves_recovered_subspace(self):
+        F, expected = original_source_fixture(5, 3, 12)
+        first = (1, 1, 1, 0, 0)
+        self.assertIn(first, expected)
+        reordered = {first: F[first]}
+        reordered.update(F)
+        self.assertEqual(public_recover_direction_subspace(reordered, 5), expected)
+
     def test_exact_difference_operator_rank(self):
         for d in (2,3,4,5):
             self.assertEqual(exact_operator_rank(d),2*3**(d-2))

@@ -15,14 +15,16 @@ assert n_math>=80, f"Insufficient OMML mathematical formulae: {n_math}"
 assert not literal, f"Unconverted math appears as literal dollars: {literal[:5]}"
 text=subprocess.run(["pdftotext","-layout",pdf,"-"],capture_output=True,text=True,check=True).stdout
 assert len(text)>10000, "Unexpectedly short PDF or failed extraction"
-assert "ν=3/16" in text or "ν =3/16" in text or "ν = 3/16" in text, "Noise rate mathematical symbol vanished from rendered PDF"
-assert "M ≤ 1024" in text or "M ≤1024" in text, "Core finite field inequality absent from rendered PDF"
+# Poppler/LibreOffice versions differ in spaces around mathematical operators.
+# Normalize whitespace only; retain every symbol and number in these checks.
+compact="".join(text.split())
+assert "ν=3/16" in compact, "Noise rate mathematical symbol vanished from rendered PDF"
+assert "M≤1024" in compact, "Core finite field inequality absent from rendered PDF"
+# Apply the glyph gate to BOTH publications. The short archive also contained
+# broken set-difference and floor delimiters under newer LibreOffice builds.
+badpos=next((i for i,ch in enumerate(text) if ch in "¿¡"),None)
+assert badpos is None, f"Mathematics glyph fallback in rendered PDF near: {text[max(0,badpos-160):badpos+160]!r}"
 if "EUROCRYPT_2028" in docx:
-    # Mathematics glyph fallback: LibreOffice formerly substituted red
-    # inverted question marks in the archived nonzero-vector expression.
-    badpos=next((i for i,ch in enumerate(text) if ch in "¿¡"),None)
-    assert badpos is None, f"Mathematics glyph fallback in rendered PDF near: {text[max(0,badpos-160):badpos+160]!r}"
-
     normalized=" ".join(text.lower().split())
     assert "theorem 4.1" in normalized, "New ternary structural theorem absent from PDF"
     assert "corollary 4.1b" in normalized, "New ternary affine-label attack absent from PDF"
@@ -38,10 +40,19 @@ if "EUROCRYPT_2028" in docx:
     assert "theorem 12.9" in normalized, "Round-8 public global CSP theorem missing from rendered PDF"
     assert "public global witness" in normalized, "Round-8 adversary claim missing from rendered PDF"
     assert "overlap alone" in normalized, "Round-8 negative security boundary missing from rendered PDF"
+    assert "lemma 1.1" in normalized, "Key-indistinguishability security target missing from rendered PDF"
+    assert "theorem 4.8" in normalized, "Public oracle inversion theorem missing from rendered PDF"
+    assert "corollary 4.8a" in normalized, "Uniform public fiber sampler missing from rendered PDF"
+    assert "corollary 4.8b" in normalized, "Scoped local KEM correctness-to-recovery result missing from PDF"
+    assert "theorem 12.10" in normalized, "Global constant-shift criterion missing from rendered PDF"
+    assert "11,678" in normalized, "Public oracle reproduction count missing from rendered PDF"
+    assert "no machine-checked" in normalized, "Follow-up verification limitation missing from rendered PDF"
     assert "3.62169" in normalized, "Round-6 R2 exact probability bound absent from published PDF"
     assert "shared-key recovery" in normalized, "Round-5 end-to-end KEM attack missing in rendered PDF"
 if "SG_DIFRA_REVISED" in docx:
     normalized=" ".join(text.lower().split())
     assert "appendix c." in normalized, "Short revised PDF missing Round-8 appendix"
     assert "round-8" in normalized, "Round-8 scientific status absent from revised PDF"
+    assert "appendix d." in normalized, "Short revised PDF missing October 11 follow-up"
+    assert "corollaries 4.8" in normalized, "Short revised PDF missing follow-up theorem pointers"
 print(f"Publication QA PASSED: {n_math} OfficeMath nodes, zero raw TeX-dollar formulas; correct noisy-field and MDS formulas in PDF")

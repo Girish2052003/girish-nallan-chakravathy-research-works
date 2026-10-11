@@ -1,5 +1,7 @@
 # SG-DIFRA — NCSG-only direction, no external KEM ingredient
 
+**11 October follow-up:** [new public-evaluation inversion, uniform fiber sampling, scoped key-recovery obstruction, and high-width global shift attack](ROUND8_FOLLOWUP_RESULTS.md). The active manuscript now includes Theorem 4.8, Corollaries 4.8a–b and Theorem 12.10. Research-code and proof-wording defects are repaired. **The secure replacement KEM and profile security levels remain unestablished.** The previous dated results below remain historical evidence within their stated models.
+
 **Freeze date:** 2026-10-10. **Authors:** Girish Nallan Chakravathy and Sreedevi Kannan, following the uploaded original manuscript.
 
 ## Binding design requirement

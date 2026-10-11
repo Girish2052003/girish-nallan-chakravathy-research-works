@@ -1,0 +1,183 @@
+{
+  "audit_base_commit": "3ae8afc68f561a52d83ef597ef0b1830b702993e",
+  "started_utc": "2026-10-11T06:22:36.858561+00:00",
+  "finished_utc": "2026-10-11T06:22:46.618494+00:00",
+  "python_version": "3.12.14",
+  "execution": "15 independent CI programs, up to three concurrent processes; elapsed times are not benchmarks",
+  "security_scope": "Finite mathematical and implementation regressions only; no KEM security certification or proof-assistant verification",
+  "source_sha256": {
+    ".github/workflows/build-research.yml": "b888346c27b1f4ec166bae7c8c2d7679b3fbc3b11175c33067fe2887dbb88963",
+    "formal-verification-and-mathematical-proofs/check_publishing_math.py": "fc8cac3bfb08d0bc5908f0e25e9304bc819bdea082593ab8a687356358232ba2",
+    "formal-verification-and-mathematical-proofs/profile_bounds.py": "b518923e4a70eb91bd8d4de41f70692a10b9fbb36c0c285051fc9fca9dfd8ac0",
+    "formal-verification-and-mathematical-proofs/test_sg_difra.py": "b21e0ecd6886f66af68a6e1cb305f6d44de19d0afc8fd4b8dbee4b29140b72cb",
+    "manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md": "94331f86bcab8625be674f3b23d459051795126553b76c9b6527a404d0dc33d5",
+    "manuscript/SG_DIFRA_REVISED.md": "94d42ff9fd09f187e6c4375fdfc60d49705ba434bedb48d510ca43ecb72da30a",
+    "research-2028/attacks/fixed_field_mds_hbce_ppt_break.py": "7979350a661a70a3760b96b977693cfb338a78ad386be9921799b221b9c7358c",
+    "research-2028/attacks/public_decapsulation_recovery.py": "baae92e006e6fe2984c2ff7d2f7f25a38459789a64439fc9612e1541055003e1",
+    "research-2028/attacks/public_first_difference_local_inversion.py": "5d6e0013ac662e9e5fb43166337ddff455bfcc0190f578cc03f34f0698d68a66",
+    "research-2028/attacks/public_global_shift_witness_recovery.py": "7a7ddb02b1f78b34a56d2acdcebb09fa563e55cb1cc83492f67b7e5ac8aae70a",
+    "research-2028/attacks/public_global_treewidth_witness_recovery.py": "a0cf970ab6bdf37ccab2f8ec1e05e9daf85442507739649c4194ef4ea865e8eb",
+    "research-2028/attacks/public_ideal_membership_break.py": "fa1401d612f0e49229728fb338ca3b982a9327683e2e164b0396cc70f84ad6f2",
+    "research-2028/attacks/public_oracle_local_inversion.py": "840d1c06a24e8f0ea11b1e69586da0b3bb72ea224310ac0eefa37d44905b721e",
+    "research-2028/attacks/public_second_difference_subspace_recovery.py": "42ab0515108675fd5b98f31dd4b2672f5fa9ffa8dcd95ed97fb20ec8f489b371",
+    "research-2028/attacks/ternary_affine_line_leakage.py": "fa5aa338eebdf1b795f7f640a228b0e60f5050e019a5ba2690dcf4b9c3f395dd",
+    "research-2028/attacks/ternary_parallel_line_collision.py": "4f6c38a3e1e96f1542d19f6d910b70add9623a6d2d47d25b7e2dd34cc82d6815",
+    "research-2028/attacks/test_public_global_shift_witness_recovery.py": "d754826beda9041d1e120d26152ad28346db022d8c9e68046e481fd0ba2ae2a9",
+    "research-2028/attacks/test_public_oracle_local_inversion.py": "1be68a2e1d630252b3ee01de5bcbcb2b0935cc970d8e97dd505b9b764f875cf4",
+    "research-2028/math/multidirection_cocycle.py": "50e00ec6717f474cead1ebe379ceaefbb4892982b9abe1cf12df77673a03cb62",
+    "research-2028/profile_cost_audit.py": "5617713b961ad77b0a27ba63de9b0b6c54170d3f1e5e8d566d201326de28d1b1",
+    "research-2028/toy_hidden_mds_attack.py": "84095ce8b2458c8d3ad9358e8328c6791fb4b0296edf1ac256c2473da672fd4f"
+  },
+  "programs": [
+    {
+      "argv": [
+        "python3",
+        "formal-verification-and-mathematical-proofs/test_sg_difra.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 5.84,
+      "log": "01-test_sg_difra.log",
+      "log_sha256": "fa249efdb06637c6c86199cc7f342d7a78a481cde48571de2450134fb7ca765e"
+    },
+    {
+      "argv": [
+        "python3",
+        "formal-verification-and-mathematical-proofs/profile_bounds.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.015,
+      "log": "02-profile_bounds.log",
+      "log_sha256": "38b270a0c97ae5f5485aebd83bd2e72da5c472c1e1bd559f138741172b053f59"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/profile_cost_audit.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.048,
+      "log": "03-profile_cost_audit.log",
+      "log_sha256": "cdb6bc2c3de4105c8416d3519e7fe913f11982b63143b7d76025b6ee6fbc8e87"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/toy_hidden_mds_attack.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.329,
+      "log": "04-toy_hidden_mds_attack.log",
+      "log_sha256": "2424ca5a0718ed2883a42748b4362023cfa4dff670b401e41e77865c9ae6d5e6"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/math/multidirection_cocycle.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.049,
+      "log": "05-multidirection_cocycle.log",
+      "log_sha256": "e4e921c8ca31f7a20b8db6faafb79f47d8c57f05238f1292448161217ce94610"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/attacks/public_ideal_membership_break.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.097,
+      "log": "06-public_ideal_membership_break.log",
+      "log_sha256": "a7a465eb64bf9fed1bd78feed174c2415f6c10d876c28adcdbb8773bfe3cbcde"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/attacks/ternary_affine_line_leakage.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 4.816,
+      "log": "07-ternary_affine_line_leakage.log",
+      "log_sha256": "fa37de71ade9434baaa9bcb4f7159b87d39b5712e7197fbff830d0422003f299"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/attacks/fixed_field_mds_hbce_ppt_break.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.383,
+      "log": "08-fixed_field_mds_hbce_ppt_break.log",
+      "log_sha256": "ce4875160923148920d44d279a962a356c3e59311334eb8897efe98d21142f0c"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/attacks/ternary_parallel_line_collision.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.298,
+      "log": "09-ternary_parallel_line_collision.log",
+      "log_sha256": "20cf54cb21b31f0575bfcc226bae8b032da3c541c779bbcc7ea47683343ac83b"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/attacks/public_decapsulation_recovery.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.932,
+      "log": "10-public_decapsulation_recovery.log",
+      "log_sha256": "5091c5f9fada3f1fd65b5308430ec967541c1011453acdcdc681843ab13a38c8"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/attacks/public_second_difference_subspace_recovery.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 5.795,
+      "log": "11-public_second_difference_subspace_recovery.log",
+      "log_sha256": "b408e1d286634d03d9c8366828190e4f0cf06921c4d750c299a40f80895e0003"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/attacks/public_first_difference_local_inversion.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.972,
+      "log": "12-public_first_difference_local_inversion.log",
+      "log_sha256": "2064cc8b2657fffe4ccbd4a613ba82662c4cf0fbe87d214e349eaf15f8ccf729"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/attacks/public_global_treewidth_witness_recovery.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.514,
+      "log": "13-public_global_treewidth_witness_recovery.log",
+      "log_sha256": "69e924edb20da42bef0642fa0bb8da7f0e0d76a2da010028056467122e429514"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/attacks/test_public_oracle_local_inversion.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.432,
+      "log": "14-test_public_oracle_local_inversion.log",
+      "log_sha256": "d32c8a299b9427f23b9d0efb8d2270d4957775aea1bbdc299fa17b2a62674821"
+    },
+    {
+      "argv": [
+        "python3",
+        "research-2028/attacks/test_public_global_shift_witness_recovery.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.254,
+      "log": "15-test_public_global_shift_witness_recovery.log",
+      "log_sha256": "1cf6cd796c5ff21fdf2e9c4ff032b6ecc9594e2c5d814a9f54d9a11dd8d076e4"
+    }
+  ]
+}

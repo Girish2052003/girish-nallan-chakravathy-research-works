@@ -1,0 +1,23 @@
+test_all_source_profile_targets_without_public_truth_table (__main__.OracleAttackTests.test_all_source_profile_targets_without_public_truth_table) ... ok
+test_constant_potential_extra_directions_do_not_prevent_inversion (__main__.OracleAttackTests.test_constant_potential_extra_directions_do_not_prevent_inversion) ... ok
+test_exhaustive_projection_has_equal_preimage_multiplicity (__main__.OracleAttackTests.test_exhaustive_projection_has_equal_preimage_multiplicity) ... ok
+test_fiber_projection_verifies_result_with_forged_basis (__main__.OracleAttackTests.test_fiber_projection_verifies_result_with_forged_basis) ... ok
+test_growing_dimension_without_exponential_full_table (__main__.OracleAttackTests.test_growing_dimension_without_exponential_full_table) ... ok
+test_sampler_returns_verified_public_preimages (__main__.OracleAttackTests.test_sampler_returns_verified_public_preimages) ... ok
+test_target_verification_rejects_forged_nonconstant_shift (__main__.OracleAttackTests.test_target_verification_rejects_forged_nonconstant_shift) ... ok
+test_tiny_failure_budget_does_not_overflow (__main__.OracleAttackTests.test_tiny_failure_budget_does_not_overflow) ... ok
+test_wrong_model_inconclusive_does_not_claim_security (__main__.OracleAttackTests.test_wrong_model_inconclusive_does_not_claim_security) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.384s
+
+OK
+public oracle source fixture 5 3 11 queries 1837 budget 326796
+public oracle source fixture 5 3 29 queries 1621 budget 326796
+public oracle source fixture 7 4 11 queries 8032 budget 3318945
+public oracle source fixture 7 4 29 queries 6840 budget 3318945
+public oracle source fixture 9 5 11 queries 25172 budget 33508904
+public oracle source fixture 9 5 29 queries 27296 budget 33508904
+uniform fiber exhaustive 4 2 19 targets 9 inputs 81 multiplicity 9
+uniform fiber exhaustive 4 2 43 targets 9 inputs 81 multiplicity 9
+succinct dimension fixture 24 3 3^k 282429536481 queries 11678

@@ -1,0 +1,27 @@
+test_all_original_profile_geometries (__main__.AffineFiberTests.test_all_original_profile_geometries) ... ok
+test_conditional_ternary_affine_label_distinguisher (__main__.AffineFiberTests.test_conditional_ternary_affine_label_distinguisher) ... ok
+test_exhaustive_scalar_d2_tables (__main__.AffineFiberTests.test_exhaustive_scalar_d2_tables) ... ok
+test_first_moment_public_fiber_distinguisher (__main__.AffineFiberTests.test_first_moment_public_fiber_distinguisher) ... ok
+test_profile_wide_affine_label_aggregator (__main__.AffineFiberTests.test_profile_wide_affine_label_aggregator) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 4.768s
+
+OK
+SGD-R1 seed 1 public fiber 27 certified disjoint triples 9 public triples 25
+SGD-R1 seed 7 public fiber 27 certified disjoint triples 9 public triples 17
+SGD-R1 seed 2028 public fiber 27 certified disjoint triples 9 public triples 31
+SGD-R2 seed 1 public fiber 81 certified disjoint triples 27 public triples 64
+SGD-R2 seed 7 public fiber 81 certified disjoint triples 27 public triples 61
+SGD-R2 seed 2028 public fiber 81 certified disjoint triples 27 public triples 60
+SGD-R3 seed 1 public fiber 243 certified disjoint triples 81 public triples 197
+SGD-R3 seed 7 public fiber 243 certified disjoint triples 81 public triples 204
+SGD-R3 seed 2028 public fiber 243 certified disjoint triples 81 public triples 188
+Affine ternary label triple parity advantage/event-gap 0.24753824869791666
+Exhaustive table certificate: 3^9 = 19683 scalar Q tables passed
+Public-fiber first-moment distinguisher (not KEM break): k,d 5 3 exact NCSG mean 21.0 exact null mean 12.136929460580912 empirical source mean 22.13 empirical null mean 11.6 30+30 accuracy 0.9833
+Public-fiber first-moment distinguisher (not KEM break): k,d 7 4 exact NCSG mean 66.0 exact null mean 39.048054919908466 empirical source mean 67 empirical null mean 38.63 30+30 accuracy 1.0
+Public-fiber first-moment distinguisher (not KEM break): k,d 9 5 exact NCSG mean 201.0 exact null mean 120.01631014684213 empirical source mean 197.77 empirical null mean 119.1 30+30 accuracy 1.0
+SGD-R1 hypothetical affine-row failure: 9216 disjoint public triples; log2 conditional bit-classification-error bound -407.35
+SGD-R2 hypothetical affine-row failure: 41472 disjoint public triples; log2 conditional bit-classification-error bound -1833.09
+SGD-R3 hypothetical affine-row failure: 165888 disjoint public triples; log2 conditional bit-classification-error bound -7332.37

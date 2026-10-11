@@ -1,0 +1,13 @@
+test_all_selected_rows_and_bit_decisions (__main__.PublicKeyRecoveryTests.test_all_selected_rows_and_bit_decisions) ... ok
+test_end_to_end_toy_deterministic_kem_key_recovery (__main__.PublicKeyRecoveryTests.test_end_to_end_toy_deterministic_kem_key_recovery) ... ok
+test_frozen_profile_upper_work_budgets (__main__.PublicKeyRecoveryTests.test_frozen_profile_upper_work_budgets) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.882s
+
+OK
+Round 5: 12/12 recovered planted row sets, 96/96 private-public bit decision matches
+Round 5: exact public/secret decapsulation agreement on 10/10 toy ciphertexts; recovered real keys 10 /10
+R1 finite exhaustive log2 search 656.94 public decode log2 combinations 203.57
+R2 finite exhaustive log2 search 1136.78 public decode log2 combinations 307.12
+R3 finite exhaustive log2 search 1718.1 public decode log2 combinations 410.76

@@ -1,10 +1,10 @@
 ---
 title: "SG-DIFRA: From Broken Hidden-MDS KEM to an NCSG-Only Mathematical Research Program"
-subtitle: "NCSG-only authorship constraint — cryptanalysis, exact obstructions, and research direction, 10 October 2026"
+subtitle: "NCSG-only authorship constraint — cryptanalysis, exact obstructions, and research direction, updated 11 October 2026"
 author:
   - "Girish Nallan Chakravathy"
   - "Sreedevi Kannan"
-date: "10 October 2026"
+date: "11 October 2026"
 lang: en
 geometry: "margin=27mm"
 fontsize: 11pt
@@ -24,7 +24,9 @@ SG-DIFRA is an attack-driven experimental key-encapsulation proposal constructed
 
 This revision supplies a further exact result: after canonical flattening, the NCSG predicates and targets are statistically independent of the public label matrix, and the master secret can be eliminated from the decryption key without changing any decapsulation outcome. Consequently the proved NCSG worst-case facts do not imply the encryption security of this construction. A second issue is that the fixed field forces $M\le1024$, so three finite parameter records do not instantiate a growing asymptotic security family. The archived iteration's one-bit security is only a conditional game-hybrid statement assuming **MDS-HBCE** and **$1024$-ary LPN**, neither of which has been justified by a concrete security estimator or reduction to an established problem. The resulting contribution is a transparent cryptanalytic case study and falsifiable construction proposal, **not a proven post-quantum KEM**.
 
-**Round-8 global attack.** Publicly known, low-treewidth incidence graphs still allow exact recovery of globally satisfying witnesses, even when source-form ternary NCSG factors overlap. We prove the corresponding public variable-elimination bound and reproduce the attack on overlapping original R1/R2/R3 source-style local geometries. This rules out overlap *alone* as a trapdoor but does not break all possible global schemes or validate an IND-CCA KEM.
+**11 October follow-up.** We prove a public-evaluation-only local inversion theorem, an exact uniform fiber sampler, and a correctness-to-public-key-recovery obstruction for the precisely defined local wrapper $ct=f(x)$. A separate global constant-shift criterion supplies an explicit family with unbounded primal width that remains publicly invertible. These are additional negative design results; a secure replacement KEM is still absent.
+
+**Round-8 global attack.** Publicly known, low-treewidth primal graphs still allow exact recovery of globally satisfying witnesses, even when source-form ternary NCSG factors overlap. We prove the corresponding public variable-elimination bound and reproduce the attack on overlapping original R1/R2/R3 source-style local geometries. This rules out overlap *alone* as a trapdoor but does not break all possible global schemes or validate an IND-CCA KEM.
 
 **Keywords:** nonlinear constraints; finite differences; key encapsulation; Reed–Solomon; noisy linear equations; cryptanalysis; correctness bounds; quantum random oracle model.
 
@@ -39,6 +41,20 @@ $$
 The NCSG differential-solvability problem asks whether given differential equations $\Delta_{a_j}P_j(w)=b_j$ have a common solution. This is a *worst-case* decision language. The cryptographic challenge in the present candidate instead concerns an *average-case* public-label distribution and noisy samples over $K$. These are different mathematical claims and no implication between their hardness has been proved.
 
 The adversary sees the entire public key, including all supports, predicates, target values, fiber sets, dense field labels, profile constants, and ciphertexts. A chosen-ciphertext adversary may make decapsulation queries subject to the standard challenge-ciphertext restriction. Reference security must consider attacks on the full frozen distribution, including hybrid structure, generalized birthday search, hidden-subspace recovery, large-field noisy-linear decoding, adaptive multi-target attacks, and quantum algorithms. A named work factor for a single attack is not a security lower bound.
+
+## 1.1 Exact security target and the role of the trapdoor
+
+The intended successor must first define a family indexed by a security parameter $\lambda$. Key generation outputs $(pk,sk)$; public encapsulation outputs $(ct,K)$ with $K\in\{0,1\}^{\ell_K(\lambda)}$; secret decapsulation outputs a key or its specified rejection result. All honest algorithms, keys and ciphertexts must have polynomial cost or length in $\lambda$. Correctness requires the probability of $\operatorname{Decaps}(sk,ct)\ne K$, over the actual key-generation and encapsulation distributions, to be negligible. Correctness alone makes no secrecy claim.
+
+For IND-CPA, give an adversary $pk,ct,K_b$, where $(ct,K_0)$ is an honest encapsulation and $K_1$ is an independent uniform key of the same length. The absolute difference between its acceptance probabilities in the two experiments must be negligible for every probabilistic polynomial-time adversary. For IND-CCA, also give adaptive access to decapsulation, excluding the challenge ciphertext under the precisely specified encoding. Quantum adversaries, quantum access to hash oracles, and access to decapsulation oracles must each be stated explicitly; a classical oracle-evaluation attack is not a QROM proof.
+
+**Lemma 1.1 (public session-key recovery defeats key indistinguishability).** If a public algorithm $D(pk,ct)$ outputs the actual honest session key with probability $p(\lambda)$, equality-testing its output against $K_b$ gives an IND-CPA acceptance-probability gap at least $p(\lambda)-2^{-\ell_K(\lambda)}$. Its running time is that of $D$ plus comparison. If $D$ is probabilistic polynomial-time, this already defeats IND-CCA whenever the gap is nonnegligible; no decapsulation queries are needed.
+
+**Proof.** Equality holds with probability $p$ in the real experiment. In the random experiment, the challenge key is uniform and independent of $pk,ct$ and $D$'s coins, so equality has probability at most $2^{-\ell_K}$, with equality when $D$ always outputs a key of the required length. Subtract. $\square$
+
+Public keys and ciphertexts may carry helper information. The missing property is a computational separation: only the holder of the *remaining secret information* can efficiently derive the session key under the stated assumption. Exact recovery of the original $sk$ is not required for an attack; an equivalent decoder is sufficient by Lemma 1.1. Conversely, recovering an arbitrary NCSG witness is a KEM attack only after proving that this witness can recover the same session key, or otherwise distinguish it. An unspecified relation between witnesses and keys cannot be filled in by assertion.
+
+The requested absence of polynomial-time attacks is stronger than the failure of the attacks tested here. It is also different from a $2^{\Omega(\lambda)}$ lower bound: for example, $2^{\sqrt{\lambda}}$ is superpolynomial but subexponential in $\lambda$. Worst-case NP-completeness, local entropy and large search spaces establish neither average-case cryptographic hardness nor a concrete security level. Standard computational cryptography states assumptions and reductions explicitly; an unconditional construction of ordinary one-way functions would resolve major open complexity questions [12]. This paper supplies no such result. Defining a new assumption to say that this very KEM is secure would restate the desired conclusion, not justify it.
 
 # 2. Construction history and confirmed attacks
 
@@ -186,7 +202,7 @@ giving a one-event gap of $2|\alpha|^3/3$. At $\nu=3/16$ this gap is exactly $2(
 
 **Proof.** A full partition into disjoint triples is supplied by Theorem 4.1. Each event depends only on its own three independent error variables for bit zero, or on its own three independent uniform ciphertext variables for bit one; the common secret-noise-free inner product vanishes by the public triple relation. Their Bernoulli event means differ by $\Delta$. For each class, Hoeffding bounds crossing the midpoint by $\exp(-2T(\Delta/2)^2)$. $\square$
 
-**Reproduction on the exact original local parameters.** The script \`research-2028/attacks/ternary_affine_line_leakage.py\` samples random valid $A,B,Q_0$ and checks all three recorded $(k,d)$ choices $(5,3),(7,4),(9,5)$ under three independent seeds each. It confirms disjoint partitions into $9,27,81$ affine three-point lines for fibers of size $27,81,243$, respectively, and enumerates public triples using only $S$. These are fully specified local finite tests and an exact symbolic proof, not global KEM security experiments.
+**Reproduction on the exact original local parameters.** The script `research-2028/attacks/ternary_affine_line_leakage.py` samples random valid $A,B,Q_0$ and checks all three recorded $(k,d)$ choices $(5,3),(7,4),(9,5)$ under three independent seeds each. It confirms disjoint partitions into $9,27,81$ affine three-point lines for fibers of size $27,81,243$, respectively, and enumerates public triples using only $S$. These are fully specified local finite tests and an exact symbolic proof, not global KEM security experiments.
 
 
 
@@ -242,17 +258,19 @@ For the uniform-subset null, there are exactly $(n-1)/2$ one-dimensional directi
 
 **Exact source-parameter consequences.** These bounds concern exactly the three original ternary local profiles, without parameter interpolation or untested asymptotics:
 
-| Profile $(k,d,r)$ | $L$ | $m_0$ | Source $P_1\ge$ | Null $P_0\le$ | Advantage $\ge$ |
-|:--|--:|--:|--:|--:|--:|
-| R1 $(5,3,2)$ | 9 | 9 | 0.554737 | 0.006904 | 0.547832 |
-| R2 $(7,4,3)$ | 27 | 27 | 0.947051 | 0.005910 | 0.941141 |
-| R3 $(9,5,4)$ | 81 | 81 | 0.999912 | 0.002660 | 0.997252 |
+The original local geometries are R1: $(k,d,r)=(5,3,2)$, R2: $(7,4,3)$, and R3: $(9,5,4)$. Here $m_0=L$ for all three profiles.
+
+| Profile | $L=m_0$ | Source $P_1\ge$ | Null $P_0\le$ | Advantage $\ge$ |
+|:--|--:|--:|--:|--:|
+| R1 | 9 | 0.554737 | 0.006904 | 0.547832 |
+| R2 | 27 | 0.947051 | 0.005910 | 0.941141 |
+| R3 | 81 | 0.999912 | 0.002660 | 0.997252 |
 
 All displayed decimal values are rounded to six places; exact rational bounds and their full-precision evaluation are certified by the accompanying script.
 
 For these choices $d-1=r$, so the number of independently assigned forced lines equals the number of available direction types. Thus the occupancy phenomenon strengthens rapidly across the profiles. The largest original R3 public fiber is distinguishable from a uniformly sampled same-size subset by this **purely geometric single-fiber test** with provable event-probability gap greater than $0.9972$. No secret-incidence data or plaintext ciphertext is required.
 
-**Executable verification and attack boundary.** The reproducible standard-library script \`research-2028/attacks/ternary_parallel_line_collision.py\` computes the two bounds as *exact rational numbers*, verifies the full $3^9=19{,}683$ scalar table ensemble for $(d,r)=(2,1)$ (where precisely $2{,}187$ tables force three parallel lines), and performs an independent public-only $24+24$-fiber Monte Carlo comparison on each original geometry. The exhaustive toy identity checks $2{,}187/19{,}683=1/9$; it cannot replace the general proof. Numerical Monte Carlo detections are diagnostics, not the source of the certified inequalities.
+**Executable verification and attack boundary.** The reproducible standard-library script `research-2028/attacks/ternary_parallel_line_collision.py` computes the two bounds as *exact rational numbers*, verifies the full $3^9=19{,}683$ scalar table ensemble for $(d,r)=(2,1)$ (where precisely $2{,}187$ tables force three parallel lines), and performs an independent public-only $24+24$-fiber Monte Carlo comparison on each original geometry. The exhaustive toy identity checks $2{,}187/19{,}683=1/9$; it cannot replace the general proof. Numerical Monte Carlo detections are diagnostics, not the source of the certified inequalities.
 
 **Cryptographic applicability is explicitly limited.** The archived SG-DIFRA-MDS **Plant and Null label distributions both use the same public NCSG fiber sampler**, and the encrypted labels were independent random $K=\mathbb F_{2^{10}}$ rows except for the hidden MDS replacement. Therefore $D(S)$ has the *same* marginal distribution in both cryptographic games, and this theorem does **not** refute MDS-HBCE or recover an encapsulated key. Indeed, exploiting this public leakage requires a *new* construction that attempts to hide NCSG geometry or assumes NCSG fibers pseudorandom. The original independent dense labeling avoids an assignment-space parity attack only at the price of the previously proved NCSG-removability defect. Neither property establishes a secure, novel NCSG-only KEM, and no claim of novel field-theoretic mathematics relative to prior literature is made here.
 
@@ -333,13 +351,15 @@ The event $\mathcal V(f)\ne V$ implies that at least one of the $3^k-3^{r+1}$ ex
 
 **Practical enumeration versus asymptotic meaning.** A verifier first evaluates the published function on every element of $\mathbb F_3^k$, then checks $\mathcal S_hf(x)=0$ over every $h,x$. Its worst-case arithmetic cost is $O(kr3^{2k})$, **polynomial in the length of a complete public truth table** but exponential in the length of a succinct $k$-coordinate circuit. A short list of public evaluations can cheaply eliminate most false candidate directions; the implementation uses 32 seeded probe inputs only as a screening optimization and then **checks every input** for every surviving direction. This is not an asserted PPT attack if the function is supplied only as a succinct program with arbitrary growing $k$. For the frozen source geometries it is fully executable.
 
-| Original local profile | $k,d,r$ | Hidden subspace $\dim V$ | Exact finite upper bound on recovery failure |
+| Original local profile | $k,d,r$ | Hidden subspace $\dim V$ | Recovery-failure bound (rounded) |
 |:--|:--|--:|--:|
-| SGD-R1 | $5,3,2$ | $3$ | $8/19683\approx4.06442\times10^{-4}$ |
+| SGD-R1 | $5,3,2$ | $3$ | $4.06442\times10^{-4}$ |
 | SGD-R2 | $7,4,3$ | $4$ | $3.62169\times10^{-23}$ |
 | SGD-R3 | $9,5,4$ | $5$ | $1.70023\times10^{-99}$ |
 
-**Code and independent finite certificates.** The script at research-2028/attacks/public_second_difference_subspace_recovery.py independently constructs source-distributed full public maps with hidden random invertible basis changes, recovers precisely the intended $V$ from *only* their public tables at all three source geometries, and tests the exact subspace dimensions $3,4,5$. Its independent GF(3) elimination computes scalar operator ranks $2,6,18,54$ for $d=2,3,4,5$. Finally it exhaustively enumerates all $3^9=19683$ scalar potentials on the smallest $d=2$ table and finds exactly $2187$ cases where a fixed independent exterior direction spuriously passes the second-difference test, confirming the theorem's $3^{-2}=1/9$ local probability. These numerical checks are reproducibility evidence for an algebraic proof, **not formal end-to-end KEM verification**.
+The exact R1 bound is $8/19683$; the table displays rounded evaluations of the theorem's finite upper bound.
+
+**Code and independent finite certificates.** The [Round-6 recovery script](../research-2028/attacks/public_second_difference_subspace_recovery.py) independently constructs source-distributed full public maps with hidden random invertible basis changes, recovers precisely the intended $V$ from *only* their public tables at all three source geometries, and tests the exact subspace dimensions $3,4,5$. Its independent GF(3) elimination computes scalar operator ranks $2,6,18,54$ for $d=2,3,4,5$. Finally it exhaustively enumerates all $3^9=19683$ scalar potentials on the smallest $d=2$ table and finds exactly $2187$ cases where a fixed independent exterior direction spuriously passes the second-difference test, confirming the theorem's $3^{-2}=1/9$ local probability. These numerical checks are reproducibility evidence for an algebraic proof, **not formal end-to-end KEM verification**.
 
 **Consequences and design rejection rule.** Public masking by $B$ is merely a reversible change of coordinates; it does not conceal the intrinsic affine-linearity subspace of a public MaxEnt map. Any new proposal that places essential secrecy *solely* in the direction subspace $V$ fails this test when its public representation enables full evaluation at comparable sizes. **Recovering $V$ does not reveal the entire secret change of basis $B$, a global NCSG assignment $s$, or the archived GF(1024) GRS row labels.** In particular, the original archived KEM's planted/noise labels remain independently sampled conditional on NCSG public data, so this theorem alone is not an IND-CPA or IND-CCA attack on that ciphertext channel. The earlier full-code archival attack (Theorem 9.2) is separately applicable under its explicit asymptotic assumptions. A viable **genuinely original NCSG-only KEM** must derive hardness from a new publicly encryptable and secretly invertible relation that survives these public affine-direction tests; merely raising $k$ without a sampled average-case hardness reduction is not a verified fix.
 
@@ -444,6 +464,58 @@ is a constant vector-valued function. If $b\in\langle a\rangle$ but $b\ne0$, the
 
 **Repair decision, not a fictional security claim.** The original Round-6 coordinate-secret problem is **not fixed by more random masking**, since Theorem 4.6 constructs a public right inverse for every potential table. The intellectually honest corrective action is to **reject this local MaxEnt inversion as the security-bearing NCSG trapdoor**. It can remain a proved combinatorial/public-indexing ingredient, but a distinct publicly encryptable, secretly invertible **global coupling** and a sound average-case assumption would need to be designed and independently attacked before promoting a genuinely new NCSG-only KEM. The manuscript contains no such validated replacement today. In particular, the original dense GF(1024) label layer remains historically obsolete, with its separate asymptotic KEM break recorded in Theorem 9.2; it is not silently being reused as protection.
 
+
+## 4.5 Public evaluation suffices when the nonlinear table is polynomial in size
+
+The complete $3^k$-entry public table required by Theorem 4.6 is unnecessary for an important asymptotic regime of the source construction. Replacing that table by a public evaluation interface does not repair the local trapdoor when the nonlinear right block remains small enough to tabulate efficiently.
+
+**Theorem 4.8 (public oracle local inversion).** Let $k=r+d$, with $r,d\ge1$, and let
+$$
+f(x)=Au_L+g(u_R),\qquad (u_L,u_R)=Bx,
+$$
+where $A,B$ are invertible and $g:\mathbb F_3^d\to\mathbb F_3^r$ is arbitrary. The source case $g=\Delta_aQ_0$ is included. An adversary with only public evaluation of $f$ and the dimensions can recover a linear section of the constant-increment map, and hence an affine right inverse of $f$, with failure probability at most $\eta$, for any $0<\eta<1$, using polynomial work in $k,r,3^d,\log(1/\eta)$ and the evaluation cost. It never needs the hidden matrices, potential, direction, or a complete public truth table.
+
+Put $q_0=3^d$ and choose the budgets
+$$
+S=\operatorname{ceil}\big(q_0\ln(2q_0/\eta)\big),
+$$
+$$
+T=\operatorname{ceil}\big((3q_0/2)(r\ln3+\ln(2/\eta))\big).
+$$
+The preprocessing query count is at most $1+S+T(1+S)$. Each subsequent target inversion uses linear algebra and one final public evaluation to verify its answer. Exhaustion or failed verification is reported as inconclusive.
+
+**Proof.** Let $U=B^{-1}(\mathbb F_3^r\times\{0\})$. For $h\in U$, the derivative $f(x+h)-f(x)$ is constant in $x$, and its increment is the invertible image under $A$ of the left coordinates of $Bh$. Thus a uniform $h$ belongs to $U$ with probability $1/q_0$, and its increment conditioned on that event is uniform over $\mathbb F_3^r$.
+
+For any fixed $h$, writing $Bh=(h_L,h_R)$ gives
+$$
+f(x+h)-f(x)=Ah_L+g(u_R+h_R)-g(u_R).
+$$
+It depends only on the $q_0$ possible right blocks. Sample $S$ independent uniform public inputs once. Their hidden right projections are independent uniform points, so the probability that any right block is missed is at most $q_0(1-1/q_0)^S\le q_0e^{-S/q_0}$. On coverage, checking equality to $f(h)-f(0)$ on this same probe set recognizes *every* constant-shift direction exactly, including adaptively considered directions. No unjustified reuse of independent-test probabilities is needed.
+
+Now sample up to $T$ independent uniform shifts, retaining those passing the derivative test whose increments increase the current rank. If the increments from sampled members of $U$ do not span the output, some nonzero output linear functional annihilates them all. For each projective functional, a sampled shift belongs to $U$ and has a nonzero functional value with probability $2/(3q_0)$. There are $(3^r-1)/2$ such functionals. A union bound gives the combined failure bound
+$$
+q_0(1-1/q_0)^S+
+\frac{3^r-1}{2}\left(1-\frac{2}{3q_0}\right)^T\le\eta.
+$$
+On the complementary event, the accepted shifts lie in $C(f)$ and their increments span the output. Solve the increment system for $t-f(0)$ and take the same linear combination of input shifts. Theorem 4.6 then gives $f(x)=t$. All sampling, filtering and linear algebra has the stated polynomial cost. The argument holds for every fixed $A,B,g$, without randomness assumptions on $g$. $\square$
+
+**Asymptotic consequence.** If $k$ and public evaluation cost are polynomial in $\lambda$ and $d=O(\log\lambda)$, this is a probabilistic polynomial-time local inversion attack, with arbitrarily small inverse-polynomial or negligible failure by an appropriate $\eta$. The original uniformly sampled potential table itself requires $r3^d$ field symbols; a polynomial-time implementation of that exact sampler cannot conceal an exponential table-generation cost. A different succinct generator with large $d$ changes that premise and requires separate analysis. This theorem does not prove an attack on all succinct nonlinear maps or all global NCSG constructions.
+
+**Reproduction.** `public_oracle_local_inversion.py` takes an evaluation callable, dimensions, error budget, and independent sampling source. Its test generator never supplies the hidden coordinates to the adversary. Tests invert all 9, 27 and 81 targets for the original R1/R2/R3 local geometries, with two fixed generator seeds each. The complete test-call counts, including final checks, are 1,837/1,621, 8,032/6,840 and 25,172/27,296. A growing-dimension example with $(k,d)=(24,3)$ has $3^k=282{,}429{,}536{,}481$ possible inputs; 11,678 public evaluations suffice for preprocessing and twenty verified target tests in its fixed seed. These measured counts are finite experiments, not lower bounds or a proof of the probability estimate. The bound above assumes ideal independent uniform sampling; fixed seeds reproduce code behavior. The implementation checks both probability tails with exact rational arithmetic, increasing the floating-logarithm budget estimates if necessary, and covers very small failure budgets without overflowing a ratio.
+
+**Corollary 4.8a (uniform public fiber sampling).** Conditional on a genuine recovered right inverse, let $H:\mathbb F_3^r\to C(f)$ be its linear shift map, so $c_f(H(a))=a$. For any target $t$, sample uniform $z\in\mathbb F_3^k$ and output
+$$
+x=z+H(t-f(z)).
+$$
+The output is exactly uniform over $f^{-1}(t)$, whose size is $3^d$.
+
+**Proof.** The constant-shift identity makes the output satisfy $f(x)=t$. For any fixed $x$ in that fiber, its input preimages are precisely $z=x+H(a)$, one for every $a\in\mathbb F_3^r$. Substitution verifies this claim, and $H$ is injective because $c_f\circ H$ is the identity. Every fiber point therefore has exactly $3^r$ preimages under the projection. Uniform input gives uniform output. $\square$
+
+**Corollary 4.8b (a scoped local KEM wrapper cannot gain secrecy from correctness).** Consider the attempted wrapper that samples uniform $x$, publishes only $ct=f(x)$, and derives $K=J(pk,x,ct)$ using a public deterministic function $J$. Suppose its secret deterministic decapsulation has correctness error $\delta$, averaged over its actual key generation and uniform encapsulation. In the polynomial regime of Theorem 4.8, a public attacker recovers the honest session key with probability at least $1-2\delta-\eta$. No assumption about the hardness of recovering the originally sampled $x$ changes this conclusion.
+
+**Proof.** On sound basis recovery, the attacker independently samples $x'$ uniformly from the challenge fiber and returns $J(pk,x',ct)$. Let $E$ denote sound preprocessing and let $e(pk,sk,ct)$ be the conditional honest-decapsulation error. For every fixed key, ciphertext and sound basis, the honest $x$ and the fresh $x'$ have the same uniform fiber distribution. Hence the probability of $E$ together with either key disagreeing with the deterministic decapsulation result is at most $\delta$, after averaging over the original key and ciphertext distribution. A union bound gives key agreement at least $\Pr[E]-2\delta\ge1-\eta-2\delta$. This uses no assertion that correctness error remains $\delta$ under a key distribution conditioned on successful preprocessing. Lemma 1.1 converts this polynomial-time recovery to key indistinguishability failure. $\square$
+
+This corollary covers exactly the stated uniform-input, local-only ciphertext wrapper. Extra ciphertext binding information, a restricted input sampler, additional secrets shared before encapsulation, or a different global map changes the model. Such a change needs a new construction and proof; it is neither proved secure nor ruled out by this corollary.
 
 # 5. Archived 2026 hidden-MDS label construction (not the new candidate)
 
@@ -661,7 +733,7 @@ $$
 \qquad \tau\le u.
 $$
 
-The union bound does not address high-weight relations or non-linear distinguishers. Exact finite arithmetic and toy regressions are stored in \`formal-verification-and-mathematical-proofs/\`.
+The union bound does not address high-weight relations or non-linear distinguishers. Exact finite arithmetic and toy regressions are stored in `formal-verification-and-mathematical-proofs/`.
 
 # 11. Three archived research profiles (not verified for a new NCSG design)
 
@@ -692,11 +764,11 @@ The union bound does not address high-weight relations or non-linear distinguish
 
 The matrix $H$ is dense, has $q=m3^d$ rows and $N$ coordinates in $K=\mathbb{F}_{2^{10}}$. Any faithful 10-bit-per-coordinate representation requires at least $10qN$ bits. The message ciphertext has $\ell T_{\mathrm{rep}}$ full vectors of $q$ field symbols, so even perfect cross-symbol packing requires at least $10q\ell T_{\mathrm{rep}}$ bits. For $T_{\mathrm{rep}}=7$ the arithmetic is:
 
-| Source profile | Labels | Public label matrix (bytes) | One KEM ciphertext (bytes) |
-|:--|--:|--:|--:|
-| SGD-R1 | 27,648 | 22,118,400 | 77,414,400 |
-| SGD-R2 | 124,416 | 149,299,200 | 487,710,720 |
-| SGD-R3 | 497,664 | 796,262,400 | 2,786,918,400 |
+| Source profile | Public label matrix (bytes) | Ciphertext (bytes) |
+|:--|--:|--:|
+| SGD-R1 | 22,118,400 | 77,414,400 |
+| SGD-R2 | 149,299,200 | 487,710,720 |
+| SGD-R3 | 796,262,400 | 2,786,918,400 |
 
 The original profiles consequently require roughly 73.83 MiB, 465.12 MiB and 2,657.81 MiB of ciphertext **before** framing or extra metadata. These sizes are exact *lower bounds* from the original algorithms, not implementation measurements or a weak-attack estimate. A new compression claim would need to show correctness and security after the changed ciphertext distribution. An external KEM or combiner would not repair this construction's bandwidth defect.
 
@@ -784,7 +856,7 @@ under equiprobable bits, and at least $5/6$ because $\dim V_t-\dim W_D\ge1$. The
 
 The companion *GF(3) attack script* implements exactly this theorem on three-variable planted relations, with 150 samples of each class. It verifies that all zero ciphertexts are recognized by public row-space membership, including when the hidden witness correctly evaluates the polynomial to zero. This is an end-to-end **distinguishing break of the proposed experiment**, not a proof that all possible NCSG KEMs are impossible.
 
-**Why naive fixes fail.** Sampling different low-degree multipliers only changes the distribution *inside* $W_D$, not the public membership test. Using more local constraints increases the public matrix and may even make its span full, at which point the zero and one distributions and private decoding must be reanalysed. Supplying an unexpanded arithmetic circuit exposing the $h_i$ directly reveals its factorization. Increasing $D$ until the coefficient space is exponential makes naive dense ciphertext emission infeasible. Neither additive one-time masks that decouple $s$ from the public key nor introducing an unaudited hard-decomposition assumption proves security. Every such redesign needs a new exact security game.
+**Why naive fixes fail.** Sampling different low-degree multipliers only changes the distribution *inside* $W_D$, not the public membership test. Adding local constraints that vanish at the same witness cannot make this span full: every added generator still lies in the proper kernel of evaluation at that witness. Constraints that do not vanish there abandon the stated decoding argument and require a different construction. Supplying an unexpanded arithmetic circuit exposing the $h_i$ directly reveals its factorization. Increasing $D$ until the coefficient space is exponential makes naive dense ciphertext emission infeasible. Neither additive one-time masks that decouple $s$ from the public key nor introducing an unaudited hard-decomposition assumption proves security. Every such redesign needs a new exact security game.
 
 ## 12.7 NCSG-only development gates, not an unproved 'secure KEM'
 
@@ -799,17 +871,17 @@ The preceding integrability lemma follows from finite difference calculus; the r
 **Conference calendar:** EUROCRYPT 2027's published paper submission deadline was 17 September 2026, which has already passed by this draft's date. EUROCRYPT 2028 is the forward research target from the preceding project discussion; no verified 2028 CFP/deadline has been recorded. Submission and acceptance cannot be promised.
 
 The new NCSG-only tests and research status are documented in:
-\`research-2028/math/multidirection_cocycle.py\`,
-\`research-2028/attacks/public_ideal_membership_break.py\`, and
-\`research-2028/NCSG_ONLY_RESEARCH_STATUS.md\`.
+`research-2028/math/multidirection_cocycle.py`,
+`research-2028/attacks/public_ideal_membership_break.py`, and
+`research-2028/NCSG_ONLY_RESEARCH_STATUS.md`.
 
-## 12.9 Round 8: public global witness recovery under bounded incidence width (10 October 2026)
+## 12.9 Round 8: public global witness recovery under bounded primal width (10 October 2026)
 
 **Outcome: a further proven attack criterion, not a complete KEM security repair.** Round 7 formally refuted the original local MaxEnt map as a one-way trapdoor when its public truth table is accessible. Round 8 directly tests a natural attempted repair: connect many such local functions through *overlapping* global variables and claim that the resulting witness must be found using a private decapsulation trapdoor. This claim fails for public constraint systems of low induced width. The method is classical constraint elimination, building explicitly on Rina Dechter's 1999 bucket-elimination framework [11], so its underlying complexity theorem is **not** claimed to be a newly invented cryptographic primitive. The source-specific application, tests and negative design requirement are detailed in the [Round-8 security ledger](../research-2028/ROUND8_PUBLIC_GLOBAL_CSP_SECURITY_LEDGER.md).
 
 **Public challenge distribution.** Let $V=\{1,\ldots,n\}$ index global variables over $\mathbb F_3$. For every constraint $i$, the public key (or derived publicly available information) provides a scope $S_i\subseteq V$ and an explicit allowed-assignment relation $R_i\subseteq\mathbb F_3^{S_i}$, for example a fiber $R_i=\{z:f_i(z)=t_i\}$ of the source-form local NCSG map. The attack must output any $s\in\mathbb F_3^n$ such that $s_{S_i}\in R_i$ for all $i$. All public truth-table enumeration costs are explicitly charged to the input size. The attacker does **not** receive hidden local matrices, potentials, the original planted witness or the secret key. This is a **global overlapping** witness task, not the already solved single-factor task.
 
-**Theorem 12.9 (public witness recovery at induced width $w$).** Given explicit public ternary relation tables, scopes and a variable elimination order with induced width $w$ in the associated primal graph, a deterministic algorithm either recovers a satisfying **global** witness or correctly reports unsatisfiability in time $\operatorname{poly}(L,n,m)3^{w+1}$, where $L$ is public encoding length and $m$ is the number of factors. In particular the attack is polynomial-time for public instances with $w=O(\log(n+L))$. This is a standard structural fact about CSPs, not proof of an end-to-end KEM attack on a scheme whose full KEM algorithms are undefined.
+**Theorem 12.9 (public witness recovery at induced width $w$).** Given explicit public ternary relation tables, scopes and a variable elimination order with induced width $w$ in the associated primal graph, a deterministic algorithm either recovers a satisfying **global** witness or correctly reports unsatisfiability in time $\operatorname{poly}(L,n,m)3^{w+1}$, where $L$ is public encoding length and $m$ is the number of factors. In particular the attack is polynomial-time when an order with $w=O(\log(n+L))$ is supplied or found efficiently. The implemented min-fill heuristic need not find an optimal order; low treewidth alone is not a guarantee about that heuristic. Newly generated residual factors contain at most $3^w$ rows, while input-factor storage is included in $L$. This is a standard structural fact about CSPs, not proof of an end-to-end KEM attack on a scheme whose full KEM algorithms are undefined.
 
 **Proof (constructive).** At the next variable $v$ in the given elimination order, collect all factors containing $v$. The union of their scopes includes at most $w+1$ variables. For each assignment to the other variables in that union, enumerate three values of $v$ and record whether one satisfies every collected factor. Retain the satisfying residual assignments as a new factor and also record one successful value of $v$ for each. This replacement is logically equivalent to existentially quantifying $v$, so it preserves satisfiability both ways. Inductively eliminate the remaining variables. A factor with no surviving assignments certifies impossibility; otherwise reverse the recorded choices to reconstruct a correct full witness. Each step checks at most $3^{w+1}$ combinations, with polynomially many factor lookups and bookkeeping operations. $\square$
 
@@ -829,7 +901,32 @@ These are deliberately **two-factor fixtures**, *not measured primal widths of t
 
 **Round-8 repair status.** The broken original local MaxEnt predicate is explicitly **rejected as a security-bearing trapdoor**; the Round-7 theorem remains intact and its reproducible proof is not replaced. We also **reject overlap alone** as a global hardness argument. We do **not** assert a fictitious new secure global mechanism. To claim a secure original NCSG-only KEM one must supply exact KeyGen/Encaps/Decaps algorithms, an asymptotic key/ciphertext distribution and novel indispensable secret inversion information, complete correctness and chosen-ciphertext reductions (including QROM if claimed), distribution-specific classical/quantum attack estimates, side-channel/failure handling, and newly grounded three parameter sets. None is established here. Accordingly **Round 8's limited attack claim is mathematically closed; KEM security is NOT formally closed, no secure profiles are certified, and this credited research draft is not conference submission-ready**.
 
+## 12.10 Global shift recovery can remain efficient at high primal width
+
+Increasing primal width avoids only the particular low-width bound of Section 12.9. It need not remove the algebraic structure of the source factors.
+
+**Theorem 12.10 (public global constant-shift criterion).** Let $F(x)=(f_i(x|_{S_i}))_{i=1}^m$, with complete public local ternary function tables and public scopes. Write $C_i=C(f_i)$ and $c_i(h)=f_i(h)-f_i(0)$ for its constant-shift subspace and increment map. Define
+$$
+D=\{h\in\mathbb F_3^n:h|_{S_i}\in C_i\text{ for every }i\},
+$$
+$$
+\Gamma(h)=(c_i(h|_{S_i}))_{i=1}^m.
+$$
+Both $D$ and $\Gamma$ are computable by public finite-field linear algebra after enumerating the local constant shifts. For every target $t$ with $t-F(0)\in\operatorname{im}\Gamma$, the attacker recovers a complete global witness. If $\Gamma$ is onto the full joint output space, every joint target is publicly invertible. The cost is polynomial in the total explicit local table encoding length and global dimensions, independently of primal width.
+
+**Proof.** Constant-shift sets are linear: derivatives telescope under addition of shifts, and scalar multiplication follows in $\mathbb F_3$. Their increment maps are linear for the same reason. Compute each $C_i$ by testing its candidate local shifts against every local input. Compute its annihilator and lift those homogeneous linear equations to the global coordinates. Their common kernel is exactly $D$. For a basis of this kernel, evaluate the corresponding public increments to obtain a matrix for $\Gamma$. The identities in each factor imply $F(x+h)=F(x)+\Gamma(h)$ for every $h\in D$. Solve $\Gamma(h)=t-F(0)$ and return $h$; independently verify the public equations. Each local search is at worst quadratic in its explicit domain size, and the remaining operations are polynomial linear algebra. If the linear system is inconsistent, the method reports **inconclusive**, because a solution outside the orbit $D$ may still exist. $\square$
+
+**Explicit high-width easy family.** Fix $d\ge2$ and $r\ge1$. Take $q\ge d$ shared right variables. For every $d$-subset of them, add one source-form factor with its own $r$ private left variables. Let each local $B_i$ be invertible block upper triangular, so its transformed right block depends only on the shared variables, while its left block depends invertibly on its private variables. Each factor is of the original form $A_i u_{L,i}+\Delta_{a_i}Q_i(u_{R,i})$.
+
+Every change to one factor's private left variables is a global constant shift, affecting no other factor, and maps onto that factor's output. Consequently $\Gamma$ is surjective. Yet the shared variables form a clique $K_q$ in the primal graph. Each local scope also forms a clique of size $r+d$. Eliminating all private variables first and then shared variables attains width $\max(q-1,r+d-1)$, matching the clique lower bound. For fixed $d,r$, both the number of factors $\binom qd$ and local table sizes remain polynomial in $q$, while primal width grows without bound. This supplies an explicit counterexample to the assertion that high primal width by itself establishes witness hardness.
+
+**Distribution boundary.** The example deliberately uses block upper triangular local matrices; it is not the uniform-$GL_k$ source distribution and does not show that arbitrary random overlaps have a surjective global increment map. The executable tests include source-form overlapping factors for which no useful global constant shift exists. Returning inconclusive on such an instance establishes neither security nor unsatisfiability. Full public function tables are needed for this exact algorithm; a single target relation alone is not the same input.
+
+**Finite evidence.** With fixed $(k,d,r)=(3,2,1)$ and $q=4,8,12$, the test families have respectively 6, 28 and 66 factors, full increment ranks 6, 28 and 66, and primal widths 3, 7 and 11. A separate family uses the original R1 local geometry. Independent exhaustive checks on 32 small arbitrary global maps compare the recovered shift dimension and increment rank with complete ground truth. Satisfiable targets outside the shift image are deliberately tested and must be reported as inconclusive. These are reproducible algebraic counterexamples, not calibrated attacks on a completed replacement KEM.
+
 # 13. Verification, limitations and responsible next steps
+
+The 11 October follow-up adds Theorem 4.8, its two fiber/key-recovery corollaries, and Theorem 12.10. Their proofs concern the stated mathematical models. Python regression tests are not proof-assistant verification of either those proofs or the implementation. No machine-checked IND-CPA, IND-CCA or QROM security theorem is present. The follow-up also fixes a dictionary-order defect in Round 6: skipping the first table entry could omit a valid projective direction when zero was not first. A reordered-table regression now checks exact recovery. The manuscript publishing workflow checks both manuscript sources and all mathematical/build inputs before committing generated files, preventing obsolete evidence from being published after a concurrent change.
 
 The accompanying Python scripts verify the field modulus, exhaustive Boolean truth table, exact ternary affine-line partitions for all three source profile geometries, symbolic ternary triple leakage, small GRS row independence, functional equivalence after replacing $s$, a toy clean-basis adversary on $1024$-ary noisy samples, and analytical profile bounds. Such checks are finite evidence for corresponding algebraic properties; they do **not** establish IND-CPA or IND-CCA security against arbitrary efficient adversaries.
 
@@ -837,28 +934,37 @@ A publication-ready new cryptographic claim would require at least: an executabl
 
 # 14. Conclusion
 
-Round 8 additionally proves that overlap alone cannot guarantee NCSG witness hardness when the public global incidence graph has low induced width. This is a conditional structural cryptanalysis, not a positive KEM security theorem. The successive SG-DIFRA repairs address specific demonstrated weaknesses, and the surviving finite-field mathematics remains valuable. Nevertheless the proposed ciphertext-security engine is a hidden-MDS-label problem combined with noisy linear samples; the NCSG geometry is statistically and functionally redundant for security under the actual generator. The strong statement supported by this draft is therefore *attack-driven cryptographic analysis plus new mathematically checked NCSG-only obstructions*, not a formally verified post-quantum KEM. The MDS construction is retained for negative and historical study rather than promoted as the user's novel active design. Any security promotion needs new mathematics and independent cryptanalysis, not a change of adjectives.
+The public-evaluation and uniform-sampling results exclude a broad local repair regime, while the compatible-shift theorem excludes high primal width as a sufficient global repair. Neither supplies a new secret recovery mechanism. Round 8 additionally proves that overlap alone cannot guarantee NCSG witness hardness when the public global primal graph has low induced width. This is a conditional structural cryptanalysis, not a positive KEM security theorem. The successive SG-DIFRA repairs address specific demonstrated weaknesses, and the surviving finite-field mathematics remains valuable. Nevertheless the proposed ciphertext-security engine is a hidden-MDS-label problem combined with noisy linear samples; the NCSG geometry is statistically and functionally redundant for security under the actual generator. The strong statement supported by this draft is therefore *attack-driven cryptographic analysis plus new mathematically checked NCSG-only obstructions*, not a formally verified post-quantum KEM. The MDS construction is retained for negative and historical study rather than promoted as the user's novel active design. Any security promotion needs new mathematics and independent cryptanalysis, not a change of adjectives.
 
 # References
 
-11. R. Dechter, "Bucket Elimination: A Unifying Framework for Reasoning," *Artificial Intelligence*, 113(1–2), 41–85, 1999. https://doi.org/10.1016/S0004-3702(99)00059-4
+[1] I. S. Reed and G. Solomon. Polynomial Codes over Certain Finite Fields. *Journal of the Society for Industrial and Applied Mathematics* 8(2), 300–304, 1960. https://doi.org/10.1137/0108018
 
+[2] S. Gao. A New Algorithm for Decoding Reed–Solomon Codes. In *Communications, Information and Network Security*, 2003.
 
-9. Hair and Sahai, *Public Key Encryption from High-Corruption Constraint Satisfaction Problems*, arXiv:2604.10479 (conceptual prior-art comparison, **not** an ingredient).
-10. Couvreur et al., *On the Structure of the Schur Squares of Twisted Generalized Reed-Solomon Codes and Application to Cryptanalysis*, PQCrypto 2025 (archived iteration attack context).
+[3] A. Couvreur et al. Distinguisher-Based Attacks on Public-Key Cryptosystems Using Reed–Solomon Codes. *Designs, Codes and Cryptography* 73, 641–666, 2014. https://arxiv.org/abs/1307.6458
 
+[4] J. Ge, H. Liao and R. Xue. Measure-Rewind-Extract: Tighter Proofs of One-Way to Hiding and CCA Security in the Quantum Random Oracle Model. *ASIACRYPT 2024*. https://eprint.iacr.org/2024/777
 
-1. I. S. Reed and G. Solomon, "Polynomial Codes over Certain Finite Fields," *J. Soc. Indust. Appl. Math.*, 8(2), 300–304, 1960. https://doi.org/10.1137/0108018
-2. S. Gao, "A New Algorithm for Decoding Reed–Solomon Codes," in *Communications, Information and Network Security*, 2003.
-3. A. Couvreur et al., "Distinguisher-Based Attacks on Public-Key Cryptosystems Using Reed–Solomon Codes," *Designs, Codes and Cryptography*, 73, 641–666, 2014. https://arxiv.org/abs/1307.6458
-4. J. Ge, H. Liao, and R. Xue, "Measure-Rewind-Extract: Tighter Proofs of One-Way to Hiding and CCA Security in the Quantum Random Oracle Model," *ASIACRYPT 2024*, 2024.
-5. N. Bindel et al., "Tighter Proofs of CCA Security in the Quantum Random Oracle Model," *TCC 2019*, 2019.
+[5] N. Bindel et al. Tighter Proofs of CCA Security in the Quantum Random Oracle Model. *TCC 2019*.
 
-8. Source manuscript: Girish Nallan Chakravathy and Sreedevi Kannan, *SG-DIFRA: An Attack-Driven NCSG KEM with Secret Incidence and MDS Coding*, author-provided 26-page PDF, October 2026.
+[8] Girish Nallan Chakravathy and Sreedevi Kannan. SG-DIFRA: An Attack-Driven NCSG KEM with Secret Incidence and MDS Coding. Author-supplied 26-page source manuscript; original binary timestamp 11 September 2026. The extracted archive is not a bit-identical PDF copy.
+
+[9] I. M. Hair and A. Sahai. Public Key Encryption from High-Corruption Constraint Satisfaction Problems. arXiv:2604.10479, 2026. https://arxiv.org/abs/2604.10479. Conceptual prior-art comparison; not a construction ingredient.
+
+[10] A. Couvreur, R. Pratihar, N. Tanısalı and I. Zappatore. On the Structure of the Schur Squares of Twisted Generalized Reed-Solomon Codes and Application to Cryptanalysis. *PQCrypto 2025*. https://arxiv.org/abs/2412.15160. Archived code-based iteration context.
+
+[11] R. Dechter. Bucket Elimination: A Unifying Framework for Reasoning. *Artificial Intelligence* 113(1–2), 41–85, 1999. https://doi.org/10.1016/S0004-3702(99)00059-4
+
+[12] O. Goldreich. Foundations of Cryptography — A Primer. Author-hosted manuscript, 2005, Sections 1.1 and 2.1. https://www.wisdom.weizmann.ac.il/~oded/PSX/foc-sur04c.pdf
+
+[13] IACR. EUROCRYPT 2027 official conference calendar. Submission deadline 17 September 2026 at 23:59 AoE. https://eurocrypt.iacr.org/2027/. Checked 10 October 2026.
+
+Reference labels [6] and [7] are unused and are left unassigned to preserve existing historical reference identifiers.
 
 # Appendix A. Reproduction and claim labels
 
-Run \`python formal-verification-and-mathematical-proofs/test_sg_difra.py\` and \`python formal-verification-and-mathematical-proofs/profile_bounds.py\`. A passing run is evidence only for the printed fixtures and calculations. The active construction status is **NCSG-ONLY RESEARCH DIRECTION — NO VALIDATED KEM OR SECURITY LEVELS**.
+Run `python formal-verification-and-mathematical-proofs/test_sg_difra.py` and `python formal-verification-and-mathematical-proofs/profile_bounds.py`. A passing run is evidence only for the printed fixtures and calculations. The active construction status is **NCSG-ONLY RESEARCH DIRECTION — NO VALIDATED KEM OR SECURITY LEVELS**.
 
 # Appendix B. Submission caution
 

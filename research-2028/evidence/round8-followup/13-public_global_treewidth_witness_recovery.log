@@ -1,0 +1,13 @@
+test_contradictory_public_targets (__main__.Round8Tests.test_contradictory_public_targets) ... ok
+test_disjoint_factor_product (__main__.Round8Tests.test_disjoint_factor_product) ... ok
+test_public_witness_from_overlapping_R1_R2_R3_factors (__main__.Round8Tests.test_public_witness_from_overlapping_R1_R2_R3_factors) ... ok
+test_random_csp_exact_against_exhaustive (__main__.Round8Tests.test_random_csp_exact_against_exhaustive) ... ok
+test_zero_arity_contradictions_and_empty_instances (__main__.Round8Tests.test_zero_arity_contradictions_and_empty_instances) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.469s
+
+OK
+Round8 public overlapping-factor witness SGD-R1 n 9 width 4 recovered True
+Round8 public overlapping-factor witness SGD-R2 n 13 width 6 recovered True
+Round8 public overlapping-factor witness SGD-R3 n 17 width 8 recovered True

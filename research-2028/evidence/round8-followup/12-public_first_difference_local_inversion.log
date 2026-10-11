@@ -1,0 +1,26 @@
+test_constant_direction_subspace_and_linearity (__main__.PublicInversionTests.test_constant_direction_subspace_and_linearity) ... ok
+test_exact_mixed_operator_ranks (__main__.PublicInversionTests.test_exact_mixed_operator_ranks) ... ok
+test_exhaustive_19683_tables_local_false_shift (__main__.PublicInversionTests.test_exhaustive_19683_tables_local_false_shift) ... ok
+test_explicit_probability_bounds (__main__.PublicInversionTests.test_explicit_probability_bounds) ... ok
+test_public_translations_biject_every_local_fiber (__main__.PublicInversionTests.test_public_translations_biject_every_local_fiber) ... ok
+test_r1_r2_r3_every_target_using_public_data (__main__.PublicInversionTests.test_r1_r2_r3_every_target_using_public_data) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.919s
+
+OK
+R7 public constant shift subspace 5 3 dimension 2 size 9
+R7 public constant shift subspace 7 4 dimension 3 size 27
+R7 exact mixed shift rank 2 parallel 3 independent 4
+R7 exact mixed shift rank 3 parallel 9 independent 12
+R7 exact mixed shift rank 4 parallel 27 independent 36
+R7 19,683 scalar potentials: extra parallel 2187 extra independent 729
+R7 exact extra-shift failure bound 5 3 494/1162261467 4.250334490354398e-07
+R7 exact extra-shift failure bound 7 4 5083731656684/1546132562196033993109383389296863818106322566003 3.2880309107929094e-36
+R7 exact extra-shift failure bound 9 5 2254261275681817561953480981594827446799018301232454/6641875741647707377620101101821522629902510909863741673781301493561793362793645103224211320063959676493841778033124661424810022936614885837458688899686330453559673680288710756961715287976075463097954827 3.394013021873522e-151
+R7 ALL local fibers publicly translation equivalent 5 3 targets 9 per fiber 27
+R7 ALL local fibers publicly translation equivalent 7 4 targets 27 per fiber 81
+R7 ALL local fibers publicly translation equivalent 9 5 targets 81 per fiber 243
+R7 ALL public local targets inverted 5 3 targets 9 basis size 2
+R7 ALL public local targets inverted 7 4 targets 27 basis size 3
+R7 ALL public local targets inverted 9 5 targets 81 basis size 4

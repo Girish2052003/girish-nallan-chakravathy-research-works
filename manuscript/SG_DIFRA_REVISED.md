@@ -1,10 +1,10 @@
 ---
 title: "SG-DIFRA: An Attack-Driven Study of NCSG Fibers and Hidden-MDS KEMs"
-subtitle: "Revised mathematical analysis and security-status correction — research draft, 10 October 2026"
+subtitle: "Revised mathematical analysis and security-status correction — research draft, 11 October 2026"
 author:
   - "Girish Nallan Chakravathy"
   - "Sreedevi Kannan"
-date: "10 October 2026"
+date: "11 October 2026"
 lang: en
 geometry: "margin=27mm"
 fontsize: 11pt
@@ -138,7 +138,7 @@ $$
 G_i=v_i(1,\alpha_i,\alpha_i^2,\ldots,\alpha_i^{u-1})\in K^u.
 $$
 
-Choose full-row-rank $T\in K^{u\times N}$ and a secret bijection $\pi:\mathcal C\rightarrow[M]$. All public row labels initially are sampled independently and uniformly from $K^N\setminus\{0\}$. In each good bucket replace exactly one label with
+Choose full-row-rank $T\in K^{u\times N}$ and a secret bijection $\pi:\mathcal C\rightarrow[M]$. All public row labels initially are sampled independently and uniformly from the nonzero vectors of $K^N$. In each good bucket replace exactly one label with
 
 $$
 h_{i,\sigma_i}=G_{\pi(i)}T.
@@ -159,7 +159,7 @@ $$
 For bit one sample $v\leftarrow K^q$ uniformly. To decode, the secret key identifies the $M$ good bucket coordinates, reorders them via $\pi$, and applies a bounded-distance GRS decoder with
 
 $$
-t_{\mathrm{dec}}=\left\lfloor\frac{M-u}{2}\right\rfloor.
+t_{\mathrm{dec}}=\operatorname{floor}((M-u)/2).
 $$
 
 Return zero if and only if a codeword at distance at most $t_{\mathrm{dec}}$ is found. Every other word decodes to one. For a bit-zero ciphertext,
@@ -255,7 +255,7 @@ $$
 \qquad \tau\le u.
 $$
 
-The union bound does not address high-weight relations or non-linear distinguishers. Exact finite arithmetic and toy regressions are stored in \`formal-verification-and-mathematical-proofs/\`.
+The union bound does not address high-weight relations or non-linear distinguishers. Exact finite arithmetic and toy regressions are stored in `formal-verification-and-mathematical-proofs/`.
 
 # 11. Three research profiles
 
@@ -303,7 +303,7 @@ The successive SG-DIFRA repairs address specific demonstrated weaknesses, and th
 
 # Appendix A. Reproduction and claim labels
 
-Run \`python formal-verification-and-mathematical-proofs/test_sg_difra.py\` and \`python formal-verification-and-mathematical-proofs/profile_bounds.py\`. A passing run is evidence only for the printed fixtures and calculations. The project status is **RESEARCH DRAFT — CRYPTOGRAPHIC SECURITY NOT ESTABLISHED**.
+Run `python formal-verification-and-mathematical-proofs/test_sg_difra.py` and `python formal-verification-and-mathematical-proofs/profile_bounds.py`. A passing run is evidence only for the printed fixtures and calculations. The project status is **RESEARCH DRAFT — CRYPTOGRAPHIC SECURITY NOT ESTABLISHED**.
 
 # Appendix B. Submission caution
 
@@ -317,3 +317,10 @@ EUROCRYPT 2027's publicly listed full-paper deadline was 17 September 2026; it h
 In Round 7 the original ternary local source predicate was shown publicly invertible under its full-table evaluation model, so it is **not** a cryptographic trapdoor. Round 8 establishes a further structural attack boundary for *global overlapping* public ternary constraints. With known public scopes and explicit public relation tables, bucket elimination recovers a global solution or exactly detects inconsistency in time polynomial in input length times $3^{w+1}$, where $w$ is the induced width of the public primal graph. A public CSP distribution with logarithmic width therefore cannot rest its one-wayness on overlap alone. This classical CSP theorem is not presented as original new mathematics, an attack on every possible high-width construction, a measured bound on the historical full protocol's incidence topology, or a KEM IND-CCA break.
 
 [Executable deterministic public-only tests](../research-2028/attacks/public_global_treewidth_witness_recovery.py) cover independently brute-forced CSPs and genuinely overlapping R1/R2/R3 source-local geometries. They cannot validate cryptographic bit-security or quantum hardness. No complete NCSG-only secure redesign or three certified parameter sets currently exists; Round 8 has **no formal KEM security closure**, and the 2027 conference deadline had already elapsed by this update.
+
+
+# Appendix D. Follow-up on 11 October 2026
+
+The active manuscript now proves public local inversion through an evaluation interface whenever the nonlinear table size is polynomial, plus exact uniform fiber sampling. For the precisely specified attempted wrapper that samples uniform inputs and publishes only the local function output, correctness forces efficient public session-key recovery up to the quantified error terms. A separate public global-shift theorem gives source-form families of unbounded primal width that still admit polynomial witness recovery. These statements have distinct hypotheses and do not break every possible global KEM.
+
+The active document contains the full proofs as Theorem 4.8, Corollaries 4.8a–b and Theorem 12.10, with accompanying reproducible scripts. A dictionary-order bug in the Round-6 attack was repaired with a failing-then-passing regression. The three historical profiles still have no established security levels; no secure replacement KEM or machine-checked KEM-security proof is claimed. This short document remains historical context.

@@ -1,0 +1,12 @@
+test_all_small_planted_games (__main__.FrameDistinguishingTests.test_all_small_planted_games) ... ok
+test_fixed_field_is_polynomial_exponent_not_practical (__main__.FrameDistinguishingTests.test_fixed_field_is_polynomial_exponent_not_practical) ... ok
+test_null_dependency_exact_formula (__main__.FrameDistinguishingTests.test_null_dependency_exact_formula) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.342s
+
+OK
+MDS-HBCE toy public-rank attack: 30 / 30 planted; false positives 0 / 30 null analytic false positive bound 3.3933182663728225e-07
+R1 naive public-subset enumeration log2 upper work 959.07 (UNFEASIBLE at finite profiles)
+R2 naive public-subset enumeration log2 upper work 1641.71 (UNFEASIBLE at finite profiles)
+R3 naive public-subset enumeration log2 upper work 2441.3 (UNFEASIBLE at finite profiles)

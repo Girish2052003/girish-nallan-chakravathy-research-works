@@ -1,5 +1,7 @@
 # SG-DIFRA security redesign, October 2026 — EUROCRYPT 2028 research track
 
+**11 October follow-up:** [new public-evaluation inversion, uniform fiber sampling, scoped key-recovery obstruction, and high-width global shift attack](ROUND8_FOLLOWUP_RESULTS.md). The active manuscript now includes Theorem 4.8, Corollaries 4.8a–b and Theorem 12.10. Research-code and proof-wording defects are repaired. **The secure replacement KEM and profile security levels remain unestablished.** The previous dated results below remain historical evidence within their stated models.
+
 **Status: security not established for the standalone SG-DIFRA KEM.** This is a proof/attack ledger, not a deployment certification. All claims below are either proved mathematical lemmas, reproducible finite calculations, conditional reductions, or explicitly open questions. Do not promote the profiles to 128/192/256-bit security ratings.
 
 ## Source provenance and author preservation

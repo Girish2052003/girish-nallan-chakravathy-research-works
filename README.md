@@ -1,8 +1,20 @@
 # Girish Nallan Chakravathy — Research Works
 
+## 11 October 2026 follow-up
+
+**No secure replacement KEM has been established.** The latest work adds stronger public-inversion proofs and fixes research-code and publication defects. It does not convert passed tests into a security certificate.
+
+- [Follow-up results and exact scope](research-2028/ROUND8_FOLLOWUP_RESULTS.md).
+- [Updated complete manuscript](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md), [PDF](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf), and [Word](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx).
+- [Oracle-only local inversion and uniform fiber sampling](research-2028/attacks/public_oracle_local_inversion.py), with [regressions](research-2028/attacks/test_public_oracle_local_inversion.py).
+- [Global constant-shift recovery](research-2028/attacks/public_global_shift_witness_recovery.py), with [high-width and inconclusive controls](research-2028/attacks/test_public_global_shift_witness_recovery.py).
+- [Reproducible verification record](research-2028/evidence/round8-followup/README.md).
+
+The new local theorem works through public evaluation when the source nonlinear table is polynomial in size. A 24-input-coordinate example with more than 282 billion possible inputs was inverted using 11,678 evaluations including verification. A further theorem shows that one precisely specified local ciphertext wrapper loses key secrecy whenever its correctness error is small. The global result exhibits easy high-primal-width instances, with its restricted distribution stated explicitly. These results eliminate candidate repair paths; they do not supply the missing original private trapdoor.
+
 ## Official repository and current documents
 
-**The only official development branch is `main`.** All authoritative research, code, proofs, audit ledgers, source manuscripts, and generated PDF/Word binaries live on `main`. The previous Round-8 working branches were integrated through [PR #7](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/pull/7) and [PR #8](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/pull/8); the additional branch references are cleanup targets, **not competing published versions**.
+**The only official development branch is `main`.** All authoritative research, code, proofs, audit ledgers, source manuscripts, and generated PDF/Word binaries live on `main`. The previous Round-8 working branches were integrated through [PR #7](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/pull/7) and [PR #8](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/pull/8) and removed. The follow-up creates no additional published branch.
 
 **Current authoritative paper:** [NCSG-only research source](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md) · [built PDF](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf) · [editable Word](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx). These are research drafts; **none is a certified secure KEM or conference-ready submission**. The document titled [SG_DIFRA_REVISED](manuscript/SG_DIFRA_REVISED.md) and its [PDF](manuscript/SG_DIFRA_REVISED.pdf) / [Word](manuscript/SG_DIFRA_REVISED.docx) are preserved as shorter historical/cryptanalytic revisions, **not the official active algorithm**.
 

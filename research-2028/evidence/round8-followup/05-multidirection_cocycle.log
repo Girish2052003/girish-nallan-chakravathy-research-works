@@ -1,0 +1,9 @@
+test_corruption_detected (__main__.CocycleTests.test_corruption_detected) ... ok
+test_exact_integrability (__main__.CocycleTests.test_exact_integrability) ... ok
+test_joint_derivative_image_rank_generalized (__main__.CocycleTests.test_joint_derivative_image_rank_generalized) ... ok
+test_kernel_dimension (__main__.CocycleTests.test_kernel_dimension) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.006s
+
+OK

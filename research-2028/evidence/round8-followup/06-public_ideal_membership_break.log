@@ -1,0 +1,10 @@
+test_decapsulation_trapdoor_correctness_is_not_secrecy (__main__.IdealAttackTest.test_decapsulation_trapdoor_correctness_is_not_secrecy) ... ok
+test_membership_break (__main__.IdealAttackTest.test_membership_break) ... ok
+test_size_polynomial_for_constant_degree (__main__.IdealAttackTest.test_size_polynomial_for_constant_degree) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.056s
+
+OK
+NCSG ideal-membership distinguisher: bit-0 detected 150 / 150 ; uniform false accepts 0 / 150
+Ambient coefficient dimension 20 public multiplication span rank 11

@@ -1,0 +1,12 @@
+test_balanced_clause_and_satisfiability (__main__.ResearchRegressions.test_balanced_clause_and_satisfiability) ... ok
+test_exhaustive_small_clean_basis_attack (__main__.ResearchRegressions.test_exhaustive_small_clean_basis_attack) ... ok
+test_f3_regular_fiber_and_zero_line_sum (__main__.ResearchRegressions.test_f3_regular_fiber_and_zero_line_sum) ... ok
+test_fixed_field_bound (__main__.ResearchRegressions.test_fixed_field_bound) ... ok
+test_gf2_10_irreducible (__main__.ResearchRegressions.test_gf2_10_irreducible) ... ok
+test_mds_girth (__main__.ResearchRegressions.test_mds_girth) ... ok
+test_secret_incidence_reparametrization (__main__.ResearchRegressions.test_secret_incidence_reparametrization) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 5.793s
+
+OK

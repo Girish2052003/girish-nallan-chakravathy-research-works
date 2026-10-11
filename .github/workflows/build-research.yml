@@ -36,6 +36,8 @@ jobs:
           python research-2028/attacks/public_second_difference_subspace_recovery.py
           python research-2028/attacks/public_first_difference_local_inversion.py
           python research-2028/attacks/public_global_treewidth_witness_recovery.py
+          python research-2028/attacks/test_public_oracle_local_inversion.py
+          python research-2028/attacks/test_public_global_shift_witness_recovery.py
       - name: Install publishing tools
         run: |
           sudo apt-get update -qq
@@ -70,10 +72,15 @@ jobs:
           # Generated binaries are authoritative from THIS build. Rebase the
           # index (not an already-created binary commit) onto fresh main so
           # concurrent documentation writes never cause binary merge conflicts.
+          build_commit=$(git rev-parse HEAD)
           for attempt in 1 2 3; do
             git fetch origin main
-            if ! git diff --quiet origin/main HEAD -- manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md; then
-              echo "Manuscript source changed during CI; skip obsolete binaries" >&2
+            if ! git diff --quiet "$build_commit" origin/main -- \
+              manuscript/SG_DIFRA_REVISED.md \
+              manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md \
+              research-2028 formal-verification-and-mathematical-proofs \
+              .github/workflows/build-research.yml; then
+              echo "A manuscript or verification input changed during CI; skip obsolete binaries" >&2
               exit 0
             fi
             git reset --mixed origin/main

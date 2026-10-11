@@ -1,0 +1,15 @@
+test_exact_three_finite_profiles (__main__.DirectionCollisionTests.test_exact_three_finite_profiles) ... ok
+test_exhaustive_GF3_potential_table_19683 (__main__.DirectionCollisionTests.test_exhaustive_GF3_potential_table_19683) ... ok
+test_public_only_source_vs_uniform_fiber (__main__.DirectionCollisionTests.test_public_only_source_vs_uniform_fiber) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.253s
+
+OK
+R4 certified fiber distinguishing gap: 5 3 0.5478324323267756 source >= 0.5547368172363233 uniform <= 0.006904384909547739
+R4 certified fiber distinguishing gap: 7 4 0.9411410575942406 source >= 0.9470512035086418 uniform <= 0.005910145914401244
+R4 certified fiber distinguishing gap: 9 5 0.9972520956952825 source >= 0.9999123630476998 uniform <= 0.0026602673524172248
+R4 exhaustive potential certificate: 2187 / 19683 three forced parallel lines (exact 1/9)
+R4 public-only detector 5 3 source 12 /24 uniform false positives 0 /24
+R4 public-only detector 7 4 source 23 /24 uniform false positives 0 /24
+R4 public-only detector 9 5 source 24 /24 uniform false positives 0 /24
