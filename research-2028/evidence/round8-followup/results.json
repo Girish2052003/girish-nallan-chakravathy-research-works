@@ -217,5 +217,38 @@
       "local_controls": "Strengthened gate rejects old remote PDF; both document gates pass after repair. Active local rendering: 40 pages, 995 OfficeMath nodes.",
       "mathematical_programs": "unchanged"
     }
+  },
+  "final_remote_publication": {
+    "verified_utc": "2026-10-12T11:49:00.935113+00:00",
+    "source_commit": "6784f96458fd5236b95ce0b46d87ce70a9e02c0e",
+    "binary_commit": "4b5ae2ae3e96b8a9a03284ee90092cf9170fd33c",
+    "successful_run": 38244685690,
+    "workflow_url": "https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/actions/runs/38244685690",
+    "checks": "15 mathematical programs; both publishing gates; upload; direct binary publication; source hashes; full preceding remote-page review plus final changed-page review",
+    "renderer": "LibreOffice 24.2",
+    "page_count_tool": "pdfinfo",
+    "artifacts": {
+      "manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx": {
+        "sha256": "0b94e780d29cd6241ae5f0ef8c6c17689a75cadb5ecf3d563d30c73e6fe899f8",
+        "bytes": 75603,
+        "officemath_nodes": 995
+      },
+      "manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf": {
+        "sha256": "b4fa3219610772eb8670bdd937958d4c7af86495b414363b198a79f17e9e8b31",
+        "bytes": 740433,
+        "pages": 45
+      },
+      "manuscript/SG_DIFRA_REVISED.docx": {
+        "sha256": "0bb6f37b37f9e7f7f659665dc675297cc8c0fe5b89cfc98f4b6e776754831475",
+        "bytes": 27651,
+        "officemath_nodes": 186
+      },
+      "manuscript/SG_DIFRA_REVISED.pdf": {
+        "sha256": "58ec3a926266c9d1e6d6d4ca2dc58042eb82fa7dd15ec9a7b14be9a9bcda0a99",
+        "bytes": 254337,
+        "pages": 13
+      }
+    },
+    "security_scope": "No secure replacement KEM, formal KEM security closure, or certified security levels."
   }
 }
