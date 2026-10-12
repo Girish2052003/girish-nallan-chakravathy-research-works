@@ -22,8 +22,10 @@ assert "ν=3/16" in compact, "Noise rate mathematical symbol vanished from rende
 assert "M≤1024" in compact, "Core finite field inequality absent from rendered PDF"
 # Apply the glyph gate to BOTH publications. The short archive also contained
 # broken set-difference and floor delimiters under newer LibreOffice builds.
-badpos=next((i for i,ch in enumerate(text) if ch in "¿¡"),None)
-assert badpos is None, f"Mathematics glyph fallback in rendered PDF near: {text[max(0,badpos-160):badpos+160]!r}"
+# These finite-field manuscripts have no imaginary-part operator. Some
+# LibreOffice versions silently reinterpret the image operator "im" as ℑ.
+badpos=next((i for i,ch in enumerate(text) if ch in "¿¡ℑ"),None)
+assert badpos is None, f"Mathematics glyph fallback or operator substitution in rendered PDF near: {text[max(0,badpos-160):badpos+160]!r}"
 if "EUROCRYPT_2028" in docx:
     normalized=" ".join(text.lower().split())
     assert "theorem 4.1" in normalized, "New ternary structural theorem absent from PDF"
