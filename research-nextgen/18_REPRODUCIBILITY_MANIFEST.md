@@ -25,3 +25,10 @@ Local working-directory prototype (using a small behaviorally equivalent copy of
 Local test code SHA-256 before the later GitHub canonical-import and q=12 adjustments: source `97d00c9d195975520076f9d0f45acadf34d2accfb811fa9b85fe1d99f8fc565e`; test `011e9b8d91a5fb69fbb1b645caee2b5a09a412da9ca48db0fae333db4636214d`. **These are historical local-prototype hashes, not hashes of final GitHub blobs.**
 
 **CI status:** the committed GitHub version was not separately executed by GitHub Actions during this checkpoint. Do not label it CI-verified until an actual run succeeds. The mathematical family is constructed; these are not random-profile security experiments.
+
+
+## Follow-up NG-Q3 negative control
+
+Additional file: `experiments/random_source_shift_codimension_probe.py`, run locally under Python 3.13.5 with fixed generator seeds, no dependencies beyond Python standard library and the previous Round-8 public-shift module. Command from repo root: `python research-nextgen/experiments/random_source_shift_codimension_probe.py`.
+
+Results: 180 tiny toy source-form instances, 172 with `dim D=0` and 8 with `dim D=1`. n=4,5,6; policies n factors or every triple; 30 trials each. Outcome demonstrates a **limitation** of the quotient attack rather than generic NCSG insecurity. Final GitHub code has not been rerun in CI; local source-equivalent prototype was executed. See `09_COUNTEREXAMPLES_AND_NEGATIVE_RESULTS.md`.
