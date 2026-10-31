@@ -26,3 +26,20 @@ python -m unittest -v test_public_global_quotient_witness_recovery
 ```
 
 The code reuses the original Round-8 `PublicShiftSystem` rather than copying the earlier solver into this branch. Historical SG-DIFRA files and all preexisting attack evidence are preserved on main.
+
+
+## New checkpoint — NG-Q4 / NG-Q5
+
+- [Updated conventional proofs: exact random-source shift survival and hypergraph enumerator equivalence](08_THEOREMS_AND_PROOFS.md)
+- [Counterexamples, 680 extra randomized controls and the stronger half-expectation bound](09_COUNTEREXAMPLES_AND_NEGATIVE_RESULTS.md)
+- [Rejected/evaluated mathematical candidates](04_CANDIDATE_FRAMEWORK_CATALOGUE.md)
+- [Deterministic exact probability calculator](experiments/public_global_shift_survival_bound.py)
+- [Independent unit tests](experiments/test_public_global_shift_survival_bound.py)
+
+```sh
+cd research-nextgen/experiments
+python -m unittest -v test_public_global_shift_survival_bound test_public_global_quotient_witness_recovery
+python public_global_shift_survival_bound.py
+```
+
+The **locally executed files were byte-identical to the GitHub blobs** and passed seven mathematical unit tests. GitHub CI did not independently run these tests. New mathematical foundations, security assumptions, private trapdoors, KEM construction and formal proof-assistant acceptance remain OPEN.
