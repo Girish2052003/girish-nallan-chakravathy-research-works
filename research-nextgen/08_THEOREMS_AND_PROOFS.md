@@ -212,3 +212,16 @@ Proof: each planted pair survives every projection, each of its eight alternativ
 **NG-Q8.4:** Distinct triples intersecting a selected t-vertex anchor set, t<=n-2, have min pair codegree t and `C(n,3)-C(n-t,3)=O(t*n^2)` factors. Choosing t proportional to log(n/eta) obtains polynomial-time planted recovery with failure <=eta using `O(n^2 log(n/eta))` factors. This rejects another candidate family as a defensible *hard witness* distribution.
 
 The elementary projection method and planted-CSP recovery landscape have extensive prior art. **Model-specific math is documented; genuinely new foundational mathematics remains unestablished.** No formal proof assistant, independent external audit, quantum security argument or active KEM is claimed.
+
+
+---
+
+# NG-Q9 — Fixed-local-arity public high-codegree recovery bound
+
+**Complete detailed theorem and proof:** [24_NGQ9_GENERAL_ARITY_PROJECTION_BOUND.md](24_NGQ9_GENERAL_ARITY_PROJECTION_BOUND.md).
+
+For fixed r,d>=1, k=r+d, over F3, independent uniform B in GL(k,3), independent uniform r-vector potential Q:F3^d->F3^r, and fixed nonzero a, the probability that `Delta_aQ` is globally constant is exactly `3^(-r*(2*3^(d-1)-1))`. Conditional on this event, the public local map is affine with a uniformly sampled full-row-rank r-by-k linear part. Using exact finite-field rank-matrix enumeration, calculate the positive `gamma_(r,d)` probability that a wrong two-coordinate assignment cannot be repaired by any choice of the other k-2 coordinates. Put `epsilon_(r,d)=gamma_(r,d)*3^(-r*(2*3^(d-1)-1))>0`.
+
+For any fixed k-uniform public factor multihypergraph with independent local source forms and pair codegrees d_ij, a public polynomial-explicit-input one-pass projection attacker recovers the independently planted s with failure probability at most `min(1,8*sum_(i<j)(1-epsilon_(r,d))^d_ij)`. For **k>=3**, complete k-uniform scopes have d_ij=C(n-2,k-2), making the bound tend to zero as n grows. **For k=2, one independent factor per pair has codegree one and does NOT provide a recovery theorem; independently repeated pair factors with growing multiplicity can.**
+
+The epsilon bound can be extremely small, unlike NG-Q8's exact 15/52 for (r,d)=(1,2). This is a mathematical upper bound on public inversion complexity under a specified ensemble, not a security theorem, standalone KEM or novel mathematical foundation. Four new locally executed tests passed after two documented test-expectation/implementation corrections. No proof assistant or external peer reviewer.
