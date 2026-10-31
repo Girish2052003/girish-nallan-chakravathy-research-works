@@ -25,3 +25,8 @@
 **Decision NG-D09:** The equivalence analysis identified already published linear-structure theorems (Charpin–Kyureghyan 2009, earlier Lai) and established first-moment methods (Achlioptas–Moore). NG-Q4 is a scoped result, **NOT** a newly established mathematical field; M2 remains open.
 
 **Decision NG-D10:** Initial unit assertion for the disconnected-scope example expected 26/3 but the correct exact expected nonzero shift count is 12. Corrected and independently rerun before committing test. Preserve this correction as part of the proof-audit trail.
+
+
+**Decision NG-D11:** NG-Q5 support-hit polynomial is a standard induced-subhypergraph edge-count enumerator after a complement reindexing. Reject as a purportedly new foundational algebra or geometry. Retain it only as a useful, explicitly reduced calculation device. Status: **MATHEMATICALLY EQUIVALENT / FOUNDATIONAL NOVELTY REJECTED**.
+
+**Decision NG-D12:** NG-C03 nonlinear-overlap obstruction candidate is too indefinite to establish new mathematical structure. Status: **OPEN, UNSELECTED**. Do not promote or fabricate lemmas.
