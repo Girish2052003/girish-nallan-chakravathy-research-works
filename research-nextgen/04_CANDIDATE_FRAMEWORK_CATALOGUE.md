@@ -61,3 +61,12 @@ NG-Q8 supplies a mathematically scoped **polynomial-time public recovery theorem
 ## NG-C07 — enlarged uniform-source local arity as a hardness repair
 
 NG-Q9 gives an explicit **positive** public pair-exclusion probability for any fixed r,d>=1 in the independent uniform source-form family over F3. For sufficiently large pair codegrees, this alone yields polynomial public planted-witness recovery with high probability. Thus changing local dimension from (1,2) to another **fixed** pair (r,d) is not, by itself, a justified repair for the same high-overlap secret-witness hardness model. The probability constant may become astronomically weak and does not refute concrete finite profiles or distributions with correlated/hidden representations. **Decision:** reject fixed-dimension increase alone as a proven cryptographic security foundation; no new mathematical framework selected.
+
+
+## NG-C08 — sparse star with shared public anchors — REJECTED
+
+The proposed O(n log n) planted NCSG sparse construction on repeated scopes (0,1,j) has constant separator size **two** and primal graph treewidth <=2. A complete deterministic public solver enumerates 3^2=9 anchor assignments then solves every leaf independently, even with **one** constraint per leaf, arbitrary nonlinear factor tables or arbitrary target values. No random planting, collision probability or private information is needed. This is standard bounded-treewidth CSP mathematics (Dechter 1999); **reject as original foundation or hard-witness distribution**. The failed preliminary anchor-only-sufficiency test and corrected complete solver are preserved in NG-Q10.
+
+## NG-C09 — finite-difference degree collapse — mathematically valid, not new foundational algebra
+
+All ternary source-form factors `f(x)=A uL+Delta_a Q(uR)` have algebraic degree <=max(1,2d-1), for any B invertible. If d=1 they are affine, so every public global factor system is solved by Gaussian elimination, independent of graph width. If r=1,d=2 they are local degree<=3 functions; a uniform random F3^3 scalar function has this degree with probability exactly 1/59049, yielding a public distinguisher but no d=2 KEM break. This is a direct use of **known affine-invariant finite-field polynomial/Reed–Muller theory**, not a novel mathematical foundation. **Reject d=1 as proposed hard-witness family; retain d>=2 distinguishability as scoped structural evidence.**
