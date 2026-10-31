@@ -38,3 +38,13 @@ NG-Q6 uses a model-specific local collision calculation and a standard first-mom
 - **Alan K. Mackworth**, *Consistency in networks of relations*, **Artificial Intelligence** 8(1), pp.99–118 (1977), DOI **10.1016/0004-3702(77)90007-8**. Classical local consistency algorithm foundations.
 
 **Interpretation:** The NG-Q8 numerical constant and sampler-specific inequality could still be a publishable narrow result, but originality is **not established** merely by deriving a new rational number. The core local consistency and sheaf formulation have significant antecedents.
+
+
+## 1 November 2026 antecedents for NG-Q10 / NG-Q11
+
+- **Rina Dechter**, *Bucket elimination: A unifying framework for reasoning*, Artificial Intelligence 113 (1999), 41–85, DOI 10.1016/S0004-3702(99)00059-4, https://www.sciencedirect.com/science/article/pii/S0004370299000594. Complete CSP solutions by variable conditioning or width-based elimination are prior art. NG-Q10's public 2-anchor star solver is a textbook width-two special case.
+- **Tali Kaufman and Dana Ron**, *Testing Polynomials over General Fields*, SIAM Journal on Computing, DOI 10.1137/S0097539704445615, https://epubs.siam.org/doi/10.1137/S0097539704445615. Published finite-field low-degree property tests and generalized Reed–Muller interpretations; source-form NG-Q11 degree filtration is not newly invented mathematics.
+- **Arnab Bhattacharyya and Abhishek Bhowmick**, *Using Higher-Order Fourier Analysis over General Fields* (ECCC TR15-077, 2015), https://eccc.weizmann.ac.il/report/2015/077/. Further prior art on finite-field polynomials, affine-invariant properties and low-degree algebraic structure.
+- Standard generalized Reed–Muller codes evaluate low-degree polynomial functions over finite fields. The dimension of degree<=3 scalar functions on F3^3 is exactly 17 of the 27 function-space dimensions, yielding the exact 1/59049 false-positive probability for the public NG-Q11 local degree predicate.
+
+**Limit:** A model-specific formulation or a new rational count is not a globally novel algebraic theory. Claims about complete secure KEMs or key hiding do not follow solely from function distinguishability.
