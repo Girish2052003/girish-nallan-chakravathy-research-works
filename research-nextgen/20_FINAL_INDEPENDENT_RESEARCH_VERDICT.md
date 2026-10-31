@@ -43,3 +43,8 @@ This filename retains the charter-required word *independent*, but the work is *
 **Research correction:** This replaces the old NG-Q7 note that asymptotic public-recovery had not been established **for this narrow explicitly random dense distribution only**. Its correctness does not extend to all NCSG problems. The result strengthens the **negative cryptographic verdict**, not a positive KEM claim. Generic CSP consistency and presheaf/cohomological local/global approaches have published antecedents; full originality remains unresolved.
 
 **Updated outcomes:** Mathematical Outcome C (project-specific mathematically supported analysis, absolute novelty unresolved); Cryptographic Outcome F (no qualifying original secure KEM, new hard distribution or private trapdoor). Existing main remains unchanged.
+
+
+## NG-Q9 postscript: fixed-arity scope generalization
+
+NG-Q9 rigorously broadens **one sufficient public-recovery criterion** to any fixed local r,d>=1 over F3 under independent public source-form maps and high pair-codegree hypergraphs. The proof is based on standard finite-field counts and explicit probability bounds, with four locally passing tests; it can be quantitatively loose for large d. Corrected the unique-scope edge case k=2: only k>=3 guarantees growing codegree under all unique k-subsets. Independent repeated k=2 pair factors may restore the condition. No original foundational mathematics, machine-checked theorem, independent expert review, complete KEM or validated security profiles. Scope-limited negative cryptanalysis remains the strongest outcome.
