@@ -30,3 +30,12 @@
 **Decision NG-D11:** NG-Q5 support-hit polynomial is a standard induced-subhypergraph edge-count enumerator after a complement reindexing. Reject as a purportedly new foundational algebra or geometry. Retain it only as a useful, explicitly reduced calculation device. Status: **MATHEMATICALLY EQUIVALENT / FOUNDATIONAL NOVELTY REJECTED**.
 
 **Decision NG-D12:** NG-C03 nonlinear-overlap obstruction candidate is too indefinite to establish new mathematical structure. Status: **OPEN, UNSELECTED**. Do not promote or fabricate lemmas.
+
+
+**NG-D13:** Retain NG-Q6 as a scoped mathematically proved planted-collision and uniqueness bound, supported by exhaustive 19,683-table local checks and finite global brute force. **Do not infer hardness or cryptographic security** from uniqueness.
+
+**NG-D14:** NG-Q7 recovered public planted witnesses on complete-triple source-form instances despite zero nontrivial global constant shifts. **REJECT the tested dense random-overlap scheme as a currently credible private-trapdoor/hardness foundation.** This is a finite empirical attack result, not a theorem of universal polynomial recovery.
+
+**NG-D15:** The public pair-filtering algorithm belongs to prior CSP consistency theory (Mackworth 1977); do not claim newly invented generic CSP techniques. Strong model-specific attack effectiveness may warrant publication only after rigorous prior-art comparison, reproducibility and review.
+
+**NG-D16:** No active NCSG-only KeyGen/Encaps/Decaps, IND-CCA/QROM argument or accepted new mathematical framework exists. Retain independent mathematical discoveries and negative controls with correct attribution and leave cryptographic gates OPEN.
