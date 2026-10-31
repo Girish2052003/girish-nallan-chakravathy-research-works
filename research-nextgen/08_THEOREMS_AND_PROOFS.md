@@ -225,3 +225,15 @@ For fixed r,d>=1, k=r+d, over F3, independent uniform B in GL(k,3), independent 
 For any fixed k-uniform public factor multihypergraph with independent local source forms and pair codegrees d_ij, a public polynomial-explicit-input one-pass projection attacker recovers the independently planted s with failure probability at most `min(1,8*sum_(i<j)(1-epsilon_(r,d))^d_ij)`. For **k>=3**, complete k-uniform scopes have d_ij=C(n-2,k-2), making the bound tend to zero as n grows. **For k=2, one independent factor per pair has codegree one and does NOT provide a recovery theorem; independently repeated pair factors with growing multiplicity can.**
 
 The epsilon bound can be extremely small, unlike NG-Q8's exact 15/52 for (r,d)=(1,2). This is a mathematical upper bound on public inversion complexity under a specified ensemble, not a security theorem, standalone KEM or novel mathematical foundation. Four new locally executed tests passed after two documented test-expectation/implementation corrections. No proof assistant or external peer reviewer.
+
+
+---
+
+# NG-Q10 / NG-Q11 — exact public-solvability and degree-collapse no-go
+
+- **NG-Q10:** [25_NGQ10_REJECTED_SPARSE_STAR.md](25_NGQ10_REJECTED_SPARSE_STAR.md) gives a complete deterministic public solver for arbitrary 3-ary factors on scopes (0,1,j), by enumerating q² shared-anchor values and selecting independent leaf values. It decides SAT/UNSAT and recovers any witness in O(q³(m+n)) simple operations; q=3 gives O(m+n). This **fails the novelty gate** because treewidth<=2 and cutset conditioning is established CSP theory.
+- **NG-Q11.1:** [26_NGQ11_ALGEBRAIC_DEGREE_NO_GO.md](26_NGQ11_ALGEBRAIC_DEGREE_NO_GO.md) proves `deg(f_j)<=max(1,2d-1)` for every output component of ternary finite-difference source-form `f=A uL+Delta_a Q(uR)`, since finite translation lowers polynomial total degree by at least one, and linear masks preserve the bound.
+- **NG-Q11.2 and .3:** For **d=1**, `Delta_aQ(z)=a*c1+c2*(2*a*z+a²)`, hence each local map is affine full-row rank. Arbitrary global overlaps on public factors stack into linear equations and can be solved by Gaussian elimination regardless of primal width or factor distribution. This is **a deterministic public witness inversion for that family**, not a proof that all KEM ciphertext shared secrets are recoverable.
+- **NG-Q11.4:** For `r=1,d=2`, all public scalar factors satisfy degree<=3; a uniform random 27-entry scalar table passes with exact probability `3^-10=1/59049`. Under uniform source Q, degree exactly3 occurs with exact probability 2/3, confirmed by 13,122 of all 19,683 Q tables. This is **a local distinguishing test only**.
+
+All four categories are conventional mathematical arguments with independently executed Python finite checks and original code kept for reproduction. They are **not** peer-reviewed or proof-assistant checked and do **not** fulfill the new mathematical foundation or secure KEM mission.
