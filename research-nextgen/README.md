@@ -86,3 +86,13 @@ Run `cd research-nextgen/experiments && python -m unittest -v test_ng_q8_recover
 [Complete scoped general-arity theorem](24_NGQ9_GENERAL_ARITY_PROJECTION_BOUND.md) · [exact rational bound calculator](experiments/ng_q9_general_bound.py) · [independent exhaustive finite tests](experiments/test_ng_q9_general_bound.py).
 
 For fixed r,d>=1, a small **strictly positive** probability that a random source-form local constraint publicly excludes any fixed wrong two-variable assignment yields a polynomial-time public recovery theorem when each variable pair appears in enough independently sampled factors. All unique k-element scopes suffice asymptotically **when k=r+d>=3**; k=2 needs repeated factors. The numerical lower bound can be far weaker than the exact NG-Q8 (1,2) result. **Four new local tests pass;** proof assistant, independent novelty review and original KEM are still absent.
+
+
+## 1 November 2026 — NG-Q10 and NG-Q11, two additional adversarial gates
+
+- [NG-Q10: sparse two-anchor star candidate **REJECTED** as bounded-treewidth public CSP](25_NGQ10_REJECTED_SPARSE_STAR.md); [complete solver](experiments/ng_q10_public_star_no_go.py); [tests](experiments/test_ng_q10_public_star_no_go.py)
+- [NG-Q11: algebraic degree collapse and public affine inversion](26_NGQ11_ALGEBRAIC_DEGREE_NO_GO.md); [interpolation and Gaussian solver](experiments/ng_q11_degree_collapse.py); [tests](experiments/test_ng_q11_degree_collapse.py)
+
+**Exact scope:** Every ternary d=1 source-form factor is affine, for any r>=1 and arbitrary invertible A,B, arbitrary Q; consequently arbitrary public global overlaps can be inverted **as public linear systems** (witness may differ from planted witness if multiple solutions). For scalar r=1,d=2, each public local source-form factor has algebraic degree <=3, whereas an independent uniformly random 27-entry scalar table passes this degree test with probability exactly 1/59049. This is a *distinguisher*, not a KEM security break.
+
+The first NG-Q10 preliminary star-uniqueness test failed; a complete deterministic solver replaced the insufficient method. The NG-Q11 initial floating-point exact-probability helper was corrected. **22/22** combined NG-Q8/Q9/Q10/Q11 local tests passed after the corrections. Both new files and tests were byte-matched to GitHub blob SHA. **No foundational mathematical originality, formal proof assistant, independent cryptanalysis, private trapdoor or complete secure KEM established.**
