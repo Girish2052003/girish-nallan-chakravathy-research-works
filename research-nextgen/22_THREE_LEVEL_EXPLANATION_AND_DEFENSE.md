@@ -35,3 +35,12 @@ For the two-variable example, `D` consists of shifts `(h,0)`; `Gamma(h,0)=(h,2h)
 **Why isn't this proof-assistant verified?** The written proof and tests exist; no Lean/Rocq/Isabelle checker has verified the formal statement in this execution.
 
 **What's the next substantive problem?** Establish whether the proposed global distribution generically has a small exploitable quotient, or shift attention to mathematical structures with a credible *genuinely private* recovery advantage and originality evidence, rather than repackaging known symmetries.
+
+
+## NG-Q4 and NG-Q5 in three levels
+
+**Level 1 — tiny everyday picture.** Imagine one person trying to slide every connected puzzle piece in a particular direction without changing how the puzzle behaves. For one randomly mixed three-input ternary piece, any particular nonzero slide survives with probability **5 out of 39**. Several independently mixed puzzle pieces must all accept that same slide; the chance gets smaller when the slide touches more pieces. Having almost no successful slides is **not** the same as having an unsolvable puzzle—another kind of shortcut may exist.
+
+**Level 2 — university mathematics.** Let `D=C(F)` be the global constant-derivative subspace for `F=(f_i)`; for a fixed nonzero shift `h`, `P(h in D)=alpha^(k(h))` where `k(h)` counts factors with nonzero restricted input shift. Summing indicators gives `E(|D|-1)=sum_(h!=0)alpha^(k(h))`; because any nontrivial F3-subspace contains at least two nonzero vectors, `P(D!={0})<=E(|D|-1)/2`. The expression is a support-hit hypergraph polynomial evaluated at `alpha`. Its complement representation uses induced subhypergraph edge counts, making the polynomial a familiar enumerator in different notation.
+
+**Level 3 — critical research defense.** The local alpha formula relies on independent uniformly sampled invertible masks and independent uniform potential tables, not an arbitrary source sampler. The all-triple global result is strong only for its dense independent-factor ensemble and does not speak to average-case planted witness hardness or post-quantum KEM security. The primitive techniques—linear structures and first moments—are established in earlier published mathematics. NG-Q5 has an explicit graph-polynomial equivalence; a new mathematical framework **has not emerged**. The correct deliverable is an openly scoped negative/structural cryptanalytic result.
