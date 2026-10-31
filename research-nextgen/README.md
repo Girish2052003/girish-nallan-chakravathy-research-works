@@ -79,3 +79,10 @@ Read [11_COMPUTATIONAL_HARDNESS_ANALYSIS.md](11_COMPUTATIONAL_HARDNESS_ANALYSIS.
 **Model-specific theorem:** one independent ternary source-form factor with three explicit public inputs excludes a fixed incorrect two-variable pair assignment with exact probability `15/52`. For fixed public 3-uniform scope hypergraph pair codegrees `d_ij`, a one-pass public algorithm recovers the independently planted witness with failure at most `min(1,8 sum_(i<j)(37/52)^d_ij)`. Complete-triples and suitable O(n^2 log n) anchor scopes therefore admit high-probability polynomial-time **public** witness recovery. This **rejects those sampled source-form distributions as cryptographic secret-hardness foundations**; it does not invalidate all NCSG CSPs or constitute any KEM-security claim.
 
 Run `cd research-nextgen/experiments && python -m unittest -v test_ng_q8_recovery` (**6 local tests passed**). Machine-checking, external review, worldwide novelty and complete secure KEM all remain **not established**.
+
+
+## NG-Q9: all fixed ternary local source-form arities at sufficient overlap
+
+[Complete scoped general-arity theorem](24_NGQ9_GENERAL_ARITY_PROJECTION_BOUND.md) · [exact rational bound calculator](experiments/ng_q9_general_bound.py) · [independent exhaustive finite tests](experiments/test_ng_q9_general_bound.py).
+
+For fixed r,d>=1, a small **strictly positive** probability that a random source-form local constraint publicly excludes any fixed wrong two-variable assignment yields a polynomial-time public recovery theorem when each variable pair appears in enough independently sampled factors. All unique k-element scopes suffice asymptotically **when k=r+d>=3**; k=2 needs repeated factors. The numerical lower bound can be far weaker than the exact NG-Q8 (1,2) result. **Four new local tests pass;** proof assistant, independent novelty review and original KEM are still absent.
