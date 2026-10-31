@@ -43,3 +43,21 @@ python public_global_shift_survival_bound.py
 ```
 
 The **locally executed files were byte-identical to the GitHub blobs** and passed seven mathematical unit tests. GitHub CI did not independently run these tests. New mathematical foundations, security assumptions, private trapdoors, KEM construction and formal proof-assistant acceptance remain OPEN.
+
+
+## Further continuation — NG-Q6 and NG-Q7
+
+The first-moment theorem NG-Q6 shows that the planted witness in the independently sampled dense source-form family is overwhelmingly likely to be **unique**. The classical public NG-Q7 pair-projection consistency attack then recovers those witnesses in every tested dense case for n>=6, despite zero global additive shift space. This is an **attack-driven negative result** about the proposed intuition 'high width + no shifts + unique secret = hardness'; it is **not** a proof that all dense NCSG samplers are easy.
+
+**Reproduce (from this directory's experiments subfolder):**
+
+```sh
+cd research-nextgen/experiments
+python -m unittest -v test_planted_witness_uniqueness_bound test_public_pair_consistency_attack test_public_global_shift_survival_bound test_public_global_quotient_witness_recovery
+python planted_witness_uniqueness_bound.py
+python run_public_pair_consistency_campaign.py
+```
+
+Fourteen local unittest methods pass; the 30-/10-trial attack campaign is recorded in [15_CLASSICAL_AND_QUANTUM_CRYPTANALYSIS.md](15_CLASSICAL_AND_QUANTUM_CRYPTANALYSIS.md). All five new source files have exact matching Git blob identifiers to locally run copies.
+
+Read [11_COMPUTATIONAL_HARDNESS_ANALYSIS.md](11_COMPUTATIONAL_HARDNESS_ANALYSIS.md), [12_TRAPDOOR_INVESTIGATION.md](12_TRAPDOOR_INVESTIGATION.md), and [15_CLASSICAL_AND_QUANTUM_CRYPTANALYSIS.md](15_CLASSICAL_AND_QUANTUM_CRYPTANALYSIS.md). The mathematical proofs remain in [08_THEOREMS_AND_PROOFS.md](08_THEOREMS_AND_PROOFS.md), and the explicit negative findings in [09_COUNTEREXAMPLES_AND_NEGATIVE_RESULTS.md](09_COUNTEREXAMPLES_AND_NEGATIVE_RESULTS.md). A genuine new foundational framework and a secure private-trapdoor KEM are **NOT** established.
