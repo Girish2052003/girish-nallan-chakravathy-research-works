@@ -19,3 +19,10 @@
 - **Proof assistant:** NOT EXECUTED, not machine-checked.
 - **Originality:** OPEN, likely derives from established linear-structure and first-moment tools.
 - **KEM security:** NOT CLAIMED.
+
+
+## NG-Q6 / NG-Q7 proof status
+
+NG-Q6 collision probability and first moment: **conventional written proof**, all 19,683 local potential tables checked for specified derivative directions, exact field/rational calculations, and full brute-force global planted fiber counts for n=4..6. No machine-checked formal theorem or external mathematical review.
+
+NG-Q7 pair-projection filtering soundness: **conventional written invariant/termination argument**; no universal distribution-wide success guarantee. Implemented adversary and tests locally executed; 14 unit test methods (previous + new) passed. Full seeded attack campaign rerun with original public data. No Lean/Rocq/Isabelle proof, standalone KEM or quantum attack evidence.
