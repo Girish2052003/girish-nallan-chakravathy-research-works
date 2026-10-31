@@ -45,3 +45,14 @@ NG-Q4 bounds the survival of **one already-known public structural shortcut** on
 **Adversarial outcome:** NG-Q7, a public known-CSP consistency method, recovered a complete global witness without secret generation information in every tested n>=6 complete-triple instance. The constructed test cases all had zero nonzero global constant-shift dimension. This demonstrates that absence of these shifts and near-uniqueness do not establish cryptographic hardness.
 
 **Decision:** REJECT **as a positively justified KEM hardness foundation** at this checkpoint. A universal asymptotic public-recovery theorem has not been proved, and other sampling variants remain open. This candidate is not genuinely new mathematical structure.
+
+
+## NG-C05 — cohomological local-to-global constraint framework (equivalence gate)
+
+Natural objects are public local solution relations R_S on overlapping scopes S; restrictions map assignments on larger scopes to smaller scopes. Compatible global witnesses are precisely **global sections** of the resulting presheaf of local assignments. This is **not a novel foundational definition** merely because the underlying local predicates are nonlinear finite-field differences. Closely matching established work includes Abramsky–Brandenburger's sheaf-theoretic local/global contextuality treatment (2011), and Adam Ó Conghaile, *Cohomology in Constraint Satisfaction and Structure Isomorphism*, MFCS 2022, DOI 10.4230/LIPIcs.MFCS.2022.75, which explicitly represents CSPs through presheaf global sections and develops cohomological refinements of k-consistency.
+
+**Gate decision:** **REJECT the basic local-section/sheaf/cohomology rebranding as a new mathematical framework.** Genuine novelty would require a distinct invariant/theorem beyond those established constructions, with fully evaluated counterexamples and prior-art comparisons. No cryptographic trapdoor was found by simply using this representation.
+
+## NG-C06 — dense/high-codegree NCSG-source planted hardness
+
+NG-Q8 supplies a mathematically scoped **polynomial-time public recovery theorem** under exactly the independently random r=1,d=2 source-form sampler. Public pair constraints with codegrees at least logarithmic in n admit a vanishing recovery failure bound. This rejects the proposed dense and anchor-source planting distributions as defensible **asymptotically hard planted-witness problems**. It is neither a proof that every alternative NCSG family is easy nor a new algebraic foundation.
