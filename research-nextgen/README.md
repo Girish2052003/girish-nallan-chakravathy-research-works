@@ -70,3 +70,12 @@ Read [11_COMPUTATIONAL_HARDNESS_ANALYSIS.md](11_COMPUTATIONAL_HARDNESS_ANALYSIS.
 - [Internal research verdict and exact open gates](20_FINAL_INDEPENDENT_RESEARCH_VERDICT.md)
 
 **Scientific boundary:** A mathematically correct project-specific probability bound, tested public witness attack, or likely unique planted assignment is not a novel fundamental mathematical framework and not a secure KEM. The main branch is preserved; experimental conclusions require further mathematical novelty comparison, proof-assistant work and independent cryptanalysis.
+
+
+## November 1 continuation — NG-Q8 high-probability public-recovery theorem
+
+[NG-Q8 full theorem and assumptions](23_NGQ8_PUBLIC_RECOVERY_THEOREM.md) · [exact finite arithmetic and public-only adversary](experiments/ng_q8_recovery.py) · [independent exhaustive and recovery tests](experiments/test_ng_q8_recovery.py).
+
+**Model-specific theorem:** one independent ternary source-form factor with three explicit public inputs excludes a fixed incorrect two-variable pair assignment with exact probability `15/52`. For fixed public 3-uniform scope hypergraph pair codegrees `d_ij`, a one-pass public algorithm recovers the independently planted witness with failure at most `min(1,8 sum_(i<j)(37/52)^d_ij)`. Complete-triples and suitable O(n^2 log n) anchor scopes therefore admit high-probability polynomial-time **public** witness recovery. This **rejects those sampled source-form distributions as cryptographic secret-hardness foundations**; it does not invalidate all NCSG CSPs or constitute any KEM-security claim.
+
+Run `cd research-nextgen/experiments && python -m unittest -v test_ng_q8_recovery` (**6 local tests passed**). Machine-checking, external review, worldwide novelty and complete secure KEM all remain **not established**.
