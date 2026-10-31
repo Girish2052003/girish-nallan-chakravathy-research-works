@@ -16,3 +16,8 @@ A valid future trapdoor proposal must provide a secret-only decapsulation or inv
 For independently generated complete-triple source-form functions (or pair-codegree logarithmic anchor hypergraphs) with explicit public tables, [NG-Q8](23_NGQ8_PUBLIC_RECOVERY_THEOREM.md) constructs a public-only polynomial-time planted-witness finder with provably overwhelming recovery probability as n grows, conditional only on the specified sampling model. Therefore **mere possession of the planted assignment cannot be a credible private trapdoor on these distributions**. This is stronger than the earlier finite NG-Q7 campaign; still not a universal impossibility theorem for other mathematical structures or ciphertext designs.
 
 Status: **REJECT these specific planted-witness distributions as proposed secret-only inversion engines**. A different genuine trapdoor, mathematical novelty and correct complete KEM interface are still absent.
+
+
+## NG-Q9 general rejection condition
+
+For *fixed* source-form local arity k=r+d and uniform independently sampled B,Q in the public explicit-table model, NG-Q9 proves a positive lower bound epsilon_(r,d) on the local ability to reject a wrong pair. With sufficiently large pair codegrees, a fully public polynomial-time attacker reconstructs the planted s with high probability. Thus a planted assignment is **not** a defensible secret-only trapdoor on that high-codegree distribution, even for other fixed r,d. Weak conservative bounds at practical n may give no conclusion. The argument does not cover arbitrary correlated generators or all possible new mathematical trapdoors.
