@@ -1,0 +1,14 @@
+# Focused mathematical prior-art notes — incomplete landscape investigation
+
+**Not a worldwide novelty certification.** This page records only the sources actually identified while investigating public constant-difference directions and quotient-search decompositions. Full comparative study of topology, chain complexes, representation theory, noncommutative algebra, coding theory, lattices, etc., remains open.
+
+1. P. Charpin and G. Kyureghyan, *When does G(x) + γTr(H(x)) permute F_(p^n)?*, **Finite Fields and Their Applications** 15 (2009), pp. 615–632. The published discussion treats linear structures and a decomposition through a lower-dimensional linear map. Bibliographic metadata/precise theorem need independent primary-source verification. Related text: https://www.researchgate.net/publication/267662759_When_does_GxgTrHx_permute_p_n
+2. *Permutations via linear translators*, **Finite Fields and Their Applications** 45 (May 2017), pp. 19–42, DOI: 10.1016/j.ffa.2016.11.009. Already studies translation directions and induced permutations. Author names and complete theorem details require inspection: https://doi.org/10.1016/j.ffa.2016.11.009
+3. *On derivatives of polynomials over finite fields through integration*, **Discrete Applied Mathematics** 217, Part 2 (30 January 2017), pp. 294–303, DOI: 10.1016/j.dam.2016.07.025. Discusses derivatives and linear structures: https://doi.org/10.1016/j.dam.2016.07.025
+4. Rina Dechter, *Bucket Elimination: A Unifying Framework for Reasoning*, **Artificial Intelligence** 113 (1999), pp. 41–85, DOI: 10.1016/S0004-3702(99)00059-4. Classical efficient low-width CSP solver, already credited in the SG-DIFRA manuscript.
+
+**Equivalence danger:** `D={h : F(x+h)-F(x) is constant in x}` is the established linear-structure idea, not an original structure merely because it is called a global shift space. Quotienting a vector space by a linear subspace, extending a basis, solving linear equations, and enumerating a transversal are also standard algebra and algorithms.
+
+**Potential project-specific contribution being assessed:** applying the exact quotient search to the author's *overlapping public NCSG factor maps*, with a constructive high-width, shift-rank-deficient family defeating a proposed security intuition. This may still be an elementary consequence of known theory. It must not be advertised as a new foundational mathematics.
+
+**Research comparison still required:** published algorithms for vectorial-function linear structures, additive group-action symmetry reduction, CSP symmetry/quotient variable elimination, average-case planted CSP work, and succinct-oracle complexity. A novel cryptographic hardness assumption is neither proposed nor supported in this checkpoint.
