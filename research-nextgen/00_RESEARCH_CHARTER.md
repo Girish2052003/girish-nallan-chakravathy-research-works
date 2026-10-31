@@ -48,3 +48,8 @@ The preliminary hypothesis that random dense overlap plus trivial global shift s
 Continued from the last finite NG-Q7 public planted-witness attack. Produced NG-Q8: **a proved asymptotic recovery upper bound** for the exact r=1,d=2, independent source-form ternary public-factor sampling distribution, with an exhaustive finite local probability `15/52` and pair-codegree hypergraph theorem. The previous 'finite attacks only' status is updated **for this narrowly defined distribution**.
 
 Rejected a naive cohomological NCSG renaming after reviewing published CSP sheaf/global-section prior art; no new foundational framework is certified. Tests passed locally, committed source bytes verified by Git blob SHA, no external CI/proof assistant. No main branch modifications; no paid APIs, publication, or KEM-security overclaims. Next priorities: mathematically distinct candidate discovery with serious equivalence gate; independent external proof audit; model-specific generalization to other local arities only if defensible.
+
+
+## Extended NG-Q9 checkpoint
+
+Beyond NG-Q8, derived and independently tested a general fixed-arity (r,d) public rejection **lower bound** using a uniform-affine subdistribution and finite-field surjective-matrix enumeration; an explicit high-codegree hypergraph union bound gives asymptotic public witness recovery. Corrected the k=2 complete-scope exception and two test-harness/test-expectation errors. All **four** final new tests passed and GitHub source hashes match locally run versions. No claim of novel foundational mathematics or KEM security; preserve original main and all negative research.
