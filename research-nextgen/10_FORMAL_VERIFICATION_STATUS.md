@@ -33,3 +33,8 @@ NG-Q7 pair-projection filtering soundness: **conventional written invariant/term
 Conventional argument in `23_NGQ8_PUBLIC_RECOVERY_THEOREM.md`: 624-case uniform GL(3,3) orbit reduction; exact affine-image table, model-specific local probability 15/52, independent factor probability multiplication, union bound and polynomial public one-pass reconstruction; fixed hypergraph generalization and O(n^2 log n) anchor family.
 
 **Six new unit tests passed locally**; code/case table exact rational and independent full 19,683-Q brute checks for five cases. This is an **exhaustive finite computation plus mathematical argument**, *not* a Lean/Rocq/Isabelle checked certificate. No full human peer review or general security proof. The finite 624-case classification is a proof obligation that should be independently formalized or audited before public claims of verified originality.
+
+
+## NG-Q9 formal status
+
+Conventional written mathematical proof: exact 3-cycle count for uniform potential tables, uniform surjective-matrix counting, positive pair-exclusion event, independent-factor probability multiplication and union bound. Four new local tests passed; six low-dimensional surjective-matrix ensembles exhaustively enumerated, and d=1,2 scalar potential tables exhausted. **No proof-assistant formalization, no external expert verification.** The k=2 complete-scope edge case was identified and corrected; do not claim an n-growing complete-scope result when local arity is two.
