@@ -48,3 +48,30 @@ python public_global_shift_survival_bound.py
 Outcome: **7 tests passed** after correcting one initial false test expectation, in about 0.3 seconds locally. Exact local table counts: parallel **2187/19683**, independent **729/19683**; local survival alpha **5/39**. Previous quotient tests still pass. Full random-source monitoring was run from a local preexisting copy of `random_source_shift_codimension_probe.py` using `sample(n,m,seed=20261101+10000*n+j)` with (n,m,trials)=(4,4,500),(5,10,120),(6,20,60), producing nonzero-shift counts 9,0,0.
 
 **File identity verified against GitHub connector's returned blob SHA:** local `git hash-object` equals connector blob SHA `e9bbabd1e0db7a33a79a292e7eac721d1ff78f8b` for the new mathematical script and `b1012d99d2a44e1e0444fc504ca69e6c6613167a` for the new unit test. SHA-256 of the local files respectively: `0fc6c614fdc15f3118dedab0bc5abb1de5a9f26dfce0dc1cb65839e5f1ec31a9`, `2b8422dfcbb9db5e373a9cf1b4bd26868365e61df92e470fc118fb4efdde6469`. GitHub Actions CI has not been run for this branch; **do not claim CI pass**.
+
+
+## NG-Q6 / NG-Q7 exact code, environment, commands and outputs
+
+Run from `research-nextgen/experiments` using Python 3.13.5 (tested Linux x86_64 kernel 6.18.57):
+
+```sh
+python -m unittest -v test_planted_witness_uniqueness_bound test_public_pair_consistency_attack test_public_global_shift_survival_bound test_public_global_quotient_witness_recovery
+python planted_witness_uniqueness_bound.py
+python run_public_pair_consistency_campaign.py
+```
+
+**14 tests passed** locally after earlier NG-Q4 test correction; five new code/script artifacts are matched byte-for-byte to GitHub via their Git blob hashes:
+
+| File under experiments | Verified Git blob SHA |
+| --- | --- |
+| public_pair_consistency_attack.py | `5564d9b7ae2fd1c2eb459cb8527c4607d37aac2c` |
+| test_public_pair_consistency_attack.py | `4be418d482888d1e34812d774d167b5ade233bbc` |
+| planted_witness_uniqueness_bound.py | `2e06dcb876cfb119e63141e6571f89de20fe7f2e` |
+| test_planted_witness_uniqueness_bound.py | `cc63524450fa15259bd9bb9473374807912c5c80` |
+| run_public_pair_consistency_campaign.py | `5fa3ad6cbacb984fc7ef6fcf374d664635394995` |
+
+**Seed policy:** local sampled public factor seed `20261110+1000*n+100*m+j`; independent planted witness seed `public_seed+123456`; `j=0,...,trials-1`. n/trials: (4,30),(5,30),(6,30),(7,30),(8,30),(9,10),(10,10),(12,10). Factor counts `m=C(n,3)`; public factor samplers come from the already committed `random_source_shift_codimension_probe.py`.
+
+Campaign: public recoveries 12/30,29/30,30/30,30/30,30/30,10/10,10/10,10/10 in that n order; `dim D=0` on **every** sample; for n=4,5,6 fully exhaustive solution enumeration gives unique counts 12/30,29/30,30/30. SHA-256 of the locally run campaign script: `f47eb58deec69475bb9a24bad5801007272361808892d8fbe0c87c374995b849`. Other files' SHA-256 are available in locally maintained audit hashes; Git blob hashes above establish identity with checked code.
+
+**Limits:** Neither GitHub Actions CI nor a proof assistant has executed these additions; this records direct local executions and exact source identity. No paid API, rented cloud, secret keys or external KEM were used. All source-form inputs are explicitly finite, not calibrated real-world KEM parameters.
