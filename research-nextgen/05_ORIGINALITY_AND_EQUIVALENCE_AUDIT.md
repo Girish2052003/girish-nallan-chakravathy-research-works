@@ -21,3 +21,10 @@ The scoped contribution is an **explicit complete public quotient search for the
 - Worldwide novelty certification/external review: NO.
 
 **No mathematical migration is recommended.** Continue independent framework exploration and prior-art review. Even a novel impossibility example would not itself provide a private trapdoor or secure KEM.
+
+
+## NG-Q4 audit
+
+The source-form probability calculation, exact global first moment, and dense-overlap bound are mathematically justified in their specified distribution. **However, the proof method uses standard linear structures, elementary translation-operator rank, the first-moment method, and a union bound**. Charpin–Kyureghyan (2009), Definition 1 and Proposition 1, explicitly establish the linear-structure concept; random-CSP first moments predate this project (Achlioptas–Moore). The project-specific probability formula is not certified novel. This result **passes a scoped mathematical-consistency and conventional proof test**, but **does not pass M2 originality for a new framework**.
+
+A proposed name such as a new 'NCSG shift-survival geometry' would be cosmetic; none is adopted. Complete prior-art comparison, independent external mathematical review and proof-assistant formalization remain open.
