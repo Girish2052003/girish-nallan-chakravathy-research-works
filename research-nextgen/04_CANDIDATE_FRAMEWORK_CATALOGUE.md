@@ -56,3 +56,8 @@ Natural objects are public local solution relations R_S on overlapping scopes S;
 ## NG-C06 — dense/high-codegree NCSG-source planted hardness
 
 NG-Q8 supplies a mathematically scoped **polynomial-time public recovery theorem** under exactly the independently random r=1,d=2 source-form sampler. Public pair constraints with codegrees at least logarithmic in n admit a vanishing recovery failure bound. This rejects the proposed dense and anchor-source planting distributions as defensible **asymptotically hard planted-witness problems**. It is neither a proof that every alternative NCSG family is easy nor a new algebraic foundation.
+
+
+## NG-C07 — enlarged uniform-source local arity as a hardness repair
+
+NG-Q9 gives an explicit **positive** public pair-exclusion probability for any fixed r,d>=1 in the independent uniform source-form family over F3. For sufficiently large pair codegrees, this alone yields polynomial public planted-witness recovery with high probability. Thus changing local dimension from (1,2) to another **fixed** pair (r,d) is not, by itself, a justified repair for the same high-overlap secret-witness hardness model. The probability constant may become astronomically weak and does not refute concrete finite profiles or distributions with correlated/hidden representations. **Decision:** reject fixed-dimension increase alone as a proven cryptographic security foundation; no new mathematical framework selected.
