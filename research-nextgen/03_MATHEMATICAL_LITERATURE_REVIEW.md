@@ -28,3 +28,13 @@
 Alan K. Mackworth, *Consistency in networks of relations*, **Artificial Intelligence** 8(1), pp. 99–118 (1977), DOI **10.1016/0004-3702(77)90007-8**. Primary journal metadata: https://www.sciencedirect.com/science/article/pii/0004370277900078. The published work explicitly covers local node/arc/path consistency methods for constraint networks. The implemented NG-Q7 use of pairwise projections of higher-arity public relations is in this **pre-existing CSP-consistency family**. No original algorithmic discovery should be attributed to the generic filtering method.
 
 NG-Q6 uses a model-specific local collision calculation and a standard first-moment argument; this does not create a new field of probabilistic combinatorics. A systematic comparison to planted CSP uniqueness and polynomial-time reconstruction theorems remains necessary. No unsupported global novelty claim is made.
+
+
+## Newly checked planted CSP and cohomological antecedents (1 November 2026)
+
+- **Arpon Basu, Jun-Ting Hsieh, Andrew D. Lin, Peter Manohar**, *Solving Random Planted CSPs Below the n^(k/2) Threshold*, **ICALP 2026**, DOI **10.4230/LIPIcs.ICALP.2026.23**, https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2026.23. A peer-reviewed algorithmic result for **Boolean** planted k-ary CSPs with stated constraint counts and Sum-of-Squares techniques; not claimed to have the same ternary finite-difference sampler or to subsume NG-Q8 without an explicit reduction.
+- **Adam Ó Conghaile**, *Cohomology in Constraint Satisfaction and Structure Isomorphism*, **MFCS 2022**, DOI **10.4230/LIPIcs.MFCS.2022.75**, https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.MFCS.2022.75. Published presheaf/global-section modeling of CSPs and cohomological local-consistency refinement: direct prior art against ungrounded 'new local-to-global sheaf mathematics' claims.
+- **Samson Abramsky, Adam Brandenburger**, *The Sheaf-Theoretic Structure of Non-Locality and Contextuality*, **New Journal of Physics** 13 (2011), arXiv:1102.0264, https://arxiv.org/abs/1102.0264. Global-section local-to-global obstructions predating any SG-DIFRA-inspired renaming.
+- **Alan K. Mackworth**, *Consistency in networks of relations*, **Artificial Intelligence** 8(1), pp.99–118 (1977), DOI **10.1016/0004-3702(77)90007-8**. Classical local consistency algorithm foundations.
+
+**Interpretation:** The NG-Q8 numerical constant and sampler-specific inequality could still be a publishable narrow result, but originality is **not established** merely by deriving a new rational number. The core local consistency and sheaf formulation have significant antecedents.
