@@ -193,3 +193,22 @@ Given explicit ternary factor tables, public scopes and public target outputs, i
 **Finite campaign (no asymptotic success-rate theorem):** The exact seeded independently randomized source-form ensemble from NG-Q4, with planted target `F(s)` independent of generator randomness, yielded public recovery for complete triples at `n=5:29/30`, `n=6:30/30`, `n=7:30/30`, `n=8:30/30`, `n=9:10/10`, `n=10:10/10`, and `n=12:10/10`. Every returned witness was publicly verified. Those same generated datasets had **zero nontrivial global constant-shift subspaces** in all tested cases; thus success did not rely on NG-Q1's quotient-shift shortcut. This is a **scoped classical public-witness attack on toy-to-moderate random public constraint families**, not an IND-CCA break of a KEM.
 
 **Important limits:** Empirical success on deterministic test seeds cannot certify full distribution recovery or a polynomial-time algorithm that always succeeds. The chosen public source generator uses tiny r=1,d=2 local tables and dense complete-triple constraints. Sparse and different source distributions can remain inconclusive. This is not independent expert cryptanalysis or proof-assistant verification.
+
+
+---
+
+# NG-Q8 — Exact local pair-projection leakage and high-probability public planted-witness recovery
+
+**Full audited theorem and computational finite classification:** [23_NGQ8_PUBLIC_RECOVERY_THEOREM.md](23_NGQ8_PUBLIC_RECOVERY_THEOREM.md). The exact sampler is r=1,d=2, F3, uniform B in GL3, uniform independent potential table Q, independent factors and explicit public local tables.
+
+**NG-Q8.1:** A fixed incorrect two-coordinate assignment is excluded from a single factor's public target-fiber projection with exact probability **15/52**, via complete classification of the 624 ordered independent 3D direction pairs and their uniform affine 3-coordinate images of the nine uniform table entries. This finite case table has independent 19,683-Q-table validations. The complement survival probability is **37/52**.
+
+**NG-Q8.2:** For any fixed triple-scope multihypergraph H with independent local factors and pair codegrees d_ij, public **one-pass** pair-projection intersection recovers the independent planted s with probability at least
+`1-min(1,8*sum_(i<j)(37/52)^d_ij)`.
+Proof: each planted pair survives every projection, each of its eight alternatives survives independent incident factor tests with probability (37/52)^d_ij; union bound over alternatives and pairs; if all pair domains singleton, reconstruct and publicly verify. Polynomial explicit-table cost.
+
+**NG-Q8.3:** On the complete 3-uniform hypergraph d_ij=n-2, so public recovery failure is at most `min(1,8*C(n,2)*(37/52)^(n-2))` and tends to zero as n grows. This upgrades NG-Q7's empirical success to a **mathematically scoped asymptotic public-recovery theorem**, but does not prove that iterative consistency succeeds for all n.
+
+**NG-Q8.4:** Distinct triples intersecting a selected t-vertex anchor set, t<=n-2, have min pair codegree t and `C(n,3)-C(n-t,3)=O(t*n^2)` factors. Choosing t proportional to log(n/eta) obtains polynomial-time planted recovery with failure <=eta using `O(n^2 log(n/eta))` factors. This rejects another candidate family as a defensible *hard witness* distribution.
+
+The elementary projection method and planted-CSP recovery landscape have extensive prior art. **Model-specific math is documented; genuinely new foundational mathematics remains unestablished.** No formal proof assistant, independent external audit, quantum security argument or active KEM is claimed.
