@@ -99,3 +99,16 @@ Deterministic research-only demonstration inside `ng_q8_recovery.py`: n=6: 0/12,
 **Proof-assistant status:** `lean`, `lake`, `coqc`, `rocq`, `z3`, `cvc5`, `sage` executable names were not found in the local PATH. NO Lean/Rocq/Isabelle checker ran. **CI status:** No new GitHub Actions workflow result obtained; passing local Python is not CI or universal formal proof.
 
 This derivation depends on **independent uniform masks and potential tables**, complete explicitly public three-input local factor maps, independently chosen planted s, and fixed public factor scopes. It cannot be transferred silently to a redesigned secret-dependent factor sampler.
+
+
+## NG-Q9 exact general arity finite checks and source identities
+
+Source: `experiments/ng_q9_general_bound.py` (Git blob `7a371c9032a5f983a673a55af54196604ddba297`). Independent test: `experiments/test_ng_q9_general_bound.py` (Git blob `a014337d35cd5328005a59af3849821975cddb86`). Both local `git hash-object` values **matched the final GitHub fetched/updated blob SHA**.
+
+```sh
+cd research-nextgen/experiments
+python -m unittest -v test_ng_q9_general_bound
+python ng_q9_general_bound.py
+```
+
+**Result:** 4/4 tests passed in Python 3.13.5, Linux x86_64. Enumerates every full-row-rank r-by-(r+d) matrix for six small (r,d) pairs, all scalar Q tables for d=1,2, exact rational gamma/epsilon values, k=2 complete-scope negative control and independent repeated-pair positive control. Initial test harness list+tuple concatenation error was corrected. A later test incorrectly expected a **nontrivial conservative bound** for k=3,n=60; the bound there is actually clipped to 1, and the corrected test checks a valid larger-size analytic case. The theorem itself was restricted explicitly to k>=3 for complete unique scopes; k=2 repeated independent factors require growing codegree. No CI/proof-assistant run; no earlier full historical test rerun.
