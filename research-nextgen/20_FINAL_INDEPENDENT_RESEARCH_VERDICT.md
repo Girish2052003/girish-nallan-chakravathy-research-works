@@ -48,3 +48,14 @@ This filename retains the charter-required word *independent*, but the work is *
 ## NG-Q9 postscript: fixed-arity scope generalization
 
 NG-Q9 rigorously broadens **one sufficient public-recovery criterion** to any fixed local r,d>=1 over F3 under independent public source-form maps and high pair-codegree hypergraphs. The proof is based on standard finite-field counts and explicit probability bounds, with four locally passing tests; it can be quantitatively loose for large d. Corrected the unique-scope edge case k=2: only k>=3 guarantees growing codegree under all unique k-subsets. Independent repeated k=2 pair factors may restore the condition. No original foundational mathematics, machine-checked theorem, independent expert review, complete KEM or validated security profiles. Scope-limited negative cryptanalysis remains the strongest outcome.
+
+
+## Subsequent NG-Q10 / NG-Q11 scientific correction (2026-11-01)
+
+Continued from the NG-Q9 mathematical result. A sparse star new-hardness candidate failed adversarial testing and was replaced with a **complete deterministic public bounded-treewidth solver** (NG-Q10), valid even for arbitrary correlated nonlinear explicit tables. The candidate is **rejected**, not rebranded.
+
+Separately, NG-Q11 establishes a model-intrinsic algebraic-degree bound. **Ternary d=1 source-form factors are always affine** and globally publicly solvable by Gaussian elimination for any factor graph, independent of primal width; this is a deterministic no-go for that proposed witness-hardness family. For scalar r=1,d=2, local source forms always have degree<=3, whereas a uniform random scalar function F3^3->F3 passes with exact probability 1/59049. The local degree distinguisher is **not a complete cryptosystem break**.
+
+**Testing:** 22/22 targeted local mathematical unit methods passed (6 NG-Q8, 4 NG-Q9, 5 NG-Q10, 7 NG-Q11); all four newly committed files have matching local and connector-returned Git blob hashes. No independent external human review, theorem prover, KEM, QROM reduction, globally original algebraic framework or paid execution occurred. Historical main untouched.
+
+**Outcome:** Scoped negative mathematical findings accumulated; original foundational discovery M2 still NOT PASSED. Claimed secure independent private-trapdoor post-quantum KEM remains NOT ESTABLISHED (cryptographic outcome F). This checkpoint identifies two concrete dead ends and preserves their proofs/failed assertions to prevent future recycled proposals.
