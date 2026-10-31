@@ -53,3 +53,12 @@ Rejected a naive cohomological NCSG renaming after reviewing published CSP sheaf
 ## Extended NG-Q9 checkpoint
 
 Beyond NG-Q8, derived and independently tested a general fixed-arity (r,d) public rejection **lower bound** using a uniform-affine subdistribution and finite-field surjective-matrix enumeration; an explicit high-codegree hypergraph union bound gives asymptotic public witness recovery. Corrected the k=2 complete-scope exception and two test-harness/test-expectation errors. All **four** final new tests passed and GitHub source hashes match locally run versions. No claim of novel foundational mathematics or KEM security; preserve original main and all negative research.
+
+
+## Next execution: post-NG-Q9 mathematical discovery filter (1 November 2026)
+
+The attempted sparse anchor/leaf planted-witness distribution failed the originality and hardness gates: its public primal graph has width <=2, hence exact standard cutset conditioning publicly recovers witnesses deterministically even for arbitrary nonlinear correlated factors. A false preliminary assertion ('anchor-only ambiguity implies whole-instance nonuniqueness') was identified by an exhaustive-fiber test and rejected. See NG-Q10.
+
+A distinct examination of the **source formula's algebraic degree** yielded NG-Q11. Every ternary source factor with right dimension d has degree <=max(1,2d-1). In the d=1 case every factor is affine full-row rank, and **arbitrary public factor hypergraphs reduce to a publicly solvable global linear system**, independent of sampling and graph width. For r=1,d=2 all factors have degree <=3 and uniform random scalar factor tables pass that public test with probability 1/59049. This is a rigorous low-degree distinguisher, **not** key recovery for d=2.
+
+Past and new mathematical code: **22 combined locally passing tests**. Original source and checks are committed; main unchanged. Prior art in bucket elimination, finite-field algebraic degree and generalized Reed–Muller codes prevents any claim of a new mathematical foundation. Continue prioritizing genuinely non-equivalent structures, rejecting rebranding and unsupported KEM inference.
