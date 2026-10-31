@@ -55,3 +55,12 @@
 **NG-D22:** Correct complete-scope corollary: k=r+d>=3 required for one *distinct* factor on every k-subset to give growing pair codegree; for k=2 one distinct factor per pair has codegree one, and repeated independent factors are needed. Preserve the negative test and correction.
 
 **NG-D23:** Two NG-Q9 test-development defects (tuple/list concatenation and incorrectly expecting a nontrivial small-n conservative union bound) were corrected before accepting four passing tests. No false mathematical conclusion is retained. M2 novelty and C1-C7 cryptographic goals remain open.
+
+
+**NG-D24 (2026-11-01):** REJECT O(n log n) repeated sparse-star NCSG as an original mathematical construction or credible hard planted-witness distribution. A preliminary test asserted recovered iff globally unique; failed because ambiguous anchor-only constraints need not imply multiple global solutions. A complete deterministic public q²-anchor conditioning solver replaces it, solving all such CSPs even with one factor per leaf and arbitrary factor tables. Novelty blocked by known bounded-treewidth algorithms (Dechter 1999). Record the failed assertion, not a retrospective clean success.
+
+**NG-D25:** Accept the **scoped deterministic** NG-Q11 result: over F3, nonlinear-right dimension d=1 forces every source-form factor to be affine, regardless of Q,B,A; all public global instances are solvable by Gaussian elimination in polynomial time regardless of primal treewidth. **Reject d=1 as a hard witness-inversion engine.** Do not assert the recovered witness must equal the planted witness.
+
+**NG-D26:** Retain NG-Q11 local algebraic-degree ceiling and exact r=1,d=2 local uniform-vs-source degree distinguisher (false positive 1/59049). This is an exact public local statistical distinguishability observation **only**; no IND-CCA/QROM or general d=2 inversion theorem. Origin lies in established finite-field/Reed–Muller code ideas, so **M2 still fails**.
+
+**NG-D27:** The NG-Q10 correct solver and NG-Q11 interpolation tests added 12 local tests to the 10 previously executed tests; **22/22 combined passed** with exact GitHub source-byte identity. NG-Q11 initially used a floating point approximation in an exact rational helper, caught by a unit test and corrected; preserve as evidence of adversarial checking.
