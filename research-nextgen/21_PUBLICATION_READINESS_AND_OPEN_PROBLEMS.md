@@ -48,3 +48,10 @@ A mathematically scoped **high-probability polynomial-time public planted-witnes
 ## NG-Q9 publication caution
 
 The fixed-arity generalization strengthens the theoretical **negative finding**, but its proof relies on established counting and CSP-consistency tools. Consider a rigorously bounded negative mathematical cryptanalysis note rather than a KEM proposal; novelty still needs independent prior-art review. The fixed k=2 complete-scope exception is explicit. No complete KEM, private trapdoor, QROM reduction, parameter certification or submission-grade novel framework is established.
+
+
+## NG-Q10 / NG-Q11 publication boundary
+
+NG-Q10 is an application of pre-existing bounded-treewidth CSP solving: not publishable as a newly invented algorithm or cryptosystem. NG-Q11 d=1 affine collapse and r1d2 local degree distinguisher are precisely written, reproducible structural observations for the stated NCSG source form, not proof of worldwide mathematical novelty. The generalized Reed–Muller degree perspective is established prior art.
+
+**Remaining fundamental goal:** an independently specified genuinely new mathematical object/operation/invariant not reducible to existing group actions, sheaf/global-section CSP modeling, finite-field polynomial filtrations, quotient additive structures or standard constraint propagation. Any proposed cryptographic application still requires an independently motivated average-case hard problem and a demonstrated private trapdoor. Neither is available at this checkpoint. A narrowly scoped technical cryptanalysis note may be possible only after independent proof/novelty review.
