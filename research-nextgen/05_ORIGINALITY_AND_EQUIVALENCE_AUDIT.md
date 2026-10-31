@@ -28,3 +28,8 @@ The scoped contribution is an **explicit complete public quotient search for the
 The source-form probability calculation, exact global first moment, and dense-overlap bound are mathematically justified in their specified distribution. **However, the proof method uses standard linear structures, elementary translation-operator rank, the first-moment method, and a union bound**. Charpin–Kyureghyan (2009), Definition 1 and Proposition 1, explicitly establish the linear-structure concept; random-CSP first moments predate this project (Achlioptas–Moore). The project-specific probability formula is not certified novel. This result **passes a scoped mathematical-consistency and conventional proof test**, but **does not pass M2 originality for a new framework**.
 
 A proposed name such as a new 'NCSG shift-survival geometry' would be cosmetic; none is adopted. Complete prior-art comparison, independent external mathematical review and proof-assistant formalization remain open.
+
+
+## NG-Q6 / NG-Q7 prior art boundaries
+
+NG-Q6's probability is model-specific, but the global bound is a standard first-moment/union-bound calculation. NG-Q7 is an explicit classical CSP-consistency adversary, with antecedents including Alan K. Mackworth (1977). The NCSG-specific experimental successes are valid findings about a precise distribution, **not** invention of generic pair consistency, or original private-trapdoor mathematics. New foundational originality M2 **still does not pass**.
