@@ -21,7 +21,7 @@ def dense_edge_fixture(q):
 
 class QuotientTests(unittest.TestCase):
     def test_rank_deficient_but_recoverable(self):
-        for q in (4,5,8):
+        for q in (4,5,8,12):
             n,factors=dense_edge_fixture(q)
             a=PublicQuotientSystem(n,factors)
             self.assertEqual((a.shift_dimension,a.quotient_dimension),(q,1))
@@ -34,6 +34,7 @@ class QuotientTests(unittest.TestCase):
             self.assertEqual(result.status,"recovered")
             self.assertEqual(a._evaluate(result.witness),tuple(t[0] for t in target))
             self.assertLessEqual(result.cosets_examined,3)
+            self.assertEqual(a.count_solutions(target),2)
             print("q",q,"primal_width",q,"rank",a.increment_rank,
                   "output_dim",a.output_dimension,"cosets",result.cosets_examined)
 
