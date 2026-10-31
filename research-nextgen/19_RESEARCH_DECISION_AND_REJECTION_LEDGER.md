@@ -16,3 +16,12 @@
 
 
 **Decision NG-D06 (adversarial sampling control):** In 180 small sampled source-form global systems, 172 had zero nontrivial global constant-shift dimension. Consequently reject any inference that `n-dim D=O(log n)` is a generic property of uniform-source global NCSG constraints. Status: **EXPERIMENTALLY REFUTED as a universal small-sample heuristic; asymptotic random-distribution behavior OPEN**. Preserve negative result and pivot toward independent mathematical mechanisms rather than relying on quotient shifts.
+
+
+**Decision NG-D07 (31 October 2026):** Retain proven model-specific result NG-Q4: a uniform source-form nonzero local shift survives with exact probability 5/39 for r=1,d=2; global independently sampled factors have an exact first moment, and dense complete triple scopes obey exponentially small (in n^2) probability upper bounds for any nontrivial global constant shift. Status: **written proof, exact finite checks; not machine-checked or independently reviewed**.
+
+**Decision NG-D08:** Reject the proposition that rare global additive shifts establishes average-case NCSG witness hardness, quantum security or any private trapdoor. It only limits one public recovery method. Status: **UNSUPPORTED cryptographic inference**.
+
+**Decision NG-D09:** The equivalence analysis identified already published linear-structure theorems (Charpin–Kyureghyan 2009, earlier Lai) and established first-moment methods (Achlioptas–Moore). NG-Q4 is a scoped result, **NOT** a newly established mathematical field; M2 remains open.
+
+**Decision NG-D10:** Initial unit assertion for the disconnected-scope example expected 26/3 but the correct exact expected nonzero shift count is 12. Corrected and independently rerun before committing test. Preserve this correction as part of the proof-audit trail.
