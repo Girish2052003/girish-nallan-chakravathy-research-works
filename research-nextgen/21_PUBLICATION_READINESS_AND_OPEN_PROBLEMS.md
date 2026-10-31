@@ -20,3 +20,12 @@
 
 
 **Additional caution from random control:** NG-Q3 found zero public constant-shift dimension in 172 of 180 small uniform-source-form overlapping systems. Thus the new exact quotient algorithm does not currently give useful evidence of a generic public attack on the intended random global instance family. It nevertheless invalidates the proposed inference that large width and deficient shift rank alone imply hardness. Both statements can be true.
+
+
+## Updated scientific verdict after NG-Q4
+
+A model-specific exact probability theorem and global first-moment bound now strengthen the mathematical negative/structural knowledge. At dense independent overlap, lack of nonzero global additive shift is provably overwhelmingly likely **under the exact sampler stated**; the original attack may therefore lose its speed advantage on that distribution. This is not a KEM-security proof or a general lower bound on any algorithm. Basic linear-structure machinery and first-moment methods pre-exist SG-DIFRA.
+
+**Mathematical novelty gate M2 remains not passed**; complete alternative mathematical framework, private trapdoor and IND-CCA/QROM construction are **not established**. Outcome at this checkpoint remains **F for cryptographic completion**, and **C for possible further mathematically substantive research** pending originality investigation. Do not submit or announce a new cryptosystem.
+
+Next highest value: verify the exact global shift-tail theorem in a proof assistant, compare to published linear-structure/random-CSP theorems, probe alternative local-to-global invariants and independently randomized planted global witness distributions. If another candidate looks equivalent to existing cohomology, representation, or group-action structures, record the equivalence rather than renaming them.
