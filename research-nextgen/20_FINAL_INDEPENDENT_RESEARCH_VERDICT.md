@@ -32,3 +32,14 @@
 **Priority for the next execution:** search genuinely distinct mathematics, examine cohomological/higher-order nonlinear constraints only under explicit equivalence checks, rigorously compare NG-Q4/Q6 to existing random-CSP theorems, investigate independent structured-algebra/constraint-solving attacks and obtain formalized theorem statements. Do **not** hide old attacks, rename known mathematics, force a KEM, merge into main, or claim future background work.
 
 **Repository:** work remains on experimental branch. A successful local test cannot be promoted to externally peer-reviewed, machine-checked or quantum security.
+
+
+## Subsequent NG-Q8 correction/update — 1 November 2026
+
+This filename retains the charter-required word *independent*, but the work is **internal**; no external reviewer was engaged.
+
+**New mathematical result:** Exact model-specific local exclusion probability 15/52 for false projected pair values, obtained through 624 uniformly distributed independent transformed direction pairs and finite-field affine-image enumeration; high-probability *public polynomial-time* witness reconstruction for fixed triple-scope hypergraphs with sufficiently high pair codegree. In the complete-three-scope case, failure <= `8*C(n,2)*(37/52)^(n-2)`, approaching zero. Distinct O(n^2 log n) anchor-overlap hypergraphs also admit a high-probability public reconstruction bound under the **same** sampler. Six new locally executed tests passed, including exhaustive all-19,683-Q checks of five local classes. **No proof assistant / external peer review / novel field certification.**
+
+**Research correction:** This replaces the old NG-Q7 note that asymptotic public-recovery had not been established **for this narrow explicitly random dense distribution only**. Its correctness does not extend to all NCSG problems. The result strengthens the **negative cryptographic verdict**, not a positive KEM claim. Generic CSP consistency and presheaf/cohomological local/global approaches have published antecedents; full originality remains unresolved.
+
+**Updated outcomes:** Mathematical Outcome C (project-specific mathematically supported analysis, absolute novelty unresolved); Cryptographic Outcome F (no qualifying original secure KEM, new hard distribution or private trapdoor). Existing main remains unchanged.
