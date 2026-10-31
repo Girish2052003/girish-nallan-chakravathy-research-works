@@ -32,3 +32,19 @@ Local test code SHA-256 before the later GitHub canonical-import and q=12 adjust
 Additional file: `experiments/random_source_shift_codimension_probe.py`, run locally under Python 3.13.5 with fixed generator seeds, no dependencies beyond Python standard library and the previous Round-8 public-shift module. Command from repo root: `python research-nextgen/experiments/random_source_shift_codimension_probe.py`.
 
 Results: 180 tiny toy source-form instances, 172 with `dim D=0` and 8 with `dim D=1`. n=4,5,6; policies n factors or every triple; 30 trials each. Outcome demonstrates a **limitation** of the quotient attack rather than generic NCSG insecurity. Final GitHub code has not been rerun in CI; local source-equivalent prototype was executed. See `09_COUNTEREXAMPLES_AND_NEGATIVE_RESULTS.md`.
+
+
+## NG-Q4 checked execution and GitHub code identity
+
+New files: `experiments/public_global_shift_survival_bound.py` and `experiments/test_public_global_shift_survival_bound.py`.
+Local execution: Linux, Python **3.13.5**; no paid tools, external cloud or APIs. Command:
+
+```sh
+cd research-nextgen/experiments
+python -m unittest -v test_public_global_shift_survival_bound test_public_global_quotient_witness_recovery
+python public_global_shift_survival_bound.py
+```
+
+Outcome: **7 tests passed** after correcting one initial false test expectation, in about 0.3 seconds locally. Exact local table counts: parallel **2187/19683**, independent **729/19683**; local survival alpha **5/39**. Previous quotient tests still pass. Full random-source monitoring was run from a local preexisting copy of `random_source_shift_codimension_probe.py` using `sample(n,m,seed=20261101+10000*n+j)` with (n,m,trials)=(4,4,500),(5,10,120),(6,20,60), producing nonzero-shift counts 9,0,0.
+
+**File identity verified against GitHub connector's returned blob SHA:** local `git hash-object` equals connector blob SHA `e9bbabd1e0db7a33a79a292e7eac721d1ff78f8b` for the new mathematical script and `b1012d99d2a44e1e0444fc504ca69e6c6613167a` for the new unit test. SHA-256 of the local files respectively: `0fc6c614fdc15f3118dedab0bc5abb1de5a9f26dfce0dc1cb65839e5f1ec31a9`, `2b8422dfcbb9db5e373a9cf1b4bd26868365e61df92e470fc118fb4efdde6469`. GitHub Actions CI has not been run for this branch; **do not claim CI pass**.
