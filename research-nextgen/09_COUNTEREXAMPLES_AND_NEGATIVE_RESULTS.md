@@ -82,3 +82,16 @@ Because any nontrivial ternary shift subspace contains a line with **two** nonze
 | 6 | 20 | 60 | 60 | 0 |
 
 All empirical observations are consistent with the **proved probability bounds**. The theorem does not prove hardness of witness recovery; it can instead indicate that **this particular shift-based shortcut disappears** under densely overlapping independent factors. Other algebraic, statistical, or general CSP solvers may still be effective. NG-Q4 does not show cryptographic security, trapdoor one-wayness or entirely new mathematical axioms.
+
+
+## NG-Q6 — uniqueness does not imply private inversion
+
+An independently planted `s` with independently sampled local B and Q has exact local nonzero-input collision probability `beta=(3^d-1)/(3^(r+d)-1)`, for r=1,d=2 exactly **4/13**. The expected additional global witnesses are the same support-hit polynomial as NG-Q4 evaluated at beta rather than alpha. For full independent three-variable scopes, the non-uniqueness probabilities are at most 0.0109351263878 at n=5 and 0.0000917201689783 at n=6. This does not prove inversion hardness.
+
+For 30 exactly reconstructed planted samples each, brute-force enumeration found **12/30 unique** at n=4, **29/30 unique** at n=5, **30/30 unique** at n=6. Independent exact scalar-Q enumeration over 19,683 tables gave 6,561 hits for each tested nonzero mixed derivative at one point, matching exact output-uniform probability 1/3. See `experiments/planted_witness_uniqueness_bound.py` and its tests.
+
+## NG-Q7 — public pair projection defeats dense-overlap hardness intuition
+
+A standard polynomial-time public consistency-filtering attack, using only complete local factor tables, scopes and public targets, recovered witnesses in **29/30** complete-triple samples n=5 and **all tested** complete-triple samples n=6 through n=12. For n=6,7,8: 30/30 each; n=9,10,12: 10/10 each. Every returned witness verified. The same instances had `dim D=0` for every trial. For n=4, only 12/30 were publicly recovered by this no-branching filter, which matches the 12/30 unique fibers in this seed set.
+
+**Critical research finding:** The disappearance of constant shifts at high overlap does **not** imply hardness, and neither does a planted unique witness. Although no generic asymptotic recovery theorem has been established, the empirical public reconstruction is a serious negative design gate for the tested distribution. Generic consistency filtering is classical prior art, not original mathematics. See `experiments/public_pair_consistency_attack.py` and `experiments/run_public_pair_consistency_campaign.py`.
