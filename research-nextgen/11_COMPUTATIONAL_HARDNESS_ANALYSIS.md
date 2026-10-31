@@ -28,3 +28,10 @@ For a security-index candidate `n`, let global variables range over `F_3^n`; for
 **Do not promote a dense, nearly unique, zero-shift global NCSG instance family as a hard distribution.** The positive experimental public recovery is a material attack, and uniqueness is not an inversion hardness proof. The candidate is **unsuitable for a positive trapdoor/KEM hardness claim at this checkpoint**, although a fully asymptotic public pair-recovery theorem is not established.
 
 Relevant prior art: Alan K. Mackworth, *Consistency in networks of relations*, *Artificial Intelligence* 8(1), 99–118, 1977, DOI 10.1016/0004-3702(77)90007-8. Methodology is not novel CSP theory. Independent peer-review and proof-assistant formalization have not occurred.
+
+
+## NG-Q8 decisive asymptotic public-recovery obstruction
+
+The previous NG-Q7 result only established **bounded experimental** public recovery on dense independent source-form factors. [NG-Q8](23_NGQ8_PUBLIC_RECOVERY_THEOREM.md) now proves a high-probability public **one-pass** recovery result for the exact independent r=1,d=2 ternary distribution: each wrong projected pair survives a relevant local factor with exact probability 37/52. With pair codegrees d_ij, failure is at most `8 sum_(i<j)(37/52)^d_ij`; for every triple scope this is `8*C(n,2)*(37/52)^(n-2)`, negligible as n grows. An anchor-based distinct-scope construction uses `O(n^2 log n)` factors and is likewise publicly easy in this model with appropriate codegree.
+
+**Hardness decision:** The proposed dense/anchor overlapping independent-source families cannot be invoked as credible asymptotically one-way planted-witness problems in the specified explicit-table model: a polynomial-time public adversary now has a proved overwhelming recovery probability. Sparse low-pair-codegree systems, correlated factor secrets, succinct local functions and different nonlinear foundations remain separate open questions; no general NCSG impossibility theorem is claimed.
