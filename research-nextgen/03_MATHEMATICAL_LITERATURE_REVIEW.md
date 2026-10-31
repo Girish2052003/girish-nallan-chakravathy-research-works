@@ -21,3 +21,10 @@
 **First-moment method prior art:** Dimitris Achlioptas and Cristopher Moore, *Random k-SAT: Two Moments Suffice to Cross a Sharp Threshold*, *SIAM Journal on Computing*, DOI **10.1137/S0097539703434231**, studies random CSP moment methods; source: https://epubs.siam.org/doi/10.1137/S0097539703434231. Colin Wei and Stefano Ermon, *General Bounds on Satisfiability Thresholds for Random CSPs via Fourier Analysis*, *AAAI 2017*, DOI **10.1609/aaai.v31i1.11136**, is additional broader random-CSP comparison (https://ojs.aaai.org/index.php/AAAI/article/view/11136).
 
 **New scope under investigation:** NG-Q4 uses elementary but exact finite-field operator rank counting to derive an exact local constant-derivative probability and a closed-form **global** first moment for the specified independently randomized NCSG source form. This model-specific calculation may be original to the project, but an appropriate prior theorem may already subsume it. No claim of globally original mathematics or peer-reviewed novelty follows.
+
+
+## Pair-projection consistency prior art (31 October 2026)
+
+Alan K. Mackworth, *Consistency in networks of relations*, **Artificial Intelligence** 8(1), pp. 99–118 (1977), DOI **10.1016/0004-3702(77)90007-8**. Primary journal metadata: https://www.sciencedirect.com/science/article/pii/0004370277900078. The published work explicitly covers local node/arc/path consistency methods for constraint networks. The implemented NG-Q7 use of pairwise projections of higher-arity public relations is in this **pre-existing CSP-consistency family**. No original algorithmic discovery should be attributed to the generic filtering method.
+
+NG-Q6 uses a model-specific local collision calculation and a standard first-moment argument; this does not create a new field of probabilistic combinatorics. A systematic comparison to planted CSP uniqueness and polynomial-time reconstruction theorems remains necessary. No unsupported global novelty claim is made.
