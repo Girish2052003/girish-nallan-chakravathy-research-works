@@ -61,3 +61,12 @@ python run_public_pair_consistency_campaign.py
 Fourteen local unittest methods pass; the 30-/10-trial attack campaign is recorded in [15_CLASSICAL_AND_QUANTUM_CRYPTANALYSIS.md](15_CLASSICAL_AND_QUANTUM_CRYPTANALYSIS.md). All five new source files have exact matching Git blob identifiers to locally run copies.
 
 Read [11_COMPUTATIONAL_HARDNESS_ANALYSIS.md](11_COMPUTATIONAL_HARDNESS_ANALYSIS.md), [12_TRAPDOOR_INVESTIGATION.md](12_TRAPDOOR_INVESTIGATION.md), and [15_CLASSICAL_AND_QUANTUM_CRYPTANALYSIS.md](15_CLASSICAL_AND_QUANTUM_CRYPTANALYSIS.md). The mathematical proofs remain in [08_THEOREMS_AND_PROOFS.md](08_THEOREMS_AND_PROOFS.md), and the explicit negative findings in [09_COUNTEREXAMPLES_AND_NEGATIVE_RESULTS.md](09_COUNTEREXAMPLES_AND_NEGATIVE_RESULTS.md). A genuine new foundational framework and a secure private-trapdoor KEM are **NOT** established.
+
+
+## End-of-execution scientific checkpoint
+
+- [Focused source and claim inventory](02_SOURCE_AND_CLAIM_INVENTORY.md)
+- [Implementation and testing](17_IMPLEMENTATION_AND_TESTING.md)
+- [Internal research verdict and exact open gates](20_FINAL_INDEPENDENT_RESEARCH_VERDICT.md)
+
+**Scientific boundary:** A mathematically correct project-specific probability bound, tested public witness attack, or likely unique planted assignment is not a novel fundamental mathematical framework and not a secure KEM. The main branch is preserved; experimental conclusions require further mathematical novelty comparison, proof-assistant work and independent cryptanalysis.
