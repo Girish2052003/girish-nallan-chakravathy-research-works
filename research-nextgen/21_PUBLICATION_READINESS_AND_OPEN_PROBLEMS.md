@@ -29,3 +29,10 @@ A model-specific exact probability theorem and global first-moment bound now str
 **Mathematical novelty gate M2 remains not passed**; complete alternative mathematical framework, private trapdoor and IND-CCA/QROM construction are **not established**. Outcome at this checkpoint remains **F for cryptographic completion**, and **C for possible further mathematically substantive research** pending originality investigation. Do not submit or announce a new cryptosystem.
 
 Next highest value: verify the exact global shift-tail theorem in a proof assistant, compare to published linear-structure/random-CSP theorems, probe alternative local-to-global invariants and independently randomized planted global witness distributions. If another candidate looks equivalent to existing cohomology, representation, or group-action structures, record the equivalence rather than renaming them.
+
+
+## NG-Q6 / NG-Q7 verdict amendment
+
+NG-Q6 gives an exact model-specific planted-witness uniqueness bound, and NG-Q7 publicly recovers solutions on all tested n>=6 dense independently sampled source-form fixtures despite absence of global shift symmetries. These findings **reject one possible security intuition**, not establish a new cryptographic security engine. They use known finite-field linear structures, standard first moments and classical constraint consistency.
+
+**Highest-value next mathematical task:** investigate whether nonlinear overlap invariants beyond public additive symmetry exist and survive a *serious equivalence audit*. For cryptography, an independently motivated average-case hard distribution and genuinely private trapdoor remain absent. More finite success cases cannot substitute for universal proofs or independent cryptanalysis. Current result merits an accurate cryptanalytic/structural research report; M2 mathematical novelty and C1-C7 security success **not established**.
