@@ -7,7 +7,11 @@ an exponential but complete finite search. It is not a KEM or a hardness proof.
 """
 from dataclasses import dataclass
 from itertools import product
+from pathlib import Path
+import sys
 
+# Reuse the audited Round-8 baseline instead of duplicating its attack logic.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'research-2028' / 'attacks'))
 from public_global_shift_witness_recovery import PublicShiftSystem, _rref
 
 
