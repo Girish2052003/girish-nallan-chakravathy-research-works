@@ -10,3 +10,12 @@
 **Execution environment:** Lean, Lake, Rocq/Coq, Z3 and SageMath executables were not found in the available local runtime on 31 October 2026. Their absence is a tooling limitation, not a proof of falsehood or a reason to describe tests as formal verification.
 
 **Next formal obligation:** encode the finite `F_3` version of `F(z+h)=F(z)+Gamma(h)`, direct-sum uniqueness, and the affine-fiber cardinality statement in a proof assistant. Verify exact quantified statement without replacing the original finite-table hypotheses with stronger hidden assumptions.
+
+
+## NG-Q4 mathematical status
+
+- **Conventional written proof:** NG-Q4.1 mixed-difference operator ranks, NG-Q4.2 exact local survival probability, NG-Q4.3 exact expected nonzero global shifts and half-expectation probability bound, NG-Q4.4 all-triple asymptotic bound. See `08_THEOREMS_AND_PROOFS.md`.
+- **Exact finite independently implemented checks:** 19,683 potential tables; `d=2,3` operator-rank checks; rational direct-vs-weight-sum comparisons; disconnected-scope negative control. Four new unit tests pass alongside three existing quotient tests.
+- **Proof assistant:** NOT EXECUTED, not machine-checked.
+- **Originality:** OPEN, likely derives from established linear-structure and first-moment tools.
+- **KEM security:** NOT CLAIMED.
