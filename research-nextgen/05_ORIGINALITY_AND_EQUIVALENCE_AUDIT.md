@@ -33,3 +33,10 @@ A proposed name such as a new 'NCSG shift-survival geometry' would be cosmetic; 
 ## NG-Q6 / NG-Q7 prior art boundaries
 
 NG-Q6's probability is model-specific, but the global bound is a standard first-moment/union-bound calculation. NG-Q7 is an explicit classical CSP-consistency adversary, with antecedents including Alan K. Mackworth (1977). The NCSG-specific experimental successes are valid findings about a precise distribution, **not** invention of generic pair consistency, or original private-trapdoor mathematics. New foundational originality M2 **still does not pass**.
+
+
+## NG-Q8 / NG-C05 novelty boundary
+
+The model-specific exact probability **15/52** and pair-codegree recovery bound now have a full transparent finite-enumeration argument and conventional global proof. The generic local consistency/projection method is established CSP mathematics, not new research machinery (Mackworth, *Artificial Intelligence*, 1977, DOI 10.1016/0004-3702(77)90007-8). Modern *planted CSP recovery* literature is also active (Basu, Hsieh, Lin and Manohar, ICALP 2026, DOI 10.4230/LIPIcs.ICALP.2026.23); that work's Boolean planting assumptions have **not** been proved identical to this ternary NCSG sampler.
+
+A proposed new 'nonlinear cohomological compatibility geometry' is **not** foundationally original just by treating overlapping relation-fibers as local sections: Abramsky and Brandenburger (2011) studied global-section obstructions, and Ó Conghaile (MFCS 2022, DOI 10.4230/LIPIcs.MFCS.2022.75) explicitly applied presheaves/cohomology to CSP local-to-global consistency. NG-C05 therefore **fails the novelty gate** without new non-reducible mathematics. M2 remains OPEN / NOT ESTABLISHED.
