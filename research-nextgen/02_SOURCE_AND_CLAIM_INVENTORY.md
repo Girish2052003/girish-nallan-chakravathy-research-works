@@ -23,3 +23,8 @@
 
 | NG-Q8 | `research-nextgen/23_NGQ8_PUBLIC_RECOVERY_THEOREM.md` | Exact local false-pair exclusion 15/52; fixed-scope public recovery failure bound `8 Σ_(pairs) (37/52)^codegree`; complete triples / anchor corollaries | Conventional finite-enumeration-assisted argument, 6 locally executed tests, no proof assistant or external review; exact ternary r=1,d=2 independently sampled source-form explicit tables only |
 | NG-C05 | `research-nextgen/04_CANDIDATE_FRAMEWORK_CATALOGUE.md` | Local relation constraints as global sections of presheaf | Foundational originality **rejected as already represented in published sheaf/CSP literature**; no invented new theory |
+
+
+| NG-Q10 | `research-nextgen/25_NGQ10_REJECTED_SPARSE_STAR.md` | Complete deterministic public solver for arbitrary ternary star-factor tables (0,1,j) and SAT/UNSAT | Proved as simple width-2/CSP cutset conditioning; **foundational novelty REJECTED**; five unit tests/finite brute checks |
+| NG-Q11.1-3 | `research-nextgen/26_NGQ11_ALGEBRAIC_DEGREE_NO_GO.md` | Ternary source-form `degree<=max(1,2d-1)`; entire d=1 family affine with arbitrary global factor hypergraph publicly solvable by Gaussian elimination | Conventional proofs + public solver + finite tests; known finite-field polynomial theory; does not imply complete KEM compromise |
+| NG-Q11.4 | Same | Exact local r=1,d=2 degree<=3 distinguisher; uniform function false positive 1/59049; uniform Q degree exactly3 probability 2/3 | 19,683-table exhaustive finite test plus analytic 17-coefficient count; **only local distinguishability**, no demonstrated d=2 witness recovery theorem for arbitrary scopes |
