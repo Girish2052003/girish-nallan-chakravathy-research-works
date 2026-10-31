@@ -1,5 +1,11 @@
 # Girish Nallan Chakravathy — Research Works
 
+## Current mathematical-family classification
+
+**SG-DIFRA currently belongs to the NCSG finite-field discrete-differential constraint research family**: algebraic constraint-satisfaction problems over finite fields, organized through discrete derivatives and globally coupled nonlinear constraints. **NCSG means Nonlinear Constraint-System Geometry.** This is a precise **descriptive research classification**, not a claim of a new recognized mathematical discipline, universal novelty, a proven hardness assumption, or a completed secure KEM.
+
+See the [canonical mathematical family, theorem-by-theorem proof status, simple example, and security boundary](MATHEMATICAL_FAMILY_AND_PROOF_STATUS.md). The older hidden-MDS/GRS and noisy-linear iterations are archived historical cryptanalysis only. The current program has **no complete NCSG-only KEM or established IND-CCA/QROM security**.
+
 ## 11 October 2026 follow-up
 
 **No secure replacement KEM has been established.** The latest work adds stronger public-inversion proofs and fixes research-code and publication defects. It does not convert passed tests into a security certificate.
