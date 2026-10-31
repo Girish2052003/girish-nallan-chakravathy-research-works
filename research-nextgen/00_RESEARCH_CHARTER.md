@@ -27,3 +27,10 @@ The checkpoint does not choose a new mathematical foundation or promote an exper
 (1) Seek reductions to known linear structures, group-action quotient theory and CSP decomposition;
 (2) test the quotient codimension distribution for independently sampled original NCSG factors at larger public-but-feasible sizes;
 (3) investigate alternative foundations, not cosmetic renaming; (4) pursue proof-assistant formalization after mathematical novelty and scope stabilize.
+
+
+## Continuation checkpoint (31 October 2026)
+
+New retained conventional mathematics NG-Q4: mixed finite-difference rank classification for the source-form random potential, exact fixed-shift probability, exact global shift-count first moment, and dense-overlap survival upper bound. Independently exhaustive local calculations and 680 fresh random-source controls were performed. An initially wrong disconnected-test expected value was corrected and recorded. Locally run mathematical programs match GitHub blob SHA exactly. Known antecedents include finite-field linear structures (Charpin–Kyureghyan) and random-CSP first moments.
+
+New NG-Q5 hypergraph-support polynomial has a direct standard induced-edge-enumerator representation; **rejected as foundational novelty**. NG-C03 exploratory nonlinear-overlap idea remains undefined/unselected. These results are mathematical/cryptanalytic evidence **without a cryptographic hardness claim**. M2, M5 and all KEM security gates remain open; no changes are made to main.
