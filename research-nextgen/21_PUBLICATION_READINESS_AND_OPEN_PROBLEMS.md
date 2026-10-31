@@ -36,3 +36,10 @@ Next highest value: verify the exact global shift-tail theorem in a proof assist
 NG-Q6 gives an exact model-specific planted-witness uniqueness bound, and NG-Q7 publicly recovers solutions on all tested n>=6 dense independently sampled source-form fixtures despite absence of global shift symmetries. These findings **reject one possible security intuition**, not establish a new cryptographic security engine. They use known finite-field linear structures, standard first moments and classical constraint consistency.
 
 **Highest-value next mathematical task:** investigate whether nonlinear overlap invariants beyond public additive symmetry exist and survive a *serious equivalence audit*. For cryptography, an independently motivated average-case hard distribution and genuinely private trapdoor remain absent. More finite success cases cannot substitute for universal proofs or independent cryptanalysis. Current result merits an accurate cryptanalytic/structural research report; M2 mathematical novelty and C1-C7 security success **not established**.
+
+
+## New outcome after NG-Q8
+
+A mathematically scoped **high-probability polynomial-time public planted-witness recovery theorem** has been derived for one precisely specified independently randomized NCSG source-form explicit-table distribution. This supersedes **only** the former 'no asymptotic recovery theorem for this distribution' open item. Existing distributions with low pair codegrees, correlated samplers and different local arities remain open.
+
+**Publication candidate:** a modest **Track B negative structural/cryptanalytic note**, if rigorous comparison with existing planted-CSP recovery results establishes a substantive project-specific contribution, and after independent human proof audit or proof assistant development. It is **not** evidence of a new foundational mathematics or a secure original KEM. Mathematical novelty/acceptance Gate M2 still OPEN. Cryptographic security Gates C1-C7 remain NOT ESTABLISHED. Current scientific assessment: a meaningful negative result with bounded novelty claims, not Outcome A/D/E.
