@@ -36,3 +36,10 @@ All returned witnesses independently satisfy original public functions/targets. 
 ## Originality/independence boundary
 
 Relational consistency methods were already studied by Mackworth (1977) and others. This is an explicit project-specific test against source-form factors, **not** new general CSP theory. A different AI code path and brute-force cross-checks are useful internal challenge but do not constitute independent external expert cryptanalysis. Written soundness proof is conventional, not proof-assistant verified.
+
+
+## NG-Q8 — asymptotically proved public one-pass attack on the exact tested source distribution
+
+[Full mathematical argument](23_NGQ8_PUBLIC_RECOVERY_THEOREM.md) and [public-only algorithm](experiments/ng_q8_recovery.py). The local false-pair rejection probability is 15/52 (survival 37/52) for uniformly randomized F3 source-form factors with r=1,d=2, independent Q and B. Complete 3-uniform scopes yield public planted-s recovery with probability at least `1-min(1,8*C(n,2)*(37/52)^(n-2))` in polynomial explicit-input time. This **disproves high-probability planted-witness one-wayness** for this distribution, rather than merely showing finite toy attacks.
+
+The new one-pass algorithm is weaker at finite small n than iterative NG-Q7: tests recovered n=6:0/12; n=12:0/10; n=20:1/5; n=30:2/3 in separate deterministic campaigns. The theorem's union bound is trivial at n<=20 and nontrivial at larger n. **No result is a KEM IND-CPA/IND-CCA break**, as no completed active NCSG-only KEM exists; no quantum lower or upper bound or external cryptanalysis is claimed. This is a stronger **classical public-recovery upper bound** for specified sampled mathematical instances.
