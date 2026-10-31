@@ -42,3 +42,10 @@ The previous NG-Q7 result only established **bounded experimental** public recov
 NG-Q9 extends the **possibility of high-probability public pair-projection recovery** from the exact (r,d)=(1,2) sampler to arbitrary fixed r,d>=1 over F3, under fully independent uniform B,Q local source forms, public complete local truth tables and pair codegrees large enough to compensate for the *strictly positive but possibly minuscule* local rejection lower bound epsilon_(r,d). The general bound is `8 sum_(i<j)(1-epsilon_(r,d))^d_ij`. Complete k-uniform scopes imply a negligible public recovery failure bound for **k>=3**; **k=2** needs repeated constraints to grow pair coverage. Do not apply these asymptotic results to finite profiles lacking a nontrivial quantitative bound or to correlated/succinct NCSG designs.
 
 The claimed independent-source high-overlap planted-witness hardness is therefore contradicted for these exact growing distributions by an explicit public polynomial-time algorithm, even though no general statement about every NCSG variant is proved.
+
+
+## NG-Q10 / NG-Q11 additional unconditional public shortcuts
+
+**NG-Q10:** Any public CSP whose every factor touches only two shared hubs and one other leaf, with arbitrary local predicates, is solved by enumerating q² hub assignments and independent leaf checks. This is classical bounded-treewidth cutset conditioning; probabilistic source-form hiding or O(n log n) factor count does not create a hard problem on that support graph.
+
+**NG-Q11:** Over F3, any source-form family with nonlinear-right dimension d=1 is **affine**, no matter how nonlinear the initial Q function appears. Any global public explicit-table system assembled from such local factors reduces to public linear algebra, regardless of primal graph treewidth or random generator independence. **Reject** d=1 as a witness-inversion hardness foundation. For d>=2, finite-difference degree bound `max(1,2d-1)` exposes public algebraic structure, but a distinguisher alone is **not** a fast solver or cryptographic one-wayness refutation.
