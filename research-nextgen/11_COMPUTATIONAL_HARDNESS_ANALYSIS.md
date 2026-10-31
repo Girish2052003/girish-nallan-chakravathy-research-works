@@ -1,0 +1,30 @@
+# Computational hardness evaluation — NG-Q4 / NG-Q6 / NG-Q7
+
+**Status: NO defensible average-case hardness assumption or original KEM security.** This is a first analysis of one explicitly defined research distribution, not a general security conclusion.
+
+## Precisely defined planted-source search distribution
+
+For a security-index candidate `n`, let global variables range over `F_3^n`; for each of the `m=C(n,3)` three-element scopes independently sample a uniform `B_i in GL(3,3)`, uniform scalar potential table `Q_i:F_3^2->F_3`, and uniform nonzero scalar `A_i`. Use fixed nonzero direction `a=(1,0)`, and publish the complete explicit local tables `f_i(x)=A_i u_L+Delta_a Q_i(u_R)`, with `u=B_i x`. Choose a uniformly random global witness `s` independent of factor sampling and publish `t=F(s)`.
+
+**Search problem:** Given only scopes, all public factor tables and `t`, output *any* `x` satisfying `F(x)=t`. Input representation length is polynomial in n for this particular dense fixed-local-arity family. This is **not** an encryption/KEM security game. Even finding a valid witness need not imply correct KEM decapsulation for an unspecified future design.
+
+## Observations established or tested
+
+- NG-Q4: a fixed nonzero local shift survives with exact probability 5/39. For fully independently sampled complete-triple scopes, nonzero global additive shifts disappear with explicitly bounded high probability. This **removes one public shortcut**, not all public solving strategies.
+- NG-Q6: a fixed distinct pair of local inputs collides with exact probability 4/13. Under the stated independent planted sampling, full global non-uniqueness is bounded by an exact first moment; probability becomes small with dense overlap. This **shows near-unique solutions**, not one-wayness.
+- NG-Q7: **public pair-projection consistency** (known CSP filtering) reconstructs planted global witnesses in every tested complete-triple instance for n=6,7,8,9,10,12, without original secrets or constant-shift directions. For n=5, 29/30 trials recovered. These are finite data, not a distribution-wide polynomial-time success theorem.
+- The full complete-triple primal graph is `K_n`, width `n-1`; graph width alone did not predict the observed easy recovery.
+
+## Relevant algorithmic upper bounds and caveats
+
+- Plain exhaustive global witness search: at most `3^n` full assignments and polynomial factor evaluation each.
+- NG-Q1 public additive quotient search: `3^(n-dim D) * poly(L)`, often no improvement for this dense independent sampler.
+- Classical variable elimination: `poly(L,n) * 3^(w+1)` for an available induced-width-w ordering; complete triples have width n-1.
+- NG-Q7 public pair consistency: polynomial in explicit input length per completed propagation, but has no proven general witness-recovery success probability over all independently sampled factors. It reports **inconclusive**, never a false successful witness.
+- Multi-user, quantum, spectral, polynomial-elimination, Gröbner, and malformed ciphertext attacks have not been comprehensively performed here.
+
+## Scientific decision
+
+**Do not promote a dense, nearly unique, zero-shift global NCSG instance family as a hard distribution.** The positive experimental public recovery is a material attack, and uniqueness is not an inversion hardness proof. The candidate is **unsuitable for a positive trapdoor/KEM hardness claim at this checkpoint**, although a fully asymptotic public pair-recovery theorem is not established.
+
+Relevant prior art: Alan K. Mackworth, *Consistency in networks of relations*, *Artificial Intelligence* 8(1), 99–118, 1977, DOI 10.1016/0004-3702(77)90007-8. Methodology is not novel CSP theory. Independent peer-review and proof-assistant formalization have not occurred.
