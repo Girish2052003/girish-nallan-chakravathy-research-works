@@ -1,8 +1,8 @@
 import unittest
-from itertools import product
+from itertools import product, combinations
 from fractions import Fraction
 from math import prod
-from ng_q9_general_bound import gamma_uniform_surjective_map, local_projection_rejection_lower_bound, gaussian_rank_count
+from ng_q9_general_bound import gamma_uniform_surjective_map, local_projection_rejection_lower_bound, gaussian_rank_count, general_projection_failure_upper_bound
 
 def rk(X):
     if not X:return 0
@@ -47,6 +47,17 @@ class GeneralProjectionTest(unittest.TestCase):
         count+=int(len(set(diffs))==1)
       expected=Fraction(1,3**(2*3**(d-1)-1))
       self.assertEqual(Fraction(count,3**(3**d)),expected)
+ def test_k2_exception_and_k3_growth(self):
+    for n in (5,20):
+      k2=list(combinations(range(n),2))
+      self.assertEqual(general_projection_failure_upper_bound(n,k2,1,1),1)
+    from math import comb
+    epsilon=local_projection_rejection_lower_bound(2,1)
+    self.assertLess(8*comb(200,2)*(1-epsilon)**(200-2),1)
+    # For k=2, independent repeated pair constraints eventually work.
+    n=10
+    k2_repeated=list(combinations(range(n),2))*80
+    self.assertLess(general_projection_failure_upper_bound(n,k2_repeated,1,1),Fraction(1,100000))
  def test_boundary(self):
     self.assertEqual(gamma_uniform_surjective_map(1,2),Fraction(3,13))
     self.assertEqual(local_projection_rejection_lower_bound(1,2),Fraction(1,1053))
