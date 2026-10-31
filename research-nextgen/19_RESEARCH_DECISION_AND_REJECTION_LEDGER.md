@@ -48,3 +48,10 @@
 **NG-D19:** Reject 'cohomological sheaf of overlapping NCSG fibers' as a wholly new mathematical framework absent a new invariant/theorem: published CSP presheaf/cohomological local-to-global constructions already exist (Ó Conghaile, MFCS 2022; Abramsky and Brandenburger 2011). Retain an explicit originality-equivalence record.
 
 **NG-D20:** Earlier NG-Q7 iterative attack succeeded on small n=6/12. A new simple **one-pass** attacker may remain inconclusive on those small n despite an asymptotic recovery theorem. Preserve both data sets without falsely treating them as the same algorithm. No custom KEM, trapdoor, IND-CCA or QROM security statement is accepted.
+
+
+**NG-D21 (1 November 2026):** Retain NG-Q9 as a **written, tested, scoped general fixed-arity negative theorem**: a positive local pair-exclusion lower bound exists for any fixed r,d source-form sampler with independent uniform B,Q, so sufficiently high public pair codegree yields high-probability polynomial-time witness recovery. It does **not** provide calibrated finite security estimates and does not describe all possible NCSG samplers.
+
+**NG-D22:** Correct complete-scope corollary: k=r+d>=3 required for one *distinct* factor on every k-subset to give growing pair codegree; for k=2 one distinct factor per pair has codegree one, and repeated independent factors are needed. Preserve the negative test and correction.
+
+**NG-D23:** Two NG-Q9 test-development defects (tuple/list concatenation and incorrectly expecting a nontrivial small-n conservative union bound) were corrected before accepting four passing tests. No false mathematical conclusion is retained. M2 novelty and C1-C7 cryptographic goals remain open.
