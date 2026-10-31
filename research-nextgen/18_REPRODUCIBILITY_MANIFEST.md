@@ -75,3 +75,27 @@ python run_public_pair_consistency_campaign.py
 Campaign: public recoveries 12/30,29/30,30/30,30/30,30/30,10/10,10/10,10/10 in that n order; `dim D=0` on **every** sample; for n=4,5,6 fully exhaustive solution enumeration gives unique counts 12/30,29/30,30/30. SHA-256 of the locally run campaign script: `f47eb58deec69475bb9a24bad5801007272361808892d8fbe0c87c374995b849`. Other files' SHA-256 are available in locally maintained audit hashes; Git blob hashes above establish identity with checked code.
 
 **Limits:** Neither GitHub Actions CI nor a proof assistant has executed these additions; this records direct local executions and exact source identity. No paid API, rented cloud, secret keys or external KEM were used. All source-form inputs are explicitly finite, not calibrated real-world KEM parameters.
+
+
+## NG-Q8 verified local execution and exact committed source identities (2026-11-01)
+
+Environment: `Linux 6.18.57 x86_64`, Python `3.13.5`; pure Python standard library, zero paid services. Network DNS did not allow cloning the repository inside the local execution container, so the complete **older** 14-test suite has **not** been rerun in this continuation; historical NG-Q7 results remain separately recorded as prior checkpoint evidence. The *new* NG-Q8 files were locally executed and then committed by GitHub connector, after which the server-returned blob SHA was compared to `git hash-object` on the executed bytes.
+
+| New file | Exact Git blob SHA (local and GitHub match) | Local SHA-256 |
+| --- | --- | --- |
+| `experiments/ng_q8_recovery.py` | `26a8e75aeae20c44ddecc2f494a83778c0307ea4` | `487344b4ff72e3b69136931191cb5f874b84651ff46f9b9c2029fb7f28979e7b` |
+| `experiments/test_ng_q8_recovery.py` | `eeb3cc35e0e7ea9335384cb37b0ee6bc39535fef` | `5f58c3b564384031221111ee449006cf2c28a55e1fda59f7fd6c0041e1eec369` |
+
+Commands from repository root:
+```sh
+cd research-nextgen/experiments
+python -m unittest -v test_ng_q8_recovery
+python ng_q8_recovery.py
+```
+**Result: 6/6 new independent tests passed in ~2 seconds locally.** Exact rank/failure cases: rank1/failure0=48, rank1/failure1/3=36, rank2/failure2/9=108, rank2/failure4/9=108, rank3/failure8/27=324, for 624 independent ordered vector pairs; exact rejection 15/52. One case of each of five categories was independently validated by evaluating **all 19,683 Q tables**; independent 10,000-random-sample direct calculation agreed within 0.025 of 15/52. Additional tests verified public-only witness integrity and anchor hypergraph codegrees and a deliberately underconstrained inconclusive example.
+
+Deterministic research-only demonstration inside `ng_q8_recovery.py`: n=6: 0/12, n=12: 0/10, n=20:1/5, n=30:2/3 **one-pass recovered**. This is deliberately distinct from earlier stronger iterative NG-Q7 success and is consistent with the high-probability theorem's coarse small-n bound.
+
+**Proof-assistant status:** `lean`, `lake`, `coqc`, `rocq`, `z3`, `cvc5`, `sage` executable names were not found in the local PATH. NO Lean/Rocq/Isabelle checker ran. **CI status:** No new GitHub Actions workflow result obtained; passing local Python is not CI or universal formal proof.
+
+This derivation depends on **independent uniform masks and potential tables**, complete explicitly public three-input local factor maps, independently chosen planted s, and fixed public factor scopes. It cannot be transferred silently to a redesigned secret-dependent factor sampler.
