@@ -21,3 +21,8 @@ Status: **REJECT these specific planted-witness distributions as proposed secret
 ## NG-Q9 general rejection condition
 
 For *fixed* source-form local arity k=r+d and uniform independently sampled B,Q in the public explicit-table model, NG-Q9 proves a positive lower bound epsilon_(r,d) on the local ability to reject a wrong pair. With sufficiently large pair codegrees, a fully public polynomial-time attacker reconstructs the planted s with high probability. Thus a planted assignment is **not** a defensible secret-only trapdoor on that high-codegree distribution, even for other fixed r,d. Weak conservative bounds at practical n may give no conclusion. The argument does not cover arbitrary correlated generators or all possible new mathematical trapdoors.
+
+
+## NG-Q10 / NG-Q11: further rejection of fake private trapdoors
+
+Two-anchor star schemes have a deterministic public complete solver; no planted secret advantage. Any ternary NCSG source-form scheme with d=1 has a deterministic public Gaussian solver on any overlap pattern, including dense/high-treewidth families; neither secret generating B, A, Q nor nonlinear-looking Q notation hides a witness inversion trapdoor. A recovered witness need not equal an original planted s when the global map has multiple preimages, and no full KEM exists to evaluate decapsulation secrecy. For d=2 only a local degree distinguisher was proved, so no KEM claim follows.
