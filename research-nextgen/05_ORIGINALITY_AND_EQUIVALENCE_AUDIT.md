@@ -45,3 +45,10 @@ A proposed new 'nonlinear cohomological compatibility geometry' is **not** found
 ## NG-Q9 novelty assessment
 
 The general fixed-arity pair-exclusion bound uses standard matrix-rank counts, an elementary constant-derivative subdistribution, known public local relation projections and a union bound. Its formalized model-specific conclusion may be a useful negative cryptanalytic extension of SG-DIFRA, but the **mathematical tools and broad algorithmic approach are not original**. No claim of a wholly new algebra, category, hardness assumption or globally novel theorem without comprehensive literature comparison. M2 remains NOT PASSED.
+
+
+## NG-Q10 / NG-Q11 originality audit
+
+NG-Q10's sparse-star exact solver is **mathematically redundant** with 1999 and earlier bucket elimination / conditioning methods and bounded-treewidth CSP algorithms. The proposed O(n log n) probabilistic recovery and novelty claim were weaker than a deterministic public linear-time method for fixed alphabet; reject.
+
+NG-Q11's bound on algebraic degree and public Gaussian solver at d=1 are elementary consequences of finite-field interpolation, finite differences and Gaussian elimination. Its degree<=3 scalar distinguisher is a direct generalized Reed–Muller code membership test. The particular source-form application and exact counts are useful technical evidence, but not a new foundational algebra or globally originality-certified cryptanalysis. Formal M2 novelty gate **still NOT PASSED**.
