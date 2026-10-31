@@ -19,3 +19,7 @@
 **Scientific integrity:** All older claims retain their original authorship/provenance. Original SG-DIFRA contributors are Girish Nallan Chakravathy and Sreedevi Kannan, with external tool/algorithm authors credited for relevant antecedents. Do not infer new work authorship from a repository name. Machine-checked theorems, independent external review and complete current KEM security are absent.
 
 **Unfinished baseline items:** complete archive/manuscript inventory, original artifact byte-level verification, independent rerun of all older research checks, and complete audit of CI workflows and issues. These remain explicit tasks.
+
+
+| NG-Q8 | `research-nextgen/23_NGQ8_PUBLIC_RECOVERY_THEOREM.md` | Exact local false-pair exclusion 15/52; fixed-scope public recovery failure bound `8 Σ_(pairs) (37/52)^codegree`; complete triples / anchor corollaries | Conventional finite-enumeration-assisted argument, 6 locally executed tests, no proof assistant or external review; exact ternary r=1,d=2 independently sampled source-form explicit tables only |
+| NG-C05 | `research-nextgen/04_CANDIDATE_FRAMEWORK_CATALOGUE.md` | Local relation constraints as global sections of presheaf | Foundational originality **rejected as already represented in published sheaf/CSP literature**; no invented new theory |
