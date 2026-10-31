@@ -40,3 +40,8 @@ NG-Q6's probability is model-specific, but the global bound is a standard first-
 The model-specific exact probability **15/52** and pair-codegree recovery bound now have a full transparent finite-enumeration argument and conventional global proof. The generic local consistency/projection method is established CSP mathematics, not new research machinery (Mackworth, *Artificial Intelligence*, 1977, DOI 10.1016/0004-3702(77)90007-8). Modern *planted CSP recovery* literature is also active (Basu, Hsieh, Lin and Manohar, ICALP 2026, DOI 10.4230/LIPIcs.ICALP.2026.23); that work's Boolean planting assumptions have **not** been proved identical to this ternary NCSG sampler.
 
 A proposed new 'nonlinear cohomological compatibility geometry' is **not** foundationally original just by treating overlapping relation-fibers as local sections: Abramsky and Brandenburger (2011) studied global-section obstructions, and Ó Conghaile (MFCS 2022, DOI 10.4230/LIPIcs.MFCS.2022.75) explicitly applied presheaves/cohomology to CSP local-to-global consistency. NG-C05 therefore **fails the novelty gate** without new non-reducible mathematics. M2 remains OPEN / NOT ESTABLISHED.
+
+
+## NG-Q9 novelty assessment
+
+The general fixed-arity pair-exclusion bound uses standard matrix-rank counts, an elementary constant-derivative subdistribution, known public local relation projections and a union bound. Its formalized model-specific conclusion may be a useful negative cryptanalytic extension of SG-DIFRA, but the **mathematical tools and broad algorithmic approach are not original**. No claim of a wholly new algebra, category, hardness assumption or globally novel theorem without comprehensive literature comparison. M2 remains NOT PASSED.
