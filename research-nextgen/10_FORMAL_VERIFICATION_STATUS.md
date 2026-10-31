@@ -26,3 +26,10 @@
 NG-Q6 collision probability and first moment: **conventional written proof**, all 19,683 local potential tables checked for specified derivative directions, exact field/rational calculations, and full brute-force global planted fiber counts for n=4..6. No machine-checked formal theorem or external mathematical review.
 
 NG-Q7 pair-projection filtering soundness: **conventional written invariant/termination argument**; no universal distribution-wide success guarantee. Implemented adversary and tests locally executed; 14 unit test methods (previous + new) passed. Full seeded attack campaign rerun with original public data. No Lean/Rocq/Isabelle proof, standalone KEM or quantum attack evidence.
+
+
+## NG-Q8 formal-checking and finite proof-certificate boundary
+
+Conventional argument in `23_NGQ8_PUBLIC_RECOVERY_THEOREM.md`: 624-case uniform GL(3,3) orbit reduction; exact affine-image table, model-specific local probability 15/52, independent factor probability multiplication, union bound and polynomial public one-pass reconstruction; fixed hypergraph generalization and O(n^2 log n) anchor family.
+
+**Six new unit tests passed locally**; code/case table exact rational and independent full 19,683-Q brute checks for five cases. This is an **exhaustive finite computation plus mathematical argument**, *not* a Lean/Rocq/Isabelle checked certificate. No full human peer review or general security proof. The finite 624-case classification is a proof obligation that should be independently formalized or audited before public claims of verified originality.
