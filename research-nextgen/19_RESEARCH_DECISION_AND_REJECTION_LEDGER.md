@@ -39,3 +39,12 @@
 **NG-D15:** The public pair-filtering algorithm belongs to prior CSP consistency theory (Mackworth 1977); do not claim newly invented generic CSP techniques. Strong model-specific attack effectiveness may warrant publication only after rigorous prior-art comparison, reproducibility and review.
 
 **NG-D16:** No active NCSG-only KeyGen/Encaps/Decaps, IND-CCA/QROM argument or accepted new mathematical framework exists. Retain independent mathematical discoveries and negative controls with correct attribution and leave cryptographic gates OPEN.
+
+
+**NG-D17 (2026-11-01):** Accept **within model** NG-Q8 exact local projection rejection `15/52` and generic independently sampled hypergraph public one-pass recovery bound, subject to exhaustive finite-census correctness and explicit model assumptions. 624 finite direction pairs + five full potential-table checks + six local unit tests. Status: **written + computer-assisted finite enumeration; proof assistant/external peer review NOT DONE**.
+
+**NG-D18:** Reject dense complete-triples **and** O(n^2 log n) distinct-scope anchor constructions of the independently randomized r=1,d=2 source-form model as credible hard planted-witness distributions: NG-Q8 gives polynomial-time public recovery with overwhelming probability in the specified scaling. **DO NOT** generalize to unrelated NCSG schemes, quantum models or nonexistent active KEM security.
+
+**NG-D19:** Reject 'cohomological sheaf of overlapping NCSG fibers' as a wholly new mathematical framework absent a new invariant/theorem: published CSP presheaf/cohomological local-to-global constructions already exist (Ó Conghaile, MFCS 2022; Abramsky and Brandenburger 2011). Retain an explicit originality-equivalence record.
+
+**NG-D20:** Earlier NG-Q7 iterative attack succeeded on small n=6/12. A new simple **one-pass** attacker may remain inconclusive on those small n despite an asymptotic recovery theorem. Preserve both data sets without falsely treating them as the same algorithm. No custom KEM, trapdoor, IND-CCA or QROM security statement is accepted.
