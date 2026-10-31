@@ -37,6 +37,18 @@ def local_projection_rejection_lower_bound(r,d):
     gamma=gamma_uniform_surjective_map(r,d)
     return gamma*Fraction(1,3**(r*(2*3**(d-1)-1)))
 
+
+def general_projection_failure_upper_bound(n,scopes,r,d):
+    """NG-Q9 rigorous upper bound for fixed k-ary independent source factors."""
+    from itertools import combinations
+    if n<2 or any(len(scope)!=r+d or len(set(scope))!=r+d or
+                   any(v<0 or v>=n for v in scope) for scope in scopes):
+        raise ValueError('invalid fixed-arity scopes')
+    epsilon=local_projection_rejection_lower_bound(r,d)
+    return min(Fraction(1),sum(
+        (8*(1-epsilon)**sum(i in scope and j in scope for scope in scopes)
+         for i,j in combinations(range(n),2)),Fraction(0)))
+
 if __name__=='__main__':
     for r,d in ((1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(3,2)):
         print('r,d',r,d,'gamma',gamma_uniform_surjective_map(r,d),
