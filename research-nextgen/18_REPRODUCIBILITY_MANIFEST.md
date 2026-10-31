@@ -112,3 +112,30 @@ python ng_q9_general_bound.py
 ```
 
 **Result:** 4/4 tests passed in Python 3.13.5, Linux x86_64. Enumerates every full-row-rank r-by-(r+d) matrix for six small (r,d) pairs, all scalar Q tables for d=1,2, exact rational gamma/epsilon values, k=2 complete-scope negative control and independent repeated-pair positive control. Initial test harness list+tuple concatenation error was corrected. A later test incorrectly expected a **nontrivial conservative bound** for k=3,n=60; the bound there is actually clipped to 1, and the corrected test checks a valid larger-size analytic case. The theorem itself was restricted explicitly to k>=3 for complete unique scopes; k=2 repeated independent factors require growing codegree. No CI/proof-assistant run; no earlier full historical test rerun.
+
+
+## 1 November 2026: NG-Q10 / NG-Q11 code identity and combined tests
+
+Executed on Linux Python 3.13.5 in `/mnt/data/sg_nextgen_work`. The environment's network could not resolve github.com for `git clone`; committed files were uploaded through the authenticated GitHub connector. Each returned GitHub source blob SHA was compared with the locally executed `git hash-object`:
+
+| Exact file in research-nextgen/experiments | Identical GitHub and local blob SHA |
+| --- | --- |
+| `ng_q10_public_star_no_go.py` | `3dd82b72d49717d17a745d71f23d45168b012e31` |
+| `test_ng_q10_public_star_no_go.py` | `e066b9770ccdbeac6b81e51d41b80b89cae958a8` |
+| `ng_q11_degree_collapse.py` | `3d8abc8e8fb952215d79f182b37a152eda9b465d` |
+| `test_ng_q11_degree_collapse.py` | `53d5f82c881201dc3f20db88919dd286e8732a64` |
+
+Reproduce:
+
+```sh
+cd research-nextgen/experiments
+python -m unittest -v test_ng_q8_recovery test_ng_q9_general_bound test_ng_q10_public_star_no_go test_ng_q11_degree_collapse
+python ng_q10_public_star_no_go.py
+python ng_q11_degree_collapse.py
+```
+
+**All 22 test methods passed locally** (6 NG-Q8 + 4 NG-Q9 + 5 NG-Q10 + 7 NG-Q11). NG-Q10 specifically compared 80 small arbitrary random *unplanted* table/target instances to exhaustive full solution enumeration and tested q=4 and deliberately contradictory cases. NG-Q11 directly enumerated all 19,683 potentials Q:F3²->F3 at B=I for exact degree-3 counts (13,122), tested random GL(3,3) masks, random d=1 scalar/vector factors and globally planted d=1 inversion.
+
+**Preserved error trail:** Preliminary unreleased NG-Q10 bootstrap failed a global-uniqueness assertion because anchor-only ambiguity is insufficient to infer global ambiguity. We discarded the insufficient method in favor of a *complete deterministic* star solver. A preliminary NG-Q11 false-positive function used float rather than `Fraction`, causing an exact-value test failure; fixed before passing the full suite.
+
+**No GitHub Actions CI run, proof assistant execution, public KEM or independent external review.** Old baseline artifacts beyond these four local test modules have not been completely rerun in this continuation.
