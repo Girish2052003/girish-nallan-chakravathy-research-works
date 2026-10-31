@@ -38,3 +38,12 @@ Conventional argument in `23_NGQ8_PUBLIC_RECOVERY_THEOREM.md`: 624-case uniform 
 ## NG-Q9 formal status
 
 Conventional written mathematical proof: exact 3-cycle count for uniform potential tables, uniform surjective-matrix counting, positive pair-exclusion event, independent-factor probability multiplication and union bound. Four new local tests passed; six low-dimensional surjective-matrix ensembles exhaustively enumerated, and d=1,2 scalar potential tables exhausted. **No proof-assistant formalization, no external expert verification.** The k=2 complete-scope edge case was identified and corrected; do not claim an n-growing complete-scope result when local arity is two.
+
+
+## NG-Q10 / NG-Q11 verification
+
+NG-Q10 complete 2-anchor star solver: conventional soundness/completeness proof, arbitrary target and table tests, unsatisfiable tests, brute-force full fiber comparisons, 5/5 new unit tests. Initial probabilistic star prototype failed the test 'recovered iff unique'; its flaw was identified and it was replaced, not quietly promoted.
+
+NG-Q11: conventional polynomial degree proof, univariate ternary affine formula, public Gaussian solver, exact generalized Reed–Muller code-count distinguisher. Seven new unit tests pass, including 19,683 potential tables and random masked factors. An initial floating-point vs rational representation bug was corrected before acceptance.
+
+Total of prior six NG-Q8, four NG-Q9, five NG-Q10 and seven NG-Q11 tests: **22/22 locally passed**. No complete historical repository suite, external CI, Lean/Rocq/Isabelle formal proof or peer-reviewed theorem verification was performed. Local source blob hashes match the committed GitHub files.
