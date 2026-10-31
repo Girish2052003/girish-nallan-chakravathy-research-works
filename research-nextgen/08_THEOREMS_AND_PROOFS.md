@@ -130,3 +130,66 @@ Fix scopes `E` on `n` global variables, allowing repeated factor scopes, and let
 This is a reindexed induced-subhypergraph edge-count enumerator. **No new axioms or foundational novelty.** It could be a useful distributional diagnostic, but naming it does not create a new mathematical structure.
 
 **Example:** One 3-variable factor on n=4 yields `P_H(z)=2+78z` and `P_H(5/39)=12`, in agreement with independently tested direct sum. Formalization and serious polynomial-invariant prior-art comparison remain unperformed.
+
+
+---
+
+# NG-Q6 — Planted-witness collision probability and high-density uniqueness bound
+
+**Status:** Exact scoped probabilistic theorem with conventional written proof; exhaustive finite checks; **not** proof-assistant-checked or independently peer-reviewed. The conclusion is about the **number** of solutions, not the cost of finding one. It is not a security theorem.
+
+## Model
+
+Use the same independently randomized source-form factor distribution and fixed public scopes as NG-Q4, with `r,d>=1`. Fix any planted `s in F_3^n` **independent** of all local random samplers and set each public target to `t_i=f_i(s restricted to S_i)`. Let `F` be the full public factor-output map and `k(h)` be the number of scopes met by the support of `h`.
+
+## Lemma NG-Q6.1 — exact local collision probability
+
+For two *distinct, fixed* inputs `x,y in F_3^(r+d)` independent of the local random coins,
+
+`Pr[f(x)=f(y)] = beta_(r,d) = (3^d-1)/(3^(r+d)-1)`.
+
+**Proof.** Let `h=y-x !=0` and write `Bh=(h_L,v)`. Uniform `B in GL(r+d,3)` sends `h` uniformly among all `3^(r+d)-1` nonzero vectors. If `v=0`, then `h_L!=0` and `f(y)-f(x)=A h_L!=0`, so a collision is impossible. If `v!=0`, then the potential-dependent part of the difference is the fixed-table-coordinate mixed derivative `Delta_v Delta_a Q(u_R)`. This is a nonzero linear functional of the uniform scalar table: for `v=a,2a`, it is a nonzero multiple of the three-point sum along an a-cycle; for independent `a,v` it is a four-point alternating combination with nonzero coefficients. Therefore it is uniform in `F_3` for one component and uniform in `F_3^r` for independent `r` components, regardless of `A h_L`, giving collision probability `3^(-r)`. Exactly `3^r*(3^d-1)` nonzero ambient directions have `v!=0`; average over B to get the displayed beta. QED.
+
+For the original small scalar source geometry `(r,d)=(1,2)`, `beta=4/13` exactly. The event concerns a *fixed pair* independent of the factor randomness, not an adaptive query chosen after seeing public factor tables.
+
+## Theorem NG-Q6.2 — exact expected number of additional global witnesses
+
+For any independently fixed `s` and fixed scope collection,
+
+`E[|F^(-1)(F(s))|-1] = sum_(h in F_3^n excluding 0) beta_(r,d)^(k(h))`.
+
+Therefore
+
+`P[ F^(-1)(F(s)) contains a different global witness ] <= min(1, sum_(h!=0) beta_(r,d)^(k(h)))`.
+
+**Proof.** For a nonzero global `h`, the planted `s+h` gives the same joint target as `s` precisely when all touched independent local factor outputs collide. Untouched factor inputs are identical and pass automatically; each touched factor collides with exact probability beta by NG-Q6.1, independently across factors. Thus its indicator expectation is beta to the number of touched factors. Sum over all `h!=0`; linearity of expectation is valid even when different h collision events are dependent. The event of non-uniqueness entails at least one additional witness, so Markov's bound proves the second assertion. QED.
+
+## Corollary NG-Q6.3 — all-three-variable scopes
+
+If each three-element global scope has one independently sampled `r=1,d=2` factor, let `m=C(n,3)`, `beta=4/13`. Then
+
+`E[additional witnesses]=sum_(s=1)^n C(n,s)*2^s*beta^(C(n,3)-C(n-s,3))`,
+
+and the probability of non-uniqueness is at most that quantity, clipped at one. The same first-moment argument gives `3^(-Omega(n^2))` for `n` increasing in this dense, independent-factor regime, because every nonzero shift hits at least `C(n-1,2)` factors and beta is strictly below one. QED.
+
+Exact values for `n=4,5,6,7,8,9`: `0.878400616224922`, `0.010935126387797743`, `0.00009172016897832268`, `0.0000002936956418215655`, `2.848193335356639e-10`, `8.366395632216549e-14`. These are probability **upper bounds**, not observed frequencies.
+
+Independent calculations enumerate all 19,683 scalar potential tables and verify that for fixed nonzero right component `v` the mixed derivative at an input equals any specific field value exactly `6561/19683=1/3` of the time. For the cited deterministic 30-instance complete-scope runs, exhaustive global enumeration finds unique fibers in 12/30, 29/30, 30/30 samples for n=4,5,6.
+
+**Security limitation:** A unique solution may be publicly easy to find, as NG-Q7's pair-projection experiment illustrates. No hardness assumption, post-quantum security, private recovery advantage or KEM follows.
+
+---
+
+# NG-Q7 — Public pair-projection consistency: soundness and observed recovery
+
+**Methodological provenance:** This is a constraint-consistency filtering technique in the established CSP family; see Alan K. Mackworth, *Consistency in networks of relations*, *Artificial Intelligence* 8(1), 99–118 (1977), DOI 10.1016/0004-3702(77)90007-8. No originality claim for generic consistency propagation.
+
+Given explicit ternary factor tables, public scopes and public target outputs, initialize each factor relation with the local tuples satisfying its target. Initialize each occurring variable pair's allowed-value set to all `3^2=9` pairs. Repeatedly (a) delete factor tuples whose component pairs are not currently allowed and (b) intersect each pair's domain with all projected surviving factor relations containing that pair. Stop at a fixed point. If every variable's projected unary domain is a singleton, construct that full assignment and **verify all original public equations**. Otherwise report inconclusive, never falsely unsatisfiable.
+
+**Deterministic guarantee (ordinary constraint-filtering consequence).** This iteration terminates in time polynomial in complete explicit table length, global variables and factors. It never deletes a satisfying global assignment from any surviving relation or pair domain. Any returned verified assignment is a genuine global witness.
+
+**Proof.** Initially every satisfying assignment satisfies each factor relation and has its coordinate pairs in the unrestricted pair domains. Assume this holds before a pass. A factor tuple of a satisfying assignment cannot be removed because all of its pairs remain allowed. Each pair projection from a surviving factor relation also contains the pair induced by the satisfying assignment, so intersecting these projections cannot remove that pair. Inductively, the invariant holds at every pass. Each proper pass removes at least one element from a finite tuple relation or pair domain, never adds any; there are at most `sum_i 3^|S_i| +9*number_of_pairs` deletions, so the number of passes and work per pass are polynomial in explicit input size. The output candidate is accepted only after independently evaluating all public equations, so recovery is sound. If no singleton candidate exists, the algorithm reports inconclusive; no completeness assertion is made. QED.
+
+**Finite campaign (no asymptotic success-rate theorem):** The exact seeded independently randomized source-form ensemble from NG-Q4, with planted target `F(s)` independent of generator randomness, yielded public recovery for complete triples at `n=5:29/30`, `n=6:30/30`, `n=7:30/30`, `n=8:30/30`, `n=9:10/10`, `n=10:10/10`, and `n=12:10/10`. Every returned witness was publicly verified. Those same generated datasets had **zero nontrivial global constant-shift subspaces** in all tested cases; thus success did not rely on NG-Q1's quotient-shift shortcut. This is a **scoped classical public-witness attack on toy-to-moderate random public constraint families**, not an IND-CCA break of a KEM.
+
+**Important limits:** Empirical success on deterministic test seeds cannot certify full distribution recovery or a polynomial-time algorithm that always succeeds. The chosen public source generator uses tiny r=1,d=2 local tables and dense complete-triple constraints. Sparse and different source distributions can remain inconclusive. This is not independent expert cryptanalysis or proof-assistant verification.
