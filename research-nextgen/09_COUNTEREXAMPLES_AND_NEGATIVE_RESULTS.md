@@ -30,7 +30,8 @@ where exactly one fixed edge `{1,2}` has `b_12=1`, and all other `b_ij=0`. Every
 | 4 | 5 | 6 | 4 | 4 | 4 | 1 | 2 |
 | 5 | 6 | 10 | 5 | 5 | 5 | 1 | 2 |
 | 8 | 9 | 28 | 8 | 8 | 8 | 1 | 2 |
+| 12 | 13 | 66 | 12 | 12 | 12 | 1 | 2 |
 
-The regression additionally checks 48 randomized small public factor systems (`n=1,...,4`, 12 each), all nine scalar-pair targets per system, matching independent brute-force existence and exact solution counts. Tests include empty and unsatisfiable constant-factor cases. Randomness seed: `20261031`.
+For these targets the quotient cardinality formula gives exactly **two** solutions, corresponding to \`z=1\` and \`z=2\`; separate brute-force checks confirm this at q=4,5,8. The q=12 case was also executed locally in a separate exact-count check. The regression additionally checks 48 randomized small public factor systems (`n=1,...,4`, 12 each), all nine scalar-pair targets per system, matching independent brute-force existence and exact solution counts. Tests include empty and unsatisfiable constant-factor cases. Randomness seed: `20261031`.
 
 **Caveats:** Local tests used a lightweight reproduction of the existing Round-8 support module in the test directory; the committed new script imports the canonical Round-8 module. The new version on GitHub has not yet been separately run by CI. The family is deliberately constructed and NOT a break of real-size NCSG cryptography; it rebuts only the inference that high width plus a non-surjective shift map makes a problem hard.
