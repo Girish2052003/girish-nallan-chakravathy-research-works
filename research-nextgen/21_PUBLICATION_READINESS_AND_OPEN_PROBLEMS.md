@@ -43,3 +43,8 @@ NG-Q6 gives an exact model-specific planted-witness uniqueness bound, and NG-Q7 
 A mathematically scoped **high-probability polynomial-time public planted-witness recovery theorem** has been derived for one precisely specified independently randomized NCSG source-form explicit-table distribution. This supersedes **only** the former 'no asymptotic recovery theorem for this distribution' open item. Existing distributions with low pair codegrees, correlated samplers and different local arities remain open.
 
 **Publication candidate:** a modest **Track B negative structural/cryptanalytic note**, if rigorous comparison with existing planted-CSP recovery results establishes a substantive project-specific contribution, and after independent human proof audit or proof assistant development. It is **not** evidence of a new foundational mathematics or a secure original KEM. Mathematical novelty/acceptance Gate M2 still OPEN. Cryptographic security Gates C1-C7 remain NOT ESTABLISHED. Current scientific assessment: a meaningful negative result with bounded novelty claims, not Outcome A/D/E.
+
+
+## NG-Q9 publication caution
+
+The fixed-arity generalization strengthens the theoretical **negative finding**, but its proof relies on established counting and CSP-consistency tools. Consider a rigorously bounded negative mathematical cryptanalysis note rather than a KEM proposal; novelty still needs independent prior-art review. The fixed k=2 complete-scope exception is explicit. No complete KEM, private trapdoor, QROM reduction, parameter certification or submission-grade novel framework is established.
