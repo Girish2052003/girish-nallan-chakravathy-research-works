@@ -48,3 +48,14 @@ The new one-pass algorithm is weaker at finite small n than iterative NG-Q7: tes
 ## NG-Q9 wider classical public-recovery theorem
 
 [Full result](24_NGQ9_GENERAL_ARITY_PROJECTION_BOUND.md). For any fixed r,d>=1 with k=r+d, independently sampled public source-form local maps over F3 with complete local tables, a **strictly positive exact lower bound** epsilon_(r,d) on wrong-pair rejection yields a polynomial-time one-pass public-recovery theorem whenever pair codegrees scale sufficiently. For k>=3 complete k-uniform scopes meet the sufficient asymptotic condition; k=2 needs multiple independent constraints per pair. The numerical lower bound can be extremely conservative, and it is not a finite-parameter security estimate, quantum attack lower bound or KEM break.
+
+
+## NG-Q10 and NG-Q11 — stronger deterministic public-only no-go cases
+
+| Analyzed class | Algorithm | Scope of established result |
+| --- | --- | --- |
+| Arbitrary local tables on ternary star scopes (0,1,j) | Enumerate 9 shared-anchor value pairs, independent leaf checks | SAT/UNSAT and witness recovery for **every** instance in linear time for fixed q=3; no secret, planting or randomness; standard width-2 CSP |
+| All ternary source-form factors with d=1 (arbitrary left dimension r) | Interpolate public affine coefficients then Gaussian elimination | Global witness recovery or correct UNSAT for **any** factor hypergraph, including high-width, independent or correlated generators |
+| Ternary r=1,d=2 source-form local tables | Interpolate reduced polynomial and test total degree<=3 | Public local statistical distinguisher: source always passes; uniformly random scalar table passes with probability 1/59049; **not** demonstrated witness inversion for arbitrary graph |
+
+NG-Q10 and NG-Q11 have explicit conventional proofs, 12 additional locally passing tests (5+7), and no quantum attack analysis or completed KEM interface. Prior art includes Dechter bucket elimination and generalized Reed–Muller low-degree theory; **do not label these as original algorithmic inventions**.
