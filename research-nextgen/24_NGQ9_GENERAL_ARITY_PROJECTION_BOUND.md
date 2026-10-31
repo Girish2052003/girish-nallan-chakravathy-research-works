@@ -61,7 +61,7 @@ For any fixed **k-uniform public factor multihypergraph H** of independent sourc
 
 For (r,d)=(1,2), epsilon=1/1053 is merely a **weak universal lower bound** on rejection; NG-Q8 independently gives the **exact** and vastly stronger 15/52 for the same local sampler.
 
-Reproducible source: `experiments/ng_q9_general_bound.py`; independent tests: `experiments/test_ng_q9_general_bound.py`. Locally executed Python 3.13.5. Three tests passed after correcting an initial list/tuple concatenation error in the test harness, with no change to the theorem or computed counts. Tests include exhaustive full-row-rank r-by-(r+d) matrices for (r,d)=(1,1),(1,2),(1,3),(2,1),(2,2),(2,3) and exhaustive scalar Q tables for d=1,2; exact rational boundary checks.
+Reproducible source: `experiments/ng_q9_general_bound.py`; independent tests: `experiments/test_ng_q9_general_bound.py`. Locally executed Python 3.13.5. Four tests passed after correcting an initial list/tuple concatenation error and later rejecting a test with an overly optimistic small-n recovery expectation, with no change to the theorem or computed counts. Tests include exhaustive full-row-rank r-by-(r+d) matrices for (r,d)=(1,1),(1,2),(1,3),(2,1),(2,2),(2,3) and exhaustive scalar Q tables for d=1,2; exact rational boundary checks; a separate k=2 complete-scope failure-bound regression and k=2 independently repeated-scope positive control. An initial n=60, k=3 test incorrectly expected a nontrivial *conservative union bound*: the bound actually clips to 1 at that size; the final test uses a larger correct analytic check. Failed draft expectations were repaired **before** acceptance.
 
 ```sh
 cd research-nextgen/experiments
