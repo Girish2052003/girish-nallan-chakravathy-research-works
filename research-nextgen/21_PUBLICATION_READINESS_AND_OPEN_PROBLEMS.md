@@ -17,3 +17,6 @@
 7. Can exact NG-Q1 be formalized in Lean/Rocq/Isabelle with matching quantified claims?
 
 **Verdict for the presently executed checkpoint:** strongest result is a scoped negative/algorithmic mathematical contribution with originality unresolved. Mission-level classification: **Outcome F (negative or inconclusive research result) for cryptography, with mathematically supported negative findings**; do not claim Outcome A/B/D/E. Future work may change this only through new evidence.
+
+
+**Additional caution from random control:** NG-Q3 found zero public constant-shift dimension in 172 of 180 small uniform-source-form overlapping systems. Thus the new exact quotient algorithm does not currently give useful evidence of a generic public attack on the intended random global instance family. It nevertheless invalidates the proposed inference that large width and deficient shift rank alone imply hardness. Both statements can be true.
