@@ -34,3 +34,14 @@ Thus `P_H` is an elementary specialization/reindexing of a **standard induced-su
 NG-Q4 bounds the survival of **one already-known public structural shortcut** on a specified distribution. Under dense independent source factors its absence is overwhelmingly likely. This does **not** imply the remaining constraint problem is computationally hard.
 
 **Official mathematical migration:** NOT AUTHORIZED BY SCIENTIFIC EVIDENCE. Continue testing genuinely distinct structure candidates, rejecting known reparameterizations and preserving negative results.
+
+
+## NG-C04 — Dense independently randomized planted NCSG hardness
+
+**Definition:** complete-three-variable public source-form factors with independent uniform GL(3,3) coordinate masks, independent scalar potential tables, and a fixed planted global witness generating all public factor targets.
+
+**Mathematical attributes:** NG-Q4 shows global additive shift shortcuts vanish at high density; NG-Q6 shows the planted solution is likely unique at high density. Both results have conventional proofs.
+
+**Adversarial outcome:** NG-Q7, a public known-CSP consistency method, recovered a complete global witness without secret generation information in every tested n>=6 complete-triple instance. The constructed test cases all had zero nonzero global constant-shift dimension. This demonstrates that absence of these shifts and near-uniqueness do not establish cryptographic hardness.
+
+**Decision:** REJECT **as a positively justified KEM hardness foundation** at this checkpoint. A universal asymptotic public-recovery theorem has not been proved, and other sampling variants remain open. This candidate is not genuinely new mathematical structure.
