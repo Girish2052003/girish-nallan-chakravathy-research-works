@@ -117,3 +117,16 @@ This theorem does **not** say that finding a witness is hard, that random target
 Independent checks: all 19,683 scalar potential tables for `d=2` gave `2187/19683=1/9` for parallel `v`, `729/19683=1/27` for independent `v`; direct matrix rank calculations for every nonzero `v` in `d=2,3` matched Lemma NG-Q4.1. Exact rational arithmetic matched the scope-enumeration and weight-enumeration formulas for `n=3,4,5`. A mistaken initial test expectation for a disconnected-scope case (26/3 instead of 12) was **corrected** before accepting the final seven-test suite.
 
 These are conventional written proofs and finite checks, **not** Lean/Rocq machine proofs. Prior-art novelty relative to Charpin–Kyureghyan linear-structure theory and standard random-CSP first-moment methods remains **open**; no foundational mathematical originality is asserted.
+
+
+## NG-Q5 — hypergraph enumerator equivalence (mathematical rejection, not originality)
+
+Fix scopes `E` on `n` global variables, allowing repeated factor scopes, and let `hit_H(S)` count scopes intersecting `S` with multiplicity. Define `P_H(z)=sum_(nonempty S subset V) 2^|S| z^(hit_H(S))`. This is invariant under arbitrary relabeling of global coordinates because support sizes and edge incidences are preserved. A ternary vector with support `S` has exactly `2^|S|` possible nonzero value choices, so by NG-Q4.3, `P_H(alpha_(r,d))=E[|D|-1]` for the independent source-form distribution.
+
+**Exact equivalence:** Let `E[T]` denote all scopes wholly contained in `T`. With `T=V minus S`, the number of edges meeting `S` equals `m-|E[T]|` and `|S|=n-|T|`. The term `S=empty` contributes exactly 1, so
+
+`P_H(z) = sum_(T subset V) 2^(n-|T|) z^(m-|E[T]|) - 1.`
+
+This is a reindexed induced-subhypergraph edge-count enumerator. **No new axioms or foundational novelty.** It could be a useful distributional diagnostic, but naming it does not create a new mathematical structure.
+
+**Example:** One 3-variable factor on n=4 yields `P_H(z)=2+78z` and `P_H(5/39)=12`, in agreement with independently tested direct sum. Formalization and serious polynomial-invariant prior-art comparison remain unperformed.
