@@ -81,3 +81,11 @@ When local r=1,d=2 scalar factors and all 27 values are public, NG-Q12 recovers 
 For T(x,y)=gamma^-1(alpha(x)+beta(y)) over F3^m with publicly complete Latin-square table, NG-Q13 reconstructs an equivalent group law, group coordinates, and full equivalent (alpha',beta',gamma') from public data. Hidden permutations and apparent nonassociativity add **no novel algebraic structure**; group isotopy is established prior art. A legitimate non-group-isotopic control (seven-element Fano Steiner quasigroup) was constructed and proven non-isotopic to Z7, but its public quasigroup divisions are still trivial. Thus **non-isotopy is only a classification boundary, not a cryptographic hardness proof.**
 
 **Selection verdict:** Neither candidate becomes the SG-DIFRA NEXT GENERATION mathematical foundation. Continue searching structures with independently stated, non-reducible invariants and computational questions. Prioritize mathematical counterexamples over new branding.
+
+## NG-C12 — public nonabelian graph transport — REJECTED
+
+Proposed asymptotic objects: a public graph with secret group vertices x_v and PUBLIC exact relations B_uv = x_u^-1 H_uv x_v. NG-Q14 proves all vertex secrets on one component reduce to a single public simultaneous conjugator t for cycle gains, with solution count given by the common centralizer. A planted hidden assignment can be unique while still publicly recoverable.
+
+For explicit full symmetric groups S_k, NG-Q15 proves complete polynomial public decision and witness construction using colored permutation-action orbit propagation, independent of k! group enumeration. This includes high-degree S100 test instances. No claim about arbitrary succinct groups or noisy-edge hardness follows.
+
+This proposal is an instance of classical gain-graph switching and simultaneous permutation conjugacy, not a novel mathematical framework or private trapdoor. Reject and preserve full proofs and tests.
