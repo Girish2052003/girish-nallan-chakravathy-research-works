@@ -121,3 +121,18 @@ For public group graph labels B_uv=x_u^-1 H_uv x_v, a spanning tree reduces all 
 ## NG-Q15 — full symmetric groups S_k admit polynomial public recovery
 
 For explicit permutations, simultaneous conjugacy of colored permutation actions is solved by matching action orbits and propagating generator equations, avoiding k! group enumeration. Combine with NG-Q14 spanning-tree reduction for a complete public graph witness/UNSAT algorithm polynomial in k,n,m. Tested on planted S3/S4/S8/S16/S40/S100 and inconsistent edges; 8 tests pass, including exact small-group comparisons. This does not extend to arbitrary succinct groups, noisy labels or non-symmetric-group representations. It is a **negative** result for a proposed trapdoor, not a novel universal group algorithm.
+
+
+## NG-Q16 public recovery despite adversarial or random corruption
+
+For flat public group ratios with independent erasure/replacement noise, public two-hop plurality can reconstruct all pair ratios without secret inputs. Exact sufficient adversarial condition: for every pair strictly > half of *observed* two-hop routes contain two uncorrupted edges. Full complete graph corollary: max corrupted-edge degree < (n-2)/4 per vertex. Independent noise bound `C(n,2)(|G|-1)*exp(-(n-2)*rho^4*(1-eps)^4/2)`. Complete S4 n=32 with 4 corrupted edges per vertex tested; S3 n=90 rho=1 epsilon=.36 and S4 n=90 rho=.78 epsilon=.1 were recovered in a few reproducible seeds; their finite Hoeffding bounds may still be trivial. This shows adding public noise alone does not reliably create private inversion.
+
+**Adversarial failure control:** If an attacker forges ALL public labels to form a different perfect consistent set, a public estimator may return a self-consistent yet **false** secret-equivalent output. No algorithm can verify unknown original truth from only that fully forged data. The reference code says `self_consistent`, not `verified_planted`.
+
+## NG-Q17 global gauge and component ambiguity
+
+For independent uniform vertex secrets, published relative ratios `x_i^-1 x_j` are invariant under global left multiplication. The original absolute x_0 is exactly independent of any ratio-only public channel, even when every relative label can be recovered. With disconnected observation components, cross-component ratios remain uniform and unidentifiable. These facts **cannot** be advertised as quantum-hard secrecy: they are elementary model symmetry and absence of identifying data.
+
+## NG-Q18 sparse Erdos–Rényi observation no-go
+
+When a public graph is disconnected, relative labels across its components cannot be learned from ratio-only observations under independent uniform secrets. In G(n,p), E[#isolated]=n(1-p)^(n-1), variance from pair nonadjacency `(1-p)^(2n-3)`. Chebyshev yields a finite isolation probability lower bound; at n=200,p=.01 it is >=.95800359. This is a textbook information-theoretic obstruction at sparse densities, not a newly hard problem. 6 exact/seeded tests passed.
