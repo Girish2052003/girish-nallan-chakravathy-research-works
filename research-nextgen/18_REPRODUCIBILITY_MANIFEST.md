@@ -197,7 +197,7 @@ Environment: Linux x86_64 Python 3.13.5, standard library only; code built/execu
 | File in research-nextgen/experiments | Matching GitHub/local blob SHA |
 | --- | --- |
 | ng_q16_robust_relative_sync.py | f1a5562a1fdbf28c0323278db76a25af05d3ac66 |
-| test_ng_q16_robust_relative_sync.py | d70752a9c9794ea6fa61d908bef88dde5c54dbce |
+| test_ng_q16_robust_relative_sync.py | 830c0c9c196c901906aa6297cadd442f66cebbaf |
 | ng_q17_gauge_nonidentifiability.py | bfce4036ec96e9a540b5b30c69e91d61d4150347 |
 | test_ng_q17_gauge_nonidentifiability.py | b9c268bc24de3cc1dbccafd615778029bddb21c4 |
 | ng_q18_sparse_observation_no_go.py | 5805c9d2701f9decc85d8c7523fa0ed65a9cb857 |
@@ -212,7 +212,9 @@ python ng_q17_gauge_nonidentifiability.py
 python ng_q18_sparse_observation_no_go.py
 ```
 
-**RESULT:** All **22/22 newly executed unit test methods PASS** in a final combined run (9 NG-Q16, 7 NG-Q17, 6 NG-Q18; ~2.75s). Exact root posterior histogram S3 is 1/6 for each of its six roots. Exact isolation numeric outputs include n=200,p=0.01 expected 27.06660098 isolated and isolation probability >=.95800359.
+**RESULT:** All **24/24 newly executed unit test methods PASS** in a final combined run (11 NG-Q16, 7 NG-Q17, 6 NG-Q18; ~2.69s). Exact root posterior histogram S3 is 1/6 for each of its six roots. Exact isolation numeric outputs include n=200,p=0.01 expected 27.06660098 isolated and isolation probability >=.95800359.
+
+**Additional final NG-Q16 adversarial verification:** A new exact probability census over all 36 ordered S3 two-edge public-label outcomes validates the local expected advantage rho²(1-epsilon)² with rational numbers; a zero-noise non-flat H example proves the public two-hop attack does not extend automatically to arbitrary twisted graph connections. These two newly added tests pass in the final 24/24 run.
 
 **NG-Q16 evidence boundaries:** six random-noise/erasure seed runs recovered all n=90 true relative pairs; their analytic Hoeffding finite-n bound often equals 1 (trivial), so their success is empirical, not a stronger formal finite result. Separate S4 n=32 adversarial corrupted-degree test meets the deterministic theorem. An explicit wholly forged, self-consistent but false public table is retained as a **negative control**—'self_consistent' must never be described as certified original secret recovery.
 
