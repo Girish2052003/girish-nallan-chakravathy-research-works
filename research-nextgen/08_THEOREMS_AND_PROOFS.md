@@ -270,4 +270,7 @@ Both results have conventional arguments and **12/12 local tests**, without form
 
 **NG-Q18:** [Exact first/second moment proof](34_NGQ18_SPARSE_OBSERVATION_ISOLATION.md). For an Erdos–Renyi G(n,p) observation graph, X=#isolated, E[X]=n(1-p)^(n-1), Var(X)=E[X]+n(n-1)(1-p)^(2n-3)-E[X]^2, and P[X>0]>=max(0,1-Var/E[X]^2) when E[X]>0. In low-density observations this is an information-theoretic ambiguity, not computational one-wayness.
 
-These are **applications of established** group synchronization and random graph mathematics. Six new code/test files, 22/22 local unit tests. No proof assistant, independent expert review, new mathematical foundation or completed KEM.
+These are **applications of established** group synchronization and random graph mathematics. Six new code/test files, 24/24 local unit tests. No proof assistant, independent expert review, new mathematical foundation or completed KEM.
+
+
+**Final NG-Q16 correction (same date):** Two additional local adversarial tests proved the exact rational S3 random-replacement mixing probabilities and demonstrated a zero-noise non-flat transport counterexample. NG-Q16 now has 11 tests; NG-Q17 has 7 and NG-Q18 has 6, **24/24 total**. The updated NG-Q16 test blob is `830c0c9c196c901906aa6297cadd442f66cebbaf` and matches the locally executed bytes. Earlier 22-test counts were intermediate checkpoints, not final counts.
