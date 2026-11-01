@@ -113,3 +113,11 @@ For any F3 source form with d=1, `Delta_aQ` is affine (Q univariate degree<=2), 
 **NG-Q13:** Secret permutations alpha,beta,gamma in the simple abelian-group-isotope quasigroup `T=gamma^-1(alpha(x)+beta(y))` do not hide an equivalent decomposition when T's complete operation table is public. The recovered equivalent permutations publicly reproduce every entry. The non-group-isotopic Fano Steiner control shows this is **not** a tautological assertion about every Latin square: none of 49 anchor normalizations is associative. But Fano's public left/right division is still trivial. This rejects naive 'nonassociative = private trapdoor' reasoning in two complementary ways.
 
 The new 6+6 unit tests passed; rejected candidates and failed novelty gates remain recorded for future experiments.
+
+## NG-Q14 — noncommutativity/uniqueness do not hide group transport secrets
+
+For public group graph labels B_uv=x_u^-1 H_uv x_v, a spanning tree reduces all vertex assignments to a public simultaneous-conjugacy constraint on one root per component. The exact number of solutions in a satisfiable connected component is its public cycle gains' common centralizer size. In S3, one transposition chord leaves 2 solutions; two noncommuting chord gains (transposition plus 3-cycle) give a **unique** planted secret, recovered **publicly**; a contradictory transposition-versus-3-cycle gives zero; flat trees leave all six gauge choices. Ten independent finite tests pass; this is known gain graph/switching mathematics.
+
+## NG-Q15 — full symmetric groups S_k admit polynomial public recovery
+
+For explicit permutations, simultaneous conjugacy of colored permutation actions is solved by matching action orbits and propagating generator equations, avoiding k! group enumeration. Combine with NG-Q14 spanning-tree reduction for a complete public graph witness/UNSAT algorithm polynomial in k,n,m. Tested on planted S3/S4/S8/S16/S40/S100 and inconsistent edges; 8 tests pass, including exact small-group comparisons. This does not extend to arbitrary succinct groups, noisy labels or non-symmetric-group representations. It is a **negative** result for a proposed trapdoor, not a novel universal group algorithm.
