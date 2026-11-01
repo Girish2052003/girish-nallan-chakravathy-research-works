@@ -71,10 +71,13 @@ python -m unittest -v test_ng_q18_sparse_observation_no_go
 python ng_q18_sparse_observation_no_go.py
 ```
 
-The combined NG-Q16/17/18 suite passed **22/22 local tests**; the six final Python code/test files were committed byte-identically as verified by Git blob SHA. No proof assistant or independent human reviewer.
+The combined NG-Q16/17/18 suite passed **24/24 local tests**; the six final Python code/test files were committed byte-identically as verified by Git blob SHA. No proof assistant or independent human reviewer.
 
 ## 6. Prior art and revised cryptographic research gate
 
 Classic Erdős–Rényi graph connectivity and isolation thresholds use precisely these first/second moments. See Rick Durrett, *Random Graph Dynamics*, Chapter 2, section 2.8, https://sites.math.duke.edu/~rtd/RGD/RGD.pdf; see also Sebastien Roch's course notes on Erdős–Rényi connectivity threshold, https://people.math.wisc.edu/~roch/teaching_files/833.f14/mdp-chap2-web.pdf. **Bradley Stich**, *Strong Recovery In Group Synchronization* (2023), https://scholar.rose-hulman.edu/rhumj/vol24/iss1/2/, explicitly studies positive dense and negative sparse group synchronization regimes.
 
 **Disposition:** A sparse public observation graph may prevent recovery of global relative group offsets for purely *information-theoretic reasons*. This does **not** make sparse noisy group synchronization a new foundational mathematical construction or a viable secret-only inversion trapdoor. Any future cryptographic design must prove legitimate encapsulation correctness and indistinguishability within a fully specified scheme, not merely point to absent information or disconnected edges.
+
+
+**Latest NG-Q16–Q18 check (1 November 2026):** In addition to the earlier 22 passing tests, two new independently implemented NG-Q16 tests verify all 36 S3 noise-label pairs with exact rational probabilities and explicitly falsify extension of the two-hop identity to non-flat group transport. **Final total: 24/24 locally passing tests (11 NG-Q16, 7 NG-Q17, 6 NG-Q18).** Updated executable test Git blob: `830c0c9c196c901906aa6297cadd442f66cebbaf`. No machine-checked proof or external review.
