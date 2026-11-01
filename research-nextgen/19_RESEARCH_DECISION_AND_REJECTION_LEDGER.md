@@ -64,3 +64,12 @@
 **NG-D26:** Retain NG-Q11 local algebraic-degree ceiling and exact r=1,d=2 local uniform-vs-source degree distinguisher (false positive 1/59049). This is an exact public local statistical distinguishability observation **only**; no IND-CCA/QROM or general d=2 inversion theorem. Origin lies in established finite-field/Reed–Muller code ideas, so **M2 still fails**.
 
 **NG-D27:** The NG-Q10 correct solver and NG-Q11 interpolation tests added 12 local tests to the 10 previously executed tests; **22/22 combined passed** with exact GitHub source-byte identity. NG-Q11 initially used a floating point approximation in an exact rational helper, caught by a unit test and corrected; preserve as evidence of adversarial checking.
+
+
+**NG-D28 (2026-11-01):** Retain exact NG-Q12 local finite-difference image/kernel counts, complete equivalent local generator scan and uniform random table union bound, with all 6 tests passed. **Reject** relying on original fixed-size 3-input hidden B,A,Q coordinates as a private local representation when the complete truth table is public. Do not infer global active KEM compromise or general polynomial-time attack in growing dimensions.
+
+**NG-D29:** Reject NG-C11 naïve three-permutation hidden-abelian-group isotopy as a wholly new nonassociative mathematics or secret-only division trapdoor. The public Latin square yields a public normalized group law and fully equivalent α',β',γ'. Established quasigroup isotopy prior art applies.
+
+**NG-D30:** Demand a non-group-isotopic adversarial control: the classical seven-element Fano Steiner quasigroup provably is **not** a group isotope, but public table division remains trivial. Thus non-isotopy alone is not a security proof. All 49 principal normalizations are nonassociative, independently checked.
+
+**NG-D31:** Exact local scripts and tests have GitHub-matching source blob SHAs; 12 new tests pass. Continue searching truly new mathematical structures **without** automatically promoting familiar IP or isotopy problems into new KEM hardness assumptions. M2 and C1..C7 remain NOT ESTABLISHED.
