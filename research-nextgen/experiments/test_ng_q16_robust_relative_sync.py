@@ -1,5 +1,6 @@
 """Adversarial and independent tests for NG-Q16 public relative synchronization."""
 import unittest
+from fractions import Fraction
 from collections import Counter
 from itertools import combinations, permutations
 from math import comb, factorial
@@ -95,6 +96,35 @@ class TestTwoHopPublicRecovery(unittest.TestCase):
         self.assertLess(hoeffding_failure_upper(120,6,1.0,0.05),1.0)
         self.assertLess(strict_clean_majority_bound(1200,1.0,0.02),1.0)
         self.assertGreaterEqual(hoeffding_failure_upper(120,6,1.0,0.05),0)
+
+    def test_single_twohop_distribution_exact_over_all_S3_labels(self):
+        G=list(permutations(range(3)))
+        xi,xh,xj=G[2],G[4],G[5]
+        a=multiply(inverse(xi),xh)
+        b=multiply(inverse(xh),xj)
+        truth=multiply(a,b)
+        epsilon=Fraction(1,2)
+        rho=Fraction(3,4)
+        weights=Counter()
+        for u in G:
+            for v in G:
+                pu=(1-epsilon)*int(u==a)+epsilon/6
+                pv=(1-epsilon)*int(v==b)+epsilon/6
+                weights[multiply(u,v)]+=rho*rho*pu*pv
+        self.assertEqual(weights[truth],Fraction(27,128))
+        self.assertEqual({weights[g] for g in G if g!=truth},{Fraction(9,128)})
+        self.assertEqual(weights[truth]-weights[G[0] if G[0]!=truth else G[1]],
+                         rho*rho*(1-epsilon)**2)
+        self.assertEqual(sum(weights.values()),rho*rho)
+
+    def test_nonflat_transport_does_not_satisfy_twohop_identity(self):
+        e=identity(3)
+        a=(1,0,2); b=(1,2,0)
+        # No hidden vertex changes, so B_ij=H_ij. Yet H_01 H_12 != H_02.
+        nonflat={(0,1):a,(1,2):b,(0,2):e}
+        estimated,_=two_hop_votes(3,3,nonflat)
+        self.assertEqual(estimated[(0,2)],multiply(a,b))
+        self.assertNotEqual(estimated[(0,2)],nonflat[(0,2)])
 
     def test_invalid_observations(self):
         with self.assertRaises(ValueError):
