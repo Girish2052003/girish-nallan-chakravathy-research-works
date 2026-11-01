@@ -73,3 +73,11 @@
 **NG-D30:** Demand a non-group-isotopic adversarial control: the classical seven-element Fano Steiner quasigroup provably is **not** a group isotope, but public table division remains trivial. Thus non-isotopy alone is not a security proof. All 49 principal normalizations are nonassociative, independently checked.
 
 **NG-D31:** Exact local scripts and tests have GitHub-matching source blob SHAs; 12 new tests pass. Continue searching truly new mathematical structures **without** automatically promoting familiar IP or isotopy problems into new KEM hardness assumptions. M2 and C1..C7 remain NOT ESTABLISHED.
+
+**NG-D32 (2026-11-01):** REJECT secret-vertex nonabelian graph transport with exact public edge labels as a new private-inversion foundation. Spanning tree collapses all vertices in a component to a public simultaneous conjugator; common centralizer controls exact multiplicity. Distinct noncommuting cycle gains can create a unique secret still publicly invertible. Known gain-graph switching literature; **M2 novelty not passed**.
+
+**NG-D33:** Reject factorial group-size arguments as a substitute for hardness when the candidate uses **explicit full S_k permutations**. NG-Q15 constructs a verified simultaneous conjugator by polynomial orbit-action matching without enumerating S_k, giving public polynomial exact graph recovery/UNSAT. Existing published symmetric-group conjugacy algorithms are credited; no novel foundational breakthrough is asserted.
+
+**NG-D34:** Ten plus eight unit tests passed, with exact locally matched Git blob SHA. Separate S3 brute-force witness-count checks, S4 reference solver comparisons, and large S100 public reconstruction are recorded. No proof assistant or independent human review.
+
+**NG-D35:** Do not silently relabel noisy group synchronization, unknown-edge observations, subgroup-restricted permutation problems or any compact abstract-group representation as solved by NG-Q15. They need new exact definitions, literature equivalence and adverse testing. Noise/robust synchronization already has published prior art.
