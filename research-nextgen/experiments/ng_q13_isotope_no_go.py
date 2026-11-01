@@ -98,6 +98,25 @@ def public_group_coordinates(P,n,e):
     return coordinate
 
 
+def recover_equivalent_isotope(T,n,x0=0,y0=0):
+    """Extract an equivalent PUBLIC (alpha,beta,gamma) group-isotope secret.
+
+    If the public Latin square is not a principal elementary-abelian-group
+    isotope, rejects rather than fabricating group coordinates.
+    """
+    P,e=public_principal_group(T,n,x0,y0)
+    coords=public_group_coordinates(P,n,e)
+    m=len(coords[e])
+    gamma={x:index(coords[x]) for x in range(n)}
+    alpha={x:gamma[T[x,y0]] for x in range(n)}
+    beta={y:gamma[T[x0,y]] for y in range(n)}
+    inv_gamma={v:k for k,v in gamma.items()}
+    if any(T[x,y]!=inv_gamma[group_sum(alpha[x],beta[y],m)]
+           for x in range(n) for y in range(n)):
+        raise ValueError('isotope representation check failed')
+    return alpha,beta,gamma
+
+
 if __name__=='__main__':
     for m in (2,3):
         T,a,b,g=random_isotope(m,20261101+m)
