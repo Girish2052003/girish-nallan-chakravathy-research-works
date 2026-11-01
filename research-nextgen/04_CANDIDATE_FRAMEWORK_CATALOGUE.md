@@ -89,3 +89,14 @@ Proposed asymptotic objects: a public graph with secret group vertices x_v and P
 For explicit full symmetric groups S_k, NG-Q15 proves complete polynomial public decision and witness construction using colored permutation-action orbit propagation, independent of k! group enumeration. This includes high-degree S100 test instances. No claim about arbitrary succinct groups or noisy-edge hardness follows.
 
 This proposal is an instance of classical gain-graph switching and simultaneous permutation conjugacy, not a novel mathematical framework or private trapdoor. Reject and preserve full proofs and tests.
+
+
+## NG-C13 — independent noisy/erased public flat group ratios (REJECT as a novel private inversion engine)
+
+Proposed alteration of NG-Q14: reveal `Y_ij` as independently observed (probability rho) and independently uniformly corrupted (probability epsilon) versions of relative group ratios `R_ij=x_i^-1 x_j`. **This is a standard group synchronization statistical model**, not a new mathematical framework. NG-Q16 demonstrates an explicit public polynomial-time two-hop recovery algorithm and sound deterministic/independent-noise sufficient conditions: `Pr[any wrong/tied pair] <= C(n,2)(|G|-1)e^{-(n-2)rho^4(1-epsilon)^4/2}`, clipped to one. In full observed graphs, less than (n-2)/4 adversarial corrupted-edge degree per vertex is sufficient for honest two-hop majority. The probabilistic theorem is not automatically a useful finite-size guarantee at every rho/epsilon/n.
+
+**NG-C14 — hidden absolute group gauge (REJECT as computational cryptographic security).** NG-Q17 proves exact posterior uniformity of the absolute X_0 under independent uniformly random group secrets and ratio-only observations. This is an unavoidable global symmetry (or per-component symmetry if disconnected), not an actual *secret-only computational trapdoor*. A public adversary can simultaneously learn all relative ratios while the arbitrary original gauge remains information-theoretically unidentifiable. Neither side gets key agreement for free merely by naming the gauge 'secret'.
+
+**NG-C15 — sparse observation graph (REJECT absent-information-as-hardness claim).** If public observation graph G(n,p) has isolated vertices or multiple connected components, many intercomponent relative ratios are inherently unidentifiable for uniform independent secrets. NG-Q18 gives exact mean/variance and isolation lower bound: n=200, p=.01 implies isolation probability at least .9580. Sparse absence of information is **not** a new NP-hard inversion problem or valid KEM security assumption.
+
+These are three distinct scientifically tested outcomes of the same known group-synchronization family, not a genuinely new foundational mathematical proposal. No KEM accepted.
