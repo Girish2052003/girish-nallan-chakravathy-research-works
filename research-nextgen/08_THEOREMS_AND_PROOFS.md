@@ -250,3 +250,11 @@ All four categories are conventional mathematical arguments with independently e
 **NG-Q13 Fano negative control:** On symbols 0..6 representing nonzero F2^3 vectors, `x⋆y=x` for x=y and the XOR third point otherwise defines the classical idempotent commutative Steiner quasigroup. It is **not** group-isotopic to the cyclic group of order seven: commutativity/idempotency of a hypothetical abelian isotope force `T(x,y)=beta^-1((beta(x)+beta(y))/2)`, which contradicts the Steiner identity `x⋆(x⋆y)=y` over F7. All 49 public principal normalizations fail associativity, but public division is still immediate in the Latin-square table.
 
 Both results have conventional arguments and **12/12 local tests**, without formal proof assistant, independent external review, KEM definition, or novelty certification.
+
+---
+
+## NG-Q14 and NG-Q15 — public group transport no-go
+
+[NG-Q14 exact group theorem](30_NGQ14_NONABELIAN_TRANSPORT_NO_GO.md): On each graph component, public tree-path gains H_v and B_v give the full assignment x_v=H_v^-1 t B_v, where t is one unknown root group element. Every chord imposes a public simultaneous-conjugacy equation on t. If satisfiable, solution count is the common centralizer cardinality; different components multiply. All steps are reversible, and independent small S3/S4 brute tests pass.
+
+[NG-Q15 full symmetric-group theorem](31_NGQ15_SYMMETRIC_TRANSPORT_POLYNOMIAL.md): For explicit full S_k permutations, solve simultaneous conjugacy by orbit-matching the two colored permutation actions, trying anchored orbit maps and propagating generator equations. This yields deterministic public graph witness reconstruction or unsatisfiability in polynomial input time, without enumerating k! permutations. NG-Q15's method and algebra have published prior art. Ten NG-Q14 plus eight NG-Q15 tests pass. No new independent hard math or private trapdoor.
