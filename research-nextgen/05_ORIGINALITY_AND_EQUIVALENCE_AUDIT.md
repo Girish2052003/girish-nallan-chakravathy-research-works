@@ -67,3 +67,14 @@ NG-Q11's bound on algebraic degree and public Gaussian solver at d=1 are element
 The hidden group-edge relation is exactly nonabelian gain-graph switching, with standard spanning-tree normalization and cycle holonomy conjugacy (DOI 10.1515/spma-2022-0169). Common-centralizer solution counts are an elementary group-action stabilizer consequence. The NG-Q15 residual permutation-tuple simultaneous conjugacy is already algorithmically studied, including polynomial/subquadratic results (DOIs 10.1090/mcom/3637 and 10.1002/jgt.22798).
 
 The transparent new source-code implementation does not make the underlying mathematics original. Reject claims that group noncommutativity, unique planted solutions or exponentially many formal permutations imply cryptographic hardness in this explicit full symmetric-group model. Mathematical novelty gate M2 NOT PASSED; no KEM security established.
+
+
+## NG-Q16–NG-Q18 equivalence/novelty audit
+
+NG-Q16's two-hop plurality and strict good-cycle majority are an elementary specialization of known group synchronization/cycle consistency recovery, not a novel mathematical family. In particular Lerman–Shi, *Robust Group Synchronization via Cycle-Edge Message Passing*, Foundations of Computational Mathematics 2022, DOI 10.1007/s10208-021-09532-w, already studies recovery under adversarial corruption, independent random errors and noise. Avoid claims of superior thresholds absent direct comparison. The proof here is a simple Hoeffding+union bound under a narrow independent uniform replacement channel.
+
+NG-Q17 absolute gauge non-identifiability is the standard left-group-action symmetry in relative measurements. It is not a new cryptographic notion of unconditional secret-key hardness; a canonical public equivalent representative may still be computable.
+
+NG-Q18 isolated-vertex moments and the G(n,p) connectivity threshold at log n/n are classic Erdős–Rényi random graph results, e.g. Durrett, *Random Graph Dynamics*, §2.8. Bradley Stich, *Strong Recovery In Group Synchronization* (2023), also analyzes sparse information-theoretic failure conditions. Sparse isolation **fails novelty** as a cryptographic construction.
+
+**M2 ORIGINALITY STILL NOT ESTABLISHED.** No invented mathematical operation, structurally new hard distribution, quantum-hard assumption or private-trapdoor KEM.
