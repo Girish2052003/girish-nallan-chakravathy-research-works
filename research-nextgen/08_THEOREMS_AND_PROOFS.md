@@ -258,3 +258,16 @@ Both results have conventional arguments and **12/12 local tests**, without form
 [NG-Q14 exact group theorem](30_NGQ14_NONABELIAN_TRANSPORT_NO_GO.md): On each graph component, public tree-path gains H_v and B_v give the full assignment x_v=H_v^-1 t B_v, where t is one unknown root group element. Every chord imposes a public simultaneous-conjugacy equation on t. If satisfiable, solution count is the common centralizer cardinality; different components multiply. All steps are reversible, and independent small S3/S4 brute tests pass.
 
 [NG-Q15 full symmetric-group theorem](31_NGQ15_SYMMETRIC_TRANSPORT_POLYNOMIAL.md): For explicit full S_k permutations, solve simultaneous conjugacy by orbit-matching the two colored permutation actions, trying anchored orbit maps and propagating generator equations. This yields deterministic public graph witness reconstruction or unsatisfiability in polynomial input time, without enumerating k! permutations. NG-Q15's method and algebra have published prior art. Ten NG-Q14 plus eight NG-Q15 tests pass. No new independent hard math or private trapdoor.
+
+
+---
+
+# NG-Q16 / NG-Q17 / NG-Q18 — three-way recovery and identifiability separation
+
+**NG-Q16:** [Complete theorem](32_NGQ16_ROBUST_NOISY_RELATIVE_RECOVERY.md). Public relative ratios R_ij=x_i^-1 x_j in any finite group G; each edge observed independently with probability rho and independently uniformly replaced with probability epsilon. Public two-hop votes Y_ih Y_hj recover all ratios when every observed pair has strict honest two-hop majority (deterministic, adversarial value tolerance). For random replacement, each fixed wrong label loses to true with Hoeffding failure <=exp(-(n-2)*rho^4*(1-epsilon)^4/2); union over pairs and |G|-1 alternatives yields the full bound. **Not valid for arbitrary non-flat H labels.**
+
+**NG-Q17:** [Complete proof](33_NGQ17_GAUGE_IDENTIFIABILITY.md). Under independent uniform original X_i in G, the reparameterization (X_0,...,X_n)↔(X_0,X_0^-1 X_1,...,X_0^-1 X_n) is a bijection, so original absolute root X_0 is exactly uniform and independent of any published ratio-only channel, even when all public relatives are recovered. On disconnected observation graphs, the relative root offset between components is likewise uniform under a secret-independent graph sampler.
+
+**NG-Q18:** [Exact first/second moment proof](34_NGQ18_SPARSE_OBSERVATION_ISOLATION.md). For an Erdos–Renyi G(n,p) observation graph, X=#isolated, E[X]=n(1-p)^(n-1), Var(X)=E[X]+n(n-1)(1-p)^(2n-3)-E[X]^2, and P[X>0]>=max(0,1-Var/E[X]^2) when E[X]>0. In low-density observations this is an information-theoretic ambiguity, not computational one-wayness.
+
+These are **applications of established** group synchronization and random graph mathematics. Six new code/test files, 22/22 local unit tests. No proof assistant, independent expert review, new mathematical foundation or completed KEM.
