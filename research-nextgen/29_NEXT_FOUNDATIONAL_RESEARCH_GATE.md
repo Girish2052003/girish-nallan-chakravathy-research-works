@@ -46,4 +46,7 @@ The tested next candidate added edge corruption/erasures to **flat relative grou
 
 Next autonomous discovery must therefore establish **all four together** for a genuinely new scalable family: (1) a mathematically non-equivalent construction with explicit operations and compact representation; (2) a well-defined public distribution and hard search/decision problem, rather than absent data; (3) a **demonstrated, secret-only inversion advantage** and correct two-party key agreement protocol; (4) a defensible security reduction with classical/quantum cryptanalysis and rigorous prior-art audit. Do not recycle noisy synchronization, graph isolation, group isotopy, gain-switching, generic CSP or finite-field coordinate obfuscation as new foundations without actual mathematical separation.
 
-Evidence baseline: NG-Q16/Q17/Q18 22/22 new local tests, six byte-matched GitHub commits for executable artifacts, 3 conventional proof documents, all existing evidence preserved. **No proof assistant, novel foundational discovery, or secure KEM at this checkpoint.**
+Evidence baseline: NG-Q16/Q17/Q18 24/24 new local tests, six byte-matched GitHub commits for executable artifacts, 3 conventional proof documents, all existing evidence preserved. **No proof assistant, novel foundational discovery, or secure KEM at this checkpoint.**
+
+
+**Final testing addendum (2026-11-01):** The exact NG-Q16 S3 two-hop noise-distribution test and non-flat-H negative control passed, raising current NG-Q16 from 9 to 11 tests and current NG-Q16/17/18 combined execution from 22 to **24 passing tests**. Updated test blob SHA `830c0c9c196c901906aa6297cadd442f66cebbaf` matches local execution. No proof assistant or external review.
