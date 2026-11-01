@@ -85,4 +85,7 @@ Counterexamples include S3 noncommuting cycle gains leaving exactly one recovere
 | Disconnected public graph with ratio-only observations and uniform secret priors | All cross-component relative root offsets remain uniform | Identifiability failure due to missing observation, not cryptographic computation |
 | Sparse G(n,p) observation graph | Isolation probability >= max(0,1-Var(X)/(E[X])²) | Classical random graph second-moment obstruction; no new hardness |
 
-**Never generalize** to arbitrary twisted H_uv group connections, correlated secrets, cryptosystems using unknown keys/ciphertext state, or unstudied quantum problems. 22/22 targeted Python tests passed and six code/test SHA verified; existing literature on robust group synchronization and random graphs is acknowledged.
+**Never generalize** to arbitrary twisted H_uv group connections, correlated secrets, cryptosystems using unknown keys/ciphertext state, or unstudied quantum problems. 24/24 targeted Python tests passed and six code/test SHA verified; existing literature on robust group synchronization and random graphs is acknowledged.
+
+
+**Final NG-Q16 correction (same date):** Two additional local adversarial tests proved the exact rational S3 random-replacement mixing probabilities and demonstrated a zero-noise non-flat transport counterexample. NG-Q16 now has 11 tests; NG-Q17 has 7 and NG-Q18 has 6, **24/24 total**. The updated NG-Q16 test blob is `830c0c9c196c901906aa6297cadd442f66cebbaf` and matches the locally executed bytes. Earlier 22-test counts were intermediate checkpoints, not final counts.
