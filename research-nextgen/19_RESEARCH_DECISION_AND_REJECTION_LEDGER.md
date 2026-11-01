@@ -81,3 +81,14 @@
 **NG-D34:** Ten plus eight unit tests passed, with exact locally matched Git blob SHA. Separate S3 brute-force witness-count checks, S4 reference solver comparisons, and large S100 public reconstruction are recorded. No proof assistant or independent human review.
 
 **NG-D35:** Do not silently relabel noisy group synchronization, unknown-edge observations, subgroup-restricted permutation problems or any compact abstract-group representation as solved by NG-Q15. They need new exact definitions, literature equivalence and adverse testing. Noise/robust synchronization already has published prior art.
+
+
+**NG-D36 (2026-11-01):** Accept the rigorously scoped **negative cryptographic finding** NG-Q16: under public flat relative finite-group labels with independent per-edge noise/erasures, a simple public two-hop plurality can recover all ratios with a high-probability bound; strict honest two-hop majority suffices even against arbitrary adversarial bad values. **Reject** independent public edge corruption as a stand-alone cryptographic hardness/trapdoor argument. Existing Lerman–Shi group synchronization literature credited; no foundational novelty.
+
+**NG-D37:** Preserve the exact **gauge ambiguity** NG-Q17. With iid uniform vertex labels and a ratio-only public channel, original root X_0 is exactly uniform conditional on any public data; a canonical gauge witness can be publicly reconstructed even though the original root is statistically unidentifiable. REJECT any inference that uniform hidden absolute gauge alone constitutes a functional public-key KEM or quantum security.
+
+**NG-D38:** Preserve sparse G(n,p) isolated-vertex result NG-Q18, including exact E,Var and finite Chebyshev bound. At n=200 and edge observation p=.01, at least 95.8% isolation probability. This is **absence of public information**, not a new hard computational problem. Existing Erdos–Renyi and sparse group sync literature credited.
+
+**NG-D39:** NG-Q16 test deliberately returns self-consistent but incorrect output on fully forged public labels. It must never be promoted as verified *planted* truth without theorem hypotheses. Other seed experiments use separately retained planted truth only for evaluation, not attacker input.
+
+**NG-D40:** Six newly executed source/test files exactly match committed Git blobs. **22/22 new local test methods PASSED**. No outside formal checking, independent expert review, KEM construction, quantum hardness or globally original mathematics. Mathematical M2 still OPEN, all KEM gates NOT ESTABLISHED.
