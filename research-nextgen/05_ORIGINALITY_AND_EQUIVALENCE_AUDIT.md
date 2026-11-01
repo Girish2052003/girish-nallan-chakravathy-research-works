@@ -61,3 +61,9 @@ NG-Q11's bound on algebraic degree and public Gaussian solver at d=1 are element
 **NG-Q13:** Group isotopes/Latin squares and quasigroup cryptography are established, including recent formal classification work by Jack Allsop, *Isotopisms of quadratic quasigroups*, Algebraic Combinatorics 9(1), 2026, DOI 10.5802/alco.467; and Chauhan–Gupta–Verma, *Quasigroups and their applications in cryptography*, Cryptologia 45(3), 2021, DOI 10.1080/01611194.2020.1721615. The public principal isotope normalization is an explicit transport-of-structure identity, not new algebraic machinery. The order-seven Fano-plane Steiner negative control, while not group-isotopic, is classical and still publicly invertible by row lookup.
 
 **M2 foundational originality:** NOT PASSED. Neither exact local-source counts nor an existing quasigroup isotope are automatically a publishable globally novel mathematical framework. Do not promote a name without a non-equivalent new theorem and comprehensive prior-art comparison.
+
+## NG-Q14 / NG-Q15 equivalence and originality audit
+
+The hidden group-edge relation is exactly nonabelian gain-graph switching, with standard spanning-tree normalization and cycle holonomy conjugacy (DOI 10.1515/spma-2022-0169). Common-centralizer solution counts are an elementary group-action stabilizer consequence. The NG-Q15 residual permutation-tuple simultaneous conjugacy is already algorithmically studied, including polynomial/subquadratic results (DOIs 10.1090/mcom/3637 and 10.1002/jgt.22798).
+
+The transparent new source-code implementation does not make the underlying mathematics original. Reject claims that group noncommutativity, unique planted solutions or exponentially many formal permutations imply cryptographic hardness in this explicit full symmetric-group model. Mathematical novelty gate M2 NOT PASSED; no KEM security established.
