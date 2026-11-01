@@ -59,3 +59,17 @@ The new one-pass algorithm is weaker at finite small n than iterative NG-Q7: tes
 | Ternary r=1,d=2 source-form local tables | Interpolate reduced polynomial and test total degree<=3 | Public local statistical distinguisher: source always passes; uniformly random scalar table passes with probability 1/59049; **not** demonstrated witness inversion for arbitrary graph |
 
 NG-Q10 and NG-Q11 have explicit conventional proofs, 12 additional locally passing tests (5+7), and no quantum attack analysis or completed KEM interface. Prior art includes Dechter bucket elimination and generalized Reed–Muller low-degree theory; **do not label these as original algorithmic inventions**.
+
+## NG-Q14 / NG-Q15 public graph-transport adversary
+
+Exact public model: arbitrary graph and public permutations H_e, B_e with desired secret-vertex relation B_e=x_u^-1 H_e x_v.
+
+| Public adversary | Result | Precise scope |
+| --- | --- | --- |
+| NG-Q14 spanning-tree + finite root enumeration | Complete SAT/UNSAT, exact witness count, valid witness | Any group with effective operations and **enumerable finite group**; cost depends on group size |
+| NG-Q15 spanning-tree + orbit-matched simultaneous permutation conjugacy | Complete polynomial public SAT/UNSAT and witness recovery | **Full explicit symmetric group S_k**, arbitrary exact graph, polynomial in k,n,m |
+| Noisy edge synchronization | NOT ANALYZED | Existing research topic, not covered by exact equations |
+| Arbitrary compact nonabelian group encodings | NOT ANALYZED | No universal polynomial-time claim |
+| KEM shared-secret/IND-CCA/QROM attack | NOT ANALYZED | No active complete cryptosystem has been constructed |
+
+Counterexamples include S3 noncommuting cycle gains leaving exactly one recovered original secret, contradictory cycle targets, disconnected component gauge counts, and random planted explicit S100 recovery. **18/18 new unit tests passed**. Established gain-graph switching and simultaneous conjugacy literature predates the proposed methods.
