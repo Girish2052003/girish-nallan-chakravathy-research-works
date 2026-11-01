@@ -55,3 +55,12 @@ The claimed independent-source high-overlap planted-witness hardness is therefor
 The public exact model B_uv=x_u^-1 H_uv x_v is a nonabelian gain-graph switching system. A spanning-tree gauge collapse replaces n unknown vertices per connected component with one public simultaneous conjugator t. This refutes any claimed hardness based merely on many vertices, graph density, noncommutative edge multiplication or unique hidden assignment. A finite enumeration attack costs O(|G| times graph size), **not** polynomial in succinct log |G|.
 
 For full explicit symmetric groups S_k, NG-Q15 upgrades to a polynomial-in-k,n,m public recovery/UNSAT algorithm. Matching the orbits of colored permutation actions provides a verified root conjugator without k! enumeration. This particular representation is therefore **not a defensible hard witness problem**, under exact noiseless public H/B labels. Neither theorem is a lower bound for other group problems nor a quantum security result. No mathematically independent average-case hard problem remains established.
+
+
+## NG-Q16/NG-Q17/NG-Q18: recovered information versus truly absent information
+
+Under complete/near-complete **flat** public relative group observations, noisy pair labels remain publicly reconstructible in polynomial group operations under specific deterministic or independent-noise assumptions (NG-Q16), even on noncommutative S_k represented by explicit permutations. For fixed |G|, fixed positive rho and fixed replacement rate epsilon<1, the finite Hoeffding error bound vanishes asymptotically as n grows; for large |G| keep the explicit |G|-1 factor or use the stronger clean-majority event.
+
+Conversely, even perfect recovery of every ratio leaves the original absolute group root X_0 **unidentifiable** under iid uniform secrets (NG-Q17); this is gauge symmetry, not computational hardness. If the graph is disconnected, intercomponent ratios have no information in the public observations; NG-Q18 quantifies isolated vertices in sparse G(n,p) and their obstruction. Missing information and a provably hard inversion problem are not interchangeable.
+
+No novel average-case computational hardness assumption, private-trapdoor advantage or security-parameter quantum reduction emerges from switching between dense noisy recovery and sparse information-theoretic failure.
