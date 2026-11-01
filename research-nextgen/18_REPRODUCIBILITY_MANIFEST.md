@@ -164,3 +164,27 @@ python ng_q13_isotope_no_go.py
 **Corrected development issue:** One initial redundant dependent-row screening condition for GL enumeration used `all` rather than `any`. The subsequent independent rank=3 filtering meant no invalid matrices or incorrect numerical results were accepted; nonetheless the condition was fixed and final tests rerun **before** commit.
 
 **Scope:** New suites were independently executed in the current local container. The historical 22-test NG-Q8..Q11 suite is not present in this container and was **not rerun** at this checkpoint. No GitHub CI, theorem prover, human peer review, full active KEM or quantum cryptanalysis is claimed.
+
+## NG-Q14 / NG-Q15 current local execution and GitHub source identity
+
+Linux Python 3.13.5, pure standard library. Working files under /mnt/data/sg_research_checkpoint/experiments; authenticated GitHub connector commits only to branch research/sg-difra-nextgen-math. Each final code/test file was compared by Git blob SHA after commit and matches the locally executed version.
+
+| File under research-nextgen/experiments | Verified Git blob SHA |
+| --- | --- |
+| ng_q14_nonabelian_transport.py | 426c00561012c82e9a8cb4dbe11e3a7fe894eafe |
+| test_ng_q14_nonabelian_transport.py | fa3db43fb57fc09884732e518d9839a8ab7c3454 |
+| ng_q15_symmetric_transport.py | 4a576e118475360a99dca16dd74331718adbf50c |
+| test_ng_q15_symmetric_transport.py | a9da0c306b01c2a1e59b93746e40aab88ada9746 |
+
+Commands from repo root:
+
+    cd research-nextgen/experiments
+    python -m unittest -v test_ng_q14_nonabelian_transport test_ng_q15_symmetric_transport
+    python ng_q14_nonabelian_transport.py
+    python ng_q15_symmetric_transport.py
+
+Result: **18/18 local unittest methods passed** in 0.119 seconds in the final verified combined run, plus direct script demonstration of exactly one S3 secret and planted S3/S7/S20/S100 public recovery (seven-node demo). NG-Q14's ten tests separately completed; NG-Q15's eight tests separately completed; combined suite passed again. Independent brute-force tests enumerate small S3 secrets; larger instances verify every original public edge equation.
+
+A two-character formatting difference in the NG-Q14 script's main-guard line was corrected in the local executed version to match the committed Git blob, and all 18 tests rerun. No mathematics or functional change. The NG-Q14 script initially committed with this harmless formatting variance, then the local test copy was synchronized and rechecked.
+
+NO GitHub Actions/CI run, no proof assistant, no external peer review or paid API. Prior historical NG-Q8–NG-Q13 tests were **not** rerun in this checkpoint. Explicit S_k permutations are represented as k-entry vectors, so the NG-Q15 polynomial complexity refers to k and graph size, not to arbitrary cryptographic group encodings.
