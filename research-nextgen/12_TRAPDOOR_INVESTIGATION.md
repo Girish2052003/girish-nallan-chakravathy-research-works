@@ -26,3 +26,9 @@ For *fixed* source-form local arity k=r+d and uniform independently sampled B,Q 
 ## NG-Q10 / NG-Q11: further rejection of fake private trapdoors
 
 Two-anchor star schemes have a deterministic public complete solver; no planted secret advantage. Any ternary NCSG source-form scheme with d=1 has a deterministic public Gaussian solver on any overlap pattern, including dense/high-treewidth families; neither secret generating B, A, Q nor nonlinear-looking Q notation hides a witness inversion trapdoor. A recovered witness need not equal an original planted s when the global map has multiple preimages, and no full KEM exists to evaluate decapsulation secrecy. For d=2 only a local degree distinguisher was proved, so no KEM claim follows.
+
+## NG-Q14 / NG-Q15: rejected graph-transport trapdoor
+
+Secret vertex group values in B_uv=x_u^-1 H_uv x_v are not a private inversion advantage when public exact H/B labels are available. On a tree, choosing one public root already reconstructs a valid full vertex assignment; on cycles, unknown roots reduce to simultaneous conjugacy. An S3 example has a **unique original planted assignment**, yet public exact inversion recovers it. For explicit full S_k permutations even the conjugacy step is polynomial in k by orbit-action matching. This makes the entire tested noncommutative transport family unsuitable as the presumed **private** trapdoor engine.
+
+A noisy, partial, subgroup-restricted or succinctly encoded alternative would be a **different mathematical problem**, requiring fully new definitions and public attacks. Group synchronization with noise is already extensively studied and cannot be treated as inherently novel or quantum hard.
