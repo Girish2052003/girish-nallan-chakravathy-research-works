@@ -67,3 +67,9 @@ Past and new mathematical code: **22 combined locally passing tests**. Original 
 ## Latest continuation checkpoint: NG-Q12 and NG-Q13 (1 November 2026)
 
 Exact mathematical local source difference rank image/kernel and complete equivalent hidden-coordinate recovery established for fixed three-input scalar ternary r=1,d=2 public factors, NG-Q12. Separate attempt to hide an elementary abelian group under secret quasigroup isotopy was rejected as established isotopy theory and publicly reversible, NG-Q13. Fano Steiner seven-element countercontrol is genuinely non-group-isotopic but still publicly divisible from its complete Latin-square table. 12/12 new local tests passed and committed scripts match locally executed SHA. These are not a novel mathematical field or secure KEM. Next evidence gate is [29_NEXT_FOUNDATIONAL_RESEARCH_GATE.md](29_NEXT_FOUNDATIONAL_RESEARCH_GATE.md).
+
+## Continued mathematical candidate study — NG-Q14 / NG-Q15, 1 November 2026
+
+Investigated noncommutative group graph transport, genuinely separate from NCSG scalar finite differences and quasigroup group isotopy. Public exact edge equation B_uv = x_u^-1 H_uv x_v permits full algebraic reduction via a spanning tree to one public simultaneous-conjugacy problem per connected component. Common centralizer cardinality gives exact witness count, including an S3 system with a UNIQUE but publicly recoverable planted secret. The small finite reference implementation passed 10 tests.
+
+NG-Q15 replaces factorial enumeration for explicit full symmetric-group permutation labels by a polynomial-time simultaneous-conjugacy method via colored permutation-action orbit propagation, valid for nontransitive orbits. Eight tests passed, including S100. Both algorithmic ideas have existing gain-graph and simultaneous-conjugacy prior art, and do not certify new foundational mathematics or a KEM. No main mutation; preserve the negative result.
