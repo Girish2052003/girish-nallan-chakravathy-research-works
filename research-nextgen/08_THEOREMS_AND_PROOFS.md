@@ -237,3 +237,16 @@ The epsilon bound can be extremely small, unlike NG-Q8's exact 15/52 for (r,d)=(
 - **NG-Q11.4:** For `r=1,d=2`, all public scalar factors satisfy degree<=3; a uniform random 27-entry scalar table passes with exact probability `3^-10=1/59049`. Under uniform source Q, degree exactly3 occurs with exact probability 2/3, confirmed by 13,122 of all 19,683 Q tables. This is **a local distinguishing test only**.
 
 All four categories are conventional mathematical arguments with independently executed Python finite checks and original code kept for reproduction. They are **not** peer-reviewed or proof-assistant checked and do **not** fulfill the new mathematical foundation or secure KEM mission.
+
+
+---
+
+# NG-Q12 and NG-Q13 — exact scoped equivalence/no-go theorems
+
+[NG-Q12 full theorem and proof](27_NGQ12_PUBLIC_LOCAL_COORDINATE_RECOVERY.md): For scalar r=1,d=2 ternary f=A u0+Delta_(1,0)Q(u1,u2), the difference image is precisely the 6D subspace g with cyclic z-sum zero at each w; its kernel dimension is 3. At fixed B,A it yields 3^6=729 different public functions from 3^9 potential tables, each with 3^3=27 preimages. Enumerating all |GL(3,3)|=11232 possible inverse coordinate transformations yields a **complete public equivalent (B,A,Q) recovery** or a correct rejection certificate. Uniform arbitrary table membership probability is at most 832/387420489, a **union bound** not the exact proportion. This is an application of known finite-difference/IP mathematics, not a global KEM attack.
+
+[NG-Q13 full theorem and proof](28_NGQ13_REJECTED_HIDDEN_QUASIGROUP_ISOTOPE.md): A public Latin square `T(x,y)=gamma^-1(alpha(x)+beta(y))` over F3^m yields public normalizing row/column bijections R(x)=T(x,y0), L(y)=T(x0,y), p=T(x0,y0), and group operation `P(a,b)=T(R^-1(a),L^-1(b))`. Transport identity `gamma(P(a,b))=gamma(a)+gamma(b)-gamma(p)` proves public P is an elementary abelian group. Public subgroup construction yields psi and a fully equivalent triple `alpha'=psi∘R`, `beta'=psi∘L`, `gamma'=psi`. Generic group isotopy is established prior art, not novel.
+
+**NG-Q13 Fano negative control:** On symbols 0..6 representing nonzero F2^3 vectors, `x⋆y=x` for x=y and the XOR third point otherwise defines the classical idempotent commutative Steiner quasigroup. It is **not** group-isotopic to the cyclic group of order seven: commutativity/idempotency of a hypothetical abelian isotope force `T(x,y)=beta^-1((beta(x)+beta(y))/2)`, which contradicts the Steiner identity `x⋆(x⋆y)=y` over F7. All 49 public principal normalizations fail associativity, but public division is still immediate in the Latin-square table.
+
+Both results have conventional arguments and **12/12 local tests**, without formal proof assistant, independent external review, KEM definition, or novelty certification.
