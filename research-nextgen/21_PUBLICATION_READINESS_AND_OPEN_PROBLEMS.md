@@ -55,3 +55,12 @@ The fixed-arity generalization strengthens the theoretical **negative finding**,
 NG-Q10 is an application of pre-existing bounded-treewidth CSP solving: not publishable as a newly invented algorithm or cryptosystem. NG-Q11 d=1 affine collapse and r1d2 local degree distinguisher are precisely written, reproducible structural observations for the stated NCSG source form, not proof of worldwide mathematical novelty. The generalized Reed–Muller degree perspective is established prior art.
 
 **Remaining fundamental goal:** an independently specified genuinely new mathematical object/operation/invariant not reducible to existing group actions, sheaf/global-section CSP modeling, finite-field polynomial filtrations, quotient additive structures or standard constraint propagation. Any proposed cryptographic application still requires an independently motivated average-case hard problem and a demonstrated private trapdoor. Neither is available at this checkpoint. A narrowly scoped technical cryptanalysis note may be possible only after independent proof/novelty review.
+
+
+## NG-Q12 / NG-Q13 research significance and unresolved gates
+
+NG-Q12 delivers a direct equivalent-local-generator witness algorithm for the explicitly public 27-entry r=1,d=2 ternary source distribution; it also gives finite-difference rank counts and a small uniform-function membership probability upper bound. Existing polynomial-isomorphism and equivalent-key literature is a serious novelty obstacle. A narrow **negative cryptanalytic note** might be reasonable after independent human prior-art and proof review; it is not a new mathematical field or cryptographically secure design.
+
+NG-Q13 rejects the apparent novelty of hiding an elementary abelian group behind three arbitrary permutations. Public normalization fully recovers equivalent permutations; the genuinely non-group-isotopic Fano Steiner Latin square shows that leaving the isotopy class alone does not make public division hard. The next candidate must use a **mathematically distinct problem** not publicly reversible by table lookup, group normalization, ordinary linear algebra, finite-field coordinate scan or standard CSP propagation.
+
+Open: rigorous proposal of fundamentally different structure with exact operations, new non-reducible invariant, relevant hardness/distribution, meaningful private trapdoor and proof/counterexample controls. None was established here. M2 originality, M5 proof assistants and every C-level cryptographic success gate remain OPEN.
