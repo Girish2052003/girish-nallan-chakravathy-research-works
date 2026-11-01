@@ -74,7 +74,7 @@ The inequality treats *unobserved* paths as non-clean, hence is conservative; an
 
 ## 6. Countercontrols, local numerical evidence and scope
 
-Nine locally passing unit tests include:
+Eleven locally passing unit tests include:
 - noncommutative permutation order and inverse correctness;
 - exact recovery on every one of six planted S3 clean 4-vertex fixtures;
 - an **adversarially corrupted S4 complete graph** with 32 vertices and exactly four corrupted edges incident to each vertex, satisfying the deterministic bound and recovering all true pairs;
@@ -83,10 +83,12 @@ Nine locally passing unit tests include:
 - all-public-labels-missing control correctly *inconclusive*;
 - deliberately forged self-consistent but **false** group-ratio table, demonstrating why self-consistency cannot certify true-secret recovery;
 - conservative finite bound checks and malformed-input rejection.
+- **independent exhaustive 36-outcome S3 two-edge uniform-replacement probability**: at rho=3/4, epsilon=1/2, correct-path probability=27/128, each wrong-group outcome=9/128, exact true-vs-wrong advantage=9/64, matching the algebraic formula;
+- **non-flat transport counterexample** with zero corruption but public H_01 H_12 != H_02, for which naive two-hop multiplication is provably incorrect, guarding the flat-only theorem assumption.
 
 **Caution:** At n=90 the stated Hoeffding bound can still equal its trivial cap 1. The seeded n=90 successes are **experiments**, not a consequence of a nontrivial finite bound. As a separate illustration, for n=100, |G|=6, rho=.95, epsilon=.10 the analytic bound is approximately 1.0504267e-7; this is an upper failure bound under the stated independent sampler, not an observed frequency.
 
-Source `research-nextgen/experiments/ng_q16_robust_relative_sync.py`, exact Git blob `f1a5562a1fdbf28c0323278db76a25af05d3ac66`. Independent tests `test_ng_q16_robust_relative_sync.py`, blob `d70752a9c9794ea6fa61d908bef88dde5c54dbce`. Both GitHub SHA values match exact locally executed bytes, and the combined new NG-Q16+NG-Q17+NG-Q18 suite passed 22/22 methods.
+Source `research-nextgen/experiments/ng_q16_robust_relative_sync.py`, exact Git blob `f1a5562a1fdbf28c0323278db76a25af05d3ac66`. Independent tests `test_ng_q16_robust_relative_sync.py`, blob `830c0c9c196c901906aa6297cadd442f66cebbaf`. Both GitHub SHA values match exact locally executed bytes, and the combined new NG-Q16+NG-Q17+NG-Q18 suite passed 24/24 methods.
 
 ```sh
 cd research-nextgen/experiments
