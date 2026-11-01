@@ -48,3 +48,14 @@ NG-Q6 uses a model-specific local collision calculation and a standard first-mom
 - Standard generalized Reed–Muller codes evaluate low-degree polynomial functions over finite fields. The dimension of degree<=3 scalar functions on F3^3 is exactly 17 of the 27 function-space dimensions, yielding the exact 1/59049 false-positive probability for the public NG-Q11 local degree predicate.
 
 **Limit:** A model-specific formulation or a new rational count is not a globally novel algebraic theory. Claims about complete secure KEMs or key hiding do not follow solely from function distinguishability.
+
+
+## 1 November 2026 — algebraic equivalence and nonassociativity prior-art update
+
+**Hidden polynomial equivalence:** Pierre-Alain Fouque, Gilles Macario-Rat and Jacques Stern, *Key Recovery on Hidden Monomial Multivariate Schemes*, EUROCRYPT 2008, DOI 10.1007/978-3-540-78967-3_2 (https://crypto.orange-labs.fr/acg/publication/infoPublication.php?id=83); and *On enumeration of polynomial equivalence classes and their application to MPKC*, Finite Fields and Their Applications 18(2), 283–302 (2012), DOI 10.1016/j.ffa.2011.09.001 (https://www.sciencedirect.com/science/article/pii/S1071579711000797). These explicitly discuss hidden linear changes of variables and equivalent secret keys. NG-Q12's exact finite-difference image and local coordinate scan are **model-specific**, not a newly discovered general polynomial-isomorphism theory.
+
+**Quasigroup isotopy:** Jack Allsop, *Isotopisms of quadratic quasigroups*, Algebraic Combinatorics 9(1), 75–94, published March 2026, DOI 10.5802/alco.467 (https://alco.centre-mersenne.org/articles/10.5802/alco.467/); Dimpy Chauhan, Indivar Gupta and Rashmi Verma, *Quasigroups and their applications in cryptography*, Cryptologia 45(3), 227–265 (2021), DOI 10.1080/01611194.2020.1721615 (https://www.tandfonline.com/doi/abs/10.1080/01611194.2020.1721615). Quasigroups, Latin squares, hidden isotopies and their cryptographic assessment have **substantial published prior art**. NG-Q13's normalization is a standard principal-isotope/transport identity, not a new nonassociative algebra.
+
+**Classical countercontrol:** The Fano-plane Steiner quasigroup (seven nonzero binary 3-vectors with XOR third-point operation) supplies an example that is non-group-isotopic, proved by a direct Steiner-identity contradiction over F7. It is not claimed new, cryptographically hard or proof of a new private trapdoor.
+
+**Novelty assessment:** A serious new foundation must first pass known-isomorphism/isotopy and equivalence tests; new names, alternate notation and publicly reconstructible hidden coordinates do not suffice. No positive newly original construction was independently verified this turn.
