@@ -117,6 +117,17 @@ def recover_equivalent_isotope(T,n,x0=0,y0=0):
     return alpha,beta,gamma
 
 
+def fano_steiner_table():
+    """Fano-plane Steiner Latin square on the 7 nonzero F2^3 vectors.
+
+    Symbols 0..6 encode vectors 1..7. For distinct x,y use their
+    xor as the third point; diagonal entries are idempotent.
+    This is not isomorphic or isotopic to the order-seven additive group.
+    """
+    return {(x,y):(x if x==y else ((x+1)^(y+1))-1)
+            for x in range(7) for y in range(7)}
+
+
 if __name__=='__main__':
     for m in (2,3):
         T,a,b,g=random_isotope(m,20261101+m)
