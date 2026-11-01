@@ -56,3 +56,11 @@ Total of prior six NG-Q8, four NG-Q9, five NG-Q10 and seven NG-Q11 tests: **22/2
 **NG-Q13:** Conventional public group principal-isotope normalization and equivalent key reconstruction, plus conventional Fano Steiner quasigroup non-group-isotopy proof; 6/6 local tests, including all 49 Fano basepoint normalizations and full public table equality checks for generated group isotopes of sizes 3,9,27. No proof assistant / external review.
 
 **Execution:** Combined new 12/12 tests passed on Python 3.13.5 in local container. Exact four final Git blob SHAs match locally executed bytes. Old NG-Q8..Q11 22 test methods were **not** rerun here; preserve earlier reports as historical. The new theorem names do not imply external mathematical novelty or cryptographic certification.
+
+## NG-Q14 / NG-Q15 validation status — 2026-11-01
+
+NG-Q14: conventional proof of spanning-tree exact reconstruction, reduction to simultaneous cycle conjugacy, common-centralizer exact witness count, and product across graph components. Ten Python regression methods passed, including independent brute-force enumeration for small S3 graphs and random S4 controls.
+
+NG-Q15: conventional constructive polynomial-time orbit-action conjugacy solver proof for full explicit S_k, exact graph witness verification and UNSAT rejection; eight regression methods passed, including all 36 S3 single-pair cases, 300 two-generator tuple cases, 120 random planted S3/S4 graph instances compared with independent NG-Q14 solver, and k=100 planted exact recovery.
+
+**18/18 new local tests passed** and final four new source/test Git blob hashes match execution. No Lean/Rocq/Isabelle proof assistant, independent external researcher review, KEM security game, or GitHub Actions CI was run. Full historical 34 test suite not rerun; do not count prior tests as newly executed.
