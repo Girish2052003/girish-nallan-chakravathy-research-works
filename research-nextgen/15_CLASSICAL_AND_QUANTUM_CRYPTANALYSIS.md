@@ -73,3 +73,16 @@ Exact public model: arbitrary graph and public permutations H_e, B_e with desire
 | KEM shared-secret/IND-CCA/QROM attack | NOT ANALYZED | No active complete cryptosystem has been constructed |
 
 Counterexamples include S3 noncommuting cycle gains leaving exactly one recovered original secret, contradictory cycle targets, disconnected component gauge counts, and random planted explicit S100 recovery. **18/18 new unit tests passed**. Established gain-graph switching and simultaneous conjugacy literature predates the proposed methods.
+
+
+## NG-Q16–NG-Q18 public attack, identifiability and disconnectedness matrix
+
+| Public data model | Verified mathematical conclusion | Attacker/semantic boundary |
+| --- | --- | --- |
+| Flat finite-group ratios with sufficiently many honest two-hop paths and arbitrary corrupt labels | Deterministic public plurality recovers ALL true pair ratios | Corruption-location certificate uses hidden flags only for evaluation; actual public attacker never reads flags |
+| Independent uniform replacement plus erasures | Failure <= min(1,C(n,2)(|G|-1)exp(-(n-2)rho^4(1-eps)^4/2)) | Finite-n bound often trivial, empirical seed successes must stay distinct |
+| Independent uniform original vertex secrets and ratio-only public channel | Original absolute root is exactly uniform even conditioned on all public observations | Gauge non-identifiability; not IND-CCA/KEM security |
+| Disconnected public graph with ratio-only observations and uniform secret priors | All cross-component relative root offsets remain uniform | Identifiability failure due to missing observation, not cryptographic computation |
+| Sparse G(n,p) observation graph | Isolation probability >= max(0,1-Var(X)/(E[X])²) | Classical random graph second-moment obstruction; no new hardness |
+
+**Never generalize** to arbitrary twisted H_uv group connections, correlated secrets, cryptosystems using unknown keys/ciphertext state, or unstudied quantum problems. 22/22 targeted Python tests passed and six code/test SHA verified; existing literature on robust group synchronization and random graphs is acknowledged.
