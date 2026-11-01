@@ -2,7 +2,7 @@ import unittest
 from random import Random
 from ng_q13_isotope_no_go import (
     random_isotope,public_principal_group, public_group_coordinates,
-    group_sum, group_diff)
+    group_sum, group_diff, recover_equivalent_isotope)
 
 
 class TestIsotopeNoGo(unittest.TestCase):
@@ -33,6 +33,19 @@ class TestIsotopeNoGo(unittest.TestCase):
                 ys=[y for y in range(9) if T[x,y]==z]
                 self.assertEqual(len(ys),1)
                 self.assertEqual(T[x,ys[0]],z)
+
+    def test_recover_equivalent_hidden_isotopy_key(self):
+        for m in (1,2,3):
+            n=3**m
+            T,_,_,_=random_isotope(m,1990+m)
+            alpha,beta,gamma=recover_equivalent_isotope(T,n,1%n,2%n)
+            self.assertEqual(set(alpha.values()),set(range(n)))
+            self.assertEqual(set(beta.values()),set(range(n)))
+            self.assertEqual(set(gamma.values()),set(range(n)))
+            inverse_gamma={v:i for i,v in gamma.items()}
+            for x in range(n):
+                for y in range(n):
+                    self.assertEqual(T[x,y],inverse_gamma[group_sum(alpha[x],beta[y],m)])
 
     def test_invalid_nonlatin_rejected(self):
         T={(x,y):0 for x in range(9) for y in range(9)}
