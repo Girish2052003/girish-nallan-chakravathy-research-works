@@ -59,3 +59,11 @@ NG-Q6 uses a model-specific local collision calculation and a standard first-mom
 **Classical countercontrol:** The Fano-plane Steiner quasigroup (seven nonzero binary 3-vectors with XOR third-point operation) supplies an example that is non-group-isotopic, proved by a direct Steiner-identity contradiction over F7. It is not claimed new, cryptographically hard or proof of a new private trapdoor.
 
 **Novelty assessment:** A serious new foundation must first pass known-isomorphism/isotopy and equivalence tests; new names, alternate notation and publicly reconstructible hidden coordinates do not suffice. No positive newly original construction was independently verified this turn.
+
+## 1 November 2026 — nonabelian gain graphs and simultaneous permutation conjugacy
+
+- On cospectrality of gain graphs, DOI 10.1515/spma-2022-0169, https://doi.org/10.1515/spma-2022-0169: explicitly covers nonabelian gain-graph switching, tree balancing, and cycle-gain conjugacy. NG-Q14 belongs to this pre-existing mathematical framework.
+- Bradley Stich, Strong Recovery In Group Synchronization, Rose-Hulman Undergraduate Mathematics Journal 24(1), 2023, https://scholar.rose-hulman.edu/rhumj/vol24/iss1/2/: considers noisy graph group-synchronization and recovery; public noisy-edge modification is not independently novel without serious comparison.
+- Andrej Brodnik, Aleksander Malnic, Rok Pozar, The simultaneous conjugacy problem in the symmetric group, Mathematics of Computation, DOI 10.1090/mcom/3637, https://doi.org/10.1090/mcom/3637; and A subquadratic algorithm for the simultaneous conjugacy problem, Journal of Graph Theory (2022), DOI 10.1002/jgt.22798, https://onlinelibrary.wiley.com/doi/full/10.1002/jgt.22798: published efficient simultaneous conjugacy of explicit permutation tuples.
+
+Thus NG-Q14 and NG-Q15 provide an original-to-this-project negative analysis of a proposed trapdoor, but not original group-action mathematics or a newly invented polynomial-time conjugacy algorithm.
