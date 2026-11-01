@@ -67,3 +67,16 @@ NG-Q6 uses a model-specific local collision calculation and a standard first-mom
 - Andrej Brodnik, Aleksander Malnic, Rok Pozar, The simultaneous conjugacy problem in the symmetric group, Mathematics of Computation, DOI 10.1090/mcom/3637, https://doi.org/10.1090/mcom/3637; and A subquadratic algorithm for the simultaneous conjugacy problem, Journal of Graph Theory (2022), DOI 10.1002/jgt.22798, https://onlinelibrary.wiley.com/doi/full/10.1002/jgt.22798: published efficient simultaneous conjugacy of explicit permutation tuples.
 
 Thus NG-Q14 and NG-Q15 provide an original-to-this-project negative analysis of a proposed trapdoor, but not original group-action mathematics or a newly invented polynomial-time conjugacy algorithm.
+
+
+## NG-Q16–NG-Q18 close prior art (1 November 2026)
+
+**Robust finite/compact group synchronization with adversarial or random edge corruption:** Gilad Lerman and Yunpeng Shi, *Robust Group Synchronization via Cycle-Edge Message Passing*, Foundations of Computational Mathematics 22(6), 1665–1741 (2022), online September 2021, DOI **10.1007/s10208-021-09532-w**, https://link.springer.com/article/10.1007/s10208-021-09532-w. This established strong deterministic and stochastic recovery using **cycle consistency**. NG-Q16's elementary two-hop voting and Hoeffding bounds are not independent inventions of a new field or necessarily stronger thresholds.
+
+**Alternative recovery methods:** Yunpeng Shi, Cole M. Wyeth, Gilad Lerman, *Robust Group Synchronization via Quadratic Programming*, ICML 2022, https://proceedings.mlr.press/v162/shi22g.html, uses corruption estimation and structural cycle consistency. Bradley Stich, *Strong Recovery In Group Synchronization*, Rose-Hulman Undergraduate Mathematics Journal 24(1), 2023, https://scholar.rose-hulman.edu/rhumj/vol24/iss1/2/, presents dense positive and sparse negative group synchronization results. **Higher-order group synchronization**, Research in the Mathematical Sciences (2026), DOI 10.1007/s40687-026-00627-w, https://link.springer.com/article/10.1007/s40687-026-00627-w, extends synchronization to hypergraphs; avoid rebranding a higher-order synchronization variant as SG-DIFRA novelty.
+
+**Erdos–Renyi graph isolation/connectivity:** Rick Durrett, *Random Graph Dynamics*, chapter 2 §2.8, https://sites.math.duke.edu/~rtd/RGD/RGD.pdf; Sebastien Roch, random graph notes, https://people.math.wisc.edu/~roch/teaching_files/833.f14/mdp-chap2-web.pdf. The NG-Q18 exact isolated-vertex moments and second-moment non-isolation bound are textbook random-graph arguments, NOT novel mathematics.
+
+**Group gauge ambiguity:** standard group synchronization identifiability/transport-of-structure consequence; NG-Q17 does not establish a private-key security theorem. Recovery of equivalence classes and non-identifiability of absolute representatives are distinct.
+
+**M2 originality:** NOT PASSED for NG-Q16/NG-Q17/NG-Q18; the narrow model-specific negative security conclusions are potentially useful design filters but are not a newly invented mathematical direction.
