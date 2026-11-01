@@ -105,3 +105,8 @@ The first NG-Q10 preliminary star-uniqueness test failed; a complete determinist
 **NG-Q13:** [rejected hidden quasigroup/isotope idea](28_NGQ13_REJECTED_HIDDEN_QUASIGROUP_ISOTOPE.md), [source code](experiments/ng_q13_isotope_no_go.py), [six tests](experiments/test_ng_q13_isotope_no_go.py). Any public complete Latin-square operation of the form `T(x,y)=gamma^-1(alpha(x)+beta(y))` over elementary abelian F3^m has a publicly normalized group law and publicly recoverable equivalent (alpha',beta',gamma') permutations. This is **known group-isotopy theory**, not original foundational mathematics. A Fano Steiner quasigroup is genuinely *not* group-isotopic (hand proof + all 49 basepoint normalizations), but public left/right division remains easy, so non-isotopy alone supplies no trapdoor.
 
 **Tests and scope:** 12/12 new local unit methods pass; exact committed GitHub code blobs match executed sources. No previous or new main-branch file was changed. No CI, proof-assistant formalization, independently validated worldwide novelty, original hard problem, private trapdoor or secure PQ KEM is established.
+
+
+### Formal next continuation point
+
+[29_NEXT_FOUNDATIONAL_RESEARCH_GATE.md](29_NEXT_FOUNDATIONAL_RESEARCH_GATE.md) states the exact next mathematical candidate acceptance test after NG-Q12/NG-Q13. It explicitly rejects repeated fixed-table local obfuscation, group-isotopy rebranding and unaudited hardness claims. It preserves all earlier research and keeps mathematical novelty and private KEM security as OPEN, not claimed achievements.
