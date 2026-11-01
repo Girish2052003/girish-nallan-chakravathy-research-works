@@ -47,3 +47,12 @@ NG-Q10 complete 2-anchor star solver: conventional soundness/completeness proof,
 NG-Q11: conventional polynomial degree proof, univariate ternary affine formula, public Gaussian solver, exact generalized Reed–Muller code-count distinguisher. Seven new unit tests pass, including 19,683 potential tables and random masked factors. An initial floating-point vs rational representation bug was corrected before acceptance.
 
 Total of prior six NG-Q8, four NG-Q9, five NG-Q10 and seven NG-Q11 tests: **22/22 locally passed**. No complete historical repository suite, external CI, Lean/Rocq/Isabelle formal proof or peer-reviewed theorem verification was performed. Local source blob hashes match the committed GitHub files.
+
+
+## NG-Q12 / NG-Q13 finite evidence and proof status — 2026-11-01
+
+**NG-Q12:** Conventional exact proof of finite-difference image rank 6/kernel rank 3 for scalar ternary right-two-input derivative, 11232 GL(3,3) inverse-basis enumeration and complete equivalent generator recovery; 6/6 unit tests, including exhaustive all 19683 Q tables and sampled masked secret generators. No proof assistant / independent cryptanalyst.
+
+**NG-Q13:** Conventional public group principal-isotope normalization and equivalent key reconstruction, plus conventional Fano Steiner quasigroup non-group-isotopy proof; 6/6 local tests, including all 49 Fano basepoint normalizations and full public table equality checks for generated group isotopes of sizes 3,9,27. No proof assistant / external review.
+
+**Execution:** Combined new 12/12 tests passed on Python 3.13.5 in local container. Exact four final Git blob SHAs match locally executed bytes. Old NG-Q8..Q11 22 test methods were **not** rerun here; preserve earlier reports as historical. The new theorem names do not imply external mathematical novelty or cryptographic certification.
