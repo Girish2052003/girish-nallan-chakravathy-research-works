@@ -52,3 +52,12 @@ The general fixed-arity pair-exclusion bound uses standard matrix-rank counts, a
 NG-Q10's sparse-star exact solver is **mathematically redundant** with 1999 and earlier bucket elimination / conditioning methods and bounded-treewidth CSP algorithms. The proposed O(n log n) probabilistic recovery and novelty claim were weaker than a deterministic public linear-time method for fixed alphabet; reject.
 
 NG-Q11's bound on algebraic degree and public Gaussian solver at d=1 are elementary consequences of finite-field interpolation, finite differences and Gaussian elimination. Its degree<=3 scalar distinguisher is a direct generalized Reed–Muller code membership test. The particular source-form application and exact counts are useful technical evidence, but not a new foundational algebra or globally originality-certified cryptanalysis. Formal M2 novelty gate **still NOT PASSED**.
+
+
+## NG-Q12 / NG-Q13 equivalence audit (2026-11-01)
+
+**NG-Q12:** Coordinate changes and equivalent central functions are firmly within multivariate cryptography's Isomorphism of Polynomials (IP/IP1S) framework (Fouque–Macario-Rat–Stern, EUROCRYPT 2008, DOI 10.1007/978-3-540-78967-3_2; *On enumeration of polynomial equivalence classes and their application to MPKC*, Finite Fields Appl. 18(2), 2012, DOI 10.1016/j.ffa.2011.09.001). The exact source-form 729/27 counts and 11232 candidate scan are a model-specific application, **not original foundational mathematics**.
+
+**NG-Q13:** Group isotopes/Latin squares and quasigroup cryptography are established, including recent formal classification work by Jack Allsop, *Isotopisms of quadratic quasigroups*, Algebraic Combinatorics 9(1), 2026, DOI 10.5802/alco.467; and Chauhan–Gupta–Verma, *Quasigroups and their applications in cryptography*, Cryptologia 45(3), 2021, DOI 10.1080/01611194.2020.1721615. The public principal isotope normalization is an explicit transport-of-structure identity, not new algebraic machinery. The order-seven Fano-plane Steiner negative control, while not group-isotopic, is classical and still publicly invertible by row lookup.
+
+**M2 foundational originality:** NOT PASSED. Neither exact local-source counts nor an existing quasigroup isotope are automatically a publishable globally novel mathematical framework. Do not promote a name without a non-equivalent new theorem and comprehensive prior-art comparison.
