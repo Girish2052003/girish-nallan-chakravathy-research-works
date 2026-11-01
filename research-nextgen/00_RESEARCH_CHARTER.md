@@ -81,4 +81,7 @@ From NG-Q15's public exact symmetric-group transport, investigated corruption an
 
 NG-Q17 shows an *exact information-theoretic symmetry*: for independent uniform group vertex secrets and a ratio-only publication mechanism, original root gauge X_0 remains uniform given all observations; disconnected observation components have uniformly unidentifiable relative root offsets. NG-Q18 proves exact isolated-vertex moments and a conservative isolation probability lower bound for G(n,p) observation graphs, demonstrating a sparse-information obstacle. These are applications of known group synchronization and Erdos–Renyi mathematics, not novel hardness discoveries.
 
-Six exact committed code/test files; 22/22 newly executed local tests pass. Historical tests and external verification were not rerun. Mathematical originality M2 and all cryptographic KEM success gates remain OPEN / NOT ESTABLISHED.
+Six exact committed code/test files; 24/24 newly executed local tests pass. Historical tests and external verification were not rerun. Mathematical originality M2 and all cryptographic KEM success gates remain OPEN / NOT ESTABLISHED.
+
+
+**Final NG-Q16 correction (same date):** Two additional local adversarial tests proved the exact rational S3 random-replacement mixing probabilities and demonstrated a zero-noise non-flat transport counterexample. NG-Q16 now has 11 tests; NG-Q17 has 7 and NG-Q18 has 6, **24/24 total**. The updated NG-Q16 test blob is `830c0c9c196c901906aa6297cadd442f66cebbaf` and matches the locally executed bytes. Earlier 22-test counts were intermediate checkpoints, not final counts.
