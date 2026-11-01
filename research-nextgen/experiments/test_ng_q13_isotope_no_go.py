@@ -2,7 +2,7 @@ import unittest
 from random import Random
 from ng_q13_isotope_no_go import (
     random_isotope,public_principal_group, public_group_coordinates,
-    group_sum, group_diff, recover_equivalent_isotope)
+    group_sum, group_diff, recover_equivalent_isotope, fano_steiner_table)
 
 
 class TestIsotopeNoGo(unittest.TestCase):
@@ -46,6 +46,20 @@ class TestIsotopeNoGo(unittest.TestCase):
             for x in range(n):
                 for y in range(n):
                     self.assertEqual(T[x,y],inverse_gamma[group_sum(alpha[x],beta[y],m)])
+
+    def test_fano_steiner_is_non_group_isotope_negative_control(self):
+        T=fano_steiner_table()
+        self.assertTrue(all(T[x,T[x,y]]==y for x in range(7) for y in range(7)))
+        self.assertTrue(all(T[x,y]==T[y,x] for x in range(7) for y in range(7)))
+        for x0 in range(7):
+            for y0 in range(7):
+                P,e=public_principal_group(T,7,x0,y0)
+                self.assertFalse(all(P[P[a,b],c]==P[a,P[b,c]]
+                              for a in range(7) for b in range(7) for c in range(7)))
+        # Nonetheless every public row has an immediately computable inverse.
+        for x in range(7):
+            for z in range(7):
+                self.assertEqual(len([y for y in range(7) if T[x,y]==z]),1)
 
     def test_invalid_nonlatin_rejected(self):
         T={(x,y):0 for x in range(9) for y in range(9)}
