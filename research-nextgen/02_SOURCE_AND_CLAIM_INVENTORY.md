@@ -37,3 +37,8 @@
 
 | NG-Q14.1–2 | research-nextgen/30_NGQ14_NONABELIAN_TRANSPORT_NO_GO.md | Nonabelian public group-edge transport reduces via spanning tree to one root conjugator per connected component; solution count is common centralizer cardinality | Conventional exact proof; ten passing tests and independent small-group brute-force; existing gain-graph/switching antecedents |
 | NG-Q15.1–2 | research-nextgen/31_NGQ15_SYMMETRIC_TRANSPORT_POLYNOMIAL.md | Complete deterministic polynomial-time public SAT/witness construction for explicit full symmetric-group S_k twisted graph transport | Orbit-matching constructive proof; 8 passing tests including degree-100 permutation labels; known simultaneous permutation conjugacy prior art; not arbitrary succinct group or KEM security |
+
+
+| NG-Q16.1–4 | research-nextgen/32_NGQ16_ROBUST_NOISY_RELATIVE_RECOVERY.md | Public two-hop plurality recovers true relative group labels under deterministic honest-majority; independent uniform replacement noise/erasures give bound C(n,2)(|G|-1)*exp(-(n-2)*rho^4*(1-epsilon)^4/2) | Conventional proof + 9 local tests; **flat H=identity only**, not general twisted transport/KEM |
+| NG-Q17.1–2 | research-nextgen/33_NGQ17_GAUGE_IDENTIFIABILITY.md | Independently uniform group root remains exactly uniform given ratio-only public observations; cross-component ratios uniform when graph disconnected | Exact symmetry proof + 7 local posterior tests; not a new cryptographic trapdoor or entropy-security theorem |
+| NG-Q18.1–2 | research-nextgen/34_NGQ18_SPARSE_OBSERVATION_ISOLATION.md | Exact E,Var of isolated vertices in G(n,p), Chebyshev lower probability bound of isolation and cross-component non-identifiability | Standard Erdos–Renyi theory + 6 tests; not new foundational random graph theory |
