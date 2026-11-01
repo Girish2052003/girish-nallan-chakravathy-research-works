@@ -139,3 +139,28 @@ python ng_q11_degree_collapse.py
 **Preserved error trail:** Preliminary unreleased NG-Q10 bootstrap failed a global-uniqueness assertion because anchor-only ambiguity is insufficient to infer global ambiguity. We discarded the insufficient method in favor of a *complete deterministic* star solver. A preliminary NG-Q11 false-positive function used float rather than `Fraction`, causing an exact-value test failure; fixed before passing the full suite.
 
 **No GitHub Actions CI run, proof assistant execution, public KEM or independent external review.** Old baseline artifacts beyond these four local test modules have not been completely rerun in this continuation.
+
+
+## 2026-11-01 — NG-Q12/NQ-Q13 complete finite controls
+
+New source and tests locally executed with Python 3.13.5, no third-party packages, no paid services. Final exact Git blob identities (verified with local `git hash-object` and GitHub fetched SHA):
+
+| File under `research-nextgen/experiments/` | Executed-and-committed blob SHA |
+| --- | --- |
+| `ng_q12_public_coordinates.py` | `f02c2af18877832520b8e5cba14fd28b5da2d56a` |
+| `test_ng_q12_public_coordinates.py` | `0c930f22ffa50cd4b1d44f5bbd1d215376e7bdb5` |
+| `ng_q13_isotope_no_go.py` | `c3ddb3e6945f03d8bcc161a4f52de9567e7e9224` |
+| `test_ng_q13_isotope_no_go.py` | `a48c170cadd5cda090b3e5cc9d6bec154a8c1bc5` |
+
+```sh
+cd research-nextgen/experiments
+python -m unittest -v test_ng_q12_public_coordinates test_ng_q13_isotope_no_go
+python ng_q12_public_coordinates.py
+python ng_q13_isotope_no_go.py
+```
+
+**12/12 new tests pass**: NG-Q12 6 tests, NG-Q13 6 tests. NG-Q12 enumerates all 11232 matrices and all 19683 potential tables, checks 15 seeded hidden-coordinate public reconstructions and 12 random nonsource public tables plus edge cases. NG-Q13 checks randomized secret isotopes for m=1,2,3, public group laws, complete equivalent permutations, malformed tables, public divisions, and exhaustive 49-anchor Fano Steiner nonassociativity.
+
+**Corrected development issue:** One initial redundant dependent-row screening condition for GL enumeration used `all` rather than `any`. The subsequent independent rank=3 filtering meant no invalid matrices or incorrect numerical results were accepted; nonetheless the condition was fixed and final tests rerun **before** commit.
+
+**Scope:** New suites were independently executed in the current local container. The historical 22-test NG-Q8..Q11 suite is not present in this container and was **not rerun** at this checkpoint. No GitHub CI, theorem prover, human peer review, full active KEM or quantum cryptanalysis is claimed.
