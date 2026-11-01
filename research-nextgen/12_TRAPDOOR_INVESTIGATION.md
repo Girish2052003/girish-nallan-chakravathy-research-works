@@ -32,3 +32,12 @@ Two-anchor star schemes have a deterministic public complete solver; no planted 
 Secret vertex group values in B_uv=x_u^-1 H_uv x_v are not a private inversion advantage when public exact H/B labels are available. On a tree, choosing one public root already reconstructs a valid full vertex assignment; on cycles, unknown roots reduce to simultaneous conjugacy. An S3 example has a **unique original planted assignment**, yet public exact inversion recovers it. For explicit full S_k permutations even the conjugacy step is polynomial in k by orbit-action matching. This makes the entire tested noncommutative transport family unsuitable as the presumed **private** trapdoor engine.
 
 A noisy, partial, subgroup-restricted or succinctly encoded alternative would be a **different mathematical problem**, requiring fully new definitions and public attacks. Group synchronization with noise is already extensively studied and cannot be treated as inherently novel or quantum hard.
+
+
+## NG-Q16/NG-Q17/NG-Q18: why noisy/partial public ratios are not a demonstrated trapdoor
+
+Noisy flat group ratios do **not** inherently create secret-only inversion: NG-Q16 publicly reconstructs true relative group labels when each pair has enough clean two-hop evidence, including explicit adversarial and stochastic conditions. Those algorithms use no private labels or planted coordinates.
+
+Absolute root X_0 of iid uniform group secrets remains exactly uniform conditional on relative-only publication (NG-Q17). This reflects a **global gauge symmetry**, not computationally difficult public inversion. A sender who only receives relative public information does not thereby acquire a mathematical mechanism for computing a key that depends on an unobserved absolute gauge; a legitimate complete KEM correctness reduction would have to specify and justify such a mechanism separately.
+
+At sparse observation densities with isolated vertices (NG-Q18), *intercomponent* relative offsets cannot be recovered from the public data under uniform independent secrets, but the uncertainty arises from absent identifying measurements rather than from an original one-way problem with a private trapdoor. Without a new independent mathematical primitive, correctness proof and formal indistinguishability security experiment, **reject** this noise/gauge/sparsity reformulation as a new secure KEM construction.
