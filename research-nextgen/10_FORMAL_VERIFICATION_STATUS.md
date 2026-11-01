@@ -64,3 +64,13 @@ NG-Q14: conventional proof of spanning-tree exact reconstruction, reduction to s
 NG-Q15: conventional constructive polynomial-time orbit-action conjugacy solver proof for full explicit S_k, exact graph witness verification and UNSAT rejection; eight regression methods passed, including all 36 S3 single-pair cases, 300 two-generator tuple cases, 120 random planted S3/S4 graph instances compared with independent NG-Q14 solver, and k=100 planted exact recovery.
 
 **18/18 new local tests passed** and final four new source/test Git blob hashes match execution. No Lean/Rocq/Isabelle proof assistant, independent external researcher review, KEM security game, or GitHub Actions CI was run. Full historical 34 test suite not rerun; do not count prior tests as newly executed.
+
+
+## NG-Q16–NG-Q18 verified execution vs mathematical proof status (1 November 2026)
+
+**Conventional proof only** (no formal proof assistant):
+- NG-Q16 public two-hop plurality correctness under strict honest-majority, complete-graph adversarial corrupted-degree sufficient condition; independent uniform replacement/erasure path difference expectation rho²(1-epsilon)² and Hoeffding+union bound; conservative group-size-independent clean-majority alternative.
+- NG-Q17 exact group gauge-independence via uniform-prior bijection and per-component relative ambiguity. Exact rational posterior checks.
+- NG-Q18 exact G(n,p) isolation first/second moments and Chebyshev lower bound; textbook low-density asymptotics.
+
+**Python 3.13.5 local execution:** 9 NG-Q16 + 7 NG-Q17 + 6 NG-Q18 = **22/22 new independent test methods PASSED**. Six source/test Git blobs matched byte-for-byte to the locally executed files. Prior 18 NG-Q14/Q15 tests were **not** rerun in this container; no claim of overall historical 176-commit regression coverage. No GitHub Actions CI, Lean/Rocq/Isabelle verification, external peer-review, quantum-model attack or completed KEM. Controlled finite experiments are not machine-checked universal proofs.
