@@ -70,3 +70,14 @@ The proposed O(n log n) planted NCSG sparse construction on repeated scopes (0,1
 ## NG-C09 — finite-difference degree collapse — mathematically valid, not new foundational algebra
 
 All ternary source-form factors `f(x)=A uL+Delta_a Q(uR)` have algebraic degree <=max(1,2d-1), for any B invertible. If d=1 they are affine, so every public global factor system is solved by Gaussian elimination, independent of graph width. If r=1,d=2 they are local degree<=3 functions; a uniform random F3^3 scalar function has this degree with probability exactly 1/59049, yielding a public distinguisher but no d=2 KEM break. This is a direct use of **known affine-invariant finite-field polynomial/Reed–Muller theory**, not a novel mathematical foundation. **Reject d=1 as proposed hard-witness family; retain d>=2 distinguishability as scoped structural evidence.**
+
+
+## NG-C10 — hidden NCSG local generator coordinates (REJECT as private local secret)
+
+When local r=1,d=2 scalar factors and all 27 values are public, NG-Q12 recovers an equivalent (B,A,Q) representation by 11232 finite matrix candidates, verifying all 27 inputs. The finite difference has image dimension 6/kernel dimension 3 for fixed B,A. **No secret generator advantage** can be assumed from the mere obfuscation of a fixed-size local B or Q. Asymptotic public-key secrecy and global KEM keys were not modeled, so do not extrapolate beyond this exact local attack.
+
+## NG-C11 — hidden abelian group by secret quasigroup isotopy (REJECT as new foundation)
+
+For T(x,y)=gamma^-1(alpha(x)+beta(y)) over F3^m with publicly complete Latin-square table, NG-Q13 reconstructs an equivalent group law, group coordinates, and full equivalent (alpha',beta',gamma') from public data. Hidden permutations and apparent nonassociativity add **no novel algebraic structure**; group isotopy is established prior art. A legitimate non-group-isotopic control (seven-element Fano Steiner quasigroup) was constructed and proven non-isotopic to Z7, but its public quasigroup divisions are still trivial. Thus **non-isotopy is only a classification boundary, not a cryptographic hardness proof.**
+
+**Selection verdict:** Neither candidate becomes the SG-DIFRA NEXT GENERATION mathematical foundation. Continue searching structures with independently stated, non-reducible invariants and computational questions. Prioritize mathematical counterexamples over new branding.
