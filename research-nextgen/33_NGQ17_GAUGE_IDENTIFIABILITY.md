@@ -63,7 +63,7 @@ Seven passing methods test:
 
 The exhaustive exact posterior tool runs on toy S_k with k<=4 and n<=5 because its `(k!)^n` cost is exponential; it verifies the proof on finite examples, **not** a polynomial attack. The actual theorem applies to any finite G under its explicitly uniform independent prior.
 
-Combined NG-Q16/Q17/Q18 local suites passed 22/22 methods, with source bytes matched to GitHub content hashes. No CI, proof assistant or external reviewer.
+Combined NG-Q16/Q17/Q18 local suites passed 24/24 methods, with source bytes matched to GitHub content hashes. No CI, proof assistant or external reviewer.
 
 ```sh
 cd research-nextgen/experiments
@@ -76,3 +76,6 @@ python ng_q17_gauge_nonidentifiability.py
 These exact group-action invariances, gauge choices and component decomposition are standard in group synchronization, spanning-tree switching and statistical identifiability theory. Relevant established literature includes **Lerman and Shi**, *Robust Group Synchronization via Cycle-Edge Message Passing* (2022), DOI 10.1007/s10208-021-09532-w, and **Bradley Stich**, *Strong Recovery In Group Synchronization* (2023), https://scholar.rose-hulman.edu/rhumj/vol24/iss1/2/.
 
 **Verdict:** Do not equate an absolute hidden gauge with a new private trapdoor or computational cryptographic security. Conversely, do not equate successful public relative recovery with identifying an arbitrary secret root. Public relativity can be computationally easy while the arbitrary absolute gauge remains perfectly statistically hidden. Both statements can be simultaneously true without any secure KEM construction.
+
+
+**Final testing addendum (2026-11-01):** The exact NG-Q16 S3 two-hop noise-distribution test and non-flat-H negative control passed, raising current NG-Q16 from 9 to 11 tests and current NG-Q16/17/18 combined execution from 22 to **24 passing tests**. Updated test blob SHA `830c0c9c196c901906aa6297cadd442f66cebbaf` matches local execution. No proof assistant or external review.
