@@ -91,4 +91,7 @@
 
 **NG-D39:** NG-Q16 test deliberately returns self-consistent but incorrect output on fully forged public labels. It must never be promoted as verified *planted* truth without theorem hypotheses. Other seed experiments use separately retained planted truth only for evaluation, not attacker input.
 
-**NG-D40:** Six newly executed source/test files exactly match committed Git blobs. **22/22 new local test methods PASSED**. No outside formal checking, independent expert review, KEM construction, quantum hardness or globally original mathematics. Mathematical M2 still OPEN, all KEM gates NOT ESTABLISHED.
+**NG-D40:** Six newly executed source/test files exactly match committed Git blobs. **24/24 new local test methods PASSED**. No outside formal checking, independent expert review, KEM construction, quantum hardness or globally original mathematics. Mathematical M2 still OPEN, all KEM gates NOT ESTABLISHED.
+
+
+**Final testing addendum (2026-11-01):** The exact NG-Q16 S3 two-hop noise-distribution test and non-flat-H negative control passed, raising current NG-Q16 from 9 to 11 tests and current NG-Q16/17/18 combined execution from 22 to **24 passing tests**. Updated test blob SHA `830c0c9c196c901906aa6297cadd442f66cebbaf` matches local execution. No proof assistant or external review.
