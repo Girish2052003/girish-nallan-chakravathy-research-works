@@ -64,3 +64,9 @@ NG-Q12 delivers a direct equivalent-local-generator witness algorithm for the ex
 NG-Q13 rejects the apparent novelty of hiding an elementary abelian group behind three arbitrary permutations. Public normalization fully recovers equivalent permutations; the genuinely non-group-isotopic Fano Steiner Latin square shows that leaving the isotopy class alone does not make public division hard. The next candidate must use a **mathematically distinct problem** not publicly reversible by table lookup, group normalization, ordinary linear algebra, finite-field coordinate scan or standard CSP propagation.
 
 Open: rigorous proposal of fundamentally different structure with exact operations, new non-reducible invariant, relevant hardness/distribution, meaningful private trapdoor and proof/counterexample controls. None was established here. M2 originality, M5 proof assistants and every C-level cryptographic success gate remain OPEN.
+
+## NG-Q14 / NG-Q15 — no-go publication relevance
+
+The exact centralizer classification and tested S_k polynomial public recovery are useful **design filters** rejecting noncommutative graph transport as a presumed secret-only inversion engine under exact public labels. However, the core mathematics is established gain-graph switching and simultaneous permutation conjugacy; a standalone originality/publication claim needs a genuinely novel quantitative or structural contribution and independent prior-art assessment.
+
+No security result applies to noisy group synchronization, partial edge observations, arbitrary succinct subgroup encodings or a completed KEM. No new cryptographic hardness assumption or secretly invertible asymptotic mathematical framework is accepted. The proof-assistant and independent-review gates remain open.
