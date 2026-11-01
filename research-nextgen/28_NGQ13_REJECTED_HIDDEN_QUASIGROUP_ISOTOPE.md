@@ -64,10 +64,10 @@ Neither theorem proves that every quasigroup cryptosystem is insecure: an entire
 
 ## Executed adversarial evidence
 
-- Source `experiments/ng_q13_isotope_no_go.py`, exact Git blob SHA `229f0c6d06c5dd429f4cf8747567c64f9ee116a5`.
-- Independent tests `experiments/test_ng_q13_isotope_no_go.py`, exact SHA `762d82b136ba5e50f035d182afcd672ca5a64783`.
-- **Five** local unittest methods passed. Uniform random alpha/beta/gamma permutations on N=3,9,27; multiple public basepoints; the reconstructed normalized P matched the secret-formula verification on all N² pairs; recovered public equivalent coordinate maps passed all Cayley-table addition tests; recovered equivalent (alpha',beta',gamma') matched every original T entry; direct public row inversion and malformed non-Latin input rejection independently tested.
-- The first test version covered P/coordinate recovery in 4 methods; a fifth method was added to challenge the stronger full equivalent-permutation reconstruction. Both source and test were rerun, and Git blob hashes match exact committed bytes.
+- Source `experiments/ng_q13_isotope_no_go.py`, exact Git blob SHA `c3ddb3e6945f03d8bcc161a4f52de9567e7e9224`.
+- Independent tests `experiments/test_ng_q13_isotope_no_go.py`, exact SHA `a48c170cadd5cda090b3e5cc9d6bec154a8c1bc5`.
+- **Six** local unittest methods passed. Uniform random alpha/beta/gamma permutations on N=3,9,27; multiple public basepoints; the reconstructed normalized P matched the secret-formula verification on all N² pairs; recovered public equivalent coordinate maps passed all Cayley-table addition tests; recovered equivalent (alpha',beta',gamma') matched every original T entry; direct public row inversion and malformed non-Latin input rejection independently tested.
+- The first test version covered P/coordinate recovery in 4 methods; a fifth method was added to challenge the stronger full equivalent-permutation reconstruction, and a sixth added a non-group-isotope Fano-plane control. Both source and test were rerun, and Git blob hashes match exact committed bytes.
 
 ```sh
 cd research-nextgen/experiments
@@ -82,3 +82,22 @@ The mathematics is conventional, not proof-assistant checked or independently pe
 **Reject** hiding an abelian group behind three arbitrary secret permutations as a new nonassociative mathematical foundation or private division trapdoor. It is **exactly an isotope of a known group** and can be publicly normalized when the operation table is explicit.
 
 A legitimate future study must specify an algebraic structure that is *not* merely isotopic to a known group, define a genuinely non-reducible property and useful difficult problem, compare with loop/quasigroup classification and cryptanalytic prior art, and produce a meaningful secret-only recovery advantage. **No such original construction has been discovered at this checkpoint.**
+
+
+## NG-Q13.3 — genuine non-group-isotope negative control: Fano Steiner quasigroup
+
+**Definition:** Represent the seven nonzero binary three-vectors by public symbols `0,...,6`, i.e. symbol x represents x+1 in F2^3. Put `x⋆x=x`, and for distinct x,y put `x⋆y=((x+1) XOR (y+1))-1`. Distinct nonzero binary vectors have a nonzero, distinct XOR, giving a valid seven-element Latin square. The operation is commutative, idempotent, and satisfies the **Steiner identity** `x⋆(x⋆y)=y`.
+
+**Proposition:** This public operation is **not an isotope of any group** of order seven, but its left/right division remains trivial from the public Latin-square rows/columns.
+
+**Proof:** Every group of order seven is cyclic, hence isomorphic to (F7,+). Suppose `T(x,y)=gamma^(-1)(alpha(x)+beta(y))` for bijections to F7. Commutativity gives `alpha(x)-beta(x)=c` for all x. Idempotency gives `gamma(x)=alpha(x)+beta(x)=2 beta(x)+c`. Thus
+
+`T(x,y)=beta^(-1)((beta(x)+beta(y))/2)`.
+
+The Steiner identity would require
+`beta(x⋆(x⋆y)) = (3 beta(x)+beta(y))/4 = beta(y)`
+for all x,y. Multiplying by 4 yields `3 beta(x)=3 beta(y)`. Because 3 is invertible in F7 and beta is bijective, this is impossible. Therefore the Fano Steiner quasigroup is **not** group-isotopic. QED.
+
+**Independent finite check:** For each of 49 public anchor pairs (x0,y0), construct the normalized operation P and test associativity for all 7^3 triples. **Zero of the 49** normalized operations is associative; 49/49 public divisions remain trivial because T is Latin. All other NG-Q13 tests still pass. The resulting combined NG-Q12+NG-Q13 test suite has **12/12 locally passing unit tests**. This does **not** invent the Fano plane or Steiner quasigroup.
+
+**Research lesson:** 'Not isotopic to a group' is a meaningful structural distinction but **does not supply public-key secrecy or secret-only local division** under an explicit public operation table. A future mathematical proposal would additionally need a credible hard problem, private trapdoor, and explicit comparison with already studied Steiner/loop/quasigroup theory.
