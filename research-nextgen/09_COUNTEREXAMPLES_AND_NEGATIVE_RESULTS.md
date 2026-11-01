@@ -104,3 +104,12 @@ A proposed sparse public NCSG planted-witness family uses repeated local scopes 
 ## NG-Q11 — entire d=1 source family is affine; d=2 local polynomial distinguisher
 
 For any F3 source form with d=1, `Delta_aQ` is affine (Q univariate degree<=2), hence all global factors are publicly linear equations regardless of graph width; a classical Gaussian solver returns a valid witness or correct UNSAT. Separately, with r=1,d=2 all source-form scalar factors are degree<=3; a uniform random scalar function F3^3->F3 passes this test with exact probability 1/59049. Exhaustive 19,683 potential tables found precisely 13,122 degree-3 source forms. This is **not** a complete cryptosystem distinguishing or IND-CCA attack. Seven locally passing tests are in [NG-Q11](26_NGQ11_ALGEBRAIC_DEGREE_NO_GO.md).
+
+
+## NG-Q12 / NG-Q13 — new negative controls
+
+**NG-Q12:** The allegedly private local B and Q in a complete explicit 27-entry ternary r=1,d=2 source table do not form a private coordinate representation under the exact model: an equivalent B',A',Q' is publicly reconstructible by enumerating 11232 matrices. Exactly 729 public output functions exist at fixed B,A and exactly 27 Q potentials represent each one. The uniform random membership probability has rigorous upper bound 832/387420489. **NOT** a proof of global KEM-key compromise, original IP theory or practical general-dimension polynomial-time recovery.
+
+**NG-Q13:** Secret permutations alpha,beta,gamma in the simple abelian-group-isotope quasigroup `T=gamma^-1(alpha(x)+beta(y))` do not hide an equivalent decomposition when T's complete operation table is public. The recovered equivalent permutations publicly reproduce every entry. The non-group-isotopic Fano Steiner control shows this is **not** a tautological assertion about every Latin square: none of 49 anchor normalizations is associative. But Fano's public left/right division is still trivial. This rejects naive 'nonassociative = private trapdoor' reasoning in two complementary ways.
+
+The new 6+6 unit tests passed; rejected candidates and failed novelty gates remain recorded for future experiments.
