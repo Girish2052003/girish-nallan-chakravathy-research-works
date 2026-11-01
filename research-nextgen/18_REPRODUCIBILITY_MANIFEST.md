@@ -188,3 +188,34 @@ Result: **18/18 local unittest methods passed** in 0.119 seconds in the final ve
 A two-character formatting difference in the NG-Q14 script's main-guard line was corrected in the local executed version to match the committed Git blob, and all 18 tests rerun. No mathematics or functional change. The NG-Q14 script initially committed with this harmless formatting variance, then the local test copy was synchronized and rechecked.
 
 NO GitHub Actions/CI run, no proof assistant, no external peer review or paid API. Prior historical NG-Q8–NG-Q13 tests were **not** rerun in this checkpoint. Explicit S_k permutations are represented as k-entry vectors, so the NG-Q15 polynomial complexity refers to k and graph size, not to arbitrary cryptographic group encodings.
+
+
+## NG-Q16–NG-Q18 complete standalone local execution (1 November 2026)
+
+Environment: Linux x86_64 Python 3.13.5, standard library only; code built/executed in local working path `/mnt/data/sg_research_checkpoint/experiments`. Network DNS to GitHub was not available from the local runtime, so files were written to the pre-existing connected GitHub experimental branch using authenticated GitHub actions; **each final GitHub blob SHA was fetched and compared to the locally executed `git hash-object`**.
+
+| File in research-nextgen/experiments | Matching GitHub/local blob SHA |
+| --- | --- |
+| ng_q16_robust_relative_sync.py | f1a5562a1fdbf28c0323278db76a25af05d3ac66 |
+| test_ng_q16_robust_relative_sync.py | d70752a9c9794ea6fa61d908bef88dde5c54dbce |
+| ng_q17_gauge_nonidentifiability.py | bfce4036ec96e9a540b5b30c69e91d61d4150347 |
+| test_ng_q17_gauge_nonidentifiability.py | b9c268bc24de3cc1dbccafd615778029bddb21c4 |
+| ng_q18_sparse_observation_no_go.py | 5805c9d2701f9decc85d8c7523fa0ed65a9cb857 |
+| test_ng_q18_sparse_observation_no_go.py | 685cfdb448ff81688898d8955fbec3ab6710dc08 |
+
+Reproduction from repo root:
+```sh
+cd research-nextgen/experiments
+python -m unittest -v test_ng_q16_robust_relative_sync test_ng_q17_gauge_nonidentifiability test_ng_q18_sparse_observation_no_go
+python ng_q16_robust_relative_sync.py
+python ng_q17_gauge_nonidentifiability.py
+python ng_q18_sparse_observation_no_go.py
+```
+
+**RESULT:** All **22/22 newly executed unit test methods PASS** in a final combined run (9 NG-Q16, 7 NG-Q17, 6 NG-Q18; ~2.75s). Exact root posterior histogram S3 is 1/6 for each of its six roots. Exact isolation numeric outputs include n=200,p=0.01 expected 27.06660098 isolated and isolation probability >=.95800359.
+
+**NG-Q16 evidence boundaries:** six random-noise/erasure seed runs recovered all n=90 true relative pairs; their analytic Hoeffding finite-n bound often equals 1 (trivial), so their success is empirical, not a stronger formal finite result. Separate S4 n=32 adversarial corrupted-degree test meets the deterministic theorem. An explicit wholly forged, self-consistent but false public table is retained as a **negative control**—'self_consistent' must never be described as certified original secret recovery.
+
+**NG-Q17 and NG-Q18 independent controls:** exact `Fraction` arithmetic, small complete posterior enumeration over S3 secret tuples, all eight n=3 graphs enumerated, correct p endpoints and 20 seeded G(200,0.01) graph experiments.
+
+**External verification status:** NO GitHub Actions/CI, Lean/Rocq/Isabelle formal proof assistant, independent human peer review, production KEM build, quantum cryptanalysis or paid inference. Historical NG-Q14/Q15 tests and all earlier baseline tests were not rerun this turn; do not aggregate historical test claims as current execution.
