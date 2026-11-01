@@ -70,3 +70,12 @@ Open: rigorous proposal of fundamentally different structure with exact operatio
 The exact centralizer classification and tested S_k polynomial public recovery are useful **design filters** rejecting noncommutative graph transport as a presumed secret-only inversion engine under exact public labels. However, the core mathematics is established gain-graph switching and simultaneous permutation conjugacy; a standalone originality/publication claim needs a genuinely novel quantitative or structural contribution and independent prior-art assessment.
 
 No security result applies to noisy group synchronization, partial edge observations, arbitrary succinct subgroup encodings or a completed KEM. No new cryptographic hardness assumption or secretly invertible asymptotic mathematical framework is accepted. The proof-assistant and independent-review gates remain open.
+
+
+## NG-Q16–NG-Q18 publication/readiness correction
+
+The new three-way comparison produces a clean, pedagogically useful **negative** research outcome: flat public noisy group ratios can be recovered by well-established cycle-voting methods under enough observations; absolute gauge remains information-theoretically arbitrary under iid uniform priors; missing edges can leave entire component offsets unidentifiable. They are all mathematically distinct statements, with explicit assumptions and tests, but each has **strong published prior art**.
+
+Potential publication as an original cryptographic primitive or new mathematical field: **NOT READY**. A conventional scoped methodological/cryptanalytic note might be worth considering only if a detailed literature comparison identifies a substantive genuinely new result; no such worldwide novelty has been established. No new KEM, trapdoor, original average-case hardness assumption, formal proof assistant result or QROM/IND-CCA reduction was created.
+
+The most valuable open problem now is finding a mathematically distinct **succinct scalable family** with a precise public instance distribution, a valid problem whose witnesses are uniquely and efficiently derivable *privately* but infeasible by all known public reductions, and original non-equivalent invariants. Failed public-recovery or missing-information models should be discarded. Any claimed asymptotic hardness must withstand existing nonabelian group synchronization, graph-code decoding, random graph identifiability, linearization, and known CSP/isomorphism reductions.
