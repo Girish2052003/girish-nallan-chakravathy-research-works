@@ -110,3 +110,16 @@ The first NG-Q10 preliminary star-uniqueness test failed; a complete determinist
 ### Formal next continuation point
 
 [29_NEXT_FOUNDATIONAL_RESEARCH_GATE.md](29_NEXT_FOUNDATIONAL_RESEARCH_GATE.md) states the exact next mathematical candidate acceptance test after NG-Q12/NG-Q13. It explicitly rejects repeated fixed-table local obfuscation, group-isotopy rebranding and unaudited hardness claims. It preserves all earlier research and keeps mathematical novelty and private KEM security as OPEN, not claimed achievements.
+
+## 1 November 2026 — NG-Q14/NG-Q15 group-transport research checkpoint
+
+The next tested candidate leaves finite-difference NCSG behind and uses secret noncommutative group elements at graph vertices with exact PUBLIC twisted edge relations. The result is a no-go for this proposed trapdoor family, not a new algebra.
+
+- [NG-Q14: public spanning-tree and common-centralizer theorem](30_NGQ14_NONABELIAN_TRANSPORT_NO_GO.md)
+- [NG-Q15: polynomial-time full symmetric-group public reconstruction](31_NGQ15_SYMMETRIC_TRANSPORT_POLYNOMIAL.md)
+- [NG-Q14 reference algorithm](experiments/ng_q14_nonabelian_transport.py) and [10 tests](experiments/test_ng_q14_nonabelian_transport.py)
+- [NG-Q15 polynomial algorithm](experiments/ng_q15_symmetric_transport.py) and [8 tests](experiments/test_ng_q15_symmetric_transport.py)
+
+All unknown vertex group elements reduce to one simultaneous cycle conjugator per connected component. When a solution exists, the solution count equals the common centralizer size. For explicit full symmetric-group permutations S_k, colored-permutation-action orbit matching finds a public witness or detects inconsistency in time polynomial in k and graph input size, including large k=100 experiments. No factorial enumeration is used in NG-Q15.
+
+All 18 targeted local tests passed and exact Git blobs match executed files. The algorithms have known gain-graph/simultaneous-conjugacy antecedents. No novel foundational mathematics, paid work, proof assistant, independent external review, secret-only trapdoor or secure KEM has been established. The main branch remains unchanged.
