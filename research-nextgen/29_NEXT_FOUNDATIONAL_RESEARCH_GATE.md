@@ -1,5 +1,8 @@
 # Research continuation gate after NG-Q12 / NG-Q13 (1 November 2026)
 
+> **START HERE — AUTHORITATIVE SG-DIFRA NEXT GENERATION MISSION (2026-11-02).** Read [35_MASTER_MISSION_PLAN.md](35_MASTER_MISSION_PLAN.md) and [36_STAGE_STATUS_AND_NEXT_SESSION_HANDOFF.md](36_STAGE_STATUS_AND_NEXT_SESSION_HANDOFF.md) **before further experiments or changing any milestone**. The author-directed plan has 12 ordered scientific stages and 16 operational phases. **Current: S01 mathematical discovery ACTIVE, not accepted; 12/12 final KEM stage gates remain pending; mathematical originality M2, private trapdoor C3, and new full KEM C4 NOT PASSED.** Many earlier candidate-specific proofs and attacks are real evidence but are not a new accepted framework. The six open repository issues and CI/audit gaps are itemized in the handoff. **Do not merge into main or claim completed security merely from tests.**
+
+
 **Purpose:** Preserve the exact mathematical stopping point and prevent an autonomous continuation from rediscovering already-rejected variants. This is not a new proposed KEM or an assertion that a novel structure has been found.
 
 ## Established findings to preserve, not erase
