@@ -283,3 +283,10 @@ These are **applications of established** group synchronization and random graph
 [Detailed NG-Q19 statement and proof](37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md): For exact public graph transports B_uv=X_u^-1 H_uv X_v over GL(k,F_p), spanning-tree reduction gives one T per component and chord constraints A_e T=T D_e, a **homogeneous linear** matrix system. If the solution space L contains any invertible T, the determinant of a uniformly sampled linear combination of a public basis is a nonzero degree-k polynomial. By Schwartz–Zippel when **p>k**, each independent public trial succeeds with probability >=1-k/p, and N trials fail with probability <=(k/p)^N conditional on existence. If L={0}, UNSAT is proved; if L contains only singular matrices, the basic sampler returns **INCONCLUSIVE**, not a false UNSAT proof. Original planted and equivalent recovered secrets may differ.
 
 This is a scoped conventional proof and model-specific application of **pre-existing** module-isomorphism algorithms (ISSAC 1997); no proof assistant, new mathematical foundation or full KEM.
+
+
+## NG-Q20: public Hankel reconstruction and membership-only lower bound
+
+[Full theorem statements and proofs](38_NGQ20_HANKEL_WORD_ORACLE_BOUNDARIES.md): For minimal d-state finite-field f(w)=alpha M_w beta, a **provided invertible dxd Hankel word basis** H_(P,S) determines equivalent transitions N_a=H^-1 H_a, α'=(f(s_j)), β'=H^-1(f(p_i)), and reproduces f(w) for all words with at most (s+1)d²+2d public oracle evaluations. Short basis word lengths <=d-1 EXIST by reachability/observability dimension growth, but membership-only discovery may require exponential queries. Each needle series f_u(w)=1 if w=u, otherwise 0, for |u|=L over s-letter alphabet has minimal Hankel rank L+1 and a public-ORACLE hidden-word identification probability <=(q+1)/s^L after q adaptive membership queries, u uniform. The latter is an information-query bound, not quantum computational one-wayness or a workable KEM.
+
+All arguments are model-scoped **classic weighted automata theory**, not original foundational mathematics. 10 independent local tests passed; no Lean machine checking.
