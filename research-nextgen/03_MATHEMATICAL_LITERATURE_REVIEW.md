@@ -89,3 +89,16 @@ Alexander L. Chistov, Gábor Ivanyos and Marek Karpinski, **Polynomial Time Algo
 Gábor Ivanyos and Youming Qiao, **Algorithms Based on Star-Algebras, and Their Applications to Isomorphism of Polynomials with One Secret, Group Isomorphism, and Polynomial Identity Testing**, SIAM Journal on Computing, DOI [10.1137/18M1165682](https://doi.org/10.1137/18M1165682). Broader background connecting module-isomorphism algorithms to polynomial and group isomorphism security claims.
 
 NG-Q19 deliberately studies public GL(k,F_p) exact graph transports, distinguishing its field-size p>k elementary randomized guarantee from the general published finite-field module isomorphism literature. **No original proof method or worldwide mathematical novelty is claimed.**
+
+
+## NG-Q20 exact primary prior art: finite-field word products, tensor trains and Hankel recovery (2026-11-02)
+
+**Carlyle and Paz (1971)**, *Realizations by stochastic finite automata*, Journal of Computer and System Sciences 5(1), 26–40, DOI 10.1016/S0022-0000(71)80005-3, https://www.sciencedirect.com/science/article/pii/S0022000071800053. Early mathematical characterization of finite-rank word Hankel matrices and linear realizations. Note real-valued probability setting of original paper; finite-field linear-algebraic proof NG-Q20 is independently elementary, but NOT a unique new mathematical framework.
+
+**Artem Kaznatcheev and Prakash Panangaden (2021)**, *Weighted automata are compact and actively learnable*, Information Processing Letters 171, 106133, DOI 10.1016/j.ipl.2021.106133, https://www.sciencedirect.com/science/article/pii/S0020019021000478. Explicit active learning for weighted automata over fields uses **membership PLUS equivalence queries**, not the membership-only oracle of the needle lower bound. Do not misuse the polynomial full learning claim under a weaker oracle.
+
+**Laure Daviaud and Marianne Johnson (2025)**, *Feasability of Learning Weighted Automata on a Semiring*, Logical Methods in Computer Science 21(3), DOI 10.46298/lmcs-21(3:15)2025, https://lmcs.episciences.org/16316. Prior art concerning mathematical boundaries of learnability and semirings.
+
+**Giuseppe D'Alconzo (2024)**, *Monomial isomorphism for tensors and applications to code equivalence problems*, Designs, Codes and Cryptography 92, 1961–1982, DOI 10.1007/s10623-024-01375-0. Existing tensor equivalence cryptography: hidden tensor changes and rank-like invariants are already mature mathematical subfields.
+
+**Decision:** Symbol-indexed noncommutative products f(w)=alpha M_w beta are classic recognizable rational series/weighted finite automata. Their public Hankel-basis reconstructibility and membership-only oracle limitations do not constitute newly original mathematics or validated PQ cryptography.
