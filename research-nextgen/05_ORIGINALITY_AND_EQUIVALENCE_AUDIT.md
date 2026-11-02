@@ -78,3 +78,10 @@ NG-Q17 absolute gauge non-identifiability is the standard left-group-action symm
 NG-Q18 isolated-vertex moments and the G(n,p) connectivity threshold at log n/n are classic Erdős–Rényi random graph results, e.g. Durrett, *Random Graph Dynamics*, §2.8. Bradley Stich, *Strong Recovery In Group Synchronization* (2023), also analyzes sparse information-theoretic failure conditions. Sparse isolation **fails novelty** as a cryptographic construction.
 
 **M2 ORIGINALITY STILL NOT ESTABLISHED.** No invented mathematical operation, structurally new hard distribution, quantum-hard assumption or private-trapdoor KEM.
+
+
+## NG-Q19 — exact module-isomorphism equivalence (2 November 2026)
+
+For secret X_v in GL(k,F_p), public labels B_uv=X_u^-1 H_uv X_v admit NG-Q14 spanning-tree normalization X_v=H_v^-1 T B_v. Every chord becomes an **existing simultaneous matrix conjugacy** equation A_e T=T D_e, hence a linear *module homomorphism space* with an invertibility search. This exact representation has peer-reviewed antecedents in Chistov–Ivanyos–Karpinski ISSAC 1997 (DOI 10.1145/258726.258751), and subsequent Ivanyos–Qiao module/algebra methods (DOI 10.1137/18M1165682). Schwartz–Zippel for a nonzero determinant polynomial supplies a transparent p>k public witness recovery bound, not a new mathematical primitive.
+
+**Mathematical novelty gate M2: REJECT for NG-C16.** The new reference implementation and 12 tested control cases contribute a reproducible candidate-specific no-go, not an originality certificate, universal p<=k algorithm or KEM attack against a completed construction.
