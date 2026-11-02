@@ -95,3 +95,10 @@
 
 
 **Final testing addendum (2026-11-01):** The exact NG-Q16 S3 two-hop noise-distribution test and non-flat-H negative control passed, raising current NG-Q16 from 9 to 11 tests and current NG-Q16/17/18 combined execution from 22 to **24 passing tests**. Updated test blob SHA `830c0c9c196c901906aa6297cadd442f66cebbaf` matches local execution. No proof assistant or external review.
+
+
+**NG-D41 (2026-11-02):** Proposed exact public GL(k,Fp) hidden-vertex graph transport. Its apparent noncommutative private inversion reduces by tree normalization to simultaneous matrix conjugacy and a public homogeneous linear intertwiner space. For p>k, determinant Schwartz–Zippel yields p>k sampled public invertible root probability >=1-k/p and N-try failure <=(k/p)^N. **REJECT as M2-original mathematical foundation and C3 credible private trapdoor**. Established ISSAC 1997 matrix module isomorphism literature acknowledged.
+
+**NG-D42:** An independent negative case A=I,D=unipotent Jordan block has a nonzero intertwiner space containing only singular matrices. The elementary solver MUST return inconclusive, not fabricate UNSAT. A=I,D=2I over F5 has zero vector space and genuinely proves UNSAT. Reference primality validator uses trial division; do not label its full implementation polynomial in bit-length of p. No claim for the p<=k random-search bound.
+
+**NG-D43:** 12/12 new independent Python tests pass on 2026-11-02, and the two exact code/test Git blob SHA identities match locally executed bytes; historical entire suite was not rerun. **NO GATE CHANGE.** The next-generation mathematical discovery stage S01 remains active, M2 and C2/C3 remain unpassed, no KEM, no machine proof and no external review.
