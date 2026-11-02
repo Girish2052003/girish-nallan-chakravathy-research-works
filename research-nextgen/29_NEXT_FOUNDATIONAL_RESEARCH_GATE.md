@@ -53,3 +53,10 @@ Evidence baseline: NG-Q16/Q17/Q18 24/24 new local tests, six byte-matched GitHub
 
 
 **Final testing addendum (2026-11-01):** The exact NG-Q16 S3 two-hop noise-distribution test and non-flat-H negative control passed, raising current NG-Q16 from 9 to 11 tests and current NG-Q16/17/18 combined execution from 22 to **24 passing tests**. Updated test blob SHA `830c0c9c196c901906aa6297cadd442f66cebbaf` matches local execution. No proof assistant or external review.
+
+
+## NG-Q19 additional hard exclusion (2 November 2026)
+
+An attempted extension of hidden noncommutative graph transports from public full symmetric-group permutations to secret full GL(k,Fp) matrices **does not escape established module-isomorphism theory**. Public spanning-tree roots reduce to A_e T=T D_e, linear in entries. On planted instances with p>k, Schwartz–Zippel guarantees public randomized invertible recovery with probability >=1-k/p per independent trial. The reference implementation correctly returns INCONCLUSIVE if random sampling fails; nonzero intertwiners can all be singular. Only 12 new local tests were executed this turn, and exact committed SHA matched tested source. Master plan and 36 handoff must preserve **S01 ACTIVE; M2/C2/C3 not passed**.
+
+A future candidate must explicitly test for reduction to **matrix-module isomorphism, simultaneous matrix similarity, linear intertwiner spaces and determinant polynomial identity testing** in addition to earlier CSP, group-isotopy and gauge-graph attacks. Do not relabel existing polynomial module-isomorphism machinery as mathematical originality or a credible PQ-hard trapdoor. If discovery remains open, independently productive Phase I full audit and exact proof-assistant checks may proceed without falsely advancing a selected framework.
