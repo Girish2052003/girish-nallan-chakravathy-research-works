@@ -85,3 +85,10 @@ NG-Q18 isolated-vertex moments and the G(n,p) connectivity threshold at log n/n 
 For secret X_v in GL(k,F_p), public labels B_uv=X_u^-1 H_uv X_v admit NG-Q14 spanning-tree normalization X_v=H_v^-1 T B_v. Every chord becomes an **existing simultaneous matrix conjugacy** equation A_e T=T D_e, hence a linear *module homomorphism space* with an invertibility search. This exact representation has peer-reviewed antecedents in Chistov–Ivanyos–Karpinski ISSAC 1997 (DOI 10.1145/258726.258751), and subsequent Ivanyos–Qiao module/algebra methods (DOI 10.1137/18M1165682). Schwartz–Zippel for a nonzero determinant polynomial supplies a transparent p>k public witness recovery bound, not a new mathematical primitive.
 
 **Mathematical novelty gate M2: REJECT for NG-C16.** The new reference implementation and 12 tested control cases contribute a reproducible candidate-specific no-go, not an originality certificate, universal p<=k algorithm or KEM attack against a completed construction.
+
+
+## NG-Q20: word-product tensors reduce to classical weighted automata/Hankel rank
+
+A supposedly secret noncommutative tensor/word-product family f(w)=alpha M_w beta is precisely a **weighted finite automaton / recognizable formal power series**. Hankel H(u,v)=f(uv) and finite-rank realizations were systematically studied by Carlyle–Paz 1971 (DOI 10.1016/S0022-0000(71)80005-3). Given a dxd invertible public Hankel basis, recover equivalent hidden transitions via H^-1 H_a. The exact special-case word-needle lower bound demonstrates the ACCESS assumption, not a new asymptotic hard public key. Efficient active learning results in Kaznatcheev–Panangaden 2021 assume *both membership and equivalence queries*, unlike the restricted needle experiment.
+
+**M2 NOT PASSED:** NG-C17 is not an original mathematical structure or cryptographic hardness assumption. Need actual new algebraic objects/invariants not immediately captured by recognizable series, rank factorizations and existing tensor-equivalence theory. No evidence of a publicly encoded evaluator hiding the needle secret.
