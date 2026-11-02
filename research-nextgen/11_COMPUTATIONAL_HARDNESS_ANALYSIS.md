@@ -64,3 +64,10 @@ Under complete/near-complete **flat** public relative group observations, noisy 
 Conversely, even perfect recovery of every ratio leaves the original absolute group root X_0 **unidentifiable** under iid uniform secrets (NG-Q17); this is gauge symmetry, not computational hardness. If the graph is disconnected, intercomponent ratios have no information in the public observations; NG-Q18 quantifies isolated vertices in sparse G(n,p) and their obstruction. Missing information and a provably hard inversion problem are not interchangeable.
 
 No novel average-case computational hardness assumption, private-trapdoor advantage or security-parameter quantum reduction emerges from switching between dense noisy recovery and sparse information-theoretic failure.
+
+
+## NG-Q19: exact GL(k,Fp) public linearization blocks naïve matrix one-wayness
+
+Any public B_uv=X_u^-1 H_uv X_v graph edge system for full explicit GL(k,Fp) reduces to A_e*T=T*D_e, a public homogeneous linear system with k² unknowns. If p>k and a valid planted T exists, determinant sampling on the public solution subspace finds an invertible equivalent secret with probability >=1-k/p per attempt; N independent attempts fail <=(k/p)^N. Thus this sampled asymptotic family has an efficient classical public reconstruction algorithm under the stated p>k scaling; **it does not support an independently justified cryptographic average-case one-way assumption**.
+
+For p<=k, this particular determinant bound becomes trivial; NOT a proven hardness result. The general finite-field module-isomorphism problem already has published computational algorithms (Chistov–Ivanyos–Karpinski ISSAC 1997). Failed sampling is not proof of hard inversion or nonexistence. The local reference primality check has non-polynomial bit complexity; the mathematical bound is over an already validated finite prime field. No quantum attack-cost conclusion or 128/192/256-bit estimate is possible.
