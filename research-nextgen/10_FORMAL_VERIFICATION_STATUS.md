@@ -77,3 +77,10 @@ NG-Q15: conventional constructive polynomial-time orbit-action conjugacy solver 
 
 
 **Final NG-Q16 correction (same date):** Two additional local adversarial tests proved the exact rational S3 random-replacement mixing probabilities and demonstrated a zero-noise non-flat transport counterexample. NG-Q16 now has 11 tests; NG-Q17 has 7 and NG-Q18 has 6, **24/24 total**. The updated NG-Q16 test blob is `830c0c9c196c901906aa6297cadd442f66cebbaf` and matches the locally executed bytes. Earlier 22-test counts were intermediate checkpoints, not final counts.
+
+
+## NG-Q19 (2026-11-02): written proof, independent finite checks; NO machine proof
+
+Conventional finite-field algebra: graph tree telescoping to simultaneous conjugacy; linear public intertwiner-space computation; p>k Schwartz–Zippel determinant nonzero polynomial theorem; public verifier soundness and explicitly inconclusive status when only singular samples are found. Twelve new local Python 3.13.5 test methods passed, including exhaustive GL(2,F2) finite decisions and all 625 matrices over F5 at dimension 2. Both new Github source/test Git blob hashes match locally executed source: b1635b98795f544da2652669b0f383c1c1e256bd / 8d8bc8335e3265989ffd39b3bf94a7109ee428e9.
+
+**No Lean/Rocq/Isabelle theorem has been checked.** Trial-division prime checking in the reference code is NOT polynomial in log p; the abstract public algebraic recovery bound assumes a validated prime field. No external reviewer, combined regression-suite run or KEM formal proof was performed. M5 not passed; no final selected-mathematical-framework theorem.
