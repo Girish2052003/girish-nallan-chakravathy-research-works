@@ -221,3 +221,21 @@ python ng_q18_sparse_observation_no_go.py
 **NG-Q17 and NG-Q18 independent controls:** exact `Fraction` arithmetic, small complete posterior enumeration over S3 secret tuples, all eight n=3 graphs enumerated, correct p endpoints and 20 seeded G(200,0.01) graph experiments.
 
 **External verification status:** NO GitHub Actions/CI, Lean/Rocq/Isabelle formal proof assistant, independent human peer review, production KEM build, quantum cryptanalysis or paid inference. Historical NG-Q14/Q15 tests and all earlier baseline tests were not rerun this turn; do not aggregate historical test claims as current execution.
+
+
+## 2026-11-02 — NG-Q19 independent local execution and exact GitHub source identity
+
+**Environment:** Linux container Python 3.13.5; standard library; no paid API/cloud. Local working directory /mnt/data/sg_ngq19. Standard command: python -m unittest -v test_ng_q19_matrix_transport, then python ng_q19_matrix_transport.py. **12/12 methods PASSED locally**, in approximately 0.19 s. These were the NG-Q19 tests ONLY; historical cases NG-Q8–NG-Q18 and the archived complete repo suite were not rerun.
+
+| Github path below research-nextgen/experiments | Locally executed and subsequently fetched identical blob SHA |
+| --- | --- |
+| ng_q19_matrix_transport.py | b1635b98795f544da2652669b0f383c1c1e256bd |
+| test_ng_q19_matrix_transport.py | 8d8bc8335e3265989ffd39b3bf94a7109ee428e9 |
+
+Confirmed by container git hash-object and authenticated GitHub fetch SHA on the experimental branch. Local source and committed source match exactly.
+
+Source includes seeded random full GL matrix generation and public graph reconstruction, finite-field Gaussian elimination, basis sampling, exact per-edge verification and controlled INCONCLUSIVE reporting. Tests use the explicit seeds recorded in the test file: 106 (matrix tuples), 1091 (graphs), and fixed recovery seeds including 1823; direct demonstration uses 119 and 91. Tests cover all 36 GL(2,F2) conjugacy pairs and all 625 F5 2x2 matrices; 12 total test methods are not equivalent to 12 universal theorems.
+
+**Important implementation limitation:** prime validation in the reference is naive trial division, not polynomial in bit-length log p. The mathematical randomized polynomial-time claim assumes valid Fp already specified; a polynomial primality-validation implementation was NOT built. This limitation is explicit in the [NG-Q19 theorem document](37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md).
+
+**No CI workflow run, proof assistant check, external reviewer or unified historical suite executed.** The historical 24/24 NG-Q16–Q18 test record is from a prior session, not added to the current 12/12 count.
