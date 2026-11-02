@@ -1,5 +1,8 @@
 # SG-DIFRA Next Generation — governed research checkpoint
 
+> **START HERE — AUTHORITATIVE SG-DIFRA NEXT GENERATION MISSION (2026-11-02).** Read [35_MASTER_MISSION_PLAN.md](35_MASTER_MISSION_PLAN.md) and [36_STAGE_STATUS_AND_NEXT_SESSION_HANDOFF.md](36_STAGE_STATUS_AND_NEXT_SESSION_HANDOFF.md) **before further experiments or changing any milestone**. The author-directed plan has 12 ordered scientific stages and 16 operational phases. **Current: S01 mathematical discovery ACTIVE, not accepted; 12/12 final KEM stage gates remain pending; mathematical originality M2, private trapdoor C3, and new full KEM C4 NOT PASSED.** Many earlier candidate-specific proofs and attacks are real evidence but are not a new accepted framework. The six open repository issues and CI/audit gaps are itemized in the handoff. **Do not merge into main or claim completed security merely from tests.**
+
+
 Research baseline: `main` commit `cc8f1831cbd5b21caa236331b40c545b88e3071d` (31 October 2026).
 Working branch: `research/sg-difra-nextgen-math`. Main and archived research are unchanged by this work.
 
