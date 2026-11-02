@@ -109,3 +109,10 @@ Candidate objects: arbitrary graphs, secret vertex X_v in GL(k,F_p), public inve
 Source/proof/tests: [37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md](37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md), [implementation](experiments/ng_q19_matrix_transport.py), [12 independent passing tests](experiments/test_ng_q19_matrix_transport.py). Published 1997 module-isomorphism methods are direct prior art. For p<=k, this bounded-sampling code DOES NOT prove an efficient solver; inconclusive does not mean unsatisfiable.
 
 **Reject as original foundation M2 and private inversion C3**, preserve negative mathematics. No surviving new framework, no new original KEM and no gate transition.
+
+
+## NG-C17 — hidden noncommutative word-product / finite tensor-series evaluator: REJECT foundational originality
+
+Exact model: finite-field scalar f(w)=alpha M_w beta for word w over finite alphabet, public membership evaluator, hidden symbol-transition matrices. The Hankel matrix H(u,v)=f(uv) has finite rank d for a minimal d-state representation. **NG-Q20.1** reconstructs an equivalent representation from d PUBLIC basis prefixes/suffixes by H^-1 H_a and at most (|Sigma|+1)d²+2d oracle evaluations. **NG-Q20.3** demonstrates a sharp caveat: d-state *needle* series with one nonzero length-(d-1) word requires exponential membership-only queries to identify a uniformly planted target, unless extra basis/distribution/learning access is available. This is a lower bound for the restricted **oracle information model**, NOT security of a readable public key or existence of a private inversion trapdoor.
+
+[Detailed proof](38_NGQ20_HANKEL_WORD_ORACLE_BOUNDARIES.md) and two reproducible scripts (10/10 passed). Established weighted-automata theory (Carlyle–Paz 1971; Kaznatcheev–Panangaden 2021) means M2 originality **REJECTED**. No C2/C3 hardness/trapdoor evidence or proper KEM interface. Preserve separate query-access and public-key-representation threat models.
