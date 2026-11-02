@@ -41,3 +41,10 @@ Noisy flat group ratios do **not** inherently create secret-only inversion: NG-Q
 Absolute root X_0 of iid uniform group secrets remains exactly uniform conditional on relative-only publication (NG-Q17). This reflects a **global gauge symmetry**, not computationally difficult public inversion. A sender who only receives relative public information does not thereby acquire a mathematical mechanism for computing a key that depends on an unobserved absolute gauge; a legitimate complete KEM correctness reduction would have to specify and justify such a mechanism separately.
 
 At sparse observation densities with isolated vertices (NG-Q18), *intercomponent* relative offsets cannot be recovered from the public data under uniform independent secrets, but the uncertainty arises from absent identifying measurements rather than from an original one-way problem with a private trapdoor. Without a new independent mathematical primitive, correctness proof and formal indistinguishability security experiment, **reject** this noise/gauge/sparsity reformulation as a new secure KEM construction.
+
+
+## NG-Q19: public full-matrix equivalent-secret reconstruction
+
+Hidden invertible vertex matrices X_v over full GL(k,Fp) do not supply demonstrated private inversion in exact public graph transport B_uv=X_u^-1 H_uv X_v. Public spanning tree gives one root T; public linear algebra computes its entire intertwiner space. For p>k, random combinations yield an invertible root with provably high probability per independent attempt, recovering an **equivalent globally valid vertex assignment**. Equivalent secrets may not equal planted X; if a hypothetical KEM relies on a truly secret quantity not invariant under this equivalence, a complete scheme and its key-derivation algorithm would need separate analysis. No such KEM is defined.
+
+Reject hidden noncommutative matrices as cryptographic asymmetry merely because GL(k,Fp) has enormous formal group order. This is established module-isomorphism algebra, not a credible new secret trapdoor. No final C3 pass.
