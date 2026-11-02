@@ -48,3 +48,10 @@ At sparse observation densities with isolated vertices (NG-Q18), *intercomponent
 Hidden invertible vertex matrices X_v over full GL(k,Fp) do not supply demonstrated private inversion in exact public graph transport B_uv=X_u^-1 H_uv X_v. Public spanning tree gives one root T; public linear algebra computes its entire intertwiner space. For p>k, random combinations yield an invertible root with provably high probability per independent attempt, recovering an **equivalent globally valid vertex assignment**. Equivalent secrets may not equal planted X; if a hypothetical KEM relies on a truly secret quantity not invariant under this equivalence, a complete scheme and its key-derivation algorithm would need separate analysis. No such KEM is defined.
 
 Reject hidden noncommutative matrices as cryptographic asymmetry merely because GL(k,Fp) has enormous formal group order. This is established module-isomorphism algebra, not a credible new secret trapdoor. No final C3 pass.
+
+
+## NG-Q20: hidden word products, public Hankel data, and unimplemented public needle oracle
+
+For f(w)=alpha M_w beta over a finite field, secret symbol-indexed noncommutative matrices **do not** define a private-only inversion mechanism when a full-rank Hankel basis is public: ordinary public linear algebra constructs an equivalent minimal evaluator for ALL inputs. For a membership-only needle series, discovering the unique nonzero word can require exponentially many exact oracle queries in its minimal dimension, but a real **PUBLIC KEY must encode an efficiently evaluable oracle without exposing the hidden word**—no such public/secret separation, KeyGen/Encaps/Decaps or security reduction has been defined or justified. The conditional oracle lower bound cannot be promoted into a KEM hardness statement.
+
+Decision: reject NG-C17 as newly original or viable independently evidenced private trapdoor. No C3 pass.
