@@ -80,3 +80,12 @@ Thus NG-Q14 and NG-Q15 provide an original-to-this-project negative analysis of 
 **Group gauge ambiguity:** standard group synchronization identifiability/transport-of-structure consequence; NG-Q17 does not establish a private-key security theorem. Recovery of equivalence classes and non-identifiability of absolute representatives are distinct.
 
 **M2 originality:** NOT PASSED for NG-Q16/NG-Q17/NG-Q18; the narrow model-specific negative security conclusions are potentially useful design filters but are not a newly invented mathematical direction.
+
+
+## 2 November 2026 — hidden matrix transport/module isomorphism prior art
+
+Alexander L. Chistov, Gábor Ivanyos and Marek Karpinski, **Polynomial Time Algorithms for Modules over Finite Dimensional Algebras**, ISSAC 1997, pp. 68–74, DOI [10.1145/258726.258751](https://doi.org/10.1145/258726.258751). This primary academic publication explicitly treats constructing nonsingular simultaneous conjugators for matrix families as finite-field module isomorphism. NG-Q19's publicly computed intertwiner space and determinant sampling are special-case established computational algebra, NOT a new algebraic framework.
+
+Gábor Ivanyos and Youming Qiao, **Algorithms Based on Star-Algebras, and Their Applications to Isomorphism of Polynomials with One Secret, Group Isomorphism, and Polynomial Identity Testing**, SIAM Journal on Computing, DOI [10.1137/18M1165682](https://doi.org/10.1137/18M1165682). Broader background connecting module-isomorphism algorithms to polynomial and group isomorphism security claims.
+
+NG-Q19 deliberately studies public GL(k,F_p) exact graph transports, distinguishing its field-size p>k elementary randomized guarantee from the general published finite-field module isomorphism literature. **No original proof method or worldwide mathematical novelty is claimed.**
