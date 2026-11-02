@@ -250,3 +250,10 @@ Do **not** merely enlarge hidden noncommuting matrix dimensions or choose p<=k a
 
 **Current mathematical verdict:** negative/inconclusive with model-specific results; no new original foundational framework. **Current cryptographic verdict:** Outcome F, no accepted private-trapdoor PQ KEM.
 
+
+
+### Additional independent finite completeness check (2 November 2026)
+
+For ALL 36 ordered pairs (A,B) in GL(2,F_2)^2, an independent enumeration of all six possible invertible T found exactly **14 conjugate pairs** and **22 nonconjugate pairs**. The reference public algorithm returned **14 verified invertible witnesses**, **16 PROVEN_UNSAT (zero intertwiner space)**, and **6 INCONCLUSIVE (nonzero intertwiner space containing no invertible matrix)**. Hence its 36-pair regression establishes **soundness of every definitive answer**, NOT a complete finite-field decision algorithm; six negative pairs were intentionally *not* decided by this simple method. The numbers were recalculated after the original 12 tests with an independent Counter over all 36 cases, without changing the two already-committed executable files.
+
+This sharpens the restriction **p>k** for the proven probabilistic bound: the p=k=2 data do not justify a public-recovery completeness theorem. Stronger general module-isomorphism algorithms are established elsewhere, but are not implemented or verified here.
