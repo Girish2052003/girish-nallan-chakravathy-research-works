@@ -84,3 +84,12 @@ NG-Q15: conventional constructive polynomial-time orbit-action conjugacy solver 
 Conventional finite-field algebra: graph tree telescoping to simultaneous conjugacy; linear public intertwiner-space computation; p>k Schwartz–Zippel determinant nonzero polynomial theorem; public verifier soundness and explicitly inconclusive status when only singular samples are found. Twelve new local Python 3.13.5 test methods passed, including exhaustive GL(2,F2) finite decisions and all 625 matrices over F5 at dimension 2. Both new Github source/test Git blob hashes match locally executed source: b1635b98795f544da2652669b0f383c1c1e256bd / 8d8bc8335e3265989ffd39b3bf94a7109ee428e9.
 
 **No Lean/Rocq/Isabelle theorem has been checked.** Trial-division prime checking in the reference code is NOT polynomial in log p; the abstract public algebraic recovery bound assumes a validated prime field. No external reviewer, combined regression-suite run or KEM formal proof was performed. M5 not passed; no final selected-mathematical-framework theorem.
+
+
+## NG-Q20 proof and execution status (2026-11-02)
+
+**Conventional:** rank-d Hankel basis reconstruction by factor H=RC, H_a=R M_a C and exact identity f(w)=alpha' N_w beta' for ALL words; reachability/observability establishes existence of length <=d-1 basis words but not efficient discovery. A rank-(L+1) needle family and a uniform-hidden-target oracle indistinguishability argument give membership-only upper success probability (q+1)/s^L for q<s^L. These are established recognisable series/weighted-automata and learning theory, not novel foundational work.
+
+**Independent Python local tests:** 10/10 methods PASS, across F2,F3,F5,F7,F11, noncommuting matrices, exact 16 binary length-four needle cases, rank and chance bounds, malformed input. Initial one-symboled-needle public alphabet mismatch caused a FAIL, corrected and entire suite rerun. SHA-identical committed source/test blobs 530bb4ff34140a28650e5c873efec06f3702fe33 and d53970b6eab6aa6048e17e4c1905087917f766b4. Prior historical suites NOT rerun.
+
+**Formal proof status:** no Lean/lake/coqc/z3/sage binaries found in this container's executable PATH at test time; no formal checker run and M5 NOT PASSED. No new framework, peer review, official KEM proof or IND-CCA/QROM.
