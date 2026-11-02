@@ -246,3 +246,17 @@ Source includes seeded random full GL matrix generation and public graph reconst
 For ALL 36 ordered pairs (A,B) in GL(2,F_2)^2, an independent enumeration of all six possible invertible T found exactly **14 conjugate pairs** and **22 nonconjugate pairs**. The reference public algorithm returned **14 verified invertible witnesses**, **16 PROVEN_UNSAT (zero intertwiner space)**, and **6 INCONCLUSIVE (nonzero intertwiner space containing no invertible matrix)**. Hence its 36-pair regression establishes **soundness of every definitive answer**, NOT a complete finite-field decision algorithm; six negative pairs were intentionally *not* decided by this simple method. The numbers were recalculated after the original 12 tests with an independent Counter over all 36 cases, without changing the two already-committed executable files.
 
 This sharpens the restriction **p>k** for the proven probabilistic bound: the p=k=2 data do not justify a public-recovery completeness theorem. Stronger general module-isomorphism algorithms are established elsewhere, but are not implemented or verified here.
+
+
+## NG-Q20 independent local execution and matched GitHub blobs — 2026-11-02
+
+Environment: Linux, Python 3.13.5 standard library, local tests in /mnt/data/sg_ngq20, no paid API. Commands from research-nextgen/experiments: `python -m unittest -v test_ng_q20_hankel_oracle`; `python ng_q20_hankel_oracle.py`. **10/10 newly executed methods PASS** after correction. The first test run was 9 PASS / 1 ERROR: the needle generator inferred the active alphabet from letters actually present in u, and omitted a public symbol not in a one-letter needle. Repaired source supports explicit alphabet even when a symbol never occurs; the revised full suite passes.
+
+| Code or test file | Local git hash-object SHA = freshly fetched GitHub blob SHA |
+| --- | --- |
+| ng_q20_hankel_oracle.py | 530bb4ff34140a28650e5c873efec06f3702fe33 |
+| test_ng_q20_hankel_oracle.py | d53970b6eab6aa6048e17e4c1905087917f766b4 |
+
+Independent test fixtures: exact 16 binary needle words length 4; F2/F3/F7/F11 randomly sampled dimension 2,3,4 minimal WFA; F5 specifically noncommutative transitions; 10 separate unittest methods; all words length<=5 tested on random fixtures and length<=8 for specific two-letter noncommutative case. Seed 20261102. Demo d=3 F7 publicly recovers equivalent function using only 15 distinct oracle words given a basis, checking every word up to length 8. For hidden binary L=8 and q=20, the query-only success bound is exactly 21/256; for L=16 exactly 21/65536. This is not an estimated algorithmic attack rate.
+
+Crucial limitations: `exploratory_hankel_basis` enumerates exponentially many short words in d; the theorem's public query bound applies only AFTER a public invertible basis is provided. Reconstruct's bounded query count does not include finding the basis. The needle lower bound applies only to membership-only black-box access, not inspectable public-key code or quantum algorithms. No KEM, full historical test rerun, external human review, CI or machine proof. At this local test, Lean/lake/coqc/z3/sage were unavailable on PATH; M5 unchanged.
