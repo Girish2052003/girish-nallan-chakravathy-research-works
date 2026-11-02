@@ -102,3 +102,10 @@
 **NG-D42:** An independent negative case A=I,D=unipotent Jordan block has a nonzero intertwiner space containing only singular matrices. The elementary solver MUST return inconclusive, not fabricate UNSAT. A=I,D=2I over F5 has zero vector space and genuinely proves UNSAT. Reference primality validator uses trial division; do not label its full implementation polynomial in bit-length of p. No claim for the p<=k random-search bound.
 
 **NG-D43:** 12/12 new independent Python tests pass on 2026-11-02, and the two exact code/test Git blob SHA identities match locally executed bytes; historical entire suite was not rerun. **NO GATE CHANGE.** The next-generation mathematical discovery stage S01 remains active, M2 and C2/C3 remain unpassed, no KEM, no machine proof and no external review.
+
+
+**NG-D44 (2026-11-02):** Investigate noncommutative tensor/word products as a purported private evaluator. Recognize exactly as finite-field weighted automata/recognizable formal power series, with Carlyle–Paz 1971 and Kaznatcheev–Panangaden 2021 antecedents. A full-rank provided Hankel word basis permits complete public equivalent minimal realization with polynomial (s+1)d²+2d oracle calls. **Reject NG-C17 M2 originality and naive hidden-transition trapdoor** under supplied basis.
+
+**NG-D45:** Preserve necessary ORACLE limitation: needle singleton-word family of rank L+1 needs exponential membership-only queries for uniformly hidden length-L word, with success bound <=(q+1)/s^L after q queries. This is an exact black-box information bound, not a new hardness result for an inspectable public key or viable asymmetric KEM. Public evaluator representation, KeyGen/Encaps/Decaps, quantum query reduction and secret advantage remain OPEN/NOT ESTABLISHED. Do not overclaim membership-only public recovery.
+
+**NG-D46:** 10/10 locally executed tests PASS after a first public-alphabet fixture modeling failure was corrected. Both source and test Git blob SHA match committed code. No Lean/Coq or independent peer review, no fresh previous-suite execution. **NO ACCEPTANCE-GATE CHANGE**: S01 active, M2/C2/C3 not passed, M5 unchecked; full KEM stages still pending.
