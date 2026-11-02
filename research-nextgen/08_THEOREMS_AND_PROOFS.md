@@ -274,3 +274,12 @@ These are **applications of established** group synchronization and random graph
 
 
 **Final NG-Q16 correction (same date):** Two additional local adversarial tests proved the exact rational S3 random-replacement mixing probabilities and demonstrated a zero-noise non-flat transport counterexample. NG-Q16 now has 11 tests; NG-Q17 has 7 and NG-Q18 has 6, **24/24 total**. The updated NG-Q16 test blob is `830c0c9c196c901906aa6297cadd442f66cebbaf` and matches the locally executed bytes. Earlier 22-test counts were intermediate checkpoints, not final counts.
+
+
+---
+
+## NG-Q19 — public finite-field matrix-intertwiner recovery
+
+[Detailed NG-Q19 statement and proof](37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md): For exact public graph transports B_uv=X_u^-1 H_uv X_v over GL(k,F_p), spanning-tree reduction gives one T per component and chord constraints A_e T=T D_e, a **homogeneous linear** matrix system. If the solution space L contains any invertible T, the determinant of a uniformly sampled linear combination of a public basis is a nonzero degree-k polynomial. By Schwartz–Zippel when **p>k**, each independent public trial succeeds with probability >=1-k/p, and N trials fail with probability <=(k/p)^N conditional on existence. If L={0}, UNSAT is proved; if L contains only singular matrices, the basic sampler returns **INCONCLUSIVE**, not a false UNSAT proof. Original planted and equivalent recovered secrets may differ.
+
+This is a scoped conventional proof and model-specific application of **pre-existing** module-isomorphism algorithms (ISSAC 1997); no proof assistant, new mathematical foundation or full KEM.
