@@ -190,3 +190,63 @@ For each new session, ADD a dated section below with:
 **Do not conflate:** 217 previously accumulated experimental commits, many checked finite scripts, and 24 tests in the most recent suite are valuable research outputs, NOT a measure of distance to a mathematically new one-way trapdoor.
 
 **This handoff stays the FIRST reference for future research sessions.**
+
+
+---
+
+## HANDOFF APPENDIX — 2026-11-02: NG-Q19 matrix-transport public inversion
+
+**Read in this order next time:** [35_MASTER_MISSION_PLAN.md](35_MASTER_MISSION_PLAN.md), THIS handoff (latest appendix), [37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md](37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md), [29_NEXT_FOUNDATIONAL_RESEARCH_GATE.md](29_NEXT_FOUNDATIONAL_RESEARCH_GATE.md), [19_RESEARCH_DECISION_AND_REJECTION_LEDGER.md](19_RESEARCH_DECISION_AND_REJECTION_LEDGER.md). Always re-query live main/branch SHA rather than assuming the figures here remain current.
+
+**Baseline from authenticated live repository at this continuation start:**
+- Default main unchanged SHA **cc8f1831cbd5b21caa236331b40c545b88e3071d**.
+- Experimental research branch initially **226 ahead / 0 behind**, **65 changed files** versus main, containing the two canonical governance documents and earlier NG-Q1–NG-Q18 results.
+- Experimental branch only modified with new theorem, code, independent tests, source/literature/claim updates and this handoff; no force push/merge, no main edit.
+- The **end-of-session branch HEAD and updated ahead/files** are to be read from live GitHub compare immediately before the final report; the numbers above are *START* not *end* counts.
+
+### What was actually investigated?
+
+**Candidate NG-C16:** Full noncommutative matrix group GL(k,Fp) as hidden vertex transformations on publicly exact group-transport edges, mathematically distinct from the earlier explicit symmetric permutations but still reducible to published module-isomorphism machinery.
+
+**Finding NG-Q19.1:** Any such connected graph can be normalized through a public tree to one unknown invertible root matrix T whose cycle conditions **A_e T=T D_e** are LINEAR in k² entries. Any invertible solution gives a valid equivalent full public witness; Gaussian elimination finds the full solution space.
+
+**Finding NG-Q19.2:** For prime p>k, whenever a valid planted T exists, the determinant of a uniformly sampled public solution-space element is a nonzero degree-k polynomial. Each sample is invertible with probability at least **1-k/p**; N independent trials fail with probability at most **(k/p)^N**, under the fixed public instance and random fresh coefficients. Thus a polynomial randomized public witness finder exists on the stated p>k scaling, *assuming a validated prime field*. The reference code's prime-checker is simple trial division and therefore its whole runtime is **NOT asserted polynomial in log p**.
+
+**Negative controls:** Nonzero intertwiner space with only singular matrices yields INCONCLUSIVE, not UNSAT; a zero-dimensional intertwiner space proves UNSAT. p<=k is NOT covered by a useful Schwartz–Zippel bound from this reference method; do not imply all small fields insecure by this very implementation. Published module-isomorphism algorithms are separate pre-existing literature.
+
+**Originality:** The key algebra was already examined in *Polynomial Time Algorithms for Modules over Finite Dimensional Algebras*, Chistov–Ivanyos–Karpinski, ISSAC 1997, DOI 10.1145/258726.258751. NG-C16 is **REJECTED for claimed mathematical originality/private inversion**, not rebranded as a discovery.
+
+### Execution and integrity
+
+- **12/12 newly executed local NG-Q19 tests passed** under Python 3.13.5, including an independent finite brute enumeration over GL(2,F2), exact 96/125 invertibility over Mat_2(F5), randomized planted matrix tuples and graph instances up to k=7,p=101, malformed data and singular-only/UNSAT negative controls.
+- New executable [source](experiments/ng_q19_matrix_transport.py) locally run and GitHub SHA matched: **b1635b98795f544da2652669b0f383c1c1e256bd**.
+- New [test suite](experiments/test_ng_q19_matrix_transport.py) locally run and GitHub SHA matched: **8d8bc8335e3265989ffd39b3bf94a7109ee428e9**.
+- The theorem and exact caveats appear in [37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md](37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md).
+- **NOT rerun:** historic earlier test suites, entire archive, CI/GitHub Actions, any proof assistant, complete KEM, independent human cryptanalysis. Neither 12/12 current local tests nor earlier 24/24 current-at-the-time NG-Q16–18 tests constitute a full-repository green CI report.
+
+### Acceptance gate and stage delta — explicitly NO GATE CHANGE
+
+| Item | Previous state | Now after NG-Q19 | Rationale |
+| --- | --- | --- | --- |
+| **Sequential S01** mathematical discovery | ACTIVE, not accepted | **ACTIVE, not accepted** | NG-C16 rejected as established module isomorphism, not original mathematics |
+| **Sequential S02–S05** originality/theorems/proofs/counterexamples | Candidate work, no final acceptance | **Additional candidate-specific evidence; still no final acceptance** | Valid negative model-specific proof does not certify a selected novel framework |
+| **Sequential S06–S12** hardness→KEM→evidence | No qualified full KEM acceptance | **UNCHANGED / NOT ACCEPTED** | Public recovery defeats this candidate; no complete surviving new scheme |
+| **Phase II** prior art | Partial | **Expanded** | Chistov–Ivanyos–Karpinski ISSAC 1997 + later module isomorphism background |
+| **Phase III–VI** candidate/proof/challenge | Active/partial | **More candidate-specific negative work** | NG-Q19 theorem, 12 independent tests, singular controls |
+| **Phase VII–VIII** hardness/trapdoor | Negative, no survivor | **Additional REJECTED premise** | Public matrix-space inversion with quantitative p>k bound |
+| **Phase XIV/XV** reject/reproducibility | Active/partial | **Expanded** | NG-D41–D43 and exact SHA-identical executed source |
+| **Mathematical M1/M3/M4** | Candidate-scoped proof/test evidence | **NG-Q19 scoped evidence added; final gates OPEN** | No accepted original framework |
+| **M2 originality** | NOT PASSED | **NOT PASSED** | Classical finite-field module-isomorphism equivalence |
+| **M5 formal proof** | NOT CHECKED | **NOT CHECKED** | No Lean/Rocq/Isabelle runs |
+| **Cryptographic C1–C7** | NO FINAL PASS | **NO FINAL PASS** | No new credible average-case hard problem, secret-only trapdoor, full KEM or security reduction |
+
+**Count remains EXACTLY: 12 of 12 ordered S-stage final KEM approvals are pending, including the active first; 11 stages follow mathematical discovery.** This is not a percentage of intellectual work or a time estimate. The mathematical-only original discovery outcome likewise remains unestablished.
+
+**New required files:** The historical count of original mandatory 22 deliverables remains 17 present, 5 scientifically deferred; file 37 is a supporting proof, not a falsely completed selected-framework/KEM specification.
+
+### Next autonomous research action
+
+Do **not** merely enlarge hidden noncommuting matrix dimensions or choose p<=k as a cosmetic 'repair'. Instead prioritize an entirely different precisely defined scalable mathematical object with a genuine non-reducible invariant, and **test explicit reductions to finite-field modules, matrix intertwiners, tensor isomorphism, group actions, CSP, polynomial interpolation and known public graph switching before claiming novelty**. If no defensible candidate is found, a rigorous independent Phase-I baseline/CI audit or a real machine-checked candidate-scoped theorem provides useful research progress without pretending that it advances the KEM acceptance gates.
+
+**Current mathematical verdict:** negative/inconclusive with model-specific results; no new original foundational framework. **Current cryptographic verdict:** Outcome F, no accepted private-trapdoor PQ KEM.
+
