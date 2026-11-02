@@ -100,3 +100,12 @@ Proposed alteration of NG-Q14: reveal `Y_ij` as independently observed (probabil
 **NG-C15 — sparse observation graph (REJECT absent-information-as-hardness claim).** If public observation graph G(n,p) has isolated vertices or multiple connected components, many intercomponent relative ratios are inherently unidentifiable for uniform independent secrets. NG-Q18 gives exact mean/variance and isolation lower bound: n=200, p=.01 implies isolation probability at least .9580. Sparse absence of information is **not** a new NP-hard inversion problem or valid KEM security assumption.
 
 These are three distinct scientifically tested outcomes of the same known group-synchronization family, not a genuinely new foundational mathematical proposal. No KEM accepted.
+
+
+## NG-C16 — hidden general-linear-group graph transports — REJECTED
+
+Candidate objects: arbitrary graphs, secret vertex X_v in GL(k,F_p), public invertible labels H_e and B_e=X_u^(-1)H_e X_v. Fundamental cycle equations A_e T=T D_e are **linear** in the k² unknown entries of one root T. A publicly computed intertwiner space contains a valid planted root. For p>k, uniformly random public linear-combination matrices are invertible with probability >=1-k/p, producing a full valid public vertex assignment with per-component failure <=(k/p)^N after N independent samples.
+
+Source/proof/tests: [37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md](37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md), [implementation](experiments/ng_q19_matrix_transport.py), [12 independent passing tests](experiments/test_ng_q19_matrix_transport.py). Published 1997 module-isomorphism methods are direct prior art. For p<=k, this bounded-sampling code DOES NOT prove an efficient solver; inconclusive does not mean unsatisfiable.
+
+**Reject as original foundation M2 and private inversion C3**, preserve negative mathematics. No surviving new framework, no new original KEM and no gate transition.
