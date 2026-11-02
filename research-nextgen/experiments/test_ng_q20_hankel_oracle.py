@@ -85,7 +85,7 @@ class TestHankel(unittest.TestCase):
     def test_rank_d_needle_prefix_suffix_bound(self):
         for L in range(1,7):
             u=tuple('a' if i%2==0 else 'b' for i in range(L))
-            alpha,A,beta=needle(u,3)
+            alpha,A,beta=needle(u,3,alphabet=('a','b'))
             f=lambda w:evaluate(alpha,A,beta,3,w)
             P=tuple(u[:i] for i in range(L+1));S=tuple(u[i:] for i in range(L+1))
             H=tuple(tuple(f(x+y) for y in S) for x in P)
