@@ -103,3 +103,16 @@ Counterexamples include S3 noncommuting cycle gains leaving exactly one recovere
 | Full novel KEM private key, ciphertext/IND-CCA/QROM | No such candidate exists | **NOT EXECUTED**; cannot infer KEM break or quantum security |
 
 Twelve independent finite tests pass. Existing Chistov–Ivanyos–Karpinski ISSAC 1997 finite-field module isomorphism prior art applies; avoid inventing the name of an original hardness assumption.
+
+
+## NG-Q20 exact word-Hankel public attacker versus a membership-only negative control
+
+| Precise access model | Attack / countercontrol | Verified conclusion |
+| --- | --- | --- |
+| Public finite-field word function with Hankel rank d and PROVIDED full-rank dxd basis P,S | Compute H^-1 H_a, reconstructed alpha',beta', verify finite outputs | Equivalent evaluator for ALL words, at most (s+1)d²+2d oracle calls under full-rank assumption |
+| Membership ONLY oracle for uniformly hidden length-L binary needle | Every nonmatching word outputs 0; each query rules out at most one hidden u | Pr[identify u with q<2^L queries] <=(q+1)/2^L; info-theoretic oracle query model, NOT a deployed public-key attack or hardness proof |
+| Publicly inspectable finite key implementing needle oracle | NOT SPECIFIED | No demonstrated way to hide embedded target u, hence no cryptographic inference |
+| Quantum oracle algorithm | NOT ANALYZED | No quantum exponential lower bound or 128-bit security claim |
+| Original secure KEM and IND-CCA | NOT DEFINED | Neither public attack nor needle bound is a full KEM result |
+
+10/10 local Python tests pass and source SHA match. Literature is classic weighted automata and rational formal series, not a new quantum-resistant primitive.
