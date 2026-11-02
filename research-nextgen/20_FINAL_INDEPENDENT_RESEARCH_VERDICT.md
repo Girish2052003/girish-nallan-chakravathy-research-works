@@ -94,3 +94,12 @@ Three additional mathematically precise evaluations of *public flat finite-group
 
 
 **Final testing addendum (2026-11-01):** The exact NG-Q16 S3 two-hop noise-distribution test and non-flat-H negative control passed, raising current NG-Q16 from 9 to 11 tests and current NG-Q16/17/18 combined execution from 22 to **24 passing tests**. Updated test blob SHA `830c0c9c196c901906aa6297cadd442f66cebbaf` matches local execution. No proof assistant or external review.
+
+
+## 2026-11-02 NG-Q19 additional internal mathematical research checkpoint
+
+Investigated a new candidate outside the prior exact full symmetric-group setting: public graph transport with hidden GL(k,Fp) vertex matrices. **Proof NG-Q19.1:** a spanning-tree gauge reduces the unknown vertices to one simultaneous conjugator T per component satisfying public *linear* intertwiners A_e T=T D_e. **Proof NG-Q19.2:** if p>k and any invertible root exists, a uniformly random element of the public solution vector space is invertible with probability >=1-k/p; N independent attempts fail <=(k/p)^N. Reconstructed witnesses are fully publicly checked, but may differ from original private samples. For p<=k, the current simple bound is trivial and no universal finite-field algorithm claim is made by this implementation.
+
+The mathematics is elementary module isomorphism/simultaneous similarity, a classic published topic (Chistov–Ivanyos–Karpinski, ISSAC 1997, DOI 10.1145/258726.258751). **NG-C16 rejected for M2 novelty and C3 private trapdoor.** Twelve new, independently executed local tests passed; exact two executable GitHub source blobs match the locally tested copies. The local prime-validator uses trial division and does not preserve the abstract algorithm's polynomial-in-log-p property; proof document explicitly distinguishes this.
+
+**No gate passed or advanced**: mathematical S01 still ACTIVE without accepted originality; all 12 final SG-DIFRA KEM stage approvals remain pending, 11 after S01. No new standalone KEM, QROM/IND-CCA theorem, full independent peer review or proof-assistant check. Internal result **F, negative candidate-specific mathematics**, not an independently certified globally new algebraic theory.
