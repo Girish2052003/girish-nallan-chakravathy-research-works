@@ -116,3 +116,14 @@ Twelve independent finite tests pass. Existing Chistov–Ivanyos–Karpinski ISS
 | Original secure KEM and IND-CCA | NOT DEFINED | Neither public attack nor needle bound is a full KEM result |
 
 10/10 local Python tests pass and source SHA match. Literature is classic weighted automata and rational formal series, not a new quantum-resistant primitive.
+
+
+## 9. Quantum-query and implementation-complexity correction (2 November 2026)
+
+**Classical versus quantum access:** The bound Pr[identify uniformly random needle u after q classical membership queries] <=(q+1)/s^L is **CLASSICAL**. For a coherent quantum oracle implementing f_u, standard Grover search can find the marked u among N=s^L candidates in O(sqrt(N))=O(s^(L/2)) quantum queries. This is asymptotically optimal for unstructured search under the usual oracle model (C. H. Bennett, E. Bernstein, G. Brassard, U. Vazirani, *Strengths and Weaknesses of Quantum Computing*, SIAM J. Comput. 26(5), 1510–1523, 1997, DOI 10.1137/S0097539796300933; Christof Zalka, *Grover's quantum searching algorithm is optimal*, Physical Review A 60, 2746, 1999, DOI 10.1103/PhysRevA.60.2746). The present project did NOT implement Grover or quantum-counting controls; the quantum bound is external published prior art, not a new proof.
+
+**A true computational-public-key model is still absent.** A public inspectable implementation of f_u must be produced without disclosing u, or else the oracle hardness model is irrelevant to the key's security. Replacing a freely inspectable public program with an inaccessible black-box membership oracle changes the problem definition. Do not infer 128-bit post-quantum hardness by taking L=256, nor infer IND-CCA/QROM KEM security.
+
+**Reference code caveat:** the small Python validator `is_prime` uses trial division; the reconstructed linear algebra is polynomial field arithmetic given an already validated F_p, but the entire demonstration implementation is NOT proven polynomial in log(p). The exploratory basis finder is deliberately exponential in d. These are two distinct complexity caveats.
+
+**Novelty remains rejected:** all core finite Hankel-rank and automata reconstruction techniques have 1971–2025 prior art, and the needle is an elementary black-box adversarial control. NG-C17 cannot pass M2, C2 or C3.
