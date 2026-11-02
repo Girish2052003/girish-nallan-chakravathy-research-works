@@ -239,3 +239,10 @@ Source includes seeded random full GL matrix generation and public graph reconst
 **Important implementation limitation:** prime validation in the reference is naive trial division, not polynomial in bit-length log p. The mathematical randomized polynomial-time claim assumes valid Fp already specified; a polynomial primality-validation implementation was NOT built. This limitation is explicit in the [NG-Q19 theorem document](37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md).
 
 **No CI workflow run, proof assistant check, external reviewer or unified historical suite executed.** The historical 24/24 NG-Q16–Q18 test record is from a prior session, not added to the current 12/12 count.
+
+
+### Additional independent finite completeness check (2 November 2026)
+
+For ALL 36 ordered pairs (A,B) in GL(2,F_2)^2, an independent enumeration of all six possible invertible T found exactly **14 conjugate pairs** and **22 nonconjugate pairs**. The reference public algorithm returned **14 verified invertible witnesses**, **16 PROVEN_UNSAT (zero intertwiner space)**, and **6 INCONCLUSIVE (nonzero intertwiner space containing no invertible matrix)**. Hence its 36-pair regression establishes **soundness of every definitive answer**, NOT a complete finite-field decision algorithm; six negative pairs were intentionally *not* decided by this simple method. The numbers were recalculated after the original 12 tests with an independent Counter over all 36 cases, without changing the two already-committed executable files.
+
+This sharpens the restriction **p>k** for the proven probabilistic bound: the p=k=2 data do not justify a public-recovery completeness theorem. Stronger general module-isomorphism algorithms are established elsewhere, but are not implemented or verified here.
