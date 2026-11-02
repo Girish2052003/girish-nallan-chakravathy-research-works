@@ -257,3 +257,57 @@ Do **not** merely enlarge hidden noncommuting matrix dimensions or choose p<=k a
 For ALL 36 ordered pairs (A,B) in GL(2,F_2)^2, an independent enumeration of all six possible invertible T found exactly **14 conjugate pairs** and **22 nonconjugate pairs**. The reference public algorithm returned **14 verified invertible witnesses**, **16 PROVEN_UNSAT (zero intertwiner space)**, and **6 INCONCLUSIVE (nonzero intertwiner space containing no invertible matrix)**. Hence its 36-pair regression establishes **soundness of every definitive answer**, NOT a complete finite-field decision algorithm; six negative pairs were intentionally *not* decided by this simple method. The numbers were recalculated after the original 12 tests with an independent Counter over all 36 cases, without changing the two already-committed executable files.
 
 This sharpens the restriction **p>k** for the proven probabilistic bound: the p=k=2 data do not justify a public-recovery completeness theorem. Stronger general module-isomorphism algorithms are established elsewhere, but are not implemented or verified here.
+
+
+---
+
+## NG-Q20 — SECOND 2026-11-02 MISSION HANDOFF: finite word-product tensor/automata candidate
+
+**Read next session in order:** canonical [35 master mission plan](35_MASTER_MISSION_PLAN.md), THIS handoff *including this newest appendix*, [38 NG-Q20 theorem/limitations](38_NGQ20_HANKEL_WORD_ORACLE_BOUNDARIES.md), [29 next foundational originality gate](29_NEXT_FOUNDATIONAL_RESEARCH_GATE.md), [19 rejection ledger](19_RESEARCH_DECISION_AND_REJECTION_LEDGER.md). Query the LIVE default-branch and experimental branch commits again; this is a dated snapshot, not an automatic monitor.
+
+### Baseline and purpose
+
+- Branch at start of this NG-Q20 continuation: `research/sg-difra-nextgen-math` was **251 commits ahead, 0 behind main**, 68 changed files; verified default `main` SHA `cc8f1831cbd5b21caa236331b40c545b88e3071d`.
+- This work **does not repair or rename the rejected NG-Q19 matrix graph transport**. It tests a structurally different kind of input: **a word-dependent scalar output** from a sequence of noncommuting hidden transition matrices, with a specified public **membership evaluation oracle**.
+- The public evaluator / ordinary inspectable public key distinction is ESSENTIAL: a black-box membership oracle can hide a needle word only by assumption. No independently evaluable cryptographic public-key representation hiding that word was constructed.
+
+### What was proved, exactly
+
+**NG-Q20.1 public Hankel equivalence theorem:** f(w)=alpha M_w beta over F_p, minimal Hankel rank d. IF a full-rank dxd Hankel submatrix H(P,S) is PROVIDED publicly, recover equivalent state transitions by H^-1 H_a, α'=(f(s_j)), β'=H^-1(f(p_i)), for **every word w**, with at most (s+1)d²+2d membership evaluations. This is conditional on a known sufficient PUBLIC Hankel basis; the query bound does NOT include FINDING that basis. The basis can be selected among words length <=d-1 by minimal-reachability arguments, but brute search of all such words is exponential in d.
+
+**NG-Q20.3 needle information theorem:** for uniform hidden u in Sigma^L, f_u(w)=1 iff w=u has Hankel rank d=L+1. A classical membership-only algorithm using q<s^L adaptive oracle probes and one final guess identifies u with probability <=(q+1)/s^L. This is an **ORACLE QUERY** lower bound, not a computationally secure KEM hardness proof. With standard coherent quantum access, Grover search uses O(s^(L/2)) queries; existing BBBV 1997/Zalka 1999 quantum search bounds are acknowledged, but no quantum code was executed here. Neither model specifies a public-key protocol or private trapdoor.
+
+**Originality:** these are **known weighted-automata/rational-series/Hankel mathematics** (Carlyle–Paz 1971; Kaznatcheev–Panangaden 2021; Daviaud–Johnson 2025). The proposed hidden word-product family NG-C17 fails the required *original mathematical framework* criterion; no worldwide novelty claim is made.
+
+### Local execution and committed integrity
+
+- **10/10 new local Python 3.13.5 unit tests PASS** after correcting an initial needle fixture that accidentally omitted a symbol in the stated public alphabet (first run: 9 pass, one error; final: all pass).
+- [Public reconstruction code](experiments/ng_q20_hankel_oracle.py): EXACT local + GitHub blob SHA **530bb4ff34140a28650e5c873efec06f3702fe33**.
+- [Independent tests](experiments/test_ng_q20_hankel_oracle.py): EXACT local + GitHub blob SHA **d53970b6eab6aa6048e17e4c1905087917f766b4**. The first GitHub test-file draft differed in one explicit-alphabet fixture; it was corrected via a further commit and the final blob was confirmed equal to the locally passing source.
+- Test scope: 16/16 binary length-four needle realizations, word-prefix/suffix rank identities, random minimal noncommuting matrix automata over F2/F3/F7/F11, F5 explicit noncommutativity, exact oracle-call upper bound, invalid inputs and oracle indistinguishability. Seed 20261102. Demo rank-3 F7 family recovered a fully equivalent output function using 15 public evaluations GIVEN an invertible basis, verified on all words length <=8.
+- Proof-checker/CI: **not done**. Local executable PATH lacked lean/lake/coqc/z3/sage; no machine-checked theorem, no independent human review, no current complete historical-suite rerun. Code includes an **exponential basis discovery diagnostic**, and a naive trial-division prime validator; neither is claimed polynomial in bit-length for arbitrary prime modulus.
+
+### Exact gate/phase decision — NO GATE CHANGES
+
+| Item | Status before NG-Q20 | Status after NG-Q20 |
+| --- | --- | --- |
+| Sequential **S01 mathematical discovery** | ACTIVE, not accepted | **ACTIVE, not accepted** (NG-C17 rejected for known algebra) |
+| Sequential **S02–S05** novelty/theorems/proofs/counterexamples | Candidate work exists, not finally passed | Additional correct candidate-specific theory and tests; **not passed for selected original math** |
+| Sequential **S06–S12** hardness/trapdoor/KEM/security/implementation/independent cryptanalysis/evidence | NO accepted new original KEM stages | **UNCHANGED**; no full KEM exists |
+| Operational Phase II prior-art | Partial, expanding | Expanded by weighted automata + tensor equivalence + oracle-learning sources |
+| Operational Phase III–VI | Active candidate challenge | NG-Q20 precisely defined, proofs and adversarial control preserved; formal proof assistant still OPEN |
+| Operational Phase VII–VIII | No credible accepted hardness/trapdoor | Classical needle ORACLE lower bound is NOT C2/C3 and public Hankel access offers equivalent reconstruction |
+| Phase XIV/XV | Active rejection/evidence | NG-D44–D46, 10 local tests, two code hashes preserved |
+| **M2**, C2, C3 | NOT PASSED | **NOT PASSED** |
+| **M5** machine proof | NOT PASSED | **NOT PASSED** |
+| All remaining M/C final KEM gates | No accepted next-gen full construction | **NO GATE CHANGE** |
+
+**Exact stage count:** still **12/12 final KEM stage acceptances pending**, including active S01; 11 downstream after accepted novel mathematical discovery. This is not an estimated percentage of R&D effort or a guarantee that a new KEM can be discovered.
+
+**Original 22 mandatory deliverables:** still 17 present, five scientifically deferred; file 38 is a supporting research theorem/counterexample record, not a substituted "selected mathematical framework" or complete KEM specification.
+
+### Handoff priority for next session
+
+Do not spend another cycle on mere repackaging of hidden groups, matrices, tensor-train gauge, recognizable formal series or CSP. The **highest-value unanswered PRIMARY mission question is still a substantive original mathematical operation, invariant, or nontrivial theorem that survives equivalence challenges**. Choose an actual scalable object and test its differentiating invariant, explicitly attempting reduction to existing polynomial systems, weighted automata, tensor equivalence, sheaf/CSP and group actions. Or make independent progress on Phase-I old-source audit / specific formal theorem proof using only no-cost available resources. Any genuine counterexample remains valuable, but **do not overstate it as progress on KEM acceptance gates**.
+
+**Final current verdict:** mathematically useful but foundationally non-novel negative evaluation; cryptographic Outcome F, no original post-quantum KEM or justified private trapdoor. Next session should read BOTH governance docs before new commits.
