@@ -136,3 +136,8 @@ For independent uniform vertex secrets, published relative ratios `x_i^-1 x_j` a
 ## NG-Q18 sparse Erdos–Rényi observation no-go
 
 When a public graph is disconnected, relative labels across its components cannot be learned from ratio-only observations under independent uniform secrets. In G(n,p), E[#isolated]=n(1-p)^(n-1), variance from pair nonadjacency `(1-p)^(2n-3)`. Chebyshev yields a finite isolation probability lower bound; at n=200,p=.01 it is >=.95800359. This is a textbook information-theoretic obstruction at sparse densities, not a newly hard problem. 6 exact/seeded tests passed.
+
+
+## NG-Q19 — noncommutative hidden matrix graph transport is publicly linearizable
+
+Exact GL(k,F_p) vertex-transport graph equations reduce to public simultaneous matrix-intertwiner linear equations, and for p>k a publicly sampled intertwiner is invertible with high probability under the stated bound. Rejected as private trapdoor premise. A nonzero vector space of intertwiners need not contain any invertible matrix: the deliberately singular-only A=I, D=[[1,1],[0,1]] negative control must return INCONCLUSIVE, not an unsupported unsatisfiability certificate. The contradictory scalar A=I,D=2I over F5 forces T=0 and correctly certifies UNSAT. All 36 GL(2,F2) pairs were independently brute-enumerated; 12/12 local tests passed. No proof of universal small-p randomized recovery or KEM private-key extraction.
