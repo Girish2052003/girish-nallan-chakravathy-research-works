@@ -141,3 +141,12 @@ When a public graph is disconnected, relative labels across its components canno
 ## NG-Q19 — noncommutative hidden matrix graph transport is publicly linearizable
 
 Exact GL(k,F_p) vertex-transport graph equations reduce to public simultaneous matrix-intertwiner linear equations, and for p>k a publicly sampled intertwiner is invertible with high probability under the stated bound. Rejected as private trapdoor premise. A nonzero vector space of intertwiners need not contain any invertible matrix: the deliberately singular-only A=I, D=[[1,1],[0,1]] negative control must return INCONCLUSIVE, not an unsupported unsatisfiability certificate. The contradictory scalar A=I,D=2I over F5 forces T=0 and correctly certifies UNSAT. All 36 GL(2,F2) pairs were independently brute-enumerated; 12/12 local tests passed. No proof of universal small-p randomized recovery or KEM private-key extraction.
+
+
+## NG-Q20: hidden word-product representation and fragile basis-access assumptions
+
+**Public equivalent reconstruction:** If the full-rank dxd Hankel basis of a finite-field weighted automaton is PUBLIC and its minimal rank d is established, H^-1 H_a supplies a public equivalent transition representation. Thus noncommutativity/hidden matrices do not by themselves provide a private trapdoor when sufficient observable basis information exists.
+
+**Countercontrol:** A hidden length-L word needle f_u(w)=1 iff w=u has Hankel rank L+1, with identity Hankel block using prefixes/suffixes of u, but adaptive membership-only queries have <=(q+1)/s^L probability to identify uniformly random u with q<s^L probes. This invalidates an unconditional claim that every finite-rank word evaluator is polynomially reconstructible from membership-only queries. It also fails to prove ordinary cryptographic hardness: supplying a usable PUBLIC implementation of the oracle without embedding/leaking u is unaddressed.
+
+An initial finite test failed due to an omitted public-alphabet symbol in the needle fixture; implementation corrected, 10/10 complete suite passed. Explicit exploratory basis search is exponential and not a cryptographic attack guarantee.
