@@ -109,3 +109,12 @@ For the two-variable example, `D` consists of shifts `(h,0)`; `Gamma(h,0)=(h,2h)
 
 
 **Latest NG-Q16–Q18 check (1 November 2026):** In addition to the earlier 22 passing tests, two new independently implemented NG-Q16 tests verify all 36 S3 noise-label pairs with exact rational probabilities and explicitly falsify extension of the two-hop identity to non-flat group transport. **Final total: 24/24 locally passing tests (11 NG-Q16, 7 NG-Q17, 6 NG-Q18).** Updated executable test Git blob: `830c0c9c196c901906aa6297cadd442f66cebbaf`. No machine-checked proof or external review.
+
+
+## NG-Q19: three explanation levels (2 November 2026)
+
+**Level 1, little-child English:** Think of each person in a network secretly keeping a small square of numbers (a matrix), and each friendship line publishing how the two squares relate. Hiding the squares does not automatically secure them. A public detective follows enough friendship lines to express all hidden squares using **one remaining unknown square**, then writes ordinary add/subtract number equations to find possible answers. A random solution often works directly. If it does, the detective checks every friendship line publicly. So this attempted hiding trick is **not a new mathematical encryption secret**.
+
+**Level 2, university:** In GL(k,Fp), B_uv=X_u^-1 H_uv X_v. A spanning tree yields X_v=H_v^-1 T B_v. Chords give A_e T=T D_e, a homogeneous k²-variable linear system. If its solution space contains an invertible T_0 and p>k, det(sum c_i W_i) is a nonzero degree-k polynomial, so uniformly random coefficients produce an invertible T with probability at least 1-k/p. N independent attempts fail with probability <=(k/p)^N. Nonzero vector space does not guarantee invertibility; the unipotent counterexample prevents false UNSAT claims.
+
+**Level 3, research defense:** This is a graph-switching reduction to finite-field module isomorphism and known Schwartz–Zippel polynomial identity testing. The recovered matrix may be an equivalent witness, not the secret originally sampled. The p>k guarantee assumes an already validated prime field; Python's naive primality validator is not poly(log p). p<=k is not covered by the elementary guarantee, and separate published general module-isomorphism results are not reproduced. Twelve independent local tests and conventional proof do NOT establish original mathematics, quantum hardness, trapdoor or KEM IND-CCA.
