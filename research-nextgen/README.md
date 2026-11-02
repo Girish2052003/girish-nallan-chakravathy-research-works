@@ -139,3 +139,12 @@ All 18 targeted local tests passed and exact Git blobs match executed files. The
 
 
 **Final NG-Q16 correction (same date):** Two additional local adversarial tests proved the exact rational S3 random-replacement mixing probabilities and demonstrated a zero-noise non-flat transport counterexample. NG-Q16 now has 11 tests; NG-Q17 has 7 and NG-Q18 has 6, **24/24 total**. The updated NG-Q16 test blob is `830c0c9c196c901906aa6297cadd442f66cebbaf` and matches the locally executed bytes. Earlier 22-test counts were intermediate checkpoints, not final counts.
+
+
+## 2 November 2026 — NG-Q19: public matrix-group transport no-go
+
+[NG-Q19 exact model, theorem, tests and prior art](37_NGQ19_MATRIX_TRANSPORT_LINEARIZATION.md); [algorithm](experiments/ng_q19_matrix_transport.py); [12 new independent regression tests](experiments/test_ng_q19_matrix_transport.py).
+
+A new candidate replaces symmetric-group permutations with secret invertible k-by-k matrices over a prime field and publishes exact graph transports. Public spanning-tree normalization reduces the entire problem to a **linear** space of simultaneous matrix intertwiners A_e*T=T*D_e. For a valid planted instance over F_p with p>k, a uniformly sampled public intertwiner is invertible with probability at least **1-k/p** by the determinant polynomial and Schwartz–Zippel; after N samples failure is at most (k/p)^N. Thus public equivalent vertex recovery is a one-sided randomized polynomial algorithm **after prime-field validation**. The Python reference primality checker uses trial division, so its entire implementation is **not** claimed polynomial in log p.
+
+**12/12 local Python tests passed.** Both executable files match GitHub and locally executed blob hashes. The model reduces to established matrix **module isomorphism** (Chistov–Ivanyos–Karpinski, ISSAC 1997, DOI 10.1145/258726.258751); this is a rejected trapdoor and novelty candidate, not original foundational mathematics. For p<=k no useful recovery bound is claimed from this code; tests are finite evidence only. No KEM, proof assistant or independent external review. S01 ACTIVE, M2/C2/C3 NOT PASSED; canonical stage tracker unchanged except this appended negative result.
