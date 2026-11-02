@@ -89,3 +89,17 @@ Counterexamples include S3 noncommuting cycle gains leaving exactly one recovere
 
 
 **Final NG-Q16 correction (same date):** Two additional local adversarial tests proved the exact rational S3 random-replacement mixing probabilities and demonstrated a zero-noise non-flat transport counterexample. NG-Q16 now has 11 tests; NG-Q17 has 7 and NG-Q18 has 6, **24/24 total**. The updated NG-Q16 test blob is `830c0c9c196c901906aa6297cadd442f66cebbaf` and matches the locally executed bytes. Earlier 22-test counts were intermediate checkpoints, not final counts.
+
+
+## NG-Q19: GL matrix public algorithm and scoped failure modes
+
+| Tested exact model | Public attacker | Status and strict scope |
+| --- | --- | --- |
+| Full GL(k,Fp), p prime and p>k, PLANTED exact transport | Public tree, solve A_e T=T D_e, sample random intertwiner, verify invertible | **Successful with failure bound <=(k/p)^N for each component with a valid root**; randomized polynomial algebra on an already validated field |
+| Full GL(k,Fp), p<=k | Same public solver | Finite tested successes possible; theoretical bound from this code **INCONCLUSIVE**, not asymptotic polynomial proof |
+| Nonzero linear solution space containing only singular matrices | Random sample and attempted inverse | **INCONCLUSIVE**, never false UNSAT; explicit unipotent control |
+| Zero-dimensional homogeneous solution space | Gaussian elimination | Correct **proven UNSAT** |
+| Arbitrary abstract matrix families/other group encodings, noise or partially hidden labels | Not generally implemented | **NOT EXECUTED** under other encodings / security games |
+| Full novel KEM private key, ciphertext/IND-CCA/QROM | No such candidate exists | **NOT EXECUTED**; cannot infer KEM break or quantum security |
+
+Twelve independent finite tests pass. Existing Chistov–Ivanyos–Karpinski ISSAC 1997 finite-field module isomorphism prior art applies; avoid inventing the name of an original hardness assumption.
