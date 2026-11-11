@@ -85,10 +85,6 @@ The NCSG-only research track preserves the original theorems and attack-driven h
 - [Toy hidden-MDS subspace attack](research-2028/toy_hidden_mds_attack.py). Recovers planted positions in exhaustive small exact GF(1024) examples, **not** a real-size break.
 - Automated mathematical integrity check of both Word/PDF manuscripts after build.
 
-**Original manuscript provenance:** the author-uploaded 26-page original PDF has SHA-256 \`24461af422a6a7d1fbadcc29fe4fe372761805a846226d6d343e7180c5382f4d\`. The repository's [original extracted-text archive](archive/SG_DIFRA_PQC_KEM_ORIGINAL_EXTRACTED_TEXT.txt) preserves textual content, **not the exact binary PDF**. Do not cite it as a bit-identical source. Contributors are listed as **Girish Nallan Chakravathy and Sreedevi Kannan**, matching the uploaded original.
-
-**EUROCRYPT 2028 schedule:** no official 2028 paper CFP/deadline has been verified as of 10 October 2026. Do not invent the date or assert submission readiness.
-
 **Important research distinction:** algebraic identities, finite exhaustions, regression-test passes, and the statement of a conditional reduction **cannot prove** that all practical or future cryptanalytic attacks are impossible.
 
 ### Research milestones and independent validation gates
