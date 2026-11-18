@@ -40,6 +40,16 @@ Relevant neighboring research includes Dechter's bucket elimination (1999) and H
 
 ## What the mathematical record establishes
 
+**18 November 2026 addition:** [Round 9](research-2028/round9/CHALLENGE_COUPLED_DIFFERENTIAL_SOLVABILITY.md)
+defines universal challenge-coupled differential solvability for one sparse
+ternary vector potential. Its written proofs classify degree at most 1, 2
+and 3 as P, coNP-complete and Pi2P-complete, respectively; one specified
+cubic challenge is NP-complete. The work includes exact reductions, a
+per-challenge witness bijection, a quadratic public decision bound and
+finite executable checks. This is a different, universally quantified
+decision problem, not a claimed harder KEM or average-case assumption.
+See the [assumption boundary](research-2028/round9/ASSUMPTIONS_AND_SECURITY_BOUNDARY.md).
+
 The following are **written mathematical arguments in the active draft**, supported by finite code tests where specified. The proofs have **not been machine-checked in a proof assistant or externally peer-reviewed**.
 
 | Result | Exact scope | Implication |

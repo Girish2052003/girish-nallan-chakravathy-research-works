@@ -1,0 +1,11 @@
+test_dimensions_and_exact_storage_bounds (__main__.ProfileAudits.test_dimensions_and_exact_storage_bounds) ... ok
+test_original_sha256_known (__main__.ProfileAudits.test_original_sha256_known) ... ok
+test_ratio_exposes_extreme_expansion (__main__.ProfileAudits.test_ratio_exposes_extreme_expansion) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+SGD-R1: public label matrix >= 22,118,400 bytes (21.09 MiB); ciphertext >= 77,414,400 bytes (73.83 MiB); first planted relation 65
+SGD-R2: public label matrix >= 149,299,200 bytes (142.38 MiB); ciphertext >= 487,710,720 bytes (465.12 MiB); first planted relation 97
+SGD-R3: public label matrix >= 796,262,400 bytes (759.38 MiB); ciphertext >= 2,786,918,400 bytes (2657.81 MiB); first planted relation 129

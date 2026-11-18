@@ -1,5 +1,15 @@
 # SG-DIFRA — NCSG-only direction, no external KEM ingredient
 
+**18 November 2026, Round 9:** [Challenge-coupled differential solvability](round9/CHALLENGE_COUPLED_DIFFERENTIAL_SOLVABILITY.md)
+adds a sparse ternary universal decision problem, with degree-sensitive
+P/coNP-complete/Pi2P-complete classifications, explicit reductions and
+executable finite checks. The [assumption ledger](round9/ASSUMPTIONS_AND_SECURITY_BOUNDARY.md)
+separates these worst-case results from the unresolved KEM, average-case
+and quantum-security questions. The [verification report](round9/VERIFICATION_REPORT.md)
+records the implementation and preservation checks. Earlier findings below
+remain historical evidence; the 10 October freeze date does not apply to
+the separate Round-9 supplement.
+
 **11 October follow-up:** [new public-evaluation inversion, uniform fiber sampling, scoped key-recovery obstruction, and high-width global shift attack](ROUND8_FOLLOWUP_RESULTS.md). The active manuscript now includes Theorem 4.8, Corollaries 4.8a–b and Theorem 12.10. Research-code and proof-wording defects are repaired. **The secure replacement KEM and profile security levels remain unestablished.** The previous dated results below remain historical evidence within their stated models.
 
 **Freeze date:** 2026-10-10. **Authors:** Girish Nallan Chakravathy and Sreedevi Kannan, following the uploaded original manuscript.

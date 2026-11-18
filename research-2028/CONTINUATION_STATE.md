@@ -1,8 +1,30 @@
 # NCSG KEM research continuation
 
-Updated 12 October 2026 after the Round-8 follow-up publication checks.
+Updated 18 November 2026 after the Round-9 mathematical continuation.
 
-**The secure replacement KEM remains unconstructed and unproved.** The current work establishes attacks and precise obstructions, not exponential hardness or certified 128/192/256-bit profiles. Preserve that distinction in every continuation.
+**The secure replacement KEM remains unconstructed and unproved.** The current
+work establishes attacks, obstructions and a new worst-case complexity
+classification, not exponential average-case hardness or certified
+128/192/256-bit profiles. Preserve that distinction in every continuation.
+
+## Round 9: new mathematical work to continue
+
+The [Round-9 supplement](round9/CHALLENGE_COUPLED_DIFFERENTIAL_SOLVABILITY.md)
+defines universal challenge coverage for sparse ternary polynomial maps.
+It supplies complete written P/coNP-complete/Pi2P-complete degree
+classifications, exact witness accounting, the fixed-cubic NP-completeness
+corollary and quadratic tractability boundaries. Source code, finite
+checks and the [verification report](round9/VERIFICATION_REPORT.md) live
+alongside the supplement. The existing October PDF/Word manuscripts are
+historical snapshots; the separately linked supplement carries Round 9.
+
+Do not reinterpret universal verification hardness as harder ciphertext
+inversion. A strict comparison with NP requires the stated noncollapse
+assumption. Global novelty has not been certified. For mathematical follow-up,
+seek external review of the degree classification and its relationship to
+zero-difference coverage and affine matrix range compatibility. For the
+cryptographic goal, the private recovery and sampled-instance obligations
+below remain open; the Round-9 reductions do not close them.
 
 ## Completed work to reuse
 

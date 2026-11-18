@@ -1,5 +1,35 @@
 # Girish Nallan Chakravathy — Research Works
 
+## 18 November 2026: challenge-coupled differential solvability
+
+**Round 9 adds a new mathematical decision problem and complete written
+reductions over F3.** One succinct polynomial map is fixed in public. For
+each challenge, we ask whether some input and its specified translation
+have the same output. The responding input may depend on the challenge.
+
+| Potential degree | One specified challenge | Coverage of every challenge |
+| --- | --- | --- |
+| At most 1 | In P | In P |
+| At most 2 | In P | coNP-complete |
+| At most 3 | NP-complete | Pi2P-complete |
+
+The higher classification concerns **universal worst-case verification**.
+A strict separation from NP requires a complexity-class noncollapse
+assumption. This is not a stronger encryption construction or a proof of
+average-case or quantum hardness. Global novelty and a secure NCSG-only
+KEM remain unestablished.
+
+- [Definitions, complete proofs, reductions and numerical examples](research-2028/round9/CHALLENGE_COUPLED_DIFFERENTIAL_SOLVABILITY.md)
+- [Assumptions and precise security boundary](research-2028/round9/ASSUMPTIONS_AND_SECURITY_BOUNDARY.md)
+- [Primary-source comparison and novelty scope](research-2028/round9/RELATED_WORK_AND_CLAIM_BOUNDARIES.md)
+- [Executable reductions and public decision algorithms](research-2028/round9/differential_challenges.py)
+- [Verification report and reproducible evidence](research-2028/round9/VERIFICATION_REPORT.md)
+
+The quadratic analysis also identifies easy cases and gives a public
+algorithm with time O(3^min(k,m) poly(L)), where k is the number of challenge
+coordinates, m the number of outputs, and L the input length. All historical
+attack results remain applicable within their stated models.
+
 ## Current mathematical-family classification
 
 **SG-DIFRA currently belongs to the NCSG finite-field discrete-differential constraint research family**: algebraic constraint-satisfaction problems over finite fields, organized through discrete derivatives and globally coupled nonlinear constraints. **NCSG means Nonlinear Constraint-System Geometry.** This is a precise **descriptive research classification**, not a claim of a new recognized mathematical discipline, universal novelty, a proven hardness assumption, or a completed secure KEM.
@@ -23,6 +53,10 @@ The new local theorem works through public evaluation when the source nonlinear 
 **The only official development branch is `main`.** All authoritative research, code, proofs, audit ledgers, source manuscripts, and generated PDF/Word binaries live on `main`. The previous Round-8 working branches were integrated through [PR #7](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/pull/7) and [PR #8](https://github.com/Girish2052003/girish-nallan-chakravathy-research-works/pull/8) and removed. The follow-up creates no additional published branch.
 
 **Current authoritative paper:** [NCSG-only research source](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.md) · [built PDF](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.pdf) · [editable Word](manuscript/SG_DIFRA_EUROCRYPT_2028_RESEARCH_DRAFT.docx). These are research drafts; **none is a certified secure KEM or conference-ready submission**. The document titled [SG_DIFRA_REVISED](manuscript/SG_DIFRA_REVISED.md) and its [PDF](manuscript/SG_DIFRA_REVISED.pdf) / [Word](manuscript/SG_DIFRA_REVISED.docx) are preserved as shorter historical/cryptanalytic revisions, **not the official active algorithm**.
+
+**Round-9 publication:** the [18 November mathematical supplement](research-2028/round9/CHALLENGE_COUPLED_DIFFERENTIAL_SOLVABILITY.md)
+contains the new degree classification. It is published separately; the
+October PDF/Word manuscripts above do not contain that new proof text.
 
 **Round-8 evidence:** [proved, scoped attack and security gate](research-2028/ROUND8_PUBLIC_GLOBAL_CSP_SECURITY_LEDGER.md) · [public-only global witness attack code](research-2028/attacks/public_global_treewidth_witness_recovery.py) · [cumulative research status](research-2028/NCSG_ONLY_RESEARCH_STATUS.md) · [cumulative proof/design ledger](research-2028/SECURITY_REDESIGN_AND_PROOF_LEDGER.md) · [CI regression and PDF publishing workflow](.github/workflows/build-research.yml).
 

@@ -1,0 +1,6 @@
+SGD-R1: q=27,648, tdec=96, first planted relation=65; log2(random-clean-basis work)=191.72; log2(source-specific relation heuristic)=156.91; log2(whole-message error upper bound)=-148.32
+  These values are NOT a certification of IND-CPA, IND-CCA, or quantum security.
+SGD-R2: q=124,416, tdec=144, first planted relation=97; log2(random-clean-basis work)=287.58; log2(source-specific relation heuristic)=310.65; log2(whole-message error upper bound)=-219.82
+  These values are NOT a certification of IND-CPA, IND-CCA, or quantum security.
+SGD-R3: q=497,664, tdec=192, first planted relation=129; log2(random-clean-basis work)=383.44; log2(source-specific relation heuristic)=515.11; log2(whole-message error upper bound)=-290.98
+  These values are NOT a certification of IND-CPA, IND-CCA, or quantum security.
