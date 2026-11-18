@@ -42,6 +42,8 @@ jobs:
           python -m unittest discover -s research-2028/round10 -p 'test_*.py' -v
       - name: Verify Round 11 KEM experiments
         run: python -m unittest discover -s research-2028/round11 -p 'test_*.py' -v
+      - name: Verify Round 12 differential KEM reductions and encodings
+        run: python -m unittest discover -s research-2028/round12 -p 'test_*.py' -v
       - name: Install publishing tools
         run: |
           sudo apt-get update -qq

@@ -1,5 +1,11 @@
 # Girish Nallan Chakravathy — Research Works
 
+## Round 12 KEM reductions, 18 November 2026
+
+Breaking the hashed-permutation KEM in the stated ideal-hash models yields a collision witness for a cubic SG-DIFRA potential on a fresh key and ciphertext. The converse also holds. Two implemented private-key candidates have perfect decoding, but each admits public polynomial-time inversion. A third result rules out any correct KEM that retains the exact Round 11 planted graph and color-table keys as the vertex count grows. A secure native key generator and concrete work factors remain open.
+
+[Results, encodings and tests](research-2028/round12/README.md) · [Reduction to generated differential search](research-2028/round12/GENERATED_DIFFERENTIAL_REDUCTION.md) · [Planted-key theorem](research-2028/round12/PLANTED_KEY_THEOREM.md)
+
 ## Round 11 KEM feasibility, 18 November 2026
 
 Round 11 implements KeyGen, Encaps and Decaps, and tests two attempts to give the receiver a private advantage. For the exact Round 10 compiler, a specified public differential target admits a public search using at most three affine solves. A separately planted strategy answers every challenge, but its named color is unpredictable to the sender. The runnable permutation control has perfect correctness and a public inverse at all three profile sizes. **A secure original SG-DIFRA KEM remains open.**
