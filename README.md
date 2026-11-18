@@ -1,5 +1,11 @@
 # Girish Nallan Chakravathy — Research Works
 
+## Round 11 KEM feasibility, 18 November 2026
+
+Round 11 implements KeyGen, Encaps and Decaps, and tests two attempts to give the receiver a private advantage. For the exact Round 10 compiler, a specified public differential target admits a public search using at most three affine solves. A separately planted strategy answers every challenge, but its named color is unpredictable to the sender. The runnable permutation control has perfect correctness and a public inverse at all three profile sizes. **A secure original SG-DIFRA KEM remains open.**
+
+[Implementation and results](research-2028/round11/README.md) · [Conditional IND-CCA reductions](research-2028/round11/TRANSFORM.md) · [Feasibility theorems](research-2028/round11/FEASIBILITY.md) · [Exact bytes and the three target profiles](research-2028/round11/SIZES.md)
+
 ## Local differential collision strategies over the ternary field
 
 **Round 10, 18 November 2026.** Two response coordinates must reuse the same answer whenever they see the same local address. The quadratic decision problem is PSPACE-complete. Allowing a single square-free cubic monomial anywhere in the vector potential gives NEXP-completeness, even when every challenge can be answered on its own. Both reductions use at most five monomials per component.
