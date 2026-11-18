@@ -1,5 +1,13 @@
 # Girish Nallan Chakravathy — Research Works
 
+## Local differential collision strategies over the ternary field
+
+**Round 10, 18 November 2026.** Two response coordinates must reuse the same answer whenever they see the same local address. The quadratic decision problem is PSPACE-complete. Allowing a single square-free cubic monomial anywhere in the vector potential gives NEXP-completeness, even when every challenge can be answered on its own. Both reductions use at most five monomials per component.
+
+A separate quadratic theorem shows when a short list of challenges can expose a contradiction. If every coordinate uses one of the two local views, a polynomial-size list suffices. With additional full-information helpers, the minimum list on a compact path can be exactly $2^n-1$ for $n$-bit addresses.
+
+[Mathematical research note](research-2028/round10/README.md) · [Typeset paper](research-2028/round10/local_differential_collisions.pdf) · [Comparison with prior work](research-2028/round10/RELATED_WORK.md) · [Finite checks](research-2028/round10/VERIFICATION.md)
+
 ## 18 November 2026: challenge-coupled differential solvability
 
 **Round 9 adds a new mathematical decision problem and complete written

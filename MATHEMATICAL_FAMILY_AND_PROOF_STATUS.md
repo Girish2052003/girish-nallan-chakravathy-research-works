@@ -40,6 +40,8 @@ Relevant neighboring research includes Dechter's bucket elimination (1999) and H
 
 ## What the mathematical record establishes
 
+[Round 10](research-2028/round10/README.md) gives two response coordinates disjoint local views. Its degree-two problem is PSPACE-complete, and allowing one square-free cubic monomial gives NEXP-completeness. The [quadratic certificate-size theorems](research-2028/round10/TWO_VIEW_BOUND.md) track the effect of full-information helpers. These are worst-case decision and certificate results.
+
 **18 November 2026 addition:** [Round 9](research-2028/round9/CHALLENGE_COUPLED_DIFFERENTIAL_SOLVABILITY.md)
 defines universal challenge-coupled differential solvability for one sparse
 ternary vector potential. Its written proofs classify degree at most 1, 2

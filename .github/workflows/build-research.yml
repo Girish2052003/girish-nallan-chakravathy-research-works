@@ -39,6 +39,7 @@ jobs:
           python research-2028/attacks/test_public_oracle_local_inversion.py
           python research-2028/attacks/test_public_global_shift_witness_recovery.py
           python research-2028/round9/verify_round9.py --output-dir /tmp/sg-difra-round9
+          python -m unittest discover -s research-2028/round10 -p 'test_*.py' -v
       - name: Install publishing tools
         run: |
           sudo apt-get update -qq

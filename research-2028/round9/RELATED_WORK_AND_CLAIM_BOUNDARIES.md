@@ -2,6 +2,8 @@
 
 **Literature search date: 18 November 2026.** The degree classification in this round concerns a decision problem. One input specifies a vector polynomial by its component monomials over the field of three elements. The question is whether each challenge direction admits a collision. The witness may depend on the challenge.
 
+**Follow-up on prior work, 18 November 2026.** Corollary 10 of Buss, Frandsen and Shallit gives a short alternative route to the quadratic coverage lower bound. The matrix specialization and its translation are written out in the [Round 10 literature comparison](../round10/RELATED_WORK.md#what-the-older-matrix-theorem-gives-for-round-9).
+
 ## What the decision problem measures
 
 Let $P:\mathbb F_3^n\to\mathbb F_3^m$ have total degree at most $d$ in each component. Put $h_c=(1,c,0)$ for $c\in\mathbb F_3^k$, with a trailing zero block of length $n-k-1$. For a direction $h$ and target $b$, write
