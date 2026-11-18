@@ -2,6 +2,8 @@
 
 We built two candidate KEMs over the ternary field and analyzed the public information in each. One result strengthens the earlier security reduction. For a specified distribution of affine-masked power permutations, an inverter that succeeds on fresh keys and ciphertexts can be used on **every promised key and ciphertext in the family**. The concrete cubic permutations nevertheless have a public inverse. A second construction uses a shared finite difference and fails a different test. A quantum observer can predict its shared value even when the public functions have short circuit descriptions of unrestricted degree.
 
+The [constructive KEM criterion](CONSTRUCTIVE_KEM_CRITERION.md) gives a sufficient condition for a future native key generator to inherit both IND-CPA and IND-CCA, including the quantitative post-quantum bound.
+
 ## The reduction requested for the KEM
 
 Let $F=T\circ (x\mapsto x^e)\circ S$ on a field of $N=3^n$ elements. The exponent is public and coprime to $N-1$. The two affine masks are independent and uniform before taking the equivalent compact representation. The receiver uses their inverses and a private change of coordinates to recover the sender's exact input. The sender hashes that input using the [Round 11 KEM](../round11/TRANSFORM.md).
