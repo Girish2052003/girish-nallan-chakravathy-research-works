@@ -40,6 +40,8 @@ Relevant neighboring research includes Dechter's bucket elimination (1999) and H
 
 ## What the mathematical record establishes
 
+[Round 13](research-2028/round13/README.md) proves a worst-case-to-average-case connection for inversion within the exact uniform affine orbit of a permutation monomial. Its concrete cubic keys admit a public inverse, and its commuting-difference KEM admits public prediction of the shared value. Exact profile calculations and compact encodings accompany these results. A secure instantiated SG-DIFRA KEM remains open.
+
 [Round 12](research-2028/round12/README.md) identifies a generated fixed-challenge cubic collision search equivalent to permutation inversion and gives quantitative conditional KEM reductions. The two new permutation families admit efficient private and public inverses. A separate theorem covers arbitrary encapsulation with the exact Round 11 planted graph and color-table keys.
 
 [Round 11](research-2028/round11/README.md) adds a planted Round 10 policy, a canonical ternary KEM harness, a publicly invertible control and a conditional hashed-permutation security theorem. The named planted color gives sender agreement probability exactly one third. The control fails IND-CPA at every dimension. The [feasibility proof](research-2028/round11/FEASIBILITY.md) explains why the global NEXP theorem supplies no direct ciphertext trapdoor.

@@ -1,5 +1,11 @@
 # Girish Nallan Chakravathy — Research Works
 
+## Round 13 · Worst-case inversion within a generated family
+
+For exactly uniform affine disguises of a permutation power map, success on random keys and ciphertexts transfers to every promised instance in the same family. The new cubic candidates have exact private decoding and admit public polynomial-time inversion. A separate native KEM based on two commuting finite differences gives perfect agreement, but its shared value is predictable even with succinct public evaluators in the quantum model. Round 13 implements both families, measures encoded sizes and distinguishes generic quantum query thresholds from security ratings.
+
+[Results and runnable experiments](research-2028/round13/README.md) · [Worst-case reduction](research-2028/round13/ORBIT_REDUCTION.md) · [Three target profiles](research-2028/round13/PROFILE_BOUNDS.md)
+
 ## Round 12 KEM reductions, 18 November 2026
 
 Breaking the hashed-permutation KEM in the stated ideal-hash models yields a collision witness for a cubic SG-DIFRA potential on a fresh key and ciphertext. The converse also holds. Two implemented private-key candidates have perfect decoding, but each admits public polynomial-time inversion. A third result rules out any correct KEM that retains the exact Round 11 planted graph and color-table keys as the vertex count grows. A secure native key generator and concrete work factors remain open.
