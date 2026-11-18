@@ -2,6 +2,8 @@
 
 The sender runs two independent encapsulations, combines their shared secrets with both ciphertexts, and sends the two ciphertexts. The recipient uses both private keys to reproduce the result. The SG-DIFRA component computes the actual Round 14 ternary finite difference, sparse private checks and error correction. In the compact profile the security argument can rely entirely on the other component. This permits an end-to-end security claim without assigning a numerical hardness estimate to the small SG-DIFRA parameters.
 
+The [Classic McEliece comparison](CLASSIC.md) records a 2026 advisory against new designs using that component. The theorem states what follows if either component is secure. The compact native component has no independent strength rating. The standalone research claim is in the [native proof](NATIVE_PROOF.md).
+
 ## Wire profiles and algorithms
 
 The [implementation](hybrid_kem.py) accepts a fixed-width independent component producing a 32-byte shared secret. For the ML-KEM profiles its first component is the [FIPS 203 provider adapter](reviewed_kem.py). Its second component uses the Round 14 two-seed KEM with 256 message bits, $h=8,n=3,m=640,w=3,z=2$, 128 bits of sender-sampling slack, a 32-byte nonce and the RS outer code with 180 trits. The two per-key expansion slacks are 320 bits each. These small dimensions prioritize bandwidth and exact native decoding. No security strength is assigned to the native component here.

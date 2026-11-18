@@ -1,10 +1,12 @@
 # Girish Nallan Chakravathy — Research Works
 
-## Round 15 · Full-size code-based and ML-KEM-backed SG-DIFRA profiles
+## Round 15 · Standalone SG-DIFRA and its security assumptions
 
-The code-based middle profile pairs Classic McEliece with SG-DIFRA, transmitting a 351-byte ciphertext under a 524,692-byte public key. There is also an ML-KEM-backed middle profile with a 1,716-byte public key and a 1,283-byte ciphertext. Their conditional IND-CCA proofs can rely on the established component even when the small ternary component supplies no secrecy. A separate, purely native redesign preserves the Round 14 assumptions and cuts its middle public key by 72%. Native full-input decoding hardness and a concrete quantum work factor remain open.
+The primary research construction runs its own key generation, encapsulation and private decoding. Its IND-CPA and IND-CCA reductions rely on two average-case ternary decoding problems and the stated hash model. It requires no Classic McEliece or ML-KEM key. The concrete hardness of those distributions is open, including the proposed 192 target.
 
-[Run the KEM](research-2028/round15/README.md) · [Code-based security foundation](research-2028/round15/CLASSIC.md) · [Composite IND-CCA theorem](research-2028/round15/COMBINER.md) · [Native proofs](research-2028/round15/NATIVE_PROOF.md)
+Round 15 also records optional hybrid experiments. On 29 September 2026 the German BSI advised against Classic McEliece for new designs following advances in structural cryptanalysis. The McEliece hybrid is a historical comparison; its 351-byte middle ciphertext is a hybrid measurement. [Classic McEliece assessment and sources](research-2028/round15/CLASSIC.md)
+
+[Standalone proof](research-2028/round15/NATIVE_PROOF.md) · [Runnable native example](research-2028/round15/README.md) · [Sizes and limits](research-2028/round15/SIZES.md)
 
 ## Round 14 · A code-based differential KEM with conditional IND-CCA security
 

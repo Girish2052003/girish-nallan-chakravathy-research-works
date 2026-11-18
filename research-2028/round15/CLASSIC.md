@@ -1,4 +1,9 @@
-# A code-based SG-DIFRA profile with a studied security foundation
+# Classic McEliece hybrid · historical research comparison
+
+**Status on 18 November 2026.** On 29 September 2026 the German BSI advised against using Classic McEliece for new developments and new cryptographic applications. An October assessment distinguishes actual key recoveries on smaller public challenges from conditional estimates at the proposed full dimensions. Those estimates challenge the claimed margins, including for the middle 460896 profile. The assessment reports no demonstrated full-size key recovery. [BSI advisory](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Krypto/Hinweis_Classic_McEliece.pdf?__blob=publicationFile&v=2) · [October assessment](https://arxiv.org/abs/2610.31196)
+
+The combiner theorem below is conditional on at least one component satisfying its security premise. The small SG-DIFRA component in this experiment has no independent security rating. Consequently the experiment supplies no fallback assurance at the target strength if the Classic McEliece premise fails. Successful exchanges establish interoperability. The [standalone SG-DIFRA research KEM](NATIVE_PROOF.md) uses different key generation, with its own two ternary decoding assumptions.
+
 
 This configuration combines Classic McEliece with an actual instance of the Round 14 SG-DIFRA KEM. Both components use codes. The first uses a private binary Goppa decoder. The second uses a ternary differential mask and disjoint secret checks. Key generation and encapsulation draw their randomness independently. Both secrets and both ciphertexts enter the final key derivation. The package uses the cached public-context mode of the [parallel combiner](COMBINER.md).
 
