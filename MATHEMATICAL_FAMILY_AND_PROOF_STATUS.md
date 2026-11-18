@@ -4,6 +4,8 @@
 
 The [Round 14 code-based extension](research-2028/round14/README.md) supplies a concrete private decoder and a conditional IND-CCA theorem for a different construction. Its generated differential witnesses encode sparse decoding problems. The NCSG-only classification below addresses the research line that excludes a separate code-based hardness foundation.
 
+[Round 15](research-2028/round15/README.md) gives a smaller native KEM under those same assumptions, a witness-preserving representation of binary Goppa decoding, and full-size combined KEMs whose security can rely on Classic McEliece or ML-KEM.
+
 ## One mathematical home
 
 **Umbrella discipline:** finite-field algebraic constraint-satisfaction problems (CSPs) and discrete finite-difference algebra.

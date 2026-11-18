@@ -1,5 +1,11 @@
 # Girish Nallan Chakravathy — Research Works
 
+## Round 15 · Full-size code-based and ML-KEM-backed SG-DIFRA profiles
+
+The code-based middle profile pairs Classic McEliece with SG-DIFRA, transmitting a 351-byte ciphertext under a 524,692-byte public key. There is also an ML-KEM-backed middle profile with a 1,716-byte public key and a 1,283-byte ciphertext. Their conditional IND-CCA proofs can rely on the established component even when the small ternary component supplies no secrecy. A separate, purely native redesign preserves the Round 14 assumptions and cuts its middle public key by 72%. Native full-input decoding hardness and a concrete quantum work factor remain open.
+
+[Run the KEM](research-2028/round15/README.md) · [Code-based security foundation](research-2028/round15/CLASSIC.md) · [Composite IND-CCA theorem](research-2028/round15/COMBINER.md) · [Native proofs](research-2028/round15/NATIVE_PROOF.md)
+
 ## Round 14 · A code-based differential KEM with conditional IND-CCA security
 
 Round 14 implements a private sparse-check decoder and proves exact recovery for every permitted error pattern. Under two average-case ternary decoding assumptions it gives IND-CPA and, in the quantum random-oracle model, IND-CCA security for one recipient with classical decapsulation queries. A quantum distinguisher with nonnegligible advantage yields a solver for one of two generated fixed-challenge SG-DIFRA collision distributions. The construction draws its security from coding theory. Its three illustrative layouts have exact byte counts and unverified security strengths.
