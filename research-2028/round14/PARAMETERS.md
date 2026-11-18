@@ -81,3 +81,29 @@ In particular, sufficient bounds on the two **iid-matrix** decisional advantages
 The proof applies to one honestly generated recipient. Extending an estimate to many public keys or target ciphertexts requires stating that game, its number of targets, and the resulting loss. Treating quantum query counts as classical operations or NIST security categories would also require a separate cost model. See the [base proof](BASE_PROOF.md), [FO theorem and security model](CCA_PROOF.md), and [NIST security evaluation criteria](https://csrc.nist.gov/projects/post-quantum-cryptography/post-quantum-cryptography-standardization/evaluation-criteria/security-%28evaluation-criteria%29).
 
 Recompute the tables from this directory with `python3 parameters.py`.
+
+## A sufficient condition at the requested $2^{191}$ budget
+
+Consider the 192 target in its [two-seed private format](PRIVATE_SEED.md), a single honestly generated recipient, and the four separately framed ideal hash domains. A challenger flips a fair coin and gives the adversary either the genuine shared key or an independent uniform key. It also supplies the challenge ciphertext. Write $\Delta$ for the absolute difference in acceptance probabilities between those cases. The adversary's excess chance of guessing the coin over one half is $\Delta/2$. Adaptive classical decapsulation is allowed under the [CCA game's challenge restriction](CCA_PROOF.md). Setting the decapsulation budget to zero gives the CPA guarantee.
+
+Set $Q=2^{191}$. Allow $q_G+q_H\le Q$, $q_D\le Q$, and $q_{\rm priv}\le Q$ for the FO hashes, decapsulations, and private-seed hash queries respectively. Count quantum matrix-oracle queries, all computation, and memory in the resources of the reductions. The next two rows give **sufficient assumptions**, each imposed on both decoding distinguishing gaps $\epsilon_1,\epsilon_2$ for the generated distributions at those resources.
+
+| Hypothetical upper bound on each decoding gap | Consequence for guessing the fair coin |
+|---|---|
+| $2^{-224}$ | Success below $51.6\%$ |
+| $2^{-280}$ | Success below $1/2+2^{-33}$ |
+
+**Derivation.** Write $D=14{,}426{,}208$ for matrix rows and $t=18{,}760$ for check columns. Applying the [base reduction with seeded rows](SEEDED_MATRIX.md), if each decoding gap is at most $2^{-a}$ then the raw PKE gap obeys
+$$
+\epsilon\le (2t+2)2^{-a}+2\cdot2^{-320}+2D\cdot2^{-576}.
+$$
+For $a=224$ this is below $2^{-208}$, and for $a=280$ it is below $2^{-264}$. The leading FO term is bounded by $8\sqrt{2Q\epsilon}$, giving respectively $2^{-5}$ and $2^{-33}$ as strict upper bounds.
+
+The message and private-seed widths are 512 bits, the nonce width is 896 bits, and the private support sampler has 576 bits of slack. The remaining raw-gap terms, including the optional prechallenge correction, sum to at most
+$$
+16(2Q)2^{-256}+48Q(5Q)2^{-448}+2Q2^{-512}
++4Q2^{-256}+2t2^{-576}<2^{-57}.
+$$
+The first two terms are the FO message and nonce costs, the third allows earlier decapsulation queries, and the final two come from the private-seed format. Adding these costs and halving the raw gap yields the table. An [exact rational-arithmetic test](test_parameters.py) checks both inequalities against the profile dimensions.
+
+The calculation quantifies the remaining hardness premise. Establishing either row as an actual security claim requires bounding the two decoding gaps under a stated time and memory budget, including the cost of simulating the ideal oracles. The number of oracle calls alone cannot justify a lower bound of $2^{191}$ elementary operations. The scope here is the mathematical single-recipient game; a concrete implementation also needs to uphold its execution assumptions.
