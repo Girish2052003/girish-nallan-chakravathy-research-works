@@ -1,5 +1,11 @@
 # Girish Nallan Chakravathy — Research Works
 
+## Round 16 · A single hardness assumption for standalone SG-DIFRA
+
+The receiver's private decoder and the sender's public masking step can now be analyzed using the same generated ternary decoding problem. The new layout has conditional IND-CPA and IND-CCA reductions in the quantum random-oracle model. The 192 target has a 12.62 GB public key and a 4.80 MB ciphertext. These are calculated byte costs. Establishing a concrete work factor and achieving practical public-key sizes remain open.
+
+[Construction, sizes and runnable example](research-2028/round16/README.md) · [One-distribution reduction and loss](research-2028/round16/MATCHED_PROOF.md) · [Unique-witness theorem](research-2028/round16/UNIQUE.md)
+
 ## Round 15 · Standalone SG-DIFRA and its security assumptions
 
 The primary research construction runs its own key generation, encapsulation and private decoding. Its IND-CPA and IND-CCA reductions rely on two average-case ternary decoding problems and the stated hash model. It requires no Classic McEliece or ML-KEM key. The concrete hardness of those distributions is open, including the proposed 192 target.

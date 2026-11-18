@@ -6,6 +6,8 @@ The [Round 14 code-based extension](research-2028/round14/README.md) supplies a 
 
 [Round 15](research-2028/round15/README.md) gives a smaller native KEM under those same assumptions, a witness-preserving representation of binary Goppa decoding, and full-size comparison experiments combining SG-DIFRA with a separate KEM. The [Classic McEliece comparison](research-2028/round15/CLASSIC.md) records the 2026 BSI advisory. The standalone ternary construction uses its own decoder. A security foundation derived solely from the original NCSG hardness problem remains open.
 
+The [Round 16 matched layout](research-2028/round16/README.md) gives the code-based extension one average-case ternary decoding assumption for each parameter set. Its generated cubic differential challenges encode the same sparse-vector witnesses. The proof covers the standalone KEM and gives explicit security losses. Concrete decoding hardness at the three target sizes is open.
+
 ## One mathematical home
 
 **Umbrella discipline:** finite-field algebraic constraint-satisfaction problems (CSPs) and discrete finite-difference algebra.
