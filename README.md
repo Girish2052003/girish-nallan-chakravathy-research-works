@@ -1,5 +1,11 @@
 # Girish Nallan Chakravathy — Research Works
 
+## Round 14 · A code-based differential KEM with conditional IND-CCA security
+
+Round 14 implements a private sparse-check decoder and proves exact recovery for every permitted error pattern. Under two average-case ternary decoding assumptions it gives IND-CPA and, in the quantum random-oracle model, IND-CCA security for one recipient with classical decapsulation queries. A quantum distinguisher with nonnegligible advantage yields a solver for one of two generated fixed-challenge SG-DIFRA collision distributions. The construction draws its security from coding theory. Its three illustrative layouts have exact byte counts and unverified security strengths.
+
+[Construction and runnable example](research-2028/round14/README.md) · [Secrecy proof](research-2028/round14/CCA_PROOF.md) · [Search reduction](research-2028/round14/WITNESS_PROOF.md) · [Parameter costs](research-2028/round14/PARAMETERS.md)
+
 ## Round 13 · Worst-case inversion within a generated family
 
 For exactly uniform affine disguises of a permutation power map, success on random keys and ciphertexts transfers to every promised instance in the same family. The new cubic candidates have exact private decoding and admit public polynomial-time inversion. A separate native KEM based on two commuting finite differences gives perfect agreement, but its shared value is predictable even with succinct public evaluators in the quantum model. Round 13 implements both families, measures encoded sizes and distinguishes generic quantum query thresholds from security ratings.
@@ -60,7 +66,7 @@ attack results remain applicable within their stated models.
 
 **SG-DIFRA currently belongs to the NCSG finite-field discrete-differential constraint research family**: algebraic constraint-satisfaction problems over finite fields, organized through discrete derivatives and globally coupled nonlinear constraints. **NCSG means Nonlinear Constraint-System Geometry.** This is a precise **descriptive research classification**, not a claim of a new recognized mathematical discipline, universal novelty, a proven hardness assumption, or a completed secure KEM.
 
-See the [canonical mathematical family, theorem-by-theorem proof status, simple example, and security boundary](MATHEMATICAL_FAMILY_AND_PROOF_STATUS.md). The older hidden-MDS/GRS and noisy-linear iterations are archived historical cryptanalysis only. The current program has **no complete NCSG-only KEM or established IND-CCA/QROM security**.
+See the [canonical mathematical family, theorem-by-theorem proof status, simple example, and security boundary](MATHEMATICAL_FAMILY_AND_PROOF_STATUS.md). The older hidden-MDS/GRS and noisy-linear iterations are archived historical cryptanalysis only. The current program has **no complete NCSG-only KEM with established IND-CCA/QROM security**.
 
 ## 11 October 2026 follow-up
 

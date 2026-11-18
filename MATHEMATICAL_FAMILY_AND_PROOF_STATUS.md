@@ -2,6 +2,8 @@
 
 **Scope:** Current NCSG-only research direction. This document is a descriptive taxonomy and audit guide, not a new proof, independent peer review, novelty certification or a secure KEM.
 
+The [Round 14 code-based extension](research-2028/round14/README.md) supplies a concrete private decoder and a conditional IND-CCA theorem for a different construction. Its generated differential witnesses encode sparse decoding problems. The NCSG-only classification below addresses the research line that excludes a separate code-based hardness foundation.
+
 ## One mathematical home
 
 **Umbrella discipline:** finite-field algebraic constraint-satisfaction problems (CSPs) and discrete finite-difference algebra.
