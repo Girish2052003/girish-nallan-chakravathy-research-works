@@ -1,0 +1,38 @@
+# Sending one representative of each public row-space coset
+
+The short-radius 192 profile transmits a 1,871,132-byte ciphertext at full row rank. This is 61.01% smaller than the [Round 16 ciphertext](../round16/README.md). Its public key has 7,088,151,760 bytes and its private key has 96 bytes. The full-radius variant has perfect correctness and a 2,397,431-byte ciphertext at full row rank. Both retain the same underlying generated ternary syndrome experiment. These changes concern encoding and honest recovery. The concrete hardness of the experiment remains open.
+
+## Algebra and algorithms
+
+Let $A$ be the public $d$-by-$m$ base matrix obtained from the public seed, $S$ the private $m$-by-$t$ matrix of disjoint signed columns and $T=[A\mid AS]$ the complete public $d$-by-$N$ matrix, where $N=m+t$. Write $C$ for the row space of $T$. For column vectors, the private residual is $L(v)=v_{\rm check}-S^\top v_{\rm base}$. It annihilates every transposed row of $T$, so the private decoder receives the same residual everywhere in each coset of $C$. This uses the classical correspondence between linear-code cosets and syndromes. [Jerrum, coding theory notes, section on dual codes](https://webspace.maths.qmul.ac.uk/m.jerrum/MAS309/lectureNotes.pdf)
+
+Compute an echelon basis of $C$ with normalized pivots. In increasing pivot order, subtract a suitable multiple of each basis row from an input word to set that pivot coordinate to zero. This operation is a linear map. Two words yield the same result precisely when their difference belongs to $C$. Indeed the residual word has zeros at every pivot and differs from the input by a combination of rows. The only row-space word with these zeros is zero, as seen from the first nonzero coefficient in its echelon-basis expansion. Encode the coordinates outside the pivots in increasing order using the existing canonical ternary codec. In decoding, restore zeros at every pivot. Every remainder has a unique such representative.
+
+* **Key generation.** Use the selected layout's key generation. A new suite tag binds the actual quotient nonce width and the complete underlying suite, including its radius and parameters, to all hash roles.
+* **Encapsulation.** Sample the message and evaluate the suite's randomness hash. Derive the signed error using exactly the underlying finite joint rank modulo its prescribed count. Form the public codeword offset, add the transmitted error coordinates and apply the public quotient map. Every native mask is a combination of the rows of $T$, so its contribution to the remainder is zero. This justifies omitting the mask multiplication in the implementation. Prefix the specified nonce, and derive the 32-byte shared key from the message and public context.
+* **Decapsulation.** Regenerate the public key and the quotient basis from the private seeds. Require the length determined by this actual key and reject unused ternary ranks. Lift the remainder and use the ordinary private residual decoder. Recompute the complete quotient ciphertext, including its nonce, compare every byte, and return the shared key only on equality.
+
+The quotient width is $N-j$ trits for $j=\operatorname{rank}T$. There is no rank field on the wire. Both parties obtain the same pivots from the public data. Base decryption on an honest quotient ciphertext yields exactly the same tentative message as base decryption on the uncompressed body with the corresponding coins. Thus the full-radius variant retains correctness for every honest sender tape. The short-radius variant retains the probability bound on decoding failure for every generated key and every message. When base decoding succeeds the check by re-encryption passes. This argument also applies to deficient matrices.
+
+## Reduction and spread
+
+A distinguisher for the quotient **randomized base encryption** gives one for the underlying randomized base with the same raw gap. Given the public key and challenge body, apply the public quotient map and provide a fresh independent nonce of the desired width. If the base game supplies its own nonce, ignore it. No decryption queries are required in this reduction. Its key and oracle domains are the labeled counterparts of the underlying construction; relabeling disjoint ideal-oracle slices preserves their joint law. The per-key rank, ciphertext width and pivot schedule are publicly computable. The simulator must cover the cost and workspace of computing the quotient. Quantum distinguishers in the base game receive classical challenge data, and the same public transformation can also be implemented reversibly if a higher-level reduction needs its adjoint.
+
+Apply the explicit-rejection Fujisaki–Okamoto theorem anew to this randomized base variant and its actual worst-case correctness and spread parameters. This step checks canonical quotient ciphertexts in the decapsulation simulation. The [spread bound](SPREAD.md) covers collisions created by the lossy public map. Registered nonce widths ensure the combined per-key spread is at least the original requirement. Thus the [conditional full-radius bounds](../round16/MATCHED_PROOF.md) or the [short-radius bounds](outer_proof.md) apply at the composed resources, including the optional prechallenge correction and the private-seed term specified in those notes. Dropping bytes from an already transformed ciphertext would require its own decapsulation argument.
+
+## Sizes and cost
+
+The public matrix has the same rank as $A$ because $AS$ consists of linear combinations of columns of $A$. For iid base rows and $d\le m$, the probability of deficient rank is $1-\prod_{i=0}^{d-1}(1-3^{i-m})<3^{d-m}/2$. With the ideal public row sampler one may add $d\,2^{-s_A}$ for its statistical distance, where $s_A$ is the row-sampling slack. The reference always handles the realized rank. In particular, its API reports the actual length for a supplied public key, separately from the full-rank size formula. Fixed SHAKE256 is the concrete implementation of the ideal hashing domains.
+
+| Target | Outer radius | Public key, bytes | Private key, bytes | Nonce, bytes | Full-rank ciphertext, bytes |
+|---:|---:|---:|---:|---:|---:|
+| 128 | Full | 3,868,545,931 | 80 | 0 | 1,083,802 |
+| 192 | Full | 12,620,284,606 | 96 | 0 | 2,397,431 |
+| 256 | Full | 29,506,137,220 | 112 | 0 | 4,232,857 |
+| 128 | Half | 2,201,315,732 | 80 | 12 | 849,798 |
+| 192 | Half | 7,088,151,760 | 96 | 10 | 1,871,132 |
+| 256 | Half | 16,482,794,077 | 112 | 8 | 3,297,407 |
+
+The table uses exact width arithmetic. For a deficient key replace $N-d$ by $N-j$ in the packed width. The reference stores up to $dN$ ternary coefficients for the echelon basis and may perform $O(d^2N)$ field operations to compute it, in addition to public-key regeneration. For the short 192 target the dense full-rank echelon array alone would have over 260 trillion trit positions. This implementation prioritizes clarity on small fixtures. Target-size exchanges and this preprocessing cost have not been benchmarked. A key-dependent preprocessing cache could amortize elimination over repeated encapsulations, while its size would still need to be counted.
+
+The [reference](quotient_kem.py) exposes `research_profile(192)` for the short descriptor and `research_profile(192, full_radius=True)` for the perfect-correctness descriptor. The [tests](test_quotient.py) compare the optimized sender directly to the projection of native randomized encryption, exercise rank-deficient keys and malformed ciphertexts, and perform an end-to-end short-radius exchange with fixed toy inputs. That exchange produced 393 public-key bytes, 33 private-key bytes, 25 ciphertext bytes and an agreed 32-byte key. Its tiny dimensions are for correctness testing.

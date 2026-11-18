@@ -8,6 +8,8 @@ The [Round 14 code-based extension](research-2028/round14/README.md) supplies a 
 
 The [Round 16 matched layout](research-2028/round16/README.md) gives the code-based extension one average-case ternary decoding assumption for each parameter set. Its generated cubic differential challenges encode the same sparse-vector witnesses. The proof covers the standalone KEM and gives explicit security losses. Concrete decoding hardness at the three target sizes is open.
 
+The [Round 17 systematic KEM](research-2028/round17/README.md) transmits a coset representative. Both its linear and quadratic masking terms disappear under this map. The underlying generated sparse ternary decoding challenge has a cubic differential representation. The security assumption for this KEM therefore belongs to the code-based research line. Three published classical resource estimates, a restricted communication theorem and conditional quantum reductions are available for its exact parameter distributions. A concrete post-quantum work factor remains open.
+
 ## One mathematical home
 
 **Umbrella discipline:** finite-field algebraic constraint-satisfaction problems (CSPs) and discrete finite-difference algebra.

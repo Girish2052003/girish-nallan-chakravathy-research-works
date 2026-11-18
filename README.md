@@ -1,5 +1,11 @@
 # Girish Nallan Chakravathy — Research Works
 
+## Round 17 · Standalone ternary KEM with fixed-width ciphertexts
+
+The systematic construction uses SG-DIFRA's private decoder and compresses away every public masking row. Its single-recipient IND-CPA and IND-CCA security is conditional on a generated ternary decoding problem and ideal hashes. At the 192 research target the primary layout has a 7,088,151,760-byte public key, a 96-byte private key and a 1,871,132-byte ciphertext. We proved an honest decoding-failure bound and evaluated three published classical decoding cost models. The concrete $2^{191}$ KEM security claim remains open.
+
+[Construction, three profiles and runnable exchange](research-2028/round17/README.md) · [Systematic-key proof](research-2028/round17/SYSTEMATIC.md) · [Finite-cost evidence](research-2028/round17/EVIDENCE.md)
+
 ## Round 16 · A single hardness assumption for standalone SG-DIFRA
 
 The receiver's private decoder and the sender's public masking step can now be analyzed using the same generated ternary decoding problem. The new layout has conditional IND-CPA and IND-CCA reductions in the quantum random-oracle model. The 192 target has a 12.62 GB public key and a 4.80 MB ciphertext. These are calculated byte costs. Establishing a concrete work factor and achieving practical public-key sizes remain open.

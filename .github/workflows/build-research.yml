@@ -50,6 +50,11 @@ jobs:
         run: python -m unittest discover -s research-2028/round14 -p 'test_*.py' -v
       - name: Verify Round 16 standalone KEM and its single-distribution reductions
         run: python -m unittest discover -s research-2028/round16 -p 'test_*.py' -v
+      - name: Verify Round 17 standalone KEM, decoding bounds and resource calculations
+        run: |
+          python -m unittest discover -s research-2028/round17 -p 'test_*.py' -v
+          python research-2028/round17/demo.py
+          python research-2028/round17/demo.py --sizes
       - name: Install publishing tools
         run: |
           sudo apt-get update -qq
